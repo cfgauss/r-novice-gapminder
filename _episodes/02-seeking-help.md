@@ -189,3 +189,4 @@ your issue.
 * [Quick R](http://www.statmethods.net/)
 * [RStudio cheat sheets](http://www.rstudio.com/resources/cheatsheets/)
 * [Cookbook for R](http://www.cookbook-r.com/)
+* [Teach yourself R using the Swirl package](http://swirlstats.com/students.html)
