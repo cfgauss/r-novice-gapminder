@@ -846,7 +846,7 @@ network). R and RStudio have functionality for managing packages:
 
 > ## Challenge 5
 >
-> Install the following packages: `ggplot2`, `plyr`, `gapminder`
+> Install the following packages: `ggplot2`, `dplyr`, `gapminder`
 >
 > > ## Solution to challenge 5
 > >
@@ -854,7 +854,7 @@ network). R and RStudio have functionality for managing packages:
 > > We can also install them in one go like so:
 > > 
 > > ~~~
-> > install.packages(c("ggplot2", "plyr", "gapminder"))
+> > install.packages(c("ggplot2", "dplyr", "gapminder"))
 > > ~~~
 > > {: .r}
 > {: .solution}
