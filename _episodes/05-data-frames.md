@@ -1,6 +1,6 @@
 ---
 title: "Exploring Data Frames"
-teaching: 50
+teaching: 30
 exercises: 10
 questions:
 - "How can access datasets in R?"
@@ -793,7 +793,7 @@ into a script file so we can come back to it later.
 > to explain what everything that `str` prints out for gapminder means.
 > If there are any parts you can't interpret, discuss with your neighbors!
 >
-> > ## Solution to Challenge 3
+> > ## Solution to Challenge 2
 > >
 > > The object `gapminder` is a data frame with columns
 > > - `country` and `continent` are factors.
