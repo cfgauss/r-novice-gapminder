@@ -1,6 +1,6 @@
 ---
 title: "Data Structures"
-teaching: 50
+teaching: 10
 exercises: 15
 questions:
 - "What are the basic data types in R?"
