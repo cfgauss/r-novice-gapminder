@@ -5,7 +5,7 @@ exercises: 15
 questions:
 - "How can I manipulate dataframes without repeating myself?"
 objectives:
-- " To be able to use the six main dataframe manipulation 'verbs' with pipes in  `dplyr`."
+- "To be able to use the six main dataframe manipulation 'verbs' with pipes in  `dplyr`."
 keypoints:
 - "Use the `dplyr` package to manipulate dataframes."
 - "Use `select()` to choose variables from a dataframe."
