@@ -1,11 +1,14 @@
 ---
 title: "Exploring Data Frames"
-teaching: 20
+teaching: 50
 exercises: 10
 questions:
+- "How can access datasets in R?"
+- "How do I represent categorical information in R?"
 - "How can I manipulate a dataframe?"
 objectives:
-- "To learn how to manipulate a data.frame in memory"
+- "To begin exploring data frames and understand how it's related to vectors, factors and lists."
+- "To learn how to manipulate a data.frame in memory."
 - "To tour some best practices of exploring and understanding a data frame when it is first loaded."
 keypoints:
 - "Use `cbind()` to add a new column to a dataframe."
@@ -14,22 +17,223 @@ keypoints:
 - "Use `na.omit()` to remove rows from a dataframe with `NA` values."
 ---
 
+## Data Frames
+
+So far we have covered data structures which contain all the same basic data type. But 
+one of R's most powerful features is its ability to deal with tabular data -
+like what you might already have in a spreadsheet or a CSV. **Data Frames** are built from 
+vectors but differ from matrices in the aspect that they can contain vectors of different 
+data types.
+
+To build a data frame from existing vectors we use the `data.frame()` command. Let's build 
+a data frame for with some information on cats.
+
+~~~
+coat <- c("calico", "black", "tabby")
+weight <- c(2.1, 5.0, 3.2)
+likes_string <- c(1,0,1)
+
+cats <- data.frame(coat, weight, likes_string)
+cats
+~~~
+{: .r}
+
+~~~
+    coat weight likes_string
+1 calico    2.1            1
+2  black    5.0            0
+3  tabby    3.2            1
+~~~
+{: .output}
+
+We can begin exploring our dataset right away, pulling out columns by specifying
+them using the `$` operator:
+
+
+~~~
+cats$weight
+~~~
+{: .r}
 
 
 
-At this point, you've see it all - in the last lesson, we toured all the basic
-data types and data structures in R. Everything you do will be a manipulation of
-those tools. But a whole lot of the time, the star of the show is going to be
-the data.frame - that table that we started with that information from a CSV
-gets dumped into when we load it. In this lesson, we'll learn a few more things
-about working with data.frame.
-
-We learned last time that the columns in a data.frame were vectors, so that our
-data are consistent in type throughout the column. As such, if we want to add a
-new column, we need to start by making a new vector:
+~~~
+[1] 2.1 5.0 3.2
+~~~
+{: .output}
 
 
 
+~~~
+cats$coat
+~~~
+{: .r}
+
+
+
+~~~
+[1] calico black  tabby 
+Levels: black calico tabby
+~~~
+{: .output}
+
+Just like we did with vectors, we can perform operations on columns within our data frame:
+
+
+~~~
+## Say we discovered that the scale weighs two Kg light:
+cats$weight + 2
+~~~
+{: .r}
+
+
+
+~~~
+[1] 4.1 7.0 5.2
+~~~
+{: .output}
+
+
+
+~~~
+paste("My cat is", cats$coat)
+~~~
+{: .r}
+
+
+
+~~~
+[1] "My cat is calico" "My cat is black"  "My cat is tabby" 
+~~~
+{: .output}
+
+
+Try this challenge to see different ways of interacting with data frames:
+
+> ## Challenge 1
+>
+> There are several subtly different ways to call variables, observations and
+> elements from data.frames:
+>
+> - `cats[1]`
+> - `cats$coat`
+> - `cats`["coat"]
+> - `cats[1, 1]`
+> - `cats[, 1]`
+> - `cats[1, ]`
+>
+> Try out these examples and explain what is returned by each one.
+>
+> *Hint:* Use the function `typeof()` to examine what is returned in each case.
+>
+> > ## Solution to Challenge 3
+> > 
+> > ~~~
+> > cats[1]
+> > ~~~
+> > {: .r}
+> > 
+> > 
+> > 
+> > ~~~
+> >     coat
+> > 1 calico
+> > 2  black
+> > 3  tabby
+> > ~~~
+> > {: .output}
+> > We can think of a data frame as a list of vectors. The single brace `[1]`
+> returns the first slice of the list, as another list. In this case it is the
+> first column of the data frame.
+> > 
+> > ~~~
+> > cats$coat
+> > ~~~
+> > {: .r}
+> > 
+> > 
+> > 
+> > ~~~
+> > [1] calico black  tabby 
+> > Levels: black calico tabby
+> > ~~~
+> > {: .output}
+> > This example uses the `$` character to address items by name. _coat_ is the
+> first column of the data frame, again a _vector_ of type _factor_.
+> > 
+> > ~~~
+> > cats["coat"]
+> > ~~~
+> > {: .r}
+> > 
+> > 
+> > 
+> > ~~~
+> >     coat
+> > 1 calico
+> > 2  black
+> > 3  tabby
+> > ~~~
+> > {: .output}
+> > Here we are using a single brace `["coat"]` replacing the index number with
+> the column name. Like example 1, the returned object is a _list_.
+> > 
+> > ~~~
+> > cats[1, 1]
+> > ~~~
+> > {: .r}
+> > 
+> > 
+> > 
+> > ~~~
+> > [1] calico
+> > Levels: black calico tabby
+> > ~~~
+> > {: .output}
+> > This example uses a single brace, but this time we provide row and column
+> coordinates. The returned object is the value in row 1, column 1. The object
+> is an _integer_ but because it is part of a _vector_ of type _factor_, R
+> displays the label "calico" associated with the integer value.
+> > 
+> > ~~~
+> > cats[, 1]
+> > ~~~
+> > {: .r}
+> > 
+> > 
+> > 
+> > ~~~
+> > [1] calico black  tabby 
+> > Levels: black calico tabby
+> > ~~~
+> > {: .output}
+> > Like the previous example we use single braces and provide row and column
+> coordinates. The row coordinate is not specified, R interprets this missing
+> value as all the elements in this _column_ _vector_.
+> > 
+> > ~~~
+> > cats[1, ]
+> > ~~~
+> > {: .r}
+> > 
+> > 
+> > 
+> > ~~~
+> >     coat weight likes_string
+> > 1 calico    2.1         TRUE
+> > ~~~
+> > {: .output}
+> > Again we use the single brace with row and column coordinates. The column
+> coordinate is not specified. The return value is a _list_ containing all the
+> values in the first row.
+> {: .solution}
+{: .challenge}
+
+
+
+Let's modify our data frame by adding an additional column which will hold the age of each 
+of the cats. As we saw in the previous challenge, columns in a data frame are vectors which 
+we construct using the `c()` function as before:
 
 ~~~
 age <- c(2,3,5,12)
@@ -47,7 +251,7 @@ cats
 ~~~
 {: .output}
 
-We can then add this as a column via:
+We can then add this as a column in our data frame by using the `cbind()` function:
 
 
 ~~~
@@ -63,24 +267,8 @@ Error in data.frame(..., check.names = FALSE): arguments imply differing number 
 {: .error}
 
 Why didn't this work? Of course, R wants to see one element in our new column
-for every row in the table:
-
-
-~~~
-cats
-~~~
-{: .r}
-
-
-
-~~~
-    coat weight likes_string
-1 calico    2.1            1
-2  black    5.0            0
-3  tabby    3.2            1
-~~~
-{: .output}
-
+for every row in the table. Since our data frame only has 3 rows, we can only add a column 
+with 3 elements. Let's try that again:
 
 
 ~~~
@@ -118,10 +306,28 @@ factor level, NA generated
 ~~~
 {: .error}
 
-Another thing to look out for has emerged - when R creates a factor, it only
+Our list had the correct number of elements, so why did R give us a warning? It looks like 
+the error occurred in the `coat` column. Let's take a closer look.
+
+~~~
+class(cats$coat)
+~~~
+{: .r}
+
+~~~
+[1] "factor"
+~~~
+{: .output}
+
+
+So in our `cats` data frame, the `coat` column is a data class named a **factor**. Factors 
+are data classes that R uses to handle categorical data. 
+When we tried adding a new row to the `cats` data frame, the new data contained a level of 
+`coat` that we had not previously used.  This is something we need to look out for - when 
+R creates a factor, it only
 allows whatever is originally there when our data was first loaded, which was
 'black', 'calico' and 'tabby' in our case. Anything new that doesn't fit into
-one of its categories is rejected as nonsense, until we explicitly add that as a
+one of its categories is rejected as nonsense and is replaced by an `NA` until we explicitly add that as a
 *level* in the factor:
 
 
@@ -309,7 +515,7 @@ cats
 
 > ## Challenge 1
 >
-> You can create a new data.frame right from within R with the following syntax:
+> Remember that you can create a new data.frame right from within R with the following syntax:
 > 
 > ~~~
 > df <- data.frame(id = c('a', 'b', 'c'),
@@ -318,6 +524,10 @@ cats
 >                  stringsAsFactors = FALSE)
 > ~~~
 > {: .r}
+>
+> Note that the `stringsAsFactors` setting allows us to tell R that we want to preserve our 
+> character fields and not have R convert them to factors.
+>
 > Make a data.frame that holds the following information for yourself:
 >
 > - first name
@@ -342,39 +552,31 @@ cats
 {: .challenge}
 
 So far, you've seen the basics of manipulating data.frames with our cat data;
-now, let's use those skills to digest a more realistic dataset. Lets read in the
-gapminder dataset that we downloaded previously:
+now, let's use those skills to digest a more realistic dataset. For the remainder of our 
+lesson, we are going to use the `gapminder` data set built into the `gapminder` package.
 
+If you did not install the `gapminder` package with our previous challenge, you can do so 
+now with the `install.packages()` command:
 
 ~~~
-gapminder <- read.csv("data/gapminder-FiveYearData.csv")
+install.packages("gapminder")
 ~~~
 {: .r}
 
-> ## Miscellaneous Tips
->
-> * Another type of file you might encounter are tab-separated value files (.tsv). To specify a tab as a separator, use `"\\t"` or `read.delim()`.
->
-> * Files can also be downloaded directly from the Internet into a local
-> folder of your choice onto your computer using the `download.file` function. 
-> The `read.csv` function can then be executed to read the downloaded file from the download location, for example,
-> 
-> ~~~
-> download.file("https://raw.githubusercontent.com/swcarpentry/r-novice-gapminder/gh-pages/_episodes_rmd/data/gapminder-FiveYearData.csv", destfile = "data/gapminder-FiveYearData.csv")
-> gapminder <- read.csv("data/gapminder-FiveYearData.csv")
-> ~~~
-> {: .r}
->
-> * Alternatively, you can also read in files directly into R from the Internet by replacing the file paths with a web address in `read.csv`. One should note that in doing this no local copy of the csv file is first saved onto your computer. For example,
-> 
-> ~~~
-> gapminder <- read.csv("https://raw.githubusercontent.com/swcarpentry/r-novice-gapminder/gh-pages/_episodes_rmd/data/gapminder-FiveYearData.csv")
-> ~~~
-> {: .r}
->
-> * You can read directly from excel spreadsheets without
-> converting them to plain text first by using the [readxl](https://cran.r-project.org/web/packages/readxl/index.html) package.
-{: .callout}
+If you have already installed the `gapminder` package, go ahead and load it now. You can tell 
+R to load the package by clicking the checkbox next to its listing in the package tab of the 
+lower left pane in R studio. Or you can load it by using the 'library()' command:
+
+~~~
+library('gapminder')
+~~~
+{: .r}
+
+Note that the library command can be used within your scripts to load any packages that your 
+scripts need. To make your scripts easy to read by others, you will want to put these commands 
+at the top of your script file. You can learn more about writing easy to read code in the 
+supplemental lesson [Writing Good Software](https://carriebrown.github.io/r-novice-gapminder-2/07-wrap-up/).
+
 
 Let's investigate gapminder a bit; the first thing we should always do is check
 out what the data looks like with `str`:
@@ -582,33 +784,8 @@ head(gapminder)
 To make sure our analysis is reproducible, we should put the code
 into a script file so we can come back to it later.
 
-> ## Challenge 2
->
-> Go to file -> new file -> R script, and write an R script
-> to load in the gapminder dataset. Put it in the `scripts/`
-> directory and add it to version control.
->
-> Run the script using the `source` function, using the file path
-> as its argument (or by pressing the "source" button in RStudio).
->
-> > ## Solution to Challenge 2
-> > The contents of `script/load-gapminder.R`:
-> > 
-> > ~~~
-> > download.file("https://raw.githubusercontent.com/swcarpentry/r-novice-gapminder/gh-pages/_episodes_rmd/data/gapminder-FiveYearData.csv", destfile = "data/gapminder-FiveYearData.csv")
-> > gapminder <- read.csv(file = "data/gapminder-FiveYearData.csv")
-> > ~~~
-> > {: .r}
-> > To run the script and load the data into the `gapminder` variable:
-> > 
-> > ~~~
-> > source(file = "scripts/load-gapminder.R")
-> > ~~~
-> > {: .r}
-> {: .solution}
-{: .challenge}
 
-> ## Challenge 3
+> ## Challenge 2
 >
 > Read the output of `str(gapminder)` again;
 > this time, use what you've learned about factors, lists and vectors,

@@ -1,7 +1,7 @@
 ---
 title: "Introduction to R and RStudio"
-teaching: 45
-exercises: 10
+teaching: 30
+exercises: 15
 questions:
 - "How to find your way around RStudio?"
 - "How to interact with R?"
@@ -19,8 +19,6 @@ keypoints:
 - "Use RStudio to write and run R programs."
 - "R has the usual arithmetic operators and mathematical functions."
 - "Use `<-` to assign values to variables."
-- "Use `ls()` to list the variables in a program."
-- "Use `rm()` to delete objects in a program."
 - "Use `install.packages()` to install packages (libraries)."
 ---
 
@@ -41,9 +39,12 @@ for all of these countries in under a minute!
 
 ## Before Starting The Workshop
 
-Please ensure you have the latest version of R and RStudio installed on your machine. This is important, as some packages used in the workshop may not install correctly (or at all) if R is not up to date.
+Please ensure you have the latest version of R and RStudio installed on your machine.
+This is important, as some packages used in the workshop may not install correctly 
+(or at all) if R is not up to date.
 
 [Download and install the latest version of R here](https://www.r-project.org/)
+
 [Download and install RStudio here](https://www.rstudio.com/)
 
 ## Introduction to RStudio
@@ -51,8 +52,7 @@ Please ensure you have the latest version of R and RStudio installed on your mac
 Welcome to the R portion of the Software Carpentry workshop.
 
 Throughout this lesson, we're going to teach you some of the fundamentals of
-the R language as well as some best practices for organizing code for
-scientific projects that will make your life easier.
+the R language as well as some useful packages for data analysis.
 
 We'll be using RStudio: a free, open source R integrated development
 environment. It provides a built in editor, works on all platforms (including
@@ -99,6 +99,11 @@ interactive R console.
 > along, `Re-run the previous region`. This will run the previous code block
 > including the modifications you have made.
 {: .callout}
+
+Once you begin using R scripts regularly, you might want to work on more than one project
+within RStudio without losing your progress on another. RStudio contains some project
+management tools that can help. You can learn more about these tools
+[here](https://carriebrown.github.io/r-novice-gapminder-2/01-project-intro/).
 
 ## Introduction to R
 
@@ -325,12 +330,6 @@ has auto-completion abilities that allow you to more easily
 look up functions, their arguments, and the values that they
 take.
 
-Typing a `?` before the name of a command will open the help page
-for that command. As well as providing a detailed description of
-the command and how it works, scrolling to the bottom of the
-help page will usually show a collection of code examples which
-illustrate command usage. We'll go through an example later.
-
 ## Comparing things
 
 We can also do comparison in R:
@@ -412,6 +411,7 @@ We can also do comparison in R:
 [1] TRUE
 ~~~
 {: .output}
+
 
 > ## Tip: Comparing Numbers
 >
@@ -499,6 +499,16 @@ x <- x + 1 #notice how RStudio updates its description of x on the top right tab
 The right hand side of the assignment can be any valid R expression.
 The right hand side is *fully evaluated* before the assignment occurs.
 
+
+In addition to numbers, we can also assign **character**  values to variables.
+
+~~~
+y <- "green"
+~~~
+{: .r}
+
+You can see the new variable show up in the Environment tab of your RStudio window.
+
 Variable names can contain letters, numbers, underscores and periods. They
 cannot start with a number nor contain spaces at all. Different people use
 different conventions for long variable names, these include
@@ -513,7 +523,7 @@ It is also possible to use the `=` operator for assignment:
 
 
 ~~~
-x = 1/40
+z = 1/40
 ~~~
 {: .r}
 
@@ -522,190 +532,21 @@ But this is much less common among R users.  The most important thing is to
 where it is less confusing to use `<-` than `=`, and it is the most common
 symbol used in the community. So the recommendation is to use `<-`.
 
-## Vectorization
+## Functions
 
-One final thing to be aware of is that R is *vectorized*, meaning that
-variables and functions can have vectors as values. For example
-
-
-~~~
-1:5
-~~~
-{: .r}
-
-
-
-~~~
-[1] 1 2 3 4 5
-~~~
-{: .output}
-
-
-
-~~~
-2^(1:5)
-~~~
-{: .r}
-
-
-
-~~~
-[1]  2  4  8 16 32
-~~~
-{: .output}
-
-
-
-~~~
-x <- 1:5
-2^x
-~~~
-{: .r}
-
-
-
-~~~
-[1]  2  4  8 16 32
-~~~
-{: .output}
-
-This is incredibly powerful; we will discuss this further in an
-upcoming lesson.
-
-
-## Managing your environment
-
-There are a few useful commands you can use to interact with the R session.
-
-`ls` will list all of the variables and functions stored in the global environment
-(your working R session):
-
-
-~~~
-ls()
-~~~
-{: .r}
-
-
-
-~~~
-[1] "x" "y"
-~~~
-{: .output}
-
-> ## Tip: hidden objects
->
-> Like in the shell, `ls` will hide any variables or functions starting
-> with a "." by default. To list all objects, type `ls(all.names=TRUE)`
-> instead
->
-{: .callout}
-
-Note here that we didn't given any arguments to `ls`, but we still
-needed to give the parentheses to tell R to call the function.
-
-If we type `ls` by itself, R will print out the source code for that function!
-
-
-~~~
-ls
-~~~
-{: .r}
-
-
-
-~~~
-function (name, pos = -1L, envir = as.environment(pos), all.names = FALSE, 
-    pattern, sorted = TRUE) 
-{
-    if (!missing(name)) {
-        pos <- tryCatch(name, error = function(e) e)
-        if (inherits(pos, "error")) {
-            name <- substitute(name)
-            if (!is.character(name)) 
-                name <- deparse(name)
-            warning(gettextf("%s converted to character string", 
-                sQuote(name)), domain = NA)
-            pos <- name
-        }
-    }
-    all.names <- .Internal(ls(envir, all.names, sorted))
-    if (!missing(pattern)) {
-        if ((ll <- length(grep("[", pattern, fixed = TRUE))) && 
-            ll != length(grep("]", pattern, fixed = TRUE))) {
-            if (pattern == "[") {
-                pattern <- "\\["
-                warning("replaced regular expression pattern '[' by  '\\\\['")
-            }
-            else if (length(grep("[^\\\\]\\[<-", pattern))) {
-                pattern <- sub("\\[<-", "\\\\\\[<-", pattern)
-                warning("replaced '[<-' by '\\\\[<-' in regular expression pattern")
-            }
-        }
-        grep(pattern, all.names, value = TRUE)
-    }
-    else all.names
-}
-<bytecode: 0x7fd81a1044e8>
-<environment: namespace:base>
-~~~
-{: .output}
-
-You can use `rm` to delete objects you no longer need:
-
-
-~~~
-rm(x)
-~~~
-{: .r}
-
-If you have lots of things in your environment and want to delete all of them,
-you can pass the results of `ls` to the `rm` function:
-
-
-~~~
-rm(list = ls())
-~~~
-{: .r}
-
-In this case we've combined the two. Like the order of operations, anything
-inside the innermost parentheses is evaluated first, and so on.
-
-In this case we've specified that the results of `ls` should be used for the
-`list` argument in `rm`. When assigning values to arguments by name, you *must*
-use the `=` operator!!
-
-If instead we use `<-`, there will be unintended side effects, or you may get an error message:
-
-
-~~~
-rm(list <- ls())
-~~~
-{: .r}
-
-
-
-~~~
-Error in rm(list <- ls()): ... must contain names or character strings
-~~~
-{: .error}
-
-> ## Tip: Warnings vs. Errors
->
-> Pay attention when R does something unexpected! Errors, like above,
-> are thrown when R cannot proceed with a calculation. Warnings on the
-> other hand usually mean that the function has run, but it probably
-> hasn't worked as expected.
->
-> In both cases, the message that R prints out usually give you clues
-> how to fix a problem.
->
-{: .callout}
+When doing mathematical operations, we used commands such as `sin()` and `log()`. These
+commands are called **functions** and they are chunks of code that have been written by R
+developers. Built-in functions such as the ones we've used so far are included in R because
+they make R easier to use. It is helpful to write your own functions for bits of code you
+use frequently. For more information on writing your own functions, you can read through
+the supplemental lesson [Functions Explained](https://carriebrown.github.io/r-novice-gapminder-2/03-functions/).
 
 ## R Packages
 
 It is possible to add functions to R by writing a package, or by
-obtaining a package written by someone else. As of this writing, there
+obtaining a package written by someone else. It is often useful to use a package
+written by someone else to do something you ned to do over writing your own code.
+As of this writing, there
 are over 7,000 packages available on CRAN (the comprehensive R archive
 network). R and RStudio have functionality for managing packages:
 
@@ -713,9 +554,9 @@ network). R and RStudio have functionality for managing packages:
   `installed.packages()`
 * You can install packages by typing `install.packages("packagename")`,
   where `packagename` is the package name, in quotes.
+* You can make a package available for use with `library(packagename)`
 * You can update installed packages by typing `update.packages()`
 * You can remove a package with `remove.packages("packagename")`
-* You can make a package available for use with `library(packagename)`
 
 > ## Challenge 1
 >
@@ -772,8 +613,10 @@ network). R and RStudio have functionality for managing packages:
 > ~~~
 > mass <- 47.5
 > age <- 122
+> name <- "Joe"
 > mass <- mass * 2.3
 > age <- age - 20
+> name <- "Sara"
 > ~~~
 > {: .r}
 >
@@ -784,14 +627,14 @@ network). R and RStudio have functionality for managing packages:
 > > mass <- 47.5
 > > ~~~
 > > {: .r}
-> > This will give a value of 47.5 for the variable mass
+> > This will give a value of 47.5 for the variable mass.
 > >
 > > 
 > > ~~~
 > > age <- 122
 > > ~~~
 > > {: .r}
-> > This will give a value of 122 for the variable age
+> > This will give a value of 122 for the variable age.
 > >
 > > 
 > > ~~~
@@ -808,7 +651,7 @@ network). R and RStudio have functionality for managing packages:
 > > {: .r}
 > > This will subtract 20 from the existing value of 122 to give a new value
 > > of 102 to the variable age.
-> {: .solution}
+> > {: .solution}
 {: .challenge}
 
 
@@ -837,25 +680,12 @@ network). R and RStudio have functionality for managing packages:
 {: .challenge}
 
 
-> ## Challenge 4
->
-> Clean up your working environment by deleting the mass and age
-> variables.
->
-> > ## Solution to challenge 4
-> >
-> > We can use the `rm` command to accomplish this task
-> > 
-> > ~~~
-> > rm(age, mass)
-> > ~~~
-> > {: .r}
-> {: .solution}
-{: .challenge}
-
 > ## Challenge 5
 >
 > Install the following packages: `ggplot2`, `dplyr`, `gapminder`
+>
+> (Note: We will be using these packages in future lessons, so ask a helper for
+> assistance if you have difficulties)
 >
 > > ## Solution to challenge 5
 > >
