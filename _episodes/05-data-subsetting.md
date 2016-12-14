@@ -17,25 +17,24 @@ keypoints:
 ---
 
 
-
-
-R has many powerful subset operators and mastering them will allow you to
-easily perform complex operations on any kind of dataset.
+Much of R's power comes from it's vectorization. R has many powerful subset operators and mastering them will allow you to
+easily perform complex operations on any kind of dataset without the resource depletion of loops.
 
 There are six different ways we can subset any kind of object, and three
 different subsetting operators for the different data structures.
 
-Let's start with the workhorse of R: atomic vectors.
+Let's start with a data structure we've seen before, the workhorse of R: atomic vectors.
 
 
 ~~~
 x <- c(5.4, 6.2, 7.1, 4.8, 7.5)
 names(x) <- c('a', 'b', 'c', 'd', 'e')
-x
+
 ~~~
 {: .r}
 
-
+We can name elements within our vectors using the `names` function. Here, we have named each element 
+with a different letter of the alphabet.
 
 ~~~
   a   b   c   d   e 
@@ -406,7 +405,7 @@ This is usually a much more reliable way to subset objects: the
 position of various elements can often change when chaining together
 subsetting operations, but the names will always remain the same!
 
-Unfortunately we can't skip or remove elements so easily.
+Unfortunately we can't skip or remove elements so easily when we extract them by their name.
 
 To skip (or remove) a single named element:
 
@@ -809,183 +808,6 @@ named integer(0)
 > {: .solution}
 {: .challenge}
 
-## Handling special values
-
-At some point you will encounter functions in R which cannot handle missing, infinite,
-or undefined data.
-
-There are a number of special functions you can use to filter out this data:
-
- * `is.na` will return all positions in a vector, matrix, or data.frame
-   containing `NA`.
- * likewise, `is.nan`, and `is.infinite` will do the same for `NaN` and `Inf`.
- * `is.finite` will return all positions in a vector, matrix, or data.frame
-   that do not contain `NA`, `NaN` or `Inf`.
- * `na.omit` will filter out all missing values from a vector
-
-## Factor subsetting
-
-Now that we've explored the different ways to subset vectors, how
-do we subset the other data structures?
-
-Factor subsetting works the same way as vector subsetting.
-
-
-~~~
-f <- factor(c("a", "a", "b", "c", "c", "d"))
-f[f == "a"]
-~~~
-{: .r}
-
-
-
-~~~
-[1] a a
-Levels: a b c d
-~~~
-{: .output}
-
-
-
-~~~
-f[f %in% c("b", "c")]
-~~~
-{: .r}
-
-
-
-~~~
-[1] b c c
-Levels: a b c d
-~~~
-{: .output}
-
-
-
-~~~
-f[1:3]
-~~~
-{: .r}
-
-
-
-~~~
-[1] a a b
-Levels: a b c d
-~~~
-{: .output}
-
-An important note is that skipping elements will not remove the level
-even if no more of that category exists in the factor:
-
-
-~~~
-f[-3]
-~~~
-{: .r}
-
-
-
-~~~
-[1] a a c c d
-Levels: a b c d
-~~~
-{: .output}
-
-## Data frames
-
-Remember the data frames are lists underneath the hood, so similar rules
-apply. However they are also two dimensional objects:
-
-`[` with one argument will act the same was as for lists, where each list
-element corresponds to a column. The resulting object will be a data frame:
-
-
-~~~
-head(gapminder[3])
-~~~
-{: .r}
-
-
-
-~~~
-       pop
-1  8425333
-2  9240934
-3 10267083
-4 11537966
-5 13079460
-6 14880372
-~~~
-{: .output}
-
-Similarly, `[[` will act to extract *a single column*:
-
-
-~~~
-head(gapminder[["lifeExp"]])
-~~~
-{: .r}
-
-
-
-~~~
-[1] 28.801 30.332 31.997 34.020 36.088 38.438
-~~~
-{: .output}
-
-And `$` provides a convenient shorthand to extract columns by name:
-
-
-~~~
-head(gapminder$year)
-~~~
-{: .r}
-
-
-
-~~~
-[1] 1952 1957 1962 1967 1972 1977
-~~~
-{: .output}
-
-With two arguments, `[` behaves the same way as for matrices:
-
-
-~~~
-gapminder[1:3,]
-~~~
-{: .r}
-
-
-
-~~~
-      country year      pop continent lifeExp gdpPercap
-1 Afghanistan 1952  8425333      Asia  28.801  779.4453
-2 Afghanistan 1957  9240934      Asia  30.332  820.8530
-3 Afghanistan 1962 10267083      Asia  31.997  853.1007
-~~~
-{: .output}
-
-If we subset a single row, the result will be a data frame (because
-the elements are mixed types):
-
-
-~~~
-gapminder[3,]
-~~~
-{: .r}
-
-
-
-~~~
-      country year      pop continent lifeExp gdpPercap
-3 Afghanistan 1962 10267083      Asia  31.997  853.1007
-~~~
-{: .output}
-
-But for a single column the result will be a vector (this can
-be changed with the third argument, `drop = FALSE`).
 
 > ## Challenge 7
 >

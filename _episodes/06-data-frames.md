@@ -1,7 +1,7 @@
 ---
 title: "Exploring Data Frames"
-teaching: 30
-exercises: 10
+teaching: 35
+exercises: 25
 questions:
 - "How can access datasets in R?"
 - "How do I represent categorical information in R?"
@@ -513,7 +513,7 @@ cats
 ~~~
 {: .output}
 
-> ## Challenge 1
+> ## Challenge 2
 >
 > Remember that you can create a new data.frame right from within R with the following syntax:
 > 
@@ -537,7 +537,7 @@ cats
 > Then use `rbind` to add an entry for the people sitting beside you.
 > Finally, use `cbind` to add a column with each person's answer to the question, "Is it time for coffee break?"
 >
-> > ## Solution to Challenge 1
+> > ## Solution to Challenge 2
 > > 
 > > ~~~
 > > df <- data.frame(first = c('Grace'),
@@ -571,6 +571,9 @@ lower left pane in R studio. Or you can load it by using the 'library()' command
 library('gapminder')
 ~~~
 {: .r}
+
+To make sure our analysis is reproducible, we should put the code
+into a script file so we can come back to it later.
 
 Note that the library command can be used within your scripts to load any packages that your 
 scripts need. To make your scripts easy to read by others, you will want to put these commands 
@@ -771,21 +774,18 @@ head(gapminder)
 
 
 ~~~
-      country year      pop continent lifeExp gdpPercap
-1 Afghanistan 1952  8425333      Asia  28.801  779.4453
-2 Afghanistan 1957  9240934      Asia  30.332  820.8530
-3 Afghanistan 1962 10267083      Asia  31.997  853.1007
-4 Afghanistan 1967 11537966      Asia  34.020  836.1971
-5 Afghanistan 1972 13079460      Asia  36.088  739.9811
-6 Afghanistan 1977 14880372      Asia  38.438  786.1134
+      country continent year lifeExp      pop gdpPercap
+1 Afghanistan      Asia 1952  28.801  8425333  779.4453
+2 Afghanistan      Asia 1957  30.332  9240934  820.8530
+3 Afghanistan      Asia 1962  31.997 10267083  853.1007
+4 Afghanistan      Asia 1967  34.020 11537966  836.1971
+5 Afghanistan      Asia 1972  36.088 13079460  739.9811
+6 Afghanistan      Asia 1977  38.438 14880372  786.1134
 ~~~
 {: .output}
 
-To make sure our analysis is reproducible, we should put the code
-into a script file so we can come back to it later.
 
-
-> ## Challenge 2
+> ## Challenge 3
 >
 > Read the output of `str(gapminder)` again;
 > this time, use what you've learned about factors, lists and vectors,
@@ -802,3 +802,224 @@ into a script file so we can come back to it later.
 > >
 > {: .solution}
 {: .challenge}
+
+### Subsetting Data Frames
+
+Remember the data frames are lists underneath the hood, so similar rules
+apply. However they are also two dimensional objects:
+
+`[` with one argument will act the same was as for lists, where each list
+element corresponds to a column. The resulting object will be a data frame:
+
+
+~~~
+head(gapminder[3])
+~~~
+{: .r}
+
+
+
+~~~
+       pop
+1  8425333
+2  9240934
+3 10267083
+4 11537966
+5 13079460
+6 14880372
+~~~
+{: .output}
+
+Similarly, `[[` will act to extract *a single column*:
+
+
+~~~
+head(gapminder[["lifeExp"]])
+~~~
+{: .r}
+
+
+
+~~~
+[1] 28.801 30.332 31.997 34.020 36.088 38.438
+~~~
+{: .output}
+
+And `$` provides a convenient shorthand to extract columns by name:
+
+
+~~~
+head(gapminder$year)
+~~~
+{: .r}
+
+
+
+~~~
+[1] 1952 1957 1962 1967 1972 1977
+~~~
+{: .output}
+
+With two arguments, `[` subsets on typical matrix format, where the first argument indicates 
+rows and the second argument indicates columns. Note that if one of the arguments is blank, R will 
+default to include all of the rows or columns:
+
+
+~~~
+gapminder[1:3,]
+~~~
+{: .r}
+
+
+
+~~~
+      country year      pop continent lifeExp gdpPercap
+1 Afghanistan 1952  8425333      Asia  28.801  779.4453
+2 Afghanistan 1957  9240934      Asia  30.332  820.8530
+3 Afghanistan 1962 10267083      Asia  31.997  853.1007
+~~~
+{: .output}
+
+If we subset a single row, the result will be a data frame (because
+the elements are mixed types):
+
+
+~~~
+gapminder[3,]
+~~~
+{: .r}
+
+
+
+~~~
+      country year      pop continent lifeExp gdpPercap
+3 Afghanistan 1962 10267083      Asia  31.997  853.1007
+~~~
+{: .output}
+
+But for a single column the result will be a vector (this can
+be changed with the third argument, `drop = FALSE`).
+
+
+> ## Challenge 4
+>
+> Fix each of the following common data frame subsetting errors:
+>
+> 1. Extract observations collected for the year 1957
+>
+>    
+>    ~~~
+>    gapminder[gapminder$year = 1957,]
+>    ~~~
+>    {: .r}
+>
+> 2. Extract all columns except 1 through to 4
+>
+>    
+>    ~~~
+>    gapminder[,-1:4]
+>    ~~~
+>    {: .r}
+>
+> 3. Extract the rows where the life expectancy is longer the 80 years
+>
+>    
+>    ~~~
+>    gapminder[gapminder$lifeExp > 80]
+>    ~~~
+>    {: .r}
+>
+> 4. Extract the first row, and the fourth and fifth columns
+>   (`lifeExp` and `gdpPercap`).
+>
+>    
+>    ~~~
+>    gapminder[1, 4, 5]
+>    ~~~
+>    {: .r}
+>
+> 5. Advanced: extract rows that contain information for the years 2002
+>    and 2007
+>
+>    
+>    ~~~
+>    gapminder[gapminder$year == 2002 | 2007,]
+>    ~~~
+>    {: .r}
+>
+> > ## Solution to challenge 4
+> >
+> > Fix each of the following common data frame subsetting errors:
+> >
+> > 1. Extract observations collected for the year 1957
+> >
+> >    
+> >    ~~~
+> >    # gapminder[gapminder$year = 1957,]
+> >    gapminder[gapminder$year == 1957,]
+> >    ~~~
+> >    {: .r}
+> >
+> > 2. Extract all columns except 1 through to 4
+> >
+> >    
+> >    ~~~
+> >    # gapminder[,-1:4]
+> >    gapminder[,-c(1:4)]
+> >    ~~~
+> >    {: .r}
+> >
+> > 3. Extract the rows where the life expectancy is longer the 80 years
+> >
+> >    
+> >    ~~~
+> >    # gapminder[gapminder$lifeExp > 80]
+> >    gapminder[gapminder$lifeExp > 80,]
+> >    ~~~
+> >    {: .r}
+> >
+> > 4. Extract the first row, and the fourth and fifth columns
+> >   (`lifeExp` and `gdpPercap`).
+> >
+> >    
+> >    ~~~
+> >    # gapminder[1, 4, 5]
+> >    gapminder[1, c(4, 5)]
+> >    ~~~
+> >    {: .r}
+> >
+> > 5. Advanced: extract rows that contain information for the years 2002
+> >    and 2007
+> >
+> >     
+> >     ~~~
+> >     # gapminder[gapminder$year == 2002 | 2007,]
+> >     gapminder[gapminder$year == 2002 | gapminder$year == 2007,]
+> >     gapminder[gapminder$year %in% c(2002, 2007),]
+> >     ~~~
+> >     {: .r}
+> {: .solution}
+{: .challenge}
+
+> ## Challenge 5
+>
+> 1. Why does `gapminder[1:20]` return an error? How does it differ from `gapminder[1:20, ]`?
+>
+>
+> 2. Create a new `data.frame` called `gapminder_small` that only contains rows 1 through 9
+> and 19 through 23. You can do this in one or two steps.
+>
+> > ## Solution to challenge 5
+> >
+> > 1.  `gapminder` is a data.frame so needs to be subsetted on two dimensions. `gapminder[1:20, ]` subsets the data to give the first 20 rows and all columns.
+> >
+> > 2. 
+> >
+> > 
+> > ~~~
+> > gapminder_small <- gapminder[c(1:9, 19:23),]
+> > ~~~
+> > {: .r}
+> {: .solution}
+{: .challenge}
+

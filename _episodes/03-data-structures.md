@@ -1,7 +1,7 @@
 ---
 title: "Data Structures"
-teaching: 10
-exercises: 15
+teaching: 15
+exercises: 10
 questions:
 - "What are the basic data types in R?"
 - "How does R handle operations on different data types?"
@@ -382,3 +382,5 @@ There are other data structures in R called **lists** and **matrices**. You
 can discover more about these by looking at the help files associated with their constructor 
 functions: `?list()`, `?matrix()` or by checking out the supplemental lesson [Lists and Matrices](https://carriebrown.github.io/r-novice-gapminder-2/02-additional-datatypes/)
 
+Today, we will be working primarily with the **data frame** data structures. We will explore these 
+more indepth after our break.

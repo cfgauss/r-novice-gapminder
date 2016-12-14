@@ -114,20 +114,84 @@ the `[r]` tag.
 {: .challenge}
 
 > ## Challenge 2
+> 
+> Look at the help for the `typeof` function. What does this function do?
+> Try creating the following objects and using this function on them. 
 >
-> Look at the help for the `paste` function. You'll need to use this later.
-> What is the difference between the `sep` and `collapse` arguments?
+> 1. m <- 15
+> 2. n <- "Lincoln"
+>
+> Explain to your neighbor what this function is telling us about these objects:
 >
 > > ## Solution to Challenge 2
+> > 
+> > ~~~
+> > help("typeof")
+> > ?typeof
+> > ~~~
+> > {: .r}
+> > 
+> > We can see from the help file that `typeof` tells us the type of an object in R. We will 
+> > discuss R data types further in the next lecture.
 > >
-> > Look at the help for the `paste` function. You'll need to use this later.
+> > ~~~
+> > m <- 15
+> > typeof(m)
+> > ~~~
+> > 
+> > ~~~
+> > [1] "double"
+> > ~~~
+> > {: .output}
+> > 
+> > This is telling us that `m` is the data type `double` which is a numeric data type in R.
+> >
+> > ~~~
+> > n <- "Lincoln"
+> > typeof(n)
+> > ~~~
+> > {: .r}
+> > 
+> > ~~~
+> > [1] "character"
+> > ~~~
+> > {: .output}
+> > 
+> > Here, `n` is the data type `character` which is the data type R uses for strings.
+> {: .solution}
+{: .challenge}
+
+> ## Challenge 3 - Advanced
+>
+> The `read.table` function is used to read in external files into a data frame format.
+> For example: to read in a file called "data.csv" you would use the following command:
+> 
+> ~~~
+> read.table(file = "data.csv")
+> ~~~
+> {: .r}
+>
+> Look at the help for the `read.table` function.
+>
+> What argument would you use if you wanted to read in a file without a header?
+> What argument would allow you to switch between a comma separated file and a tab separated
+> file?
+>
+> > ## Solution to Challenge 3
+> >
+> > Look at the help for the `read.table` function.
 > >
 > > 
 > > ~~~
-> > help("paste")
-> > ?paste
+> > help("read.table")
+> > ?read.table
 > > ~~~
 > > {: .r}
+> >
+> > In order to prevent R from automatically assuming the first row of your file is a header row,
+> > you would specify `header = FALSE` in your function call. To switch between comma separated 
+> > files (csv) and tab separated files (tsv), you would use the `sep` argument.
+> > 
 > {: .solution}
 {: .challenge}
 
