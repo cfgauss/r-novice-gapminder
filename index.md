@@ -22,8 +22,6 @@ are not necessarily the best, nor are they comprehensive, but they are
 packages we find useful, and have been chosen primarily for their
 usability.
 
-**PLEASE NOTE: This lesson is still under construction. Therefore, the agenda below is not finalized.**
-
 > ## Prerequisites
 >
 > Understand that computers store data and instructions (programs, scripts etc.) in files.
