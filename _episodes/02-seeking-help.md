@@ -109,10 +109,24 @@ Try these challenges to practice finding help in R.
 > {: .r}
 > > ## Solution to Challenge 1
 > >
-> > The `c()` function creates a vector, in which all elements are the
-> > same type. In the first case, the elements are numeric, in the
-> > second, they are characters, and in the third they are characters:
-> > the numeric values "coerced" to be characters.
+> > ~~~
+> > c(1,2,3)
+> > [1] 1 2 3
+> > c('d','e','f')
+> > [1] "d" "e" "f"
+> > c(1,5,'g')
+> > [1] "1" "5" "g"
+> > ~~~
+> > {: .output}
+> > 
+> > The `c()` function creates a vector, which is a sequence of individual elements in R. In a vector, all elements must be the
+> > same data type. In the first case, we created a numeric vector. For the 
+> > second, our vector is a character vector which you can see by the quotes that R put around 
+> > each element. In the third example, since we gave R both numeric and character elements, R 
+> > converted all the elements to characters so that our vector contained all the same type of elements.
+> > 
+> > Don't worry if this is confusing right now. We will clarify more in our next lesson about 
+> > data structures in R.
 > {: .solution}
 {: .challenge}
 
@@ -166,7 +180,7 @@ Try these challenges to practice finding help in R.
 
 > ## Challenge 3 - Advanced
 >
-> The `read.table` function is used to read in external files into a data frame format.
+> The `read.table` function is used to read data from external files into the R environment.
 > For example: to read in a file called "data.csv" you would use the following command:
 > 
 > ~~~
@@ -182,7 +196,8 @@ Try these challenges to practice finding help in R.
 >
 > > ## Solution to Challenge 3
 > >
-> > Look at the help for the `read.table` function.
+> > To view the help for the `read.table` function, you can type one of the following commands into 
+> > your console:
 > >
 > > 
 > > ~~~
@@ -191,10 +206,7 @@ Try these challenges to practice finding help in R.
 > > ~~~
 > > {: .r}
 > >
-> >
-> > In order to prevent R from automatically assuming the first row of your file is a header row,
-> > you would specify `header = FALSE` in your function call. To switch between comma separated 
-> > files (csv) and tab separated files (tsv), you would use the `sep` argument.
+> > By looking at the arguments section of the help file, we can see that to prevent R from automatically assuming the first row of your file is a header row, you would specify `header = FALSE` in your function call. To switch between comma separated files (csv) and tab separated files (tsv), you would use the `sep` argument.
 > > 
 > {: .solution}
 {: .challenge}
