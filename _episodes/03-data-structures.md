@@ -16,7 +16,7 @@ keypoints:
 ## Data Types in R
 
 In the previous lesson, we discovered how to perform operations on variables through 
-operators such as `+` and `*`. Let's review that now, using the variables `x` and `y` that
+operators such as `+` and `*`. Let's review that now, using the variables `x` and `z` that
 we assigned during our last lesson:
 
 ~~~
@@ -29,6 +29,8 @@ x + z
 ~~~
 {: .output}
 
+
+Our output was just as we expected. Let's try adding together `x` and `y`:
 
 ~~~
 x + y
@@ -56,6 +58,8 @@ typeof(3.14)
 ~~~
 {: .output}
 
+A `double`, also referred to as a *floating point number*, is how R stores numeric values 
+by default.
 
 
 ~~~
@@ -70,6 +74,8 @@ typeof(1L)
 ~~~
 {: .output}
 
+To use an `integer` value in R, we use the L to tell R that this value is an integer value. 
+Without the L, R would store this value as a `double`.
 
 
 ~~~
@@ -84,7 +90,8 @@ typeof(1+1i)
 ~~~
 {: .output}
 
-
+R can also support `complex` values as well. Unless you are doing mathematical analyses or 
+complicated transformations, chances are you will not use this data type very often.
 
 ~~~
 typeof(TRUE)
@@ -99,6 +106,9 @@ typeof(TRUE)
 {: .output}
 
 
+At first glance, `logical` data types might seem like another type you wouldn't utilize very 
+often, but they are used quite often in data analysis as we will see later.
+
 ~~~
 typeof('banana')
 ~~~
@@ -109,15 +119,17 @@ typeof('banana')
 ~~~
 {: .output}
 
-Note the `L` suffix to insist that a number is an integer. No matter how
-complicated our analyses become, all data in R is interpreted as one of these
+Lastly, R stores strings as the `character` type.
+
+No matter how complicated our analyses become, all data in R is interpreted as one of these
 basic data types.
 
 ## Vectors
 
 Remember previously when R returned a value, it prepended the output with `[1]`? This is 
 because R never actually works with just one value, but always a string of values called 
-a **vector**. As we saw in our last challenge, we can create vectors by 
+a **vector**. All of our previous output were vectors with a length of 1.
+As we saw in our last challenge, we can create vectors of longer length by 
 using the `c` function.
 
 ~~~
@@ -131,7 +143,7 @@ x
 ~~~
 {: .output}
 
-We can also use the colon operator to quickly create sequential vectors:
+Additionally, we can also use the colon operator to quickly create sequential vectors:
 
 ~~~
 y <- 1:8
@@ -144,8 +156,8 @@ y
 ~~~
 {: .output}
 
-R is a **vectorized** language. This means that we can perform operations on the entire 
-vector just like we did for single values previously. When we apply operations to a vector, 
+R is **vectorized**. This means that we can perform operations on the entire 
+vector just like we did for single values previously. When operations are applied to a vector, 
 R returns a new vector with the results.
 
 ~~~
@@ -158,6 +170,8 @@ y + 10
 ~~~
 {: .output}
 
+
+
 ~~~
 x * 2
 ~~~
@@ -167,6 +181,8 @@ x * 2
 [1]  4  8 12 16 20 24 28 32
 ~~~
 {: .output}
+
+
 
 ~~~
 x + y
@@ -181,13 +197,15 @@ x + y
 Notice that when we add two different vectors together, R performs the operation element 
 by element. This is the way R handles most base operations between two vectors.
 
+
 > ## Challenge 1
 >
-> What will happen if we perform an operation between two vectors of different size?
+> Predict what will happen if we perform an operation between two vectors of different size?
 > 
 > Test your guess by creating two vectors of different lengths using the colon operator 
 > and adding or multiplying them together.
 >
+> 
 > > ## Solution to Challenge 1
 > >
 > > 
@@ -204,14 +222,14 @@ by element. This is the way R handles most base operations between two vectors.
 > > {: .output}
 > > 
 > > Notice how R repeated the shorter vector until it had finished operating on every 
-> > element of the larger vector. This is known as "vector recycling".
+> > element of the larger vector. This is known as "vector recycling". 
 > >
 > > If your shorter vector is not a even multiple of the larger one, R will still perform 
 > > the operation but it will give you the following error message:
 > >
 > > ~~~
 > > Warning message:
-> > In x + y : longer object length is not a multiple of shorter object length
+> > In a * b : longer object length is not a multiple of shorter object length
 > > ~~~
 > > {: .output}
 > {: .solution}

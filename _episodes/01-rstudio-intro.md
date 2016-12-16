@@ -572,7 +572,13 @@ library(gapminder)
 ~~~
 {: .r}
 
+The `Packages` tab in RStudio can also be used to manage packages. Simply click the `Install` 
+button to install packages. To load packages, just click the checkbox in front of the package 
+you wish to load. You should see the same messaging in your `console` for both approaches.
+
+
 Other useful commands for working with packages:
+
 * You can see what packages are installed by typing
   `installed.packages()`
 * You can update installed packages by typing `update.packages()`
@@ -595,6 +601,7 @@ Other useful commands for working with packages:
 > celsius2kelvin
 > ~~~
 > {: .r}
+>
 >
 > > ## Solution to challenge 1
 > >
