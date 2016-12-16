@@ -550,13 +550,35 @@ As of this writing, there
 are over 7,000 packages available on CRAN (the comprehensive R archive
 network). R and RStudio have functionality for managing packages:
 
-* You can see what packages are installed by typing
-  `installed.packages()`
 * You can install packages by typing `install.packages("packagename")`,
   where `packagename` is the package name, in quotes.
 * You can make a package available for use with `library(packagename)`
+
+For example, to install the `gapminder` package which contains the dataset we are going to 
+use for today's lessons:
+
+~~~
+install.packages("gapminder")
+~~~
+{: .r}
+
+If you have not previously installed this package, you will see a lot of text scrolling 
+by as R installs the components of this package and any dependancies.
+
+Once the package is installed, you can make it available for use by using the `library` command:
+
+~~~
+library(gapminder)
+~~~
+{: .r}
+
+Other useful commands for working with packages:
+* You can see what packages are installed by typing
+  `installed.packages()`
 * You can update installed packages by typing `update.packages()`
 * You can remove a package with `remove.packages("packagename")`
+
+
 
 > ## Challenge 1
 >
@@ -613,10 +635,8 @@ network). R and RStudio have functionality for managing packages:
 > ~~~
 > mass <- 47.5
 > age <- 122
-> name <- "Joe"
 > mass <- mass * 2.3
 > age <- age - 20
-> name <- "Sara"
 > ~~~
 > {: .r}
 >
@@ -651,7 +671,7 @@ network). R and RStudio have functionality for managing packages:
 > > {: .r}
 > > This will subtract 20 from the existing value of 122 to give a new value
 > > of 102 to the variable age.
-> > {: .solution}
+> {: .solution}
 {: .challenge}
 
 
@@ -680,9 +700,11 @@ network). R and RStudio have functionality for managing packages:
 {: .challenge}
 
 
-> ## Challenge 5
+> ## Challenge 4
 >
-> Install the following packages: `ggplot2`, `dplyr`, `gapminder`
+> Install the packages `ggplot2` and `dplyr`
+>
+> After installing, load both of these packages so they are active. Try using both ways that we discussed.
 >
 > (Note: We will be using these packages in future lessons, so ask a helper for
 > assistance if you have difficulties)
@@ -694,8 +716,21 @@ network). R and RStudio have functionality for managing packages:
 > > ~~~
 > > install.packages("ggplot2")
 > > install.packages("dplyr")
-> > install.packages("gapminder")
 > > ~~~
 > > {: .r}
+> > 
+> > You can also install packages through the `Packages` tab in the lower right pane of RStudio 
+> > by clicking `Install` and then typing in the names of the packages we want to install.
+> >
+> > To load the packages use the following commands:
+> > 
+> > ~~~
+> > library(ggplot2)
+> > library(dplyr)
+> > ~~~
+> > {: .r}
+> > 
+> > Or you can click the corresponding checkbox next to the name of the package from the list 
+> > in the `Packages` tab.
 > {: .solution}
 {: .challenge}

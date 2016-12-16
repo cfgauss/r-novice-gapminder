@@ -22,8 +22,8 @@ namespace (your interactive R session):
 
 
 ~~~
-?function_name
 help(function_name)
+?function_name
 ~~~
 {: .r}
 
@@ -93,15 +93,18 @@ the answers you are seeking have already been answered on
 [Stack Overflow](http://stackoverflow.com/). You can search using
 the `[r]` tag.
 
+
+Try these challenges to practice finding help in R.
+
 > ## Challenge 1
 >
-> Look at the help for the `c` function. What kind of vector do you
-> expect you will create if you evaluate the following:
+> Look at the help for the `c` function. Try the following commands and see if you can use 
+> the help file to explain the output you see:
 > 
 > ~~~
 > c(1, 2, 3)
 > c('d', 'e', 'f')
-> c(1, 2, 'f')`
+> c(1, 5, 'g')
 > ~~~
 > {: .r}
 > > ## Solution to Challenge 1
@@ -187,6 +190,7 @@ the `[r]` tag.
 > > ?read.table
 > > ~~~
 > > {: .r}
+> >
 > >
 > > In order to prevent R from automatically assuming the first row of your file is a header row,
 > > you would specify `header = FALSE` in your function call. To switch between comma separated 
