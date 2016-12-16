@@ -3,6 +3,8 @@ layout: reference
 permalink: /reference/
 ---
 
+## Reference
+
 ## Introduction to R and RStudio
 
  - Use the escape key to cancel incomplete commands or running code
