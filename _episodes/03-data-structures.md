@@ -91,7 +91,7 @@ typeof(1+1i)
 {: .output}
 
 R can also support `complex` values as well. Unless you are doing mathematical analyses or 
-complicated transformations, chances are you will not use this data type very often.
+complicated transformations, chances are you will not encounter this data type very often.
 
 ~~~
 typeof(TRUE)
@@ -106,8 +106,7 @@ typeof(TRUE)
 {: .output}
 
 
-At first glance, `logical` data types might seem like another type you wouldn't utilize very 
-often, but they are used quite often in data analysis as we will see later.
+`Logical` data types are particularly helpful in subsetting data frames and other types of data manipulation. We will explore this concept more later.
 
 ~~~
 typeof('banana')
@@ -143,7 +142,7 @@ x
 ~~~
 {: .output}
 
-Additionally, we can also use the colon operator to quickly create sequential vectors:
+Additionally, we can also use the **colon operator** to quickly create sequential vectors:
 
 ~~~
 y <- 1:8
@@ -153,6 +152,18 @@ y
 
 ~~~
 [1] 1 2 3 4 5 6 7 8
+~~~
+{: .output}
+
+Using the colon operator, we can specify whatever start and stop point we want and R will automatically create an `integer` vector containing these and all numbers between for us.
+
+~~~
+-4:7
+~~~
+{: .r}
+
+~~~
+ [1] -4 -3 -2 -1  0  1  2  3  4  5  6  7
 ~~~
 {: .output}
 

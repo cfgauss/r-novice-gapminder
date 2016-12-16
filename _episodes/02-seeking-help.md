@@ -206,7 +206,14 @@ Try these challenges to practice finding help in R.
 > > ~~~
 > > {: .r}
 > >
-> > By looking at the arguments section of the help file, we can see that to prevent R from automatically assuming the first row of your file is a header row, you would specify `header = FALSE` in your function call. To switch between comma separated files (csv) and tab separated files (tsv), you would use the `sep` argument.
+> > By looking at the arguments section of the help file, we can see that to prevent R from automatically assuming the first row of your file is a header row, you would specify `header = FALSE`. 
+> > 
+> > ~~~
+> > read.table(file = "data.csv", header = FALSE)
+> > ~~~
+> > {: .r}
+> > 
+> > To switch between comma separated files (csv) and tab separated files (tsv), you would use the `sep` argument.
 > > 
 > {: .solution}
 {: .challenge}
