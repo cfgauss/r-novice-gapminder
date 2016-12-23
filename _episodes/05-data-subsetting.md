@@ -921,18 +921,38 @@ x[x > 7]
 >
 >
 > 2. Create a new `data.frame` called `gapminder_small` that only contains rows 1 through 9
-> and 19 through 23. You can do this in one or two steps.
+> and 19 through 23. There are many ways to accomplish this. Compare with your neighbor and see if they did it a different way than you.
 >
 > > ## Solution to challenge 5
 > >
 > > 1.  `gapminder` is a data.frame so needs to be subsetted on two dimensions. `gapminder[1:20, ]` subsets the data to give the first 20 rows and all columns.
 > >
-> > 2. 
-> >
+> > 2. There are several different ways to accomplish this task:
+> > 
+> > First, you can do it in two steps by subsetting all the rows 1 through 23, then removing rows 10 through 18:
 > > 
 > > ~~~
-> > gapminder_small <- gapminder[c(1:9, 19:23),]
+> > gapminder_small <- gapminder[1:23, ]
+> > gapminder_small <- gapminder_small[-18:-10, ]
 > > ~~~
+> > {: .r}
+> > 
+> > Or, you can first subset rows 1 through 9, then use `rbind` to concatenate the next subset of rows 10 through 18:
+> > 
+> > ~~~
+> > gapminder_small <- gapminder[1:9, ]
+> > gapminder_small <- rbind(gapminder_small, gapminder[19:23, ]
+> > ~~~
+> > {: .r}
+> >
+> > Or you can do this in a single step by combining your ranges:
+> >
+> > ~~~
+> > gapminder_small <- gapminder[c(1:9, 19:23), ]
+> > ~~~
+> >
+> > There are probably other ways to accomplish this task. Did you come up with any that we didn't show here?
+> >
 > > {: .r}
 > {: .solution}
 {: .challenge}
