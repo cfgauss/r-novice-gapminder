@@ -126,7 +126,7 @@ Try this challenge to see different ways of interacting with data frames:
 >
 > *Hint:* Use the function `typeof()` to examine what is returned in each case.
 >
-> > ## Solution to Challenge 3
+> > ## Solution to Challenge 1
 > > 
 > > ~~~
 > > cats[1]
@@ -593,12 +593,12 @@ str(gapminder)
 
 
 ~~~
-'data.frame':	1704 obs. of  6 variables:
+Classes ‘tbl_df’, ‘tbl’ and 'data.frame':	1704 obs. of  6 variables:
  $ country  : Factor w/ 142 levels "Afghanistan",..: 1 1 1 1 1 1 1 1 1 1 ...
- $ year     : int  1952 1957 1962 1967 1972 1977 1982 1987 1992 1997 ...
- $ pop      : num  8425333 9240934 10267083 11537966 13079460 ...
  $ continent: Factor w/ 5 levels "Africa","Americas",..: 3 3 3 3 3 3 3 3 3 3 ...
+ $ year     : int  1952 1957 1962 1967 1972 1977 1982 1987 1992 1997 ...
  $ lifeExp  : num  28.8 30.3 32 34 36.1 ...
+ $ pop      : int  8425333 9240934 10267083 11537966 13079460 14880372 12881816 13867957 16317921 22227415 ...
  $ gdpPercap: num  779 821 853 836 740 ...
 ~~~
 {: .output}
@@ -793,10 +793,10 @@ head(gapminder)
 > to explain what everything that `str` prints out for gapminder means.
 > If there are any parts you can't interpret, discuss with your neighbors!
 >
-> > ## Solution to Challenge 2
+> > ## Solution to Challenge 3
 > >
-> > The object `gapminder` is a data frame with columns
-> > - `country` and `continent` are factors.
+> > The object `gapminder` is a data frame with 1704 entries and 6 columns:
+> > - `country` and `continent` are factors. The `country` factor has 142 levels and the `continent` factor has 5 levels
 > > - `year` is an integer vector.
 > > - `pop`, `lifeExp`, and `gdpPercap` are numeric vectors.
 > >
@@ -809,18 +809,20 @@ Remember the data frames are lists underneath the hood, so similar rules
 apply. However they are also two dimensional objects:
 
 `[` with one argument will act the same was as for lists, where each list
-element corresponds to a column. The resulting object will be a data frame:
+element corresponds to a column. The resulting object will be a list:
 
 
 ~~~
-head(gapminder[3])
+head(gapminder[5])
 ~~~
 {: .r}
 
 
 
 ~~~
+# A tibble: 6 × 1
        pop
+     <int>
 1  8425333
 2  9240934
 3 10267083

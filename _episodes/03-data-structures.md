@@ -163,7 +163,7 @@ Using the colon operator, we can specify whatever start and stop point we want a
 {: .r}
 
 ~~~
- [1] -4 -3 -2 -1  0  1  2  3  4  5  6  7
+[1] -4 -3 -2 -1  0  1  2  3  4  5  6  7
 ~~~
 {: .output}
 
@@ -206,7 +206,18 @@ x + y
 {: .output}
 
 Notice that when we add two different vectors together, R performs the operation element 
-by element. This is the way R handles most base operations between two vectors.
+by element:
+
+
+~~~
+x:  2  4  6  8 10 12 14 16
+    +  +  +  +  +  +  +  +
+y:  1  2  3  4  5  6  7  8
+--------------------------
+    3  6  9 12 15 18 21 24
+~~~
+{: .r}
+
 
 
 > ## Challenge 1
