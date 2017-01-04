@@ -1,7 +1,7 @@
 ---
 title: Creating Publication-Quality Graphics
-teaching: 60
-exercises: 20
+teaching: 50
+exercises: 25
 questions:
 - "How can I create publication-quality graphics in R?"
 objectives:
@@ -30,7 +30,7 @@ Today we'll be learning about the ggplot2 package, because
 it is the most effective for creating publication quality
 graphics.
 
-ggplot2 is built on the grammar of graphics, the idea that any plot can be
+ggplot2 is built on the grammar of graphics (where the gg comes from), the idea that any plot can be
 expressed from the same set of components: a **data** set, a
 **coordinate system**, and a set of **geoms**--the visual representation of data
 points.
@@ -39,8 +39,19 @@ The key to understanding ggplot2 is thinking about a figure in layers.
 This idea may be familiar to you if you have used image editing programs like Photoshop, Illustrator, or
 Inkscape.
 
-Let's start off with an example:
+Let's start off with an example. The first thing we need to do is load the `ggplot2` package, just
+like we did with the previous ones:
 
+
+~~~
+library("ggplot2")
+~~~
+{: .r}
+
+In order to begin graphing, we use the `ggplot` function. This function lets R
+know that we're creating a new plot, and any of the arguments we give the
+`ggplot` function are the *global* options for the plot: they apply to all
+layers on the plot.
 
 ~~~
 library("ggplot2")
@@ -50,11 +61,6 @@ ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp)) +
 {: .r}
 
 <img src="../fig/rmd-08-lifeExp-vs-gdpPercap-scatter-1.png" title="plot of chunk lifeExp-vs-gdpPercap-scatter" alt="plot of chunk lifeExp-vs-gdpPercap-scatter" style="display: block; margin: auto;" />
-
-So the first thing we do is call the `ggplot` function. This function lets R
-know that we're creating a new plot, and any of the arguments we give the
-`ggplot` function are the *global* options for the plot: they apply to all
-layers on the plot.
 
 We've passed in two arguments to `ggplot`. First, we tell `ggplot` what data we
 want to show on our figure, in this example the gapminder data we read in
@@ -66,8 +72,9 @@ the "lifeExp" column on the y-axis. Notice that we didn't need to explicitly
 pass `aes` these columns (e.g. `x = gapminder[, "gdpPercap"]`), this is because
 `ggplot` is smart enough to know to look in the **data** for that column!
 
-By itself, the call to `ggplot` isn't enough to draw a figure:
+Other options that can be set with the `aes` function include color, size, transparency and shape. We will talk more about that later.
 
+By itself, the call to `ggplot` isn't enough to draw a figure:
 
 ~~~
 ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp))
@@ -92,14 +99,15 @@ ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp)) +
 
 > ## Challenge 1
 >
-> Modify the example so that the figure visualise how life expectancy has
-> changed over time:
->
+> Our example visualizes how the GDP per capita changes in relationship to life expectancy:
 > 
 > ~~~
 > ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp)) + geom_point()
 > ~~~
 > {: .r}
+>
+> Modify this example so that the plot visualizes how life expectancy has
+> changed over time:
 >
 > Hint: the gapminder dataset has a column called "year", which should appear
 > on the x-axis.
@@ -229,12 +237,12 @@ lines.
 
 ## Transformations and statistics
 
-Ggplot also makes it easy to overlay statistical models over the data. To
+`ggplot` also makes it easy to overlay statistical models over the data. To
 demonstrate we'll go back to our first example:
 
 
 ~~~
-ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp, color=continent)) +
+ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp)) +
   geom_point()
 ~~~
 {: .r}
@@ -310,7 +318,7 @@ variables and their visual representation.
 > > Modify the color and size of the points on the point layer in the previous
 > > example.
 > >
-> > Hint: do not use the `aes` function.
+> > Hint: Do not use the `aes` function.
 > >
 > > 
 > > ~~~
@@ -329,7 +337,9 @@ variables and their visual representation.
 >
 > Modify your solution to Challenge 4a so that the
 > points are now a different shape and are colored by continent with new
-> trendlines.  Hint: The color argument can be used inside the aesthetic.
+> trendlines.
+>
+> Hint: The color argument can be used inside the aesthetic.
 >
 > > ## Solution to challenge 4b
 > >
@@ -358,22 +368,16 @@ countries in one plot. Alternatively, we can split this out over multiple panels
 by adding a layer of **facet** panels. Focusing only on those countries with
 names that start with the letter "A" or "Z".
 
-> ## Tip
->
-> We start by subsetting the data.  We use the `substr` function to
-> pull out a part of a character string; in this case, the letters that occur
-> in positions `start` through `stop`, inclusive, of the `gapminder$country`
-> vector. The operator `%in%` allows us to make multiple comparisons rather
-> than write out long subsetting conditions (in this case,
-> `starts.with %in% c("A", "Z")` is equivalent to
-> `starts.with == "A" | starts.with == "Z"`)
-{: .callout}
+We start by subsetting the data.  We use the `substr` function to
+pull out a part of a character string; in this case, the letters that occur
+in positions `start` through `stop`, inclusive, of the `gapminder$country`
+vector.
 
 
 
 ~~~
 starts.with <- substr(gapminder$country, start = 1, stop = 1)
-az.countries <- gapminder[starts.with %in% c("A", "Z"), ]
+az.countries <- gapminder[starts.with == "A" | starts.with == "Z", ]
 ggplot(data = az.countries, aes(x = year, y = lifeExp, color=continent)) +
   geom_line() + facet_wrap( ~ country)
 ~~~
@@ -381,33 +385,75 @@ ggplot(data = az.countries, aes(x = year, y = lifeExp, color=continent)) +
 
 <img src="../fig/rmd-08-facet-1.png" title="plot of chunk facet" alt="plot of chunk facet" style="display: block; margin: auto;" />
 
-The `facet_wrap` layer took a "formula" as its argument, denoted by the tilde
+> ## Tip
+> 
+> Instead of using multiple subsetting conditions (in this case, `starts.with == "A" | starts.with == "Z"`)
+> we can use the operator `%in%` which selects any entries which match a list of conditions. Here we would use 
+> `%in%` by using this command instead of the one we used before:
+> 
+> ~~~
+> az.countries <- gapminder[starts.with %in% c("A", "Z"), ]
+> ~~~
+> {: .r}
+{: .callout}
+
+
+The `facet_wrap` layer takes a "formula" as its argument, denoted by the tilde
 (~). This tells R to draw a panel for each unique value in the country column
 of the gapminder dataset.
+
 
 ## Modifying text
 
 To clean this figure up for a publication we need to change some of the text
-elements. The x-axis is too cluttered, and the y axis should read
-"Life expectancy", rather than the column name in the data frame.
+elements. 
 
-We can do this by adding a couple of different layers. The **theme** layer
-controls the axis text, and overall text size, and there are special layers
-for changing the axis labels. To change the legend title, we need to use the
-**scales** layer.
-
+First, let's rename our `x` and `y` axes to neater and more informative labels. We can do that using the `xlab()` and `ylab()` functions:
 
 ~~~
 ggplot(data = az.countries, aes(x = year, y = lifeExp, color=continent)) +
   geom_line() + facet_wrap( ~ country) +
-  xlab("Year") + ylab("Life expectancy") + ggtitle("Figure 1") +
-  scale_colour_discrete(name="Continent") +
+  xlab("Year") + ylab("Life Expectancy")
+~~~
+{: .r}
+
+<img src="../fig/rmd-08-theme-1a.png" title="plot of chunk theme" alt="plot of chunk theme" style="display: block; margin: auto;" />
+ 
+Let's give our figure a title with the `ggtitle()` function. And while we're at it, let's capitalize the label of our
+legend. This can be done using the **scales** layer.
+
+~~~
+ggplot(data = az.countries, aes(x = year, y = lifeExp, color=continent)) +
+  geom_line() + facet_wrap( ~ country) +
+  xlab("Year") + ylab("Life Expectancy") + 
+  ggtitle("Figure 1") + scale_colour_discrete(name="Continent")
+~~~
+{: .r}
+
+<img src="../fig/rmd-08-theme-1b.png" title="plot of chunk theme" alt="plot of chunk theme" style="display: block; margin: auto;" />
+
+ 
+Lastly, let's remove the x-axis labels so the plot is less cluttered. To do this, we use the **theme** layer which controls
+the axis text and overall text size.
+
+~~~
+ggplot(data = az.countries, aes(x = year, y = lifeExp, color=continent)) +
+  geom_line() + facet_wrap( ~ country) +
+  xlab("Year") + ylab("Life Expectancy") + 
+  ggtitle("Figure 1") + scale_colour_discrete(name="Continent") +
   theme(axis.text.x=element_blank(), axis.ticks.x=element_blank())
 ~~~
 {: .r}
 
 <img src="../fig/rmd-08-theme-1.png" title="plot of chunk theme" alt="plot of chunk theme" style="display: block; margin: auto;" />
 
+> ## Tip:
+>
+> The line breaks in our commands do not need to be in specific locations. They can be made wherever
+> necessary to keep your code neat and make it easier to read. Some people place them to keep the lines roughly
+> and equal length, while others put a single option on each line. The benefit of this approach is that you can
+> use in line comments to remind you what each option does. Whichever approach you use, remember to keep the
+> `+` at the end of the line so R knows that your command continues on the next line.
 
 This is a taste of what you can do with `ggplot2`. RStudio provides a
 really useful [cheat sheet][cheat] of the different layers available, and more

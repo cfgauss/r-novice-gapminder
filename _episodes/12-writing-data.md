@@ -16,18 +16,33 @@ keypoints:
 
 ## Saving plots
 
-You have already seen how to save the most recent plot you create in `ggplot2`,
-using the command `ggsave`. As a refresher:
+So making publication quality plots is great but does us little good if we cannot get them out of
+R and into our documents.
 
+You can save a plot from within RStudio using the 'Export' button
+in the 'Plot' window. This will give you the option of saving as a
+.pdf or as .png, .jpg or other image formats.
+
+<img src="../fig/12-data-fig1.png" title="export plots in rstudio" alt="export plots in rstudio" style="display: block; margin: auto;" />
+
+But what if you are working in a command line environment, or want to create multiple plots without user interaction?
+In `ggplot2` you can use the `ggsave` function to save your plots quickly. This function can be used to save the last displayed plot in a format specified by the file name.
+You can save as several different formats, such as a PDF:
 
 ~~~
 ggsave("My_most_recent_plot.pdf")
 ~~~
 {: .r}
 
-You can save a plot from within RStudio using the 'Export' button
-in the 'Plot' window. This will give you the option of saving as a
-.pdf or as .png, .jpg or other image formats.
+Or as a JPG:
+
+~~~
+ggsave("My_most_recent_plot.jpg")
+~~~
+{: .r}
+
+`ggsave` also allows you to specify size and quality of the image. You can check out all of the 
+options using the `?ggsave` command to view the help file.
 
 Sometimes you will want to save plots without creating them in the
 'Plot' window first. Perhaps you want to make a pdf document with
@@ -43,24 +58,52 @@ using the arguments to this function.
 
 ~~~
 pdf("Life_Exp_vs_time.pdf", width=12, height=4)
-ggplot(data=gapminder, aes(x=year, y=lifeExp, colour=country)) +
-  geom_line()
-
-# You then have to make sure to turn off the pdf device!
+ggplot(data=gapminder, aes(x=year, y=lifeExp, color=continent)) +
+  geom_point()
 
 dev.off()
 ~~~
 {: .r}
+
+The `pdf` command opens the pdf file, and any output between this command and the `dev.off()` command 
+will be added to that file. Forgetting to "close" your pdf device by using the `dev.off()` command can
+lead to an incorrect file, so be sure to include it immediately after your output.
 
 Open up this document and have a look.
 
 > ## Challenge 1
 >
 > Rewrite your 'pdf' command to print a second
-> page in the pdf, showing a facet plot (hint: use `facet_grid`)
+> page in the pdf, showing a facet plot
 > of the same data with one panel per continent.
+>
+> Hint: Remember that we used the `facet_wrap` command previously to create a facet plot.
+>
+> > ## Solution to challenge 1
+> > 
+> > You can output a second plot, by adding a second `ggplot` command with the `facet_wrap` command before
+> > `dev.off` command.
+> >
+> > ~~~
+> > pdf("Life_Exp_vs_time2.pdf", width=12, height=4)
+> > ggplot(data=gapminder, aes(x=year, y=lifeExp)) +
+> >   geom_point()
+> > ggplot(data=gapminder, aes(x=year, y=lifeExp)) +
+> >   geom_point() + facet_wrap(~ continent)
+> > 
+> > # don't forget to close your pdf device!
+> > dev.off()
+> > ~~~
+> > {: .r}
+> > 
+> > Did you see the line which started with a `#`? The `#` character tells R that this line
+> > is a **comment** and not to execute the line.
+> > Using comments in your script is a great way to remind your future self of what the commands in your code are doing.
+> > It also makes your code easier for someone else to read and understand.
+> > For more information on good code writing practices, check out the supplemental lesson
+> > [Writing Good Software](https://carriebrown.github.io/r-novice-gapminder-2/07-wrap-up/)
+> {: .solution}
 {: .challenge}
-
 
 The commands `jpeg`, `png` etc. are used similarly to produce
 documents in different formats.
@@ -70,7 +113,9 @@ documents in different formats.
 At some point, you'll also want to write out data from R.
 
 We can use the `write.table` function for this, which is
-very similar to `read.table` from before.
+very similar to the `read.table` function that we mentioned previously in Lesson 2. 
+For more information on reading in your own data in R and the `read.table` function, check out the
+supplemental lesson [Reading and Writing CSV Files](https://carriebrown.github.io/r-novice-gapminder-2/11-supp-read-write-csv/).
 
 Let's create a data-cleaning script, for this analysis, we
 only want to focus on the gapminder data for Australia:
@@ -80,22 +125,43 @@ only want to focus on the gapminder data for Australia:
 aust_subset <- gapminder[gapminder$country == "Australia",]
 
 write.table(aust_subset,
-  file="cleaned-data/gapminder-aus.csv",
+  file="gapminder-aus.csv",
   sep=","
 )
 ~~~
 {: .r}
 
-Let's switch back to the shell to take a look at the data to make sure it looks
-OK:
-
+Remember in our last lesson when we discussed line breaks and the different approaches for neat and tidy code.
+Here, the line breaks have been placed between the different parameters of our command to make the code easier to read.
+One benefit to this approach is that we can then comment each line to remind ourselves what they do. Here's our previous
+example with these **in line comments**
 
 ~~~
-head cleaned-data/gapminder-aus.csv
+aust_subset <- gapminder[gapminder$country == "Australia",]
+
+write.table(aust_subset,		# Gapminder data for countries located in Australia
+  file="gapminder-aus.csv", 	# Name of the output file
+  sep=","						# Comma separated
+)
 ~~~
 {: .r}
 
+This approach becomes really beneficial when you start writing commands which use a lot of parameters.
 
+Now, we can use the shell commands we used yesterday to inspect our data. Go ahead and open a shell
+window and navigate to the location of the file using your `cd` command. If you don't know where R is saving
+your files, you can check the `file` pane or use the `getwd()` command.
+
+Once you have navigated to the file
+location type this in to check out the output file:
+
+~~~
+head gapminder-aus.csv
+~~~
+{: .r}
+
+Note: If you did not attend yesterday's lesson, or have forgotten the shell commands, you can view
+the file in R by clicking on the filename in the `file` pane and selecting `View File`.
 
 
 ~~~
@@ -133,10 +199,11 @@ Let's fix this:
 
 
 ~~~
-write.table(
-  gapminder[gapminder$country == "Australia",],
-  file="cleaned-data/gapminder-aus.csv",
-  sep=",", quote=FALSE, row.names=FALSE
+write.table(aust_subset,		# Gapminder data for countries located in Australia
+  file="gapminder-aus.csv",		# Name of the output file
+  sep=",",						# Comma separated
+  quote=FALSE,					# Turn off quotation marks
+  row.names=FALSE				# No row names
 )
 ~~~
 {: .r}
@@ -145,10 +212,9 @@ Now lets look at the data again using our shell skills:
 
 
 ~~~
-head cleaned-data/gapminder-aus.csv
+head gapminder-aus.csv
 ~~~
 {: .r}
-
 
 
 
@@ -174,7 +240,21 @@ That looks better!
 > data to include only data points collected since 1990.
 >
 > Use this script to write out the new subset to a file
-> in the `cleaned-data/` directory.
+> your working directory.
+>
+> Remember to use a different file name so that the new output doesn't overwrite your old output
+>
+> > ## Solution to challenge 2
+> > 
+> > ~~~
+> > new_data <- gapminder[gapminder$year >= 1990,]
+> > write.table(new_data,
+> >   file="gapminder-1990.csv",
+> >   sep=",",
+> >   quote=FALSE,
+> >   row.names=FALSE
+> > )
+> > ~~~
+> > {: .r}
+>{: .solution}
 {: .challenge}
-
-
