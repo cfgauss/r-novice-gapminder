@@ -6,8 +6,8 @@ questions:
 - "How can I make data-dependent choices in R?"
 - "How can I repeat operations in R?"
 objectives:
-- "Write conditional statements with `if()` and `else()`."
-- "Write and understand `for()` loops."
+- "Write conditional statements with `if` and `else`."
+- "Write and understand `for` loops."
 keypoints:
 - "Use `if` and `else` to make choices."
 - "Use `for` to repeat operations."
@@ -92,15 +92,15 @@ if (x >= 10) {
 
 > ## Tip: pseudo-random numbers
 >
-> In the above case, the function `rpois()` generates a random number following a
-> Poisson distribution with a mean (i.e. lambda) of 8. The function `set.seed()`
+> In the above case, the function `rpois` generates a random number following a
+> Poisson distribution with a mean (i.e. lambda) of 8. The function `set.seed`
 > guarantees that all machines will generate the exact same 'pseudo-random'
 > number ([more about pseudo-random numbers](http://en.wikibooks.org/wiki/R_Programming/Random_Number_Generation)).
 > So if we `set.seed(10)`, we see that `x` takes the value 8. You should get the
 > exact same number.
 {: .callout}
 
-**Important:** when R evaluates the condition inside `if()` statements, it is
+**Important:** when R evaluates the condition inside `if` statements, it is
 looking for a logical element, i.e., `TRUE` or `FALSE`. This can cause some
 headaches for beginners. For example:
 
@@ -131,13 +131,13 @@ x
 
 > ## Challenge 1
 >
-> Use an `if()` statement to print a suitable message
+> Use an `if` statement to print a suitable message
 > reporting whether there are any records from 2002 in
 > the `gapminder` dataset.
 > Now do the same for 2012.
 >
 > > ## Solution to Challenge 1
-> > We will first see a solution to Challenge 1 which does not use the `any()` function.
+> > We will first see a solution to Challenge 1 which does not use the `any` function.
 > > We first obtain a logical vector describing which element of `gapminder$year` is equal to `2002`:
 > > 
 > > ~~~
@@ -165,7 +165,7 @@ x
 > > ~~~
 > > {: .r}
 > >
-> > All this can be done more quickly with `any()`. The logical condition can be expressed as:
+> > All this can be done more quickly with `any`. The logical condition can be expressed as:
 > > 
 > > ~~~
 > > if(any(gapminder$year == 2002)){
@@ -188,15 +188,15 @@ only the first element will be used
 {: .error}
 
 If your condition evaluates to a vector with more than one logical element,
-the function `if()` will still run, but will only evaluate the condition in the first
+the function `if` will still run, but will only evaluate the condition in the first
 element. Here you need to make sure your condition is of length 1.
 
-> ## Tip: `any()` and `all()`
+> ## Tip: `any` and `all`
 >
-> The `any()` function will return TRUE if at least one
+> The `any` function will return TRUE if at least one
 > TRUE value is found within a vector, otherwise it will return `FALSE`.
 > This can be used in a similar way to the `%in%` operator.
-> The function `all()`, as the name suggests, will only return `TRUE` if all values in
+> The function `all`, as the name suggests, will only return `TRUE` if all values in
 > the vector are `TRUE`.
 {: .callout}
 
@@ -204,13 +204,13 @@ element. Here you need to make sure your condition is of length 1.
 
 If you want to iterate over
 a set of values, when the order of iteration is important, and perform the
-same operation on each, a `for()` loop will do the job.
-We saw `for()` loops in the shell lessons earlier. This is the most
+same operation on each, a `for` loop will do the job.
+We saw `for` loops in the shell lessons earlier. This is the most
 flexible of looping operations, but therefore also the hardest to use
-correctly. Avoid using `for()` loops unless the order of iteration is important:
+correctly. Avoid using `for` loops unless the order of iteration is important:
 i.e. the calculation at each iteration depends on the results of previous iterations.
 
-The basic structure of a `for()` loop is:
+The basic structure of a `for` loop is:
 
 
 ~~~
@@ -249,7 +249,7 @@ for(i in 1:10){
 The `1:10` bit creates a vector on the fly; you can iterate
 over any other vector as well.
 
-We can use a `for()` loop nested within another `for()` loop to iterate over two things at
+We can use a `for` loop nested within another `for` loop to iterate over two things at
 once.
 
 
@@ -362,36 +362,33 @@ output_vector2
 ~~~
 {: .output}
 
-> ## Tip: While loops
->
->
-> Sometimes you will find yourself needing to repeat an operation until a certain
-> condition is met. You can do this with a `while()` loop.
->
-> 
-> ~~~
-> while(this condition is true){
->   do a thing
-> }
-> ~~~
-> {: .r}
->
-> As an example, here's a while loop
-> that generates random numbers from a uniform distribution (the `runif()` function)
-> between 0 and 1 until it gets one that's less than 0.1.
->
-> ~~~
-> z <- 1
-> while(z > 0.1){
->   z <- runif(1)
->   print(z)
-> }
-> ~~~
-> {: .r}
->
-> `while()` loops will not always be appropriate. You have to be particularly careful
-> that you don't end up in an infinite loop because your condition is never met.
-{: .callout}
+## While loops
+
+
+Sometimes you will find yourself needing to repeat an operation until a certain condition is met. You can do this with a `while` loop.
+
+~~~
+while(this condition is true){
+  do a thing
+}
+~~~
+{: .r}
+
+As an example, here's a while loop
+that generates random numbers from a uniform distribution (the `runif` function)
+between 0 and 1 until it gets one that's less than 0.1.
+
+~~~
+z <- 1
+while(z > 0.1){
+  z <- runif(1)
+  print(z)
+}
+~~~
+{: .r}
+
+`while` loops will not always be appropriate. You have to be particularly careful
+that you don't end up in an infinite loop because your condition is never met.
 
 
 > ## Challenge 2
@@ -402,7 +399,7 @@ output_vector2
 > the same as output_vector?
 >
 > > ## Solution to Challenge 2
-> > We can check whether the two vectors are identical using the `all()` function:
+> > We can check whether the two vectors are identical using the `all` function:
 > > 
 > > ~~~
 > > all(output_vector == output_vector2)
@@ -421,10 +418,10 @@ output_vector2
 > > ~~~
 > > {: .r}
 > > therefore, the element in `output_vector` and `output_vector2` are just sorted in a different order.
-> > This is because `as.vector()` outputs the elements of an input matrix going over its column.
+> > This is because `as.vector` outputs the elements of an input matrix going over its column.
 > > Taking a look at `output_matrix`, we can notice that we want its elements by rows.
 > > The solution is to transpose the `output_matrix`. We can do it either by calling the transpose function
-> > `t()` or by inputing the elements in the right order.
+> > `t` or by inputing the elements in the right order.
 > > The first solution requires to change the original
 > > 
 > > ~~~

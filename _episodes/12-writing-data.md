@@ -65,8 +65,8 @@ dev.off()
 ~~~
 {: .r}
 
-The `pdf` command opens the pdf file, and any output between this command and the `dev.off()` command 
-will be added to that file. Forgetting to "close" your pdf device by using the `dev.off()` command can
+The `pdf` command opens the pdf file, and any output between this command and the `dev.off` command 
+will be added to that file. Forgetting to "close" your pdf device by using the `dev.off` command can
 lead to an incorrect file, so be sure to include it immediately after your output.
 
 Open up this document and have a look.
@@ -143,7 +143,7 @@ This approach becomes really beneficial when you start writing commands which us
 
 Now, we can use the shell commands we used yesterday to inspect our data. Go ahead and open a shell
 window and navigate to the location of the file using your `cd` command. If you don't know where R is saving
-your files, you can check the `file` pane or use the `getwd()` command.
+your files, you can check the `file` pane or use the `getwd` command.
 
 Once you have navigated to the file
 location type this in to check out the output file:

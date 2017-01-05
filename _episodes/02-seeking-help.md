@@ -9,7 +9,7 @@ objectives:
 - "To be able to use CRAN task views to identify packages to solve a problem."
 - "To be able to seek help from your peers."
 keypoints:
-- "Use `help()` to get online help in R."
+- "Use `help` to get online help in R."
 ---
 
 
@@ -62,7 +62,7 @@ To seek help on special operators, use quotes:
 ## Getting help on packages
 
 Many packages come with "vignettes": tutorials and extended example documentation.
-Without any arguments, `vignette()` will list all vignettes for all installed packages;
+Without any arguments, `vignette` will list all vignettes for all installed packages;
 `vignette(package="package-name")` will list all available vignettes for
 `package-name`, and `vignette("vignette-name")` will open the specified vignette.
 
@@ -119,7 +119,7 @@ Try these challenges to practice finding help in R.
 > > ~~~
 > > {: .output}
 > > 
-> > The `c()` function creates a vector, which is a sequence of individual elements in R. In a vector, all elements must be the
+> > The `c` function creates a vector, which is a sequence of individual elements in R. In a vector, all elements must be the
 > > same data type. In the first case, we created a numeric vector. For the 
 > > second, our vector is a character vector which you can see by the quotes that R put around 
 > > each element. In the third example, since we gave R both numeric and character elements, R 

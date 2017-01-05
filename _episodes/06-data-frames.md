@@ -11,10 +11,10 @@ objectives:
 - "To learn how to manipulate a data.frame in memory."
 - "To tour some best practices of exploring and understanding a data frame when it is first loaded."
 keypoints:
-- "Use `cbind()` to add a new column to a dataframe."
-- "Use `rbind()` to add a new row to a dataframe."
+- "Use `cbind` to add a new column to a dataframe."
+- "Use `rbind` to add a new row to a dataframe."
 - "Remove rows from a dataframe."
-- "Use `na.omit()` to remove rows from a dataframe with `NA` values."
+- "Use `na.omit` to remove rows from a dataframe with `NA` values."
 ---
 
 ## Data Frames
@@ -22,8 +22,7 @@ keypoints:
 So far we have covered data structures which contain all the same basic data type. But 
 one of R's most powerful features is its ability to deal with tabular data -
 like what you might already have in a spreadsheet or a CSV. **Data Frames** are built from 
-vectors but differ from matrices in the aspect that they can contain vectors of different 
-data types.
+vectors but they can contain vectors of different data types.
 
 To build a data frame from existing vectors we use the `data.frame` command. Let's build 
 a data frame for with some information on cats.
@@ -233,7 +232,7 @@ Try this challenge to see different ways of interacting with data frames:
 
 Let's modify our data frame by adding an additional column which will hold the age of each 
 of the cats. As we saw in the previous challenge, columns in a data frame are vectors which 
-we construct using the `c()` function as before:
+we construct using the `c` function as before:
 
 ~~~
 age <- c(2,3,5,12)
@@ -251,7 +250,7 @@ cats
 ~~~
 {: .output}
 
-We can then add this as a column in our data frame by using the `cbind()` function:
+We can then add this as a column in our data frame by using the `cbind` function:
 
 
 ~~~
@@ -553,7 +552,7 @@ now, let's use those skills to digest a more realistic dataset. For the remainde
 lesson, we are going to use the `gapminder` data set built into the `gapminder` package.
 
 If you did not install the `gapminder` package with our previous challenge, you can do so 
-now with the `install.packages()` command:
+now with the `install.packages` command:
 
 ~~~
 install.packages("gapminder")
@@ -562,7 +561,7 @@ install.packages("gapminder")
 
 If you have already installed the `gapminder` package, go ahead and load it now. You can tell 
 R to load the package by clicking the checkbox next to its listing in the package tab of the 
-lower left pane in R studio. Or you can load it by using the 'library()' command:
+lower left pane in R studio. Or you can load it by using the `library` command:
 
 ~~~
 library('gapminder')
@@ -572,11 +571,13 @@ library('gapminder')
 To make sure our analysis is reproducible, we should put the code
 into a script file so we can come back to it later.
 
-Note that the library command can be used within your scripts to load any packages that your 
-scripts need. To make your scripts easy to read by others, you will want to put these commands 
-at the top of your script file. You can learn more about writing easy to read code in the 
-supplemental lesson [Writing Good Software](https://carriebrown.github.io/r-novice-gapminder-2/07-wrap-up/).
-
+> ## Note:
+> 
+> The `library` command can be used within your scripts to load any packages that your 
+> scripts need. To make your scripts easy to read by others, you will want to put these commands 
+> at the top of your script file. You can learn more about writing easy to read code in the 
+> supplemental lesson [Writing Good Software](https://carriebrown.github.io/r-novice-gapminder-2/07-wrap-up/).
+{: .callout}
 
 Let's investigate gapminder a bit; the first thing we should always do is check
 out what the data looks like with `str`:
@@ -802,11 +803,8 @@ head(gapminder)
 
 ### Subsetting Data Frames
 
-Remember the data frames are lists underneath the hood, so similar rules
-apply. However they are also two dimensional objects:
-
-`[` with one argument will act the same was as for lists, where each list
-element corresponds to a column. The resulting object will be a list:
+Remember that data frames are lists of vectors. Similarly to how we subsetted vectors, using the `[` operator with one argument will extract one element from our list.
+In this case, our elements are vectors, so the `[` operator will return a list of vectors, the columns of our data frame.
 
 
 ~~~
@@ -817,9 +815,7 @@ head(gapminder[5])
 
 
 ~~~
-# A tibble: 6 × 1
        pop
-     <int>
 1  8425333
 2  9240934
 3 10267083
@@ -829,29 +825,30 @@ head(gapminder[5])
 ~~~
 {: .output}
 
-Similarly, `[[` will act to extract *a single column*:
-
+As before, we can also use the `c` command to return multiple columns:
 
 ~~~
-head(gapminder[["lifeExp"]])
+head(gapminder[c(1,5)])
 ~~~
 {: .r}
 
-
-
 ~~~
-[1] 28.801 30.332 31.997 34.020 36.088 38.438
+      country      pop
+1 Afghanistan  8425333
+2 Afghanistan  9240934
+3 Afghanistan 10267083
+4 Afghanistan 11537966
+5 Afghanistan 13079460
+6 Afghanistan 14880372
 ~~~
 {: .output}
 
-And `$` provides a convenient shorthand to extract columns by name:
-
+The `$` operator provides a convenient shorthand to extract columns by name:
 
 ~~~
 head(gapminder$year)
 ~~~
 {: .r}
-
 
 
 ~~~

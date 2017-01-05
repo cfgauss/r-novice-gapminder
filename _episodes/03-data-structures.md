@@ -353,8 +353,8 @@ b
 >
 > R also vectorizes functions on character vectors as well.
 >
-> Use the `c()` function to create a character vector named `colors` with the values: "red", 
-> "yellow" and "blue". Use the `paste()` function to combine `"My ball is"` with each element 
+> Use the `c` function to create a character vector named `colors` with the values: "red", 
+> "yellow" and "blue". Use the `paste` function to combine `"My ball is"` with each element 
 > of your vector.
 > 
 > > ## Solution to Challenge 2
@@ -419,7 +419,7 @@ length(y)
 
 There are other data structures in R called **lists** and **matrices**. You 
 can discover more about these by looking at the help files associated with their constructor 
-functions: `?list()`, `?matrix()` or by checking out the supplemental lesson [Lists and Matrices](https://carriebrown.github.io/r-novice-gapminder-2/02-additional-datatypes/)
+functions: `?list`, `?matrix` or by checking out the supplemental lesson [Lists and Matrices](https://carriebrown.github.io/r-novice-gapminder-2/02-additional-datatypes/)
 
 Today, we will be working primarily with the **data frame** data structures. We will explore these 
 more indepth after our break.

@@ -19,7 +19,7 @@ keypoints:
 - "Use RStudio to write and run R programs."
 - "R has the usual arithmetic operators and mathematical functions."
 - "Use `<-` to assign values to variables."
-- "Use `install.packages()` to install packages (libraries)."
+- "Use `install.packages` to install packages (libraries)."
 ---
 
 
@@ -84,7 +84,7 @@ to push current line, selected lines or modified lines to the
 interactive R console.
    * This is a great way to start; all your code is saved for later
    * You will be able to run the file you create from within RStudio
-   or using R's `source()`  function.
+   or using R's `source`  function.
 
 > ## Tip: Running segments of your code
 >
@@ -534,7 +534,7 @@ symbol used in the community. So the recommendation is to use `<-`.
 
 ## Functions
 
-When doing mathematical operations, we used commands such as `sin()` and `log()`. These
+When doing mathematical operations, we used commands such as `sin` and `log`. These
 commands are called **functions** and they are chunks of code that have been written by R
 developers. Built-in functions such as the ones we've used so far are included in R because
 they make R easier to use. It is helpful to write your own functions for bits of code you
@@ -580,8 +580,8 @@ you wish to load. You should see the same messaging in your `console` for both a
 Other useful commands for working with packages:
 
 * You can see what packages are installed by typing
-  `installed.packages()`
-* You can update installed packages by typing `update.packages()`
+  `installed.packages`
+* You can update installed packages by typing `update.packages`
 * You can remove a package with `remove.packages("packagename")`
 
 
@@ -717,7 +717,7 @@ Other useful commands for working with packages:
 >
 > > ## Solution to challenge 5
 > >
-> > We can use the `install.packages()` command to install the required packages.
+> > We can use the `install.packages` command to install the required packages.
 > > 
 > > ~~~
 > > install.packages("ggplot2")

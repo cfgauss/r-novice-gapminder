@@ -208,7 +208,7 @@ lines.
 
 > ## Tip: Setting an aesthetic to a value instead of a mapping
 >
-> So far, we've seen how to use an aesthetic (such as **color**) as a *mapping* to a variable in the data. For example, when we use `geom_line(aes(color=continent))`, ggplot will give a different color to each continent. But what if we want to change the colour of all lines to blue? You may think that `geom_line(aes(color="blue"))` should work, but it doesn't. Since we don't want to create a mapping to a specific variable, we simply move the color specification outside of the `aes()` function, like this: `geom_line(color="blue")`.
+> So far, we've seen how to use an aesthetic (such as **color**) as a *mapping* to a variable in the data. For example, when we use `geom_line(aes(color=continent))`, ggplot will give a different color to each continent. But what if we want to change the colour of all lines to blue? You may think that `geom_line(aes(color="blue"))` should work, but it doesn't. Since we don't want to create a mapping to a specific variable, we simply move the color specification outside of the `aes` function, like this: `geom_line(color="blue")`.
 {: .callout}
 
 > ## Challenge 3
@@ -274,7 +274,7 @@ x-axis.
 
 > ## Tip Reminder: Setting an aesthetic to a value instead of a mapping
 >
-> Notice that we used `geom_point(alpha = 0.5)`. As the previous tip mentioned, using a setting outside of the `aes()` function will cause this value to be used for all points, which is what we want in this case. But just like any other aesthetic setting, *alpha* can also be mapped to a variable in the data. For example, we can give a different transparency to each continent with `geom_point(aes(alpha = continent))`.
+> Notice that we used `geom_point(alpha = 0.5)`. As the previous tip mentioned, using a setting outside of the `aes` function will cause this value to be used for all points, which is what we want in this case. But just like any other aesthetic setting, *alpha* can also be mapped to a variable in the data. For example, we can give a different transparency to each continent with `geom_point(aes(alpha = continent))`.
 {: .callout}
 
 We can fit a simple relationship to the data by adding another layer,
@@ -368,34 +368,26 @@ countries in one plot. Alternatively, we can split this out over multiple panels
 by adding a layer of **facet** panels. Focusing only on those countries with
 names that start with the letter "A" or "Z".
 
+
 We start by subsetting the data.  We use the `substr` function to
 pull out a part of a character string; in this case, the letters that occur
 in positions `start` through `stop`, inclusive, of the `gapminder$country`
-vector.
+vector. As we saw previously, the `%in%` operator allows us to make multiple comparisons rather
+than write out long subsetting conditions (in this case,
+`starts.with %in% c("A", "Z")` is equivalent to
+`starts.with == "A" | starts.with == "Z"`)
 
 
 
 ~~~
 starts.with <- substr(gapminder$country, start = 1, stop = 1)
-az.countries <- gapminder[starts.with == "A" | starts.with == "Z", ]
+az.countries <- gapminder[starts.with %in% c("A", "Z"), ]
 ggplot(data = az.countries, aes(x = year, y = lifeExp, color=continent)) +
   geom_line() + facet_wrap( ~ country)
 ~~~
 {: .r}
 
 <img src="../fig/rmd-08-facet-1.png" title="plot of chunk facet" alt="plot of chunk facet" style="display: block; margin: auto;" />
-
-> ## Tip
-> 
-> Instead of using multiple subsetting conditions (in this case, `starts.with == "A" | starts.with == "Z"`)
-> we can use the operator `%in%` which selects any entries which match a list of conditions. Here we would use 
-> `%in%` by using this command instead of the one we used before:
-> 
-> ~~~
-> az.countries <- gapminder[starts.with %in% c("A", "Z"), ]
-> ~~~
-> {: .r}
-{: .callout}
 
 
 The `facet_wrap` layer takes a "formula" as its argument, denoted by the tilde
@@ -408,7 +400,7 @@ of the gapminder dataset.
 To clean this figure up for a publication we need to change some of the text
 elements. 
 
-First, let's rename our `x` and `y` axes to neater and more informative labels. We can do that using the `xlab()` and `ylab()` functions:
+First, let's rename our `x` and `y` axes to neater and more informative labels. We can do that using the `xlab` and `ylab` functions:
 
 ~~~
 ggplot(data = az.countries, aes(x = year, y = lifeExp, color=continent)) +
@@ -419,7 +411,7 @@ ggplot(data = az.countries, aes(x = year, y = lifeExp, color=continent)) +
 
 <img src="../fig/rmd-08-theme-1a.png" title="plot of chunk theme" alt="plot of chunk theme" style="display: block; margin: auto;" />
  
-Let's give our figure a title with the `ggtitle()` function. And while we're at it, let's capitalize the label of our
+Let's give our figure a title with the `ggtitle` function. And while we're at it, let's capitalize the label of our
 legend. This can be done using the **scales** layer.
 
 ~~~
