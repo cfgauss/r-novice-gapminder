@@ -20,7 +20,7 @@ keypoints:
 Much of R's power comes from it's vectorization. R has many powerful subset operators and mastering them will allow you to
 easily perform complex operations on any kind of dataset without the resource depletion of loops.
 
-There are six different ways we can subset any kind of object, and three
+There are a few different ways we can subset any kind of object, and
 different subsetting operators for the different data structures.
 
 Let's start with a data structure we've seen before, the workhorse of R: atomic vectors.
@@ -28,13 +28,17 @@ Let's start with a data structure we've seen before, the workhorse of R: atomic 
 
 ~~~
 x <- c(5.4, 6.2, 7.1, 4.8, 7.5)
-names(x) <- c('a', 'b', 'c', 'd', 'e')
-
 ~~~
 {: .r}
 
 We can name elements within our vectors using the `names` function. Here, we have named each element 
 with a different letter of the alphabet.
+
+~~~
+names(x) <- c('a', 'b', 'c', 'd', 'e')
+x
+~~~
+{: .r}
 
 ~~~
   a   b   c   d   e 
@@ -113,34 +117,8 @@ x[1:4]
 ~~~
 {: .output}
 
-the `:` operator creates a sequence of numbers from the left element to the right.
-
-~~~
-1:4
-~~~
-{: .r}
-
-
-
-~~~
-[1] 1 2 3 4
-~~~
-{: .output}
-
-
-
-~~~
-c(1, 2, 3, 4)
-~~~
-{: .r}
-
-
-
-~~~
-[1] 1 2 3 4
-~~~
-{: .output}
-
+Remember that the `:` operator creates a sequence of numbers from the left element to the right. Using it inside the square 
+brackets lets us select a range of elements.
 
 We can ask for the same element multiple times:
 

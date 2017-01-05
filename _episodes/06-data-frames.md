@@ -25,7 +25,7 @@ like what you might already have in a spreadsheet or a CSV. **Data Frames** are 
 vectors but differ from matrices in the aspect that they can contain vectors of different 
 data types.
 
-To build a data frame from existing vectors we use the `data.frame()` command. Let's build 
+To build a data frame from existing vectors we use the `data.frame` command. Let's build 
 a data frame for with some information on cats.
 
 ~~~
@@ -124,7 +124,7 @@ Try this challenge to see different ways of interacting with data frames:
 >
 > Try out these examples and explain what is returned by each one.
 >
-> *Hint:* Use the function `typeof()` to examine what is returned in each case.
+> *Hint:* Use the function `typeof` to examine what is returned in each case.
 >
 > > ## Solution to Challenge 1
 > > 
@@ -321,14 +321,14 @@ class(cats$coat)
 
 
 So in our `cats` data frame, the `coat` column is a data class named a **factor**. Factors 
-are data classes that R uses to handle categorical data. 
+are data classes that R uses to handle categorical data. Each category in a factor is called a **level**
 When we tried adding a new row to the `cats` data frame, the new data contained a level of 
 `coat` that we had not previously used.  This is something we need to look out for - when 
 R creates a factor, it only
 allows whatever is originally there when our data was first loaded, which was
 'black', 'calico' and 'tabby' in our case. Anything new that doesn't fit into
 one of its categories is rejected as nonsense and is replaced by an `NA` until we explicitly add that as a
-*level* in the factor:
+level to the factor:
 
 
 ~~~
@@ -433,10 +433,7 @@ cats[-4,]
 
 Notice the comma with nothing after it to indicate we want to drop the entire fourth row.
 
-Note: We could also remove both new rows at once by putting the row numbers
-inside of a vector: `cats[c(-4,-5),]`
-
-Alternatively, we can drop all rows with `NA` values:
+Alternatively, we can drop all rows with `NA` values by using the `na.omit` command:
 
 
 ~~~
@@ -1015,13 +1012,31 @@ be changed with the third argument, `drop = FALSE`).
 > >
 > > 1.  `gapminder` is a data.frame so needs to be subsetted on two dimensions. `gapminder[1:20, ]` subsets the data to give the first 20 rows and all columns.
 > >
-> > 2. 
-> >
+> > 2. There are several different ways to accomplish this task:
+> > 
+> > First, you can do it in two steps by subsetting all the rows 1 through 23, then removing rows 10 through 18:
 > > 
 > > ~~~
-> > gapminder_small <- gapminder[c(1:9, 19:23),]
+> > gapminder_small <- gapminder[1:23, ]
+> > gapminder_small <- gapminder_small[-18:-10, ]
 > > ~~~
 > > {: .r}
+> > 
+> > Or, you can first subset rows 1 through 9, then use `rbind` to concatenate the next subset of rows 10 through 18:
+> > 
+> > ~~~
+> > gapminder_small <- gapminder[1:9, ]
+> > gapminder_small <- rbind(gapminder_small, gapminder[19:23, ]
+> > ~~~
+> > {: .r}
+> >
+> > Or you can do this in a single step by combining your ranges:
+> >
+> > ~~~
+> > gapminder_small <- gapminder[c(1:9, 19:23), ]
+> > ~~~
+> >
+> > There are probably other ways to accomplish this task. Did you come up with any that we didn't show here?
 > {: .solution}
 {: .challenge}
 

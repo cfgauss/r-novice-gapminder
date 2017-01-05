@@ -31,9 +31,9 @@ R quick reference guides including today's handouts and more!
 
 ### [R for Data Science](http://r4ds.had.co.nz/)
 Hadley Wickham is RStudio's Chief Data Scientist and developer of the `dplyr` and `ggplot2` packages.
-R for Data Science is his newest book, and is available here for free.
+**R for Data Science** is his newest book, and is available here for free.
 
-### [One R Tip a Day on Twitter](https://twitter.com/RLangTip)
+### [One R Tip a Day on Twitter](http://twitter.com/RLangTip)
 Following One R Tip a Day is a great way to learn new tips and tricks in R.
 
 ### [Twotorials](http://www.twotorials.com/)

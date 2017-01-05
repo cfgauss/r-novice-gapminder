@@ -257,8 +257,7 @@ y:  1  2  3  4  5  6  7  8
 > {: .solution}
 {: .challenge}
 
-Vectors can be made up of any of the basic data types. We can use the `str` command to tell us
-some basic information about our vectors.
+Vectors can be made up of any of the basic data types.
 
 Character Vectors:
 
@@ -285,7 +284,7 @@ str(a)
 ~~~
  chr [1:4] "one" "two" "three" "four"
 ~~~
-{: .r}
+{: .output}
 
 We can see from the first three letters *chr* that this is a *character* vector. The numbers
 in the brackets indicates the dimensions of our vector. And then it will list the first few 
