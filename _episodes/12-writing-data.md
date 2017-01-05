@@ -95,13 +95,6 @@ Open up this document and have a look.
 > > dev.off()
 > > ~~~
 > > {: .r}
-> > 
-> > Did you see the line which started with a `#`? The `#` character tells R that this line
-> > is a **comment** and not to execute the line.
-> > Using comments in your script is a great way to remind your future self of what the commands in your code are doing.
-> > It also makes your code easier for someone else to read and understand.
-> > For more information on good code writing practices, check out the supplemental lesson
-> > [Writing Good Software](https://carriebrown.github.io/r-novice-gapminder-2/07-wrap-up/)
 > {: .solution}
 {: .challenge}
 

@@ -545,7 +545,7 @@ the supplemental lesson [Functions Explained](https://carriebrown.github.io/r-no
 
 It is possible to add functions to R by writing a package, or by
 obtaining a package written by someone else. It is often useful to use a package
-written by someone else to do something you ned to do over writing your own code.
+written by someone else to do something you need to do over writing your own code.
 As of this writing, there
 are over 7,000 packages available on CRAN (the comprehensive R archive
 network). R and RStudio have functionality for managing packages:
