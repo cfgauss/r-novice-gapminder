@@ -132,9 +132,9 @@ example with these **in line comments**
 ~~~
 aust_subset <- gapminder[gapminder$country == "Australia",]
 
-write.table(aust_subset,		# Gapminder data for countries located in Australia
-  file="gapminder-aus.csv", 	# Name of the output file
-  sep=","						# Comma separated
+write.table(aust_subset,     # Gapminder data for countries located in Australia
+  file="gapminder-aus.csv",  # Name of the output file
+  sep=","                    # Comma separated
 )
 ~~~
 {: .r}
@@ -192,11 +192,11 @@ Let's fix this:
 
 
 ~~~
-write.table(aust_subset,		# Gapminder data for countries located in Australia
-  file="gapminder-aus.csv",		# Name of the output file
-  sep=",",						# Comma separated
-  quote=FALSE,					# Turn off quotation marks
-  row.names=FALSE				# No row names
+write.table(aust_subset,     # Gapminder data for countries located in Australia
+  file="gapminder-aus.csv",  # Name of the output file
+  sep=",",                   # Comma separated
+  quote=FALSE,               # Turn off quotation marks
+  row.names=FALSE            # No row names
 )
 ~~~
 {: .r}
