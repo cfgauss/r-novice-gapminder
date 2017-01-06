@@ -1313,8 +1313,6 @@ permalink: /figures/
 > {: .solution}
 {: .challenge}
 
-## Coffee Break
-
 ## Creating Publication Quality Graphics
 
 > ## Challenge 1
