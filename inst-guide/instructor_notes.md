@@ -1,10 +1,10 @@
-# "Introduction to R and RStudio" - 45 minutes
+## "Introduction to R and RStudio" - 45 minutes
 
-## Before Starting The Workshop
+#### Before Starting The Workshop
 
 Please ensure you have the latest version of R and RStudio installed on your machine.
 
-## Introduction to RStudio
+#### Introduction to RStudio
 
 Why R?
  - free
@@ -26,7 +26,7 @@ three panels:
 
 Editor panel when you open scripts
 
-## Work flow within RStudio
+#### Work flow within RStudio
 
 There are two main ways one can work within RStudio.
 
@@ -37,15 +37,18 @@ to push current line, selected lines or modified lines to the
 interactive R console.
 
 Run button and key shortcuts
- - ctrl-enter windows/linux
- - command-enter mac
+
+  * ctrl-enter windows/linux
+  * command-enter mac
  
 Project managment 
 
 Mostly use the console
+
  - run code and test commands
 
 ">" cursor - similar to the shell
+
  - type commands
  - R executes
  - returns result
@@ -86,13 +89,13 @@ Use parentheses to force order:
 Use these to make code easier to read
 
 ~~~
-(3 + (5 * (2 ^ 2))) # hard to read
-3 + 5 * 2 ^ 2       # clear, if you remember the rules
-3 + 5 * (2 ^ 2)     # if you forget some rules, this might help
+(3 + (5 * (2 ^ 2))) ## hard to read
+3 + 5 * 2 ^ 2       ## clear, if you remember the rules
+3 + 5 * (2 ^ 2)     ## if you forget some rules, this might help
 ~~~
 {: .r}
 
-"#" indicate comments
+"##" indicate comments
 
 Scientific notation
 
@@ -102,84 +105,83 @@ Scientific notation
 {: .r}
 
 ~~~
-5e3  # Note the lack of minus here
+5e3  ## Note the lack of minus here
 ~~~
 {: .r}
 
 
-## Mathematical functions
+#### Mathematical functions
 
 functions use name then parenthesis
 
 ~~~
-sin(1)  # trigonometry functions
+sin(1)  ## trigonometry functions
 ~~~
 {: .r}
 
 
 ~~~
-log(1)  # natural logarithm
+log(1)  ## natural logarithm
 ~~~
 {: .r}
 
 
 
 ~~~
-log10(10) # base-10 logarithm
+log10(10) ## base-10 logarithm
 ~~~
 {: .r}
 
 ~~~
-exp(0.5) # e^(1/2)
+exp(0.5) ## e^(1/2)
 ~~~
 {: .r}
 
 Can look up functions in google or use Autocomplete (tab)
 
-*** HERE ***
 
-## Comparing things
-
-~~~
-1 == 1  # equality (note two equals signs, read as "is equal to")
-~~~
-{: .r}
-
+#### Comparing things
 
 ~~~
-1 != 2  # inequality (read as "is not equal to")
+1 == 1  ## equality (note two equals signs, read as "is equal to")
 ~~~
 {: .r}
 
 
 ~~~
-1 <  2  # less than
+1 != 2  ## inequality (read as "is not equal to")
 ~~~
 {: .r}
 
 
 ~~~
-1 <= 1  # less than or equal to
+1 <  2  ## less than
+~~~
+{: .r}
+
+
+~~~
+1 <= 1  ## less than or equal to
 ~~~
 {: .r}
 
 
 
 ~~~
-1 > 0  # greater than
+1 > 0  ## greater than
 ~~~
 {: .r}
 
 
 ~~~
-1 >= -9 # greater than or equal to
+1 >= -9 ## greater than or equal to
 ~~~
 {: .r}
 
 
 float point error, use all.equal instead of '==' for non-integers
 
-## Variables and assignment
+#### Variables and assignment
 
 use assignment arrow to save values to variables
 
@@ -215,7 +217,7 @@ x <- 100
 Can reference the variable in the assignment
 
 ~~~
-x <- x + 1 #notice how RStudio updates its description of x on the top right tab
+x <- x + 1 ##notice how RStudio updates its description of x on the top right tab
 ~~~
 {: .r}
 
@@ -252,13 +254,13 @@ z = 1/40
 Less common, and sometimes it is confusing to use '=' instead of '<-'
 remember consistency!
 
-## Functions
+#### Functions
 
 built in functions
 coding your own
 supplemental lesson
 
-## R Packages
+#### R Packages
 
 * install packages: `install.packages("packagename")`
 * make a package available for use: `library(packagename)`
@@ -286,9 +288,9 @@ Other useful commands:
 
 **CHALLENGES** (allot 15 min)
 
-# "Seeking Help" - 20 minutes
+## "Seeking Help" - 20 minutes
 
-## Reading Help files
+#### Reading Help files
 
 ~~~
 help(function_name)
@@ -310,7 +312,7 @@ Some may have different sections, but these are the main ones.
 
 Help files make it easier to use R because you don;'t have to remember the usage of every function.
 
-## Special Operators
+#### Special Operators
 
 To seek help on special operators, use quotes:
 
@@ -319,7 +321,7 @@ To seek help on special operators, use quotes:
 ~~~
 {: .r}
 
-## Getting help on packages
+#### Getting help on packages
 
 Many packages come with "vignettes": tutorials and extended example documentation.
 Without any arguments
@@ -333,7 +335,7 @@ Without any arguments
 If a package doesn't have any vignettes, you can usually find help by typing
 `help("package-name")`.
 
-## When you kind of remember the function
+#### When you kind of remember the function
 
 fuzzy search:
 
@@ -342,20 +344,20 @@ fuzzy search:
 ~~~
 {: .r}
 
-## When you have no idea where to begin
+#### When you have no idea where to begin
 
 CRAN Task View - show website: http://cran.at.r-project.org/web/views
 
-## When your code doesn't work: seeking help from your peers
+#### When your code doesn't work: seeking help from your peers
 
 Stack Overflow -  search using the `[r]` tag.
 
 
 **CHALLENGES** - allot 10 min
 
-# "Data Structures" - finish at 10 am
+## "Data Structures" - finish at 10 am
 
-## Data Types in R
+#### Data Types in R
 
 Review operators:
 
@@ -433,7 +435,7 @@ Lastly, R stores strings as the `character` type.
 No matter how complicated our analyses become, all data in R is interpreted as one of these
 basic data types.
 
-## Vectors
+#### Vectors
 
 Remember the [1]?
 R never uses just a single value, but instead uses vectors. Output before was a vector of 
@@ -586,9 +588,9 @@ use `?list()`, `?matrix()` or supplemental lesson to learn about them.
 
 primarily **data frames** today, continued after break:
 
-# COFFEE BREAK - 15 min
+## COFFEE BREAK - 15 min
 
-# Subsetting Data - 45 minutes
+## Subsetting Data - 45 minutes
 
 *** HERE ***
 
@@ -614,7 +616,7 @@ x
 
 how do we get to individual contents?
 
-## Accessing elements using their indices
+#### Accessing elements using their indices
 
 we can give their corresponding index, starting from one:
 
@@ -690,7 +692,7 @@ named numeric(0)
 
 R starts indices with 1 instead of 0 like other programming languages such as C and python
 
-## Skipping and removing elements
+#### Skipping and removing elements
 
 use a negative number to return every element *except* for the one specified:
 
@@ -705,7 +707,7 @@ We can skip multiple elements:
 
 
 ~~~
-x[c(-1, -5)]  # or x[-c(1,5)]
+x[c(-1, -5)]  ## or x[-c(1,5)]
 ~~~
 {: .r}
 
@@ -723,7 +725,7 @@ x
 
 *** CHALLENGES *** - allot 5 minutes
 
-## Subsetting by name
+#### Subsetting by name
 
 can extract elements by using their name
 
@@ -801,8 +803,8 @@ Here's a mock illustration:
 
 
 ~~~
-c("a", "b", "c", "d", "e")  # names of x
-   |    |    |    |    |    # The elements == is comparing
+c("a", "b", "c", "d", "e")  ## names of x
+   |    |    |    |    |    ## The elements == is comparing
 c("a", "c")
 ~~~
 {: .r}
@@ -811,8 +813,8 @@ when one vector is shorter than the other, it gets *recycled*:
 
 
 ~~~
-c("a", "b", "c", "d", "e")  # names of x
-   |    |    |    |    |    # The elements == is comparing
+c("a", "b", "c", "d", "e")  ## names of x
+   |    |    |    |    |    ## The elements == is comparing
 c("a", "c", "a", "c", "a")
 ~~~
 {: .r}
@@ -825,7 +827,7 @@ This difference between `==` and `%in%` is important to remember,
 because it can introduce hard to find and subtle bugs!
 
 
-## Using Logical Operations to Subset Data
+#### Using Logical Operations to Subset Data
 
 We can subset data by using boolean vectors:
 
@@ -865,7 +867,7 @@ x[x > 7]
 
 
 
-## Combining logical conditions
+#### Combining logical conditions
 
   * `&`, the "logical AND" operator: returns `TRUE` if both the left and right
     are `TRUE`.
@@ -885,12 +887,9 @@ the `any` function returns `TRUE` if one or more elements of the vector are `TRU
 
 ***CHALLENGES*** allot 10 min
 
----
-title: "Exploring Data Frames"
-teaching: 35
----
+## "Exploring Data Frames" - done at noon
 
-## Data Frames
+#### Data Frames
 
 so far data structures contained all of the same data type
 one of R's most powerful features is its ability to deal with tabular data (like spreadsheet or CSV)
@@ -928,7 +927,7 @@ can perform operations on columns within our data frame, just like with vectors
 
 
 ~~~
-## Say we discovered that the scale weighs two Kg light:
+#### Say we discovered that the scale weighs two Kg light:
 cats$weight + 2
 ~~~
 {: .r}
@@ -1226,7 +1225,7 @@ head(gapminder)
 
 *** CHALLENGES *** - 5 min
 
-### Subsetting Data Frames
+###### Subsetting Data Frames
 
 data frames are lists of vectors, so selecting a single element returns a single vector, or column of the data frame.
 
@@ -1278,18 +1277,9 @@ But for a single column the result will be a vector.
 
 *** CHALLENGES *** - 10 min
 
----
-layout: break
-title: "Lunch"
-break: 60
----
----
-title: Control Flow
-teaching: 20
-exercises: 15
----
+## "Lunch" - 1 hour
 
-
+## Control Flow - 35 minutes
 
 Often when we're coding we want to control the flow of our actions. This can be done
 by setting actions to occur only if a condition or a set of conditions are met.
@@ -1300,15 +1290,15 @@ For conditional statements, the most commonly used approaches:
 
 
 ~~~
-# if
+## if
 if (condition is true) {
   perform action
 }
 
-# if ... else
+## if ... else
 if (condition is true) {
   perform action
-} else {  # that is, if the condition is false,
+} else {  ## that is, if the condition is false,
   perform alternative action
 }
 ~~~
@@ -1318,8 +1308,8 @@ if we want R to print a message if a variable `x` has a particular value:
 
 
 ~~~
-# sample a random number from a Poisson distribution
-# with a mean (lambda) of 8
+## sample a random number from a Poisson distribution
+## with a mean (lambda) of 8
 
 x <- rpois(1, lambda=8)
 
@@ -1404,7 +1394,7 @@ element. Here you need to make sure your condition is of length 1.
  The function `all()`, as the name suggests, will only return `TRUE` if all values in
  the vector are `TRUE`.
 
-## Repeating operations
+#### Repeating operations
 
 If you want to iterate over
 a set of values a `for()` loop will do the job.
@@ -1497,7 +1487,7 @@ output_vector2
 
 
 
-## While loops
+#### While loops
 
 to repeat an operation until a certain condition is met use a `while()` loop
 
@@ -1529,13 +1519,7 @@ that you don't end up in an infinite loop because your condition is never met.
 *** CHALLENGES *** - 15 min
 
 
----
-title: Dataframe Manipulation with dplyr
-teaching: 40
-exercises: 15
-
----
-
+## Dataframe Manipulation with dplyr - finish by 2:30
 
 
 Manipulation of dataframes means many things to many researchers, we often
@@ -1550,16 +1534,10 @@ mean(gapminder[gapminder$continent == "Africa", "gdpPercap"])
 {: .r}
 
 
-
-
-
 ~~~
 mean(gapminder[gapminder$continent == "Americas", "gdpPercap"])
 ~~~
 {: .r}
-
-
-
 
 
 ~~~
@@ -1572,7 +1550,7 @@ mean(gapminder[gapminder$continent == "Asia", "gdpPercap"])
 This can be repetitive, and repetition will cost you time, make your code bulky 
 and hard to read and potentially introduce some nasty bugs
 
-## The `dplyr` package
+#### The `dplyr` package
 
 the `dplyr` package provides a number of useful functions for manipulating dataframes
 in a way that will reduce the above repetition, reduce the probability of making
@@ -1603,7 +1581,7 @@ library(dplyr)
 ~~~
 {: .r}
 
-## Using select()
+#### Using select()
 
 If we wanted to use only a few of the variables in
 our dataframe we could use the `select()` function.
@@ -1637,7 +1615,7 @@ symbol `%>%`, to the next step, which is the `select()` function.
 In R, a pipe symbol is `%>%` while in the
 shell it is `|`
 
-## Using filter()
+#### Using filter()
 
 using the above but only with European
 countries, we can combine `select` and `filter`
@@ -1656,7 +1634,7 @@ If we reversed this, it would not work since we removed the continent data with 
 
 *** CHALLENGES *** - 5 min
 
-## Using group_by() and summarize()
+#### Using group_by() and summarize()
 
 If we want to do the same above for each country, we can reduce repetitiveness with `group_by`
 `group_by` will essentially use every unique criteria that you
@@ -1688,7 +1666,7 @@ value.
 
 ![](../fig/13-dplyr-fig2.png)
 
-## Using summarize()
+#### Using summarize()
 
 `group_by()` is much more
 exciting in conjunction with `summarize()`
@@ -1734,7 +1712,7 @@ gdp_pop_bycontinents_byyear <- gapminder %>%
 ~~~
 {: .r}
 
-## Using mutate()
+#### Using mutate()
 
 We can create new variables prior to (or even after) summarizing information using `mutate()`.
 
@@ -1756,17 +1734,9 @@ gdp_pop_bycontinents_byyear <- gapminder %>%
 
 *** ADVANCED CHALLENGE *** - can skip if running out of time.
 
----
-layout: break
-title: "Coffee Break"
-break: 15
----
----
-title: Creating Publication-Quality Graphics
-teaching: 50
-exercises: 25
----
+## "Coffee Break" - 15 min
 
+## Creating Publication-Quality Graphics - 1 hour and 15 min
 
 
 Plotting our data is one of the best ways to
@@ -1851,7 +1821,7 @@ ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp)) +
 
 *** CHALLENGES *** - 10 min
 
-## Layers
+#### Layers
 
 Using a scatterplot probably isn't the best for visualizing change over time.
 Instead, let's tell `ggplot` to visualize the data as a line plot:
@@ -1899,14 +1869,14 @@ to the points.
 Now we can clearly see that the points are drawn on top of the
 lines.
 
-> ## Tip: Setting an aesthetic to a value instead of a mapping
+> #### Tip: Setting an aesthetic to a value instead of a mapping
 >
 > So far, we've seen how to use an aesthetic (such as **color**) as a *mapping* to a variable in the data. For example, when we use `geom_line(aes(color=continent))`, ggplot will give a different color to each continent. But what if we want to change the colour of all lines to blue? You may think that `geom_line(aes(color="blue"))` should work, but it doesn't. Since we don't want to create a mapping to a specific variable, we simply move the color specification outside of the `aes()` function, like this: `geom_line(color="blue")`.
 {: .callout}
 
 *** CHALLENGES *** - 5 min
 
-## Transformations and statistics
+#### Transformations and statistics
 
 `ggplot` also makes it easy to overlay statistical models over the data. To
 demonstrate we'll go back to our first example:
@@ -1943,7 +1913,7 @@ of 1,000 is now 3 on the y axis, a value of 10,000 corresponds to 4 on the y
 axis and so on. This makes it easier to visualize the spread of data on the
 x-axis.
 
-> ## Tip Reminder: Setting an aesthetic to a value instead of a mapping
+> #### Tip Reminder: Setting an aesthetic to a value instead of a mapping
 >
 > Notice that we used `geom_point(alpha = 0.5)`. As the previous tip mentioned, using a setting outside of the `aes()` function will cause this value to be used for all points, which is what we want in this case. But just like any other aesthetic setting, *alpha* can also be mapped to a variable in the data. For example, we can give a different transparency to each continent with `geom_point(aes(alpha = continent))`.
 {: .callout}
@@ -1980,7 +1950,7 @@ variables and their visual representation.
 *** CHALLENGES *** - 10 min
 
 
-## Multi-panel figures
+#### Multi-panel figures
 
 we can split this out over multiple panels
 by adding a layer of **facet** panels. Focusing only on those countries with
@@ -2010,7 +1980,7 @@ The `facet_wrap` layer takes a **formula** as its argument, denoted by the tilde
 of the gapminder dataset.
 
 
-## Modifying text
+#### Modifying text
 
 change some of the text
 elements. 
@@ -2059,13 +2029,9 @@ mention that line breaks can be anywhere, but you need to have the + at the end 
 
 *** CHALLENGES *** - allot 5 min
 
----
-title: Writing Data
-teaching: 10
-exercises: 15
----
+## Writing Data - complete by 4:20 pm
 
-## Saving plots
+#### Saving plots
 
 So making publication quality plots is great but does us little good if we cannot get them out of
 R and into our documents.
@@ -2129,7 +2095,7 @@ Open up this document and have a look.
 The commands `jpeg`, `png` etc. are used similarly to produce
 documents in different formats.
 
-## Writing data
+#### Writing data
 
 At some point, you'll also want to write out data from R.
 
@@ -2155,9 +2121,9 @@ write.table(aust_subset,
 ~~~
 aust_subset <- gapminder[gapminder$country == "Australia",]
 
-write.table(aust_subset,		# Gapminder data for countries located in Australia
-  file="gapminder-aus.csv", 	# Name of the output file
-  sep=","						# Comma separated
+write.table(aust_subset,		## Gapminder data for countries located in Australia
+  file="gapminder-aus.csv", 	## Name of the output file
+  sep=","						## Comma separated
 )
 ~~~
 {: .r}
@@ -2189,11 +2155,11 @@ when writing out to file. It will also write out the row and
 column names.
 
 ~~~
-write.table(aust_subset,		# Gapminder data for countries located in Australia
-  file="gapminder-aus.csv",		# Name of the output file
-  sep=",",						# Comma separated
-  quote=FALSE,					# Turn off quotation marks
-  row.names=FALSE				# No row names
+write.table(aust_subset,		## Gapminder data for countries located in Australia
+  file="gapminder-aus.csv",		## Name of the output file
+  sep=",",						## Comma separated
+  quote=FALSE,					## Turn off quotation marks
+  row.names=FALSE				## No row names
 )
 ~~~
 {: .r}
@@ -2212,40 +2178,41 @@ That looks better!
 
 *** CHALLENGES *** - 5 min
 
----
-title: Wrap Up
-teaching: 5
----
-### Wrap Up
+## Wrap Up - 5 min
 
-# Help Files in R
+###### Wrap Up
+
+## Help Files in R
 Don't forget your R helpfiles and package vignettes which can be accessed
 by using the `?` and `vignette` commands.
 
-# [Supplemental Lessons](https://carriebrown.github.io/r-novice-gapminder-2/)
+## [Supplemental Lessons](https://carriebrown.github.io/r-novice-gapminder-2/)
 Additional R topics that we could not cover today.
 
-# R Club at UNL
+## R Club at UNL
 The R Club meets on East Campus twice a month. It is headed by Leonardo Bastos, a PhD student in Agronomy
 and Horticulture. You can [email](mailto: lmbastos@unl.edu) Leonardo for more information, or check out
 the club's [GitHub page](https://github.com/ahgsa-unl) which contains previous meeting topics.
 
-# [RStudio cheat sheets](https://www.rstudio.com/resources/cheatsheets/)
+## [RStudio cheat sheets](https://www.rstudio.com/resources/cheatsheets/)
 R quick reference guides including today's handouts and more!
 
-# [R for Data Science](http://r4ds.had.co.nz/)
+## [R for Data Science](http://r4ds.had.co.nz/)
 Hadley Wickham is RStudio's Chief Data Scientist and developer of the `dplyr` and `ggplot2` packages.
 R for Data Science is his newest book, and is available here for free.
 
-# [One R Tip a Day on Twitter](https://twitter.com/RLangTip)
+## [One R Tip a Day on Twitter](https://twitter.com/RLangTip)
 Following One R Tip a Day is a great way to learn new tips and tricks in R.
 
-# [Twotorials](http://www.twotorials.com/)
+## [Twotorials](http://www.twotorials.com/)
 Twotorials is a compilation of 2 minute youtube videos which highlight a specific topic in R.
 
-# [Quick R Website](http://www.statmethods.net/)
+## [Quick R Website](http://www.statmethods.net/)
 
-# [Cookbook for R](http://www.cookbook-r.com/)
+## [Cookbook for R](http://www.cookbook-r.com/)
 
-# [Advanced R](http://adv-r.had.co.nz/)
+## [Advanced R](http://adv-r.had.co.nz/)
 For more advanced topics, check out Hadley Wickham's website based on his book "Advanced R".
+
+
+Remind them to fill out postit survey
