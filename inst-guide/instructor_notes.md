@@ -4,6 +4,8 @@ title: "Instructor Notes"
 permalink: /guide/
 ---
 
+Updated
+
 ## "Introduction to R and RStudio" - 45 minutes
 
 #### Before Starting The Workshop

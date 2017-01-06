@@ -1543,11 +1543,11 @@ permalink: /figures/
 
 If you want to learn more, check out some of these great resources:
 
-### Help Files in R
+#### Help Files in R
 Don't forget your R helpfiles and package vignettes which can be accessed
 by using the `?` and `vignette` commands.
 
-### [Supplemental Lessons](https://carriebrown.github.io/r-novice-gapminder-2/)
+#### [Supplemental Lessons](https://carriebrown.github.io/r-novice-gapminder-2/)
 Additional R topics that we could not cover today.
 
 ### R Club at UNL
