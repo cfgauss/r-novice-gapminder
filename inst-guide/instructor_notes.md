@@ -2185,11 +2185,11 @@ That looks better!
 
 ## Wrap Up - 5 min
 
-### Help Files in R
+#### Help Files in R
 Don't forget your R helpfiles and package vignettes which can be accessed
 by using the `?` and `vignette` commands.
 
-### [Supplemental Lessons](https://carriebrown.github.io/r-novice-gapminder-2/)
+#### [Supplemental Lessons](https://carriebrown.github.io/r-novice-gapminder-2/)
 Additional R topics that we could not cover today.
 
 ### R Club at UNL
@@ -2197,7 +2197,7 @@ The R Club meets on East Campus twice a month. It is headed by Leonardo Bastos, 
 and Horticulture. You can [email](mailto: lmbastos@unl.edu) Leonardo for more information, or check out
 the club's [GitHub page](https://github.com/ahgsa-unl) which contains previous meeting topics.
 
-### [RStudio cheat sheets](https://www.rstudio.com/resources/cheatsheets/)
+## [RStudio cheat sheets](https://www.rstudio.com/resources/cheatsheets/)
 R quick reference guides including today's handouts and more!
 
 ### [R for Data Science](http://r4ds.had.co.nz/)
