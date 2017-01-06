@@ -519,7 +519,7 @@ y:  1  2  3  4  5  6  7  8
 {: .r}
 
 
-**CHALLENGEs** - allot 10 minutes
+**CHALLENGES** - allot 10 minutes
 
 Vectors can be made up of any of the basic data types.
 
@@ -554,7 +554,7 @@ b
 ~~~
 {: .r}
 
-*** CHALLENGES ***
+***CHALLENGES***
 
 we can use `c` to add elements to an existing vector
 
@@ -723,7 +723,7 @@ x
 
 
 
-*** CHALLENGES *** - allot 5 minutes
+***CHALLENGES*** - allot 5 minutes
 
 #### Subsetting by name
 
@@ -939,7 +939,7 @@ paste("My cat is", cats$coat)
 ~~~
 {: .r}
 
-*** CHALLENGES*** allot 5 min
+***CHALLENGES*** allot 5 min
 
 add an additional column for age using `c`
 
@@ -1087,7 +1087,7 @@ cats
 ~~~
 {: .r}
 
-*** CHALLENGES *** - allot 5 min
+***CHALLENGES*** - allot 5 min
 
 let's use a more realistic dataset
 the `gapminder` data set built into the `gapminder` package.
@@ -1222,8 +1222,7 @@ head(gapminder)
 {: .r}
 
 
-
-*** CHALLENGES *** - 5 min
+***CHALLENGES*** - 5 min
 
 ###### Subsetting Data Frames
 
@@ -1275,7 +1274,7 @@ gapminder[3,]
 But for a single column the result will be a vector.
 
 
-*** CHALLENGES *** - 10 min
+***CHALLENGES*** - 10 min
 
 ## "Lunch" - 1 hour
 
@@ -1372,7 +1371,7 @@ x
 {: .r}
 
 
-*** CHALLENGES *** - 5 min
+***CHALLENGES*** - 5 min
 
 
 Did anyone get a warning message like this?
@@ -1516,7 +1515,7 @@ You have to be careful
 that you don't end up in an infinite loop because your condition is never met.
 
 
-*** CHALLENGES *** - 15 min
+***CHALLENGES*** - 15 min
 
 
 ## Dataframe Manipulation with dplyr - finish by 2:30
@@ -1632,7 +1631,7 @@ first we pass the data frame to `filter` then pass the filtered dataframe to `se
 
 If we reversed this, it would not work since we removed the continent data with `select`
 
-*** CHALLENGES *** - 5 min
+***CHALLENGES*** - 5 min
 
 #### Using group_by() and summarize()
 
@@ -1687,7 +1686,7 @@ gdp_bycontinents <- gapminder %>%
 That allowed us to calculate the mean gdpPercap for each continent, but it gets
 even better.
 
-*** CHALLENGES *** - 5 min
+***CHALLENGES*** - 5 min
 
 `group_by()` allows us to group by multiple variables. Let's group by `year` and `continent`.
 
@@ -1819,7 +1818,7 @@ ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp)) +
 
 <img src="../fig/rmd-08-lifeExp-vs-gdpPercap-scatter2-1.png" title="plot of chunk lifeExp-vs-gdpPercap-scatter2" alt="plot of chunk lifeExp-vs-gdpPercap-scatter2" style="display: block; margin: auto;" />
 
-*** CHALLENGES *** - 10 min
+***CHALLENGES*** - 10 min
 
 #### Layers
 
@@ -1874,7 +1873,7 @@ lines.
 > So far, we've seen how to use an aesthetic (such as **color**) as a *mapping* to a variable in the data. For example, when we use `geom_line(aes(color=continent))`, ggplot will give a different color to each continent. But what if we want to change the colour of all lines to blue? You may think that `geom_line(aes(color="blue"))` should work, but it doesn't. Since we don't want to create a mapping to a specific variable, we simply move the color specification outside of the `aes()` function, like this: `geom_line(color="blue")`.
 {: .callout}
 
-*** CHALLENGES *** - 5 min
+***CHALLENGES*** - 5 min
 
 #### Transformations and statistics
 
@@ -1947,7 +1946,7 @@ aesthetic by passing it as an argument to `geom_smooth`. Previously in the
 lesson we've used the `aes` function to define a *mapping* between data
 variables and their visual representation.
 
-*** CHALLENGES *** - 10 min
+***CHALLENGES*** - 10 min
 
 
 #### Multi-panel figures
@@ -2027,7 +2026,7 @@ ggplot(data = az.countries, aes(x = year, y = lifeExp, color=continent)) +
 
 mention that line breaks can be anywhere, but you need to have the + at the end of the line.
 
-*** CHALLENGES *** - allot 5 min
+***CHALLENGES*** - allot 5 min
 
 ## Writing Data - complete by 4:20 pm
 
@@ -2090,7 +2089,7 @@ dont forget the `dev.off` command
 
 Open up this document and have a look.
 
-*** CHALLENGES *** - 5 min
+***CHALLENGES*** - 5 min
 
 The commands `jpeg`, `png` etc. are used similarly to produce
 documents in different formats.
@@ -2176,7 +2175,7 @@ head gapminder-aus.csv
 
 That looks better!
 
-*** CHALLENGES *** - 5 min
+***CHALLENGES*** - 5 min
 
 ## Wrap Up - 5 min
 
