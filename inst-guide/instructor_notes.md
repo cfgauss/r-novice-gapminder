@@ -1,8 +1,3 @@
----
-layout: page
-title: "Instructor Notes"
----
-
 ## "Introduction to R and RStudio" - 45 minutes
 
 #### Before Starting The Workshop
