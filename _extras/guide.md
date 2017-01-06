@@ -1,38 +1,38 @@
 ---
 layout: page
-title: "Instructor Notes"
+title: Guide
 permalink: /guide/
 ---
 
-# "Introduction to R and RStudio" - 45 minutes
+## "Introduction to R and RStudio" - 45 minutes
 
-## Before Starting The Workshop
+#### Before Starting The Workshop
 
 Please ensure you have the latest version of R and RStudio installed on your machine.
 
-## Introduction to RStudio
+#### Introduction to RStudio
 
 Why R?
-- free
-- open source
-
+ - free
+ - open source
+ 
 Why RStudio?
-- provides a fully integrated environment
-- built in version control and project management
-- works on all platforms
+ - provides a fully integrated environment
+ - built in version control and project management
+ - works on all platforms
 
 
 **Basic layout**
 
 three panels:
 
-* The interactive R console (entire left)
-* Environment/History (tabbed in upper right)
-* Files/Plots/Packages/Help/Viewer (tabbed in lower right)
+  * The interactive R console (entire left)
+  * Environment/History (tabbed in upper right)
+  * Files/Plots/Packages/Help/Viewer (tabbed in lower right)
 
 Editor panel when you open scripts
 
-## Work flow within RStudio
+#### Work flow within RStudio
 
 There are two main ways one can work within RStudio.
 
@@ -43,19 +43,22 @@ to push current line, selected lines or modified lines to the
 interactive R console.
 
 Run button and key shortcuts
-- ctrl-enter windows/linux
-- command-enter mac
 
+  * ctrl-enter windows/linux
+  * command-enter mac
+ 
 Project managment 
 
 Mostly use the console
-- run code and test commands
+
+ - run code and test commands
 
 ">" cursor - similar to the shell
-- type commands
-- R executes
-- returns result
 
+ - type commands
+ - R executes
+ - returns result
+ 
 The simplest thing you could do with R is do arithmetic:
 
 
@@ -92,13 +95,13 @@ Use parentheses to force order:
 Use these to make code easier to read
 
 ~~~
-(3 + (5 * (2 ^ 2))) # hard to read
-3 + 5 * 2 ^ 2       # clear, if you remember the rules
-3 + 5 * (2 ^ 2)     # if you forget some rules, this might help
+(3 + (5 * (2 ^ 2))) ## hard to read
+3 + 5 * 2 ^ 2       ## clear, if you remember the rules
+3 + 5 * (2 ^ 2)     ## if you forget some rules, this might help
 ~~~
 {: .r}
 
-"#" indicate comments
+"##" indicate comments
 
 Scientific notation
 
@@ -108,84 +111,83 @@ Scientific notation
 {: .r}
 
 ~~~
-5e3  # Note the lack of minus here
+5e3  ## Note the lack of minus here
 ~~~
 {: .r}
 
 
-## Mathematical functions
+#### Mathematical functions
 
 functions use name then parenthesis
 
 ~~~
-sin(1)  # trigonometry functions
+sin(1)  ## trigonometry functions
 ~~~
 {: .r}
 
 
 ~~~
-log(1)  # natural logarithm
+log(1)  ## natural logarithm
 ~~~
 {: .r}
 
 
 
 ~~~
-log10(10) # base-10 logarithm
+log10(10) ## base-10 logarithm
 ~~~
 {: .r}
 
 ~~~
-exp(0.5) # e^(1/2)
+exp(0.5) ## e^(1/2)
 ~~~
 {: .r}
 
 Can look up functions in google or use Autocomplete (tab)
 
-*** HERE ***
 
-## Comparing things
-
-~~~
-1 == 1  # equality (note two equals signs, read as "is equal to")
-~~~
-{: .r}
-
+#### Comparing things
 
 ~~~
-1 != 2  # inequality (read as "is not equal to")
+1 == 1  ## equality (note two equals signs, read as "is equal to")
 ~~~
 {: .r}
 
 
 ~~~
-1 <  2  # less than
+1 != 2  ## inequality (read as "is not equal to")
 ~~~
 {: .r}
 
 
 ~~~
-1 <= 1  # less than or equal to
+1 <  2  ## less than
+~~~
+{: .r}
+
+
+~~~
+1 <= 1  ## less than or equal to
 ~~~
 {: .r}
 
 
 
 ~~~
-1 > 0  # greater than
+1 > 0  ## greater than
 ~~~
 {: .r}
 
 
 ~~~
-1 >= -9 # greater than or equal to
+1 >= -9 ## greater than or equal to
 ~~~
 {: .r}
 
 
 float point error, use all.equal instead of '==' for non-integers
 
-## Variables and assignment
+#### Variables and assignment
 
 use assignment arrow to save values to variables
 
@@ -221,7 +223,7 @@ x <- 100
 Can reference the variable in the assignment
 
 ~~~
-x <- x + 1 #notice how RStudio updates its description of x on the top right tab
+x <- x + 1 ##notice how RStudio updates its description of x on the top right tab
 ~~~
 {: .r}
 
@@ -241,9 +243,9 @@ can contain letters, numbers, underscores and periods
 cannot start with a number nor contain spaces at all.
 
 Naming conventions:
-* periods.between.words
-* underscores\_between_words
-* camelCaseToSeparateWords
+  * periods.between.words
+  * underscores\_between_words
+  * camelCaseToSeparateWords
 
 consistency is important
 
@@ -258,13 +260,13 @@ z = 1/40
 Less common, and sometimes it is confusing to use '=' instead of '<-'
 remember consistency!
 
-## Functions
+#### Functions
 
 built in functions
 coding your own
 supplemental lesson
 
-## R Packages
+#### R Packages
 
 * install packages: `install.packages("packagename")`
 * make a package available for use: `library(packagename)`
@@ -286,15 +288,15 @@ Point out how to install via the Packages tab.
 Other useful commands:
 
 * You can see what packages are installed by typing
-`installed.packages()`
+  `installed.packages()`
 * You can update installed packages by typing `update.packages()`
 * You can remove a package with `remove.packages("packagename")`
 
 **CHALLENGES** (allot 15 min)
 
-# "Seeking Help" - 20 minutes
+## "Seeking Help" - 20 minutes
 
-## Reading Help files
+#### Reading Help files
 
 ~~~
 help(function_name)
@@ -304,19 +306,19 @@ help(function_name)
 
 Each help page is broken down into sections:
 
-- Description: An extended description of what the function does.
-- Usage: The arguments of the function and their default values.
-- Arguments: An explanation of the data each argument is expecting.
-- Details: Any important details to be aware of.
-- Value: The data the function returns.
-- See Also: Any related functions you might find useful.
-- Examples: Some examples for how to use the function.
+ - Description: An extended description of what the function does.
+ - Usage: The arguments of the function and their default values.
+ - Arguments: An explanation of the data each argument is expecting.
+ - Details: Any important details to be aware of.
+ - Value: The data the function returns.
+ - See Also: Any related functions you might find useful.
+ - Examples: Some examples for how to use the function.
 
 Some may have different sections, but these are the main ones.
 
 Help files make it easier to use R because you don;'t have to remember the usage of every function.
 
-## Special Operators
+#### Special Operators
 
 To seek help on special operators, use quotes:
 
@@ -325,7 +327,7 @@ To seek help on special operators, use quotes:
 ~~~
 {: .r}
 
-## Getting help on packages
+#### Getting help on packages
 
 Many packages come with "vignettes": tutorials and extended example documentation.
 Without any arguments
@@ -334,12 +336,12 @@ Without any arguments
 
 `vignette(package="package-name")` will list all available vignettes for `package-name`
 
-and `vignette("vignette-name")` will open the specified vignette.
+ and `vignette("vignette-name")` will open the specified vignette.
 
 If a package doesn't have any vignettes, you can usually find help by typing
 `help("package-name")`.
 
-## When you kind of remember the function
+#### When you kind of remember the function
 
 fuzzy search:
 
@@ -348,20 +350,20 @@ fuzzy search:
 ~~~
 {: .r}
 
-## When you have no idea where to begin
+#### When you have no idea where to begin
 
 CRAN Task View - show website: http://cran.at.r-project.org/web/views
 
-## When your code doesn't work: seeking help from your peers
+#### When your code doesn't work: seeking help from your peers
 
 Stack Overflow -  search using the `[r]` tag.
 
 
 **CHALLENGES** - allot 10 min
 
-# "Data Structures" - finish at 10 am
+## "Data Structures" - finish at 10 am
 
-## Data Types in R
+#### Data Types in R
 
 Review operators:
 
@@ -439,7 +441,7 @@ Lastly, R stores strings as the `character` type.
 No matter how complicated our analyses become, all data in R is interpreted as one of these
 basic data types.
 
-## Vectors
+#### Vectors
 
 Remember the [1]?
 R never uses just a single value, but instead uses vectors. Output before was a vector of 
@@ -515,15 +517,15 @@ when operating on two or more vectors, R performs the operation element by eleme
 
 ~~~
 x:  2  4  6  8 10 12 14 16
-+  +  +  +  +  +  +  +
+    +  +  +  +  +  +  +  +
 y:  1  2  3  4  5  6  7  8
 --------------------------
-3  6  9 12 15 18 21 24
+    3  6  9 12 15 18 21 24
 ~~~
 {: .r}
 
 
-**CHALLENGEs** - allot 10 minutes
+**CHALLENGES** - allot 10 minutes
 
 Vectors can be made up of any of the basic data types.
 
@@ -558,7 +560,7 @@ b
 ~~~
 {: .r}
 
-*** CHALLENGES ***
+***CHALLENGES***
 
 we can use `c` to add elements to an existing vector
 
@@ -592,9 +594,9 @@ use `?list()`, `?matrix()` or supplemental lesson to learn about them.
 
 primarily **data frames** today, continued after break:
 
-# COFFEE BREAK - 15 min
+## COFFEE BREAK - 15 min
 
-# Subsetting Data - 45 minutes
+## Subsetting Data - 45 minutes
 
 *** HERE ***
 
@@ -620,7 +622,7 @@ x
 
 how do we get to individual contents?
 
-## Accessing elements using their indices
+#### Accessing elements using their indices
 
 we can give their corresponding index, starting from one:
 
@@ -696,7 +698,7 @@ named numeric(0)
 
 R starts indices with 1 instead of 0 like other programming languages such as C and python
 
-## Skipping and removing elements
+#### Skipping and removing elements
 
 use a negative number to return every element *except* for the one specified:
 
@@ -711,7 +713,7 @@ We can skip multiple elements:
 
 
 ~~~
-x[c(-1, -5)]  # or x[-c(1,5)]
+x[c(-1, -5)]  ## or x[-c(1,5)]
 ~~~
 {: .r}
 
@@ -727,9 +729,9 @@ x
 
 
 
-*** CHALLENGES *** - allot 5 minutes
+***CHALLENGES*** - allot 5 minutes
 
-## Subsetting by name
+#### Subsetting by name
 
 can extract elements by using their name
 
@@ -807,8 +809,8 @@ Here's a mock illustration:
 
 
 ~~~
-c("a", "b", "c", "d", "e")  # names of x
-|    |    |    |    |    # The elements == is comparing
+c("a", "b", "c", "d", "e")  ## names of x
+   |    |    |    |    |    ## The elements == is comparing
 c("a", "c")
 ~~~
 {: .r}
@@ -817,8 +819,8 @@ when one vector is shorter than the other, it gets *recycled*:
 
 
 ~~~
-c("a", "b", "c", "d", "e")  # names of x
-|    |    |    |    |    # The elements == is comparing
+c("a", "b", "c", "d", "e")  ## names of x
+   |    |    |    |    |    ## The elements == is comparing
 c("a", "c", "a", "c", "a")
 ~~~
 {: .r}
@@ -831,7 +833,7 @@ This difference between `==` and `%in%` is important to remember,
 because it can introduce hard to find and subtle bugs!
 
 
-## Using Logical Operations to Subset Data
+#### Using Logical Operations to Subset Data
 
 We can subset data by using boolean vectors:
 
@@ -871,19 +873,19 @@ x[x > 7]
 
 
 
-## Combining logical conditions
+#### Combining logical conditions
 
-* `&`, the "logical AND" operator: returns `TRUE` if both the left and right
-are `TRUE`.
-* `|`, the "logical OR" operator: returns `TRUE`, if either the left or right
-(or both) are `TRUE`.
+  * `&`, the "logical AND" operator: returns `TRUE` if both the left and right
+    are `TRUE`.
+  * `|`, the "logical OR" operator: returns `TRUE`, if either the left or right
+    (or both) are `TRUE`.
 
 The recycling rule applies with both of these
 
 `&&` and `||` do not use the recycling rule: they only look at the first element of each
-vector and ignore the remaining elements. Usually used in programming not data analysis
+ vector and ignore the remaining elements. Usually used in programming not data analysis
 
-* `!`, the "logical NOT" operator: converts `TRUE` to `FALSE` and `FALSE` to
+  * `!`, the "logical NOT" operator: converts `TRUE` to `FALSE` and `FALSE` to
 `TRUE`. can negate a single logical condition, or a whole vector of conditions
 
 the `all` function returns `TRUE` if every element of the vector is `TRUE`
@@ -891,9 +893,9 @@ the `any` function returns `TRUE` if one or more elements of the vector are `TRU
 
 ***CHALLENGES*** allot 10 min
 
-# "Exploring Data Frames" - done at noon
+## "Exploring Data Frames" - done at noon
 
-## Data Frames
+#### Data Frames
 
 so far data structures contained all of the same data type
 one of R's most powerful features is its ability to deal with tabular data (like spreadsheet or CSV)
@@ -931,7 +933,7 @@ can perform operations on columns within our data frame, just like with vectors
 
 
 ~~~
-## Say we discovered that the scale weighs two Kg light:
+#### Say we discovered that the scale weighs two Kg light:
 cats$weight + 2
 ~~~
 {: .r}
@@ -943,7 +945,7 @@ paste("My cat is", cats$coat)
 ~~~
 {: .r}
 
-*** CHALLENGES*** allot 5 min
+***CHALLENGES*** allot 5 min
 
 add an additional column for age using `c`
 
@@ -1033,7 +1035,7 @@ cats
 
 
 ~~~
-coat weight likes_string age
+           coat weight likes_string age
 1        calico    2.1            1   4
 2         black    5.0            0   5
 3         tabby    3.2            1   8
@@ -1091,7 +1093,7 @@ cats
 ~~~
 {: .r}
 
-*** CHALLENGES *** - allot 5 min
+***CHALLENGES*** - allot 5 min
 
 let's use a more realistic dataset
 the `gapminder` data set built into the `gapminder` package.
@@ -1226,10 +1228,9 @@ head(gapminder)
 {: .r}
 
 
+***CHALLENGES*** - 5 min
 
-*** CHALLENGES *** - 5 min
-
-### Subsetting Data Frames
+###### Subsetting Data Frames
 
 data frames are lists of vectors, so selecting a single element returns a single vector, or column of the data frame.
 
@@ -1279,11 +1280,11 @@ gapminder[3,]
 But for a single column the result will be a vector.
 
 
-*** CHALLENGES *** - 10 min
+***CHALLENGES*** - 10 min
 
-# "Lunch" - 1 hour
+## "Lunch" - 1 hour
 
-# Control Flow - 35 minutes
+## Control Flow - 35 minutes
 
 Often when we're coding we want to control the flow of our actions. This can be done
 by setting actions to occur only if a condition or a set of conditions are met.
@@ -1294,16 +1295,16 @@ For conditional statements, the most commonly used approaches:
 
 
 ~~~
-# if
+## if
 if (condition is true) {
-perform action
+  perform action
 }
 
-# if ... else
+## if ... else
 if (condition is true) {
-perform action
-} else {  # that is, if the condition is false,
-perform alternative action
+  perform action
+} else {  ## that is, if the condition is false,
+  perform alternative action
 }
 ~~~
 {: .r}
@@ -1312,13 +1313,13 @@ if we want R to print a message if a variable `x` has a particular value:
 
 
 ~~~
-# sample a random number from a Poisson distribution
-# with a mean (lambda) of 8
+## sample a random number from a Poisson distribution
+## with a mean (lambda) of 8
 
 x <- rpois(1, lambda=8)
 
 if (x >= 10) {
-print("x is greater than or equal to 10")
+  print("x is greater than or equal to 10")
 }
 
 x
@@ -1337,22 +1338,22 @@ set.seed(10)
 x <- rpois(1, lambda=8)
 
 if (x >= 10) {
-print("x is greater than or equal to 10")
+  print("x is greater than or equal to 10")
 } else if (x > 5) {
-print("x is greater than 5")
+  print("x is greater than 5")
 } else {
-print("x is less than 5")
+  print("x is less than 5")
 }
 ~~~
 {: .r}
 
 
 
-In the above case, the function `rpois()` generates a random number following a
-Poisson distribution with a mean (i.e. lambda) of 8. The function `set.seed()`
-guarantees that all machines will generate the exact same 'pseudo-random'
-number 
-
+ In the above case, the function `rpois()` generates a random number following a
+ Poisson distribution with a mean (i.e. lambda) of 8. The function `set.seed()`
+ guarantees that all machines will generate the exact same 'pseudo-random'
+ number 
+ 
 when R evaluates the condition inside `if()` statements, it is
 looking for a logical element
 
@@ -1361,7 +1362,7 @@ headaches for beginners.
 ~~~
 x  <-  4 == 3
 if (x) {
-"4 equals 3"
+  "4 equals 3"
 }
 ~~~
 {: .r}
@@ -1376,7 +1377,7 @@ x
 {: .r}
 
 
-*** CHALLENGES *** - 5 min
+***CHALLENGES*** - 5 min
 
 
 Did anyone get a warning message like this?
@@ -1392,13 +1393,13 @@ If your condition evaluates to a vector with more than one logical element,
 the function `if()` will still run, but will only evaluate the condition in the first
 element. Here you need to make sure your condition is of length 1.
 
-The `any()` function will return TRUE if at least one
-TRUE value is found within a vector, otherwise it will return `FALSE`.
-This can be used in a similar way to the `%in%` operator.
-The function `all()`, as the name suggests, will only return `TRUE` if all values in
-the vector are `TRUE`.
+ The `any()` function will return TRUE if at least one
+ TRUE value is found within a vector, otherwise it will return `FALSE`.
+ This can be used in a similar way to the `%in%` operator.
+ The function `all()`, as the name suggests, will only return `TRUE` if all values in
+ the vector are `TRUE`.
 
-## Repeating operations
+#### Repeating operations
 
 If you want to iterate over
 a set of values a `for()` loop will do the job.
@@ -1413,7 +1414,7 @@ The basic structure of a `for()` loop is:
 
 ~~~
 for(iterator in set of values){
-do a thing
+  do a thing
 }
 ~~~
 {: .r}
@@ -1423,7 +1424,7 @@ For example:
 
 ~~~
 for(i in 1:10){
-print(i)
+  print(i)
 }
 ~~~
 {: .r}
@@ -1439,9 +1440,9 @@ once.
 
 ~~~
 for(i in 1:5){
-for(j in c('a', 'b', 'c', 'd', 'e')){
-print(paste(i,j))
-}
+  for(j in c('a', 'b', 'c', 'd', 'e')){
+    print(paste(i,j))
+  }
 }
 ~~~
 {: .r}
@@ -1455,10 +1456,10 @@ Rather than printing the results, we could write the loop output to a new object
 ~~~
 output_vector <- c()
 for(i in 1:5){
-for(j in c('a', 'b', 'c', 'd', 'e')){
-temp_output <- paste(i, j)
-output_vector <- c(output_vector, temp_output)
-}
+  for(j in c('a', 'b', 'c', 'd', 'e')){
+    temp_output <- paste(i, j)
+    output_vector <- c(output_vector, temp_output)
+  }
 }
 output_vector
 ~~~
@@ -1478,11 +1479,11 @@ A better way is to define your (empty) output object before filling in the value
 output_matrix <- matrix(nrow=5, ncol=5)
 j_vector <- c('a', 'b', 'c', 'd', 'e')
 for(i in 1:5){
-for(j in 1:5){
-temp_j_value <- j_vector[j]
-temp_output <- paste(i, temp_j_value)
-output_matrix[i, j] <- temp_output
-}
+  for(j in 1:5){
+    temp_j_value <- j_vector[j]
+    temp_output <- paste(i, temp_j_value)
+    output_matrix[i, j] <- temp_output
+  }
 }
 output_vector2 <- as.vector(output_matrix)
 output_vector2
@@ -1491,14 +1492,14 @@ output_vector2
 
 
 
-## While loops
+#### While loops
 
 to repeat an operation until a certain condition is met use a `while()` loop
 
 
 ~~~
 while(this condition is true){
-do a thing
+  do a thing
 }
 ~~~
 {: .r}
@@ -1510,8 +1511,8 @@ between 0 and 1 until it gets one that's less than 0.1.
 ~~~
 z <- 1
 while(z > 0.1){
-z <- runif(1)
-print(z)
+  z <- runif(1)
+  print(z)
 }
 ~~~
 {: .r}
@@ -1520,10 +1521,10 @@ You have to be careful
 that you don't end up in an infinite loop because your condition is never met.
 
 
-*** CHALLENGES *** - 15 min
+***CHALLENGES*** - 15 min
 
 
-# Dataframe Manipulation with dplyr - finish by 2:30
+## Dataframe Manipulation with dplyr - finish by 2:30
 
 
 Manipulation of dataframes means many things to many researchers, we often
@@ -1554,7 +1555,7 @@ mean(gapminder[gapminder$continent == "Asia", "gdpPercap"])
 This can be repetitive, and repetition will cost you time, make your code bulky 
 and hard to read and potentially introduce some nasty bugs
 
-## The `dplyr` package
+#### The `dplyr` package
 
 the `dplyr` package provides a number of useful functions for manipulating dataframes
 in a way that will reduce the above repetition, reduce the probability of making
@@ -1585,7 +1586,7 @@ library(dplyr)
 ~~~
 {: .r}
 
-## Using select()
+#### Using select()
 
 If we wanted to use only a few of the variables in
 our dataframe we could use the `select()` function.
@@ -1619,7 +1620,7 @@ symbol `%>%`, to the next step, which is the `select()` function.
 In R, a pipe symbol is `%>%` while in the
 shell it is `|`
 
-## Using filter()
+#### Using filter()
 
 using the above but only with European
 countries, we can combine `select` and `filter`
@@ -1627,8 +1628,8 @@ countries, we can combine `select` and `filter`
 
 ~~~
 year_country_gdp_euro <- gapminder %>%
-filter(continent=="Europe") %>%
-select(year,country,gdpPercap)
+    filter(continent=="Europe") %>%
+    select(year,country,gdpPercap)
 ~~~
 {: .r}
 
@@ -1636,9 +1637,9 @@ first we pass the data frame to `filter` then pass the filtered dataframe to `se
 
 If we reversed this, it would not work since we removed the continent data with `select`
 
-*** CHALLENGES *** - 5 min
+***CHALLENGES*** - 5 min
 
-## Using group_by() and summarize()
+#### Using group_by() and summarize()
 
 If we want to do the same above for each country, we can reduce repetitiveness with `group_by`
 `group_by` will essentially use every unique criteria that you
@@ -1663,14 +1664,14 @@ str(gapminder %>% group_by(continent))
 notice that the structure of the dataframe where we used `group_by()`
 (`grouped_df`) is not the same as the original `gapminder` (`data.frame`).
 
-A
+ A
 `grouped_df` can be thought of as a `list` where each item in the `list`is a
 `data.frame` which contains only the rows that correspond to the a particular
 value.
 
 ![](../fig/13-dplyr-fig2.png)
 
-## Using summarize()
+#### Using summarize()
 
 `group_by()` is much more
 exciting in conjunction with `summarize()`
@@ -1681,8 +1682,8 @@ data frames
 
 ~~~
 gdp_bycontinents <- gapminder %>%
-group_by(continent) %>%
-summarize(mean_gdpPercap=mean(gdpPercap))
+    group_by(continent) %>%
+    summarize(mean_gdpPercap=mean(gdpPercap))
 ~~~
 {: .r}
 
@@ -1691,7 +1692,7 @@ summarize(mean_gdpPercap=mean(gdpPercap))
 That allowed us to calculate the mean gdpPercap for each continent, but it gets
 even better.
 
-*** CHALLENGES *** - 5 min
+***CHALLENGES*** - 5 min
 
 `group_by()` allows us to group by multiple variables. Let's group by `year` and `continent`.
 
@@ -1699,8 +1700,8 @@ even better.
 
 ~~~
 gdp_bycontinents_byyear <- gapminder %>%
-group_by(continent,year) %>%
-summarize(mean_gdpPercap=mean(gdpPercap))
+    group_by(continent,year) %>%
+    summarize(mean_gdpPercap=mean(gdpPercap))
 ~~~
 {: .r}
 
@@ -1708,29 +1709,29 @@ we can define more than 1 variable with `summarize`
 
 ~~~
 gdp_pop_bycontinents_byyear <- gapminder %>%
-group_by(continent,year) %>%
-summarize(mean_gdpPercap=mean(gdpPercap),
-sd_gdpPercap=sd(gdpPercap),
-mean_pop=mean(pop),
-sd_pop=sd(pop))
+    group_by(continent,year) %>%
+    summarize(mean_gdpPercap=mean(gdpPercap),
+              sd_gdpPercap=sd(gdpPercap),
+              mean_pop=mean(pop),
+              sd_pop=sd(pop))
 ~~~
 {: .r}
 
-## Using mutate()
+#### Using mutate()
 
 We can create new variables prior to (or even after) summarizing information using `mutate()`.
 
 
 ~~~
 gdp_pop_bycontinents_byyear <- gapminder %>%
-mutate(gdp_billion=gdpPercap*pop/10^9) %>%
-group_by(continent,year) %>%
-summarize(mean_gdpPercap=mean(gdpPercap),
-sd_gdpPercap=sd(gdpPercap),
-mean_pop=mean(pop),
-sd_pop=sd(pop),
-mean_gdp_billion=mean(gdp_billion),
-sd_gdp_billion=sd(gdp_billion))
+    mutate(gdp_billion=gdpPercap*pop/10^9) %>%
+    group_by(continent,year) %>%
+    summarize(mean_gdpPercap=mean(gdpPercap),
+              sd_gdpPercap=sd(gdpPercap),
+              mean_pop=mean(pop),
+              sd_pop=sd(pop),
+              mean_gdp_billion=mean(gdp_billion),
+              sd_gdp_billion=sd(gdp_billion))
 ~~~
 {: .r}
 
@@ -1738,9 +1739,9 @@ sd_gdp_billion=sd(gdp_billion))
 
 *** ADVANCED CHALLENGE *** - can skip if running out of time.
 
-# "Coffee Break" - 15 min
+## "Coffee Break" - 15 min
 
-# Creating Publication-Quality Graphics - 1 hour and 15 min
+## Creating Publication-Quality Graphics - 1 hour and 15 min
 
 
 Plotting our data is one of the best ways to
@@ -1753,9 +1754,9 @@ it is a bit harder to learn but produces better looking plots than the base plot
 ggplot2 is built on the grammar of graphics (where the gg comes from)
 the idea that any plot can be
 expressed from the same set of components:
-- a **data** set
-- a **coordinate system**
--  a set of **geoms**--the visual representation of data points.
+ - a **data** set
+ - a **coordinate system**
+ -  a set of **geoms**--the visual representation of data points.
 
 The key to understanding ggplot2 is thinking about a figure in layers.
 
@@ -1776,7 +1777,7 @@ layers on the plot.
 ~~~
 library("ggplot2")
 ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp)) +
-geom_point()
+  geom_point()
 ~~~
 {: .r}
 
@@ -1817,15 +1818,15 @@ tells `ggplot` we want to visually represent the relationship between **x** and
 
 ~~~
 ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp)) +
-geom_point()
+  geom_point()
 ~~~
 {: .r}
 
 <img src="../fig/rmd-08-lifeExp-vs-gdpPercap-scatter2-1.png" title="plot of chunk lifeExp-vs-gdpPercap-scatter2" alt="plot of chunk lifeExp-vs-gdpPercap-scatter2" style="display: block; margin: auto;" />
 
-*** CHALLENGES *** - 10 min
+***CHALLENGES*** - 10 min
 
-## Layers
+#### Layers
 
 Using a scatterplot probably isn't the best for visualizing change over time.
 Instead, let's tell `ggplot` to visualize the data as a line plot:
@@ -1833,7 +1834,7 @@ Instead, let's tell `ggplot` to visualize the data as a line plot:
 
 ~~~
 ggplot(data = gapminder, aes(x=year, y=lifeExp, by=country, color=continent)) +
-geom_line()
+  geom_line()
 ~~~
 {: .r}
 
@@ -1849,7 +1850,7 @@ simply add another layer to the plot:
 
 ~~~
 ggplot(data = gapminder, aes(x=year, y=lifeExp, by=country, color=continent)) +
-geom_line() + geom_point()
+  geom_line() + geom_point()
 ~~~
 {: .r}
 
@@ -1860,7 +1861,7 @@ note that each layer is drawn on top of the previous layer.
 
 ~~~
 ggplot(data = gapminder, aes(x=year, y=lifeExp, by=country)) +
-geom_line(aes(color=continent)) + geom_point()
+  geom_line(aes(color=continent)) + geom_point()
 ~~~
 {: .r}
 
@@ -1873,14 +1874,14 @@ to the points.
 Now we can clearly see that the points are drawn on top of the
 lines.
 
-> ## Tip: Setting an aesthetic to a value instead of a mapping
+> #### Tip: Setting an aesthetic to a value instead of a mapping
 >
 > So far, we've seen how to use an aesthetic (such as **color**) as a *mapping* to a variable in the data. For example, when we use `geom_line(aes(color=continent))`, ggplot will give a different color to each continent. But what if we want to change the colour of all lines to blue? You may think that `geom_line(aes(color="blue"))` should work, but it doesn't. Since we don't want to create a mapping to a specific variable, we simply move the color specification outside of the `aes()` function, like this: `geom_line(color="blue")`.
 {: .callout}
 
-*** CHALLENGES *** - 5 min
+***CHALLENGES*** - 5 min
 
-## Transformations and statistics
+#### Transformations and statistics
 
 `ggplot` also makes it easy to overlay statistical models over the data. To
 demonstrate we'll go back to our first example:
@@ -1888,7 +1889,7 @@ demonstrate we'll go back to our first example:
 
 ~~~
 ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp)) +
-geom_point()
+  geom_point()
 ~~~
 {: .r}
 
@@ -1904,7 +1905,7 @@ a large amount of data which is very clustered.
 
 ~~~
 ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp)) +
-geom_point(alpha = 0.5) + scale_x_log10()
+  geom_point(alpha = 0.5) + scale_x_log10()
 ~~~
 {: .r}
 
@@ -1917,7 +1918,7 @@ of 1,000 is now 3 on the y axis, a value of 10,000 corresponds to 4 on the y
 axis and so on. This makes it easier to visualize the spread of data on the
 x-axis.
 
-> ## Tip Reminder: Setting an aesthetic to a value instead of a mapping
+> #### Tip Reminder: Setting an aesthetic to a value instead of a mapping
 >
 > Notice that we used `geom_point(alpha = 0.5)`. As the previous tip mentioned, using a setting outside of the `aes()` function will cause this value to be used for all points, which is what we want in this case. But just like any other aesthetic setting, *alpha* can also be mapped to a variable in the data. For example, we can give a different transparency to each continent with `geom_point(aes(alpha = continent))`.
 {: .callout}
@@ -1928,7 +1929,7 @@ We can fit a simple relationship to the data by adding another layer,
 
 ~~~
 ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp)) +
-geom_point() + scale_x_log10() + geom_smooth(method="lm")
+  geom_point() + scale_x_log10() + geom_smooth(method="lm")
 ~~~
 {: .r}
 
@@ -1940,7 +1941,7 @@ We can make the line thicker by *setting* the **size** aesthetic in the
 
 ~~~
 ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp)) +
-geom_point() + scale_x_log10() + geom_smooth(method="lm", size=1.5)
+  geom_point() + scale_x_log10() + geom_smooth(method="lm", size=1.5)
 ~~~
 {: .r}
 
@@ -1951,10 +1952,10 @@ aesthetic by passing it as an argument to `geom_smooth`. Previously in the
 lesson we've used the `aes` function to define a *mapping* between data
 variables and their visual representation.
 
-*** CHALLENGES *** - 10 min
+***CHALLENGES*** - 10 min
 
 
-## Multi-panel figures
+#### Multi-panel figures
 
 we can split this out over multiple panels
 by adding a layer of **facet** panels. Focusing only on those countries with
@@ -1972,7 +1973,7 @@ than write out long subsetting conditions
 starts.with <- substr(gapminder$country, start = 1, stop = 1)
 az.countries <- gapminder[starts.with %in% c("A", "Z"), ]
 ggplot(data = az.countries, aes(x = year, y = lifeExp, color=continent)) +
-geom_line() + facet_wrap( ~ country)
+  geom_line() + facet_wrap( ~ country)
 ~~~
 {: .r}
 
@@ -1984,7 +1985,7 @@ The `facet_wrap` layer takes a **formula** as its argument, denoted by the tilde
 of the gapminder dataset.
 
 
-## Modifying text
+#### Modifying text
 
 change some of the text
 elements. 
@@ -1993,37 +1994,37 @@ rename our `x` and `y` axes using the `xlab()` and `ylab()` functions:
 
 ~~~
 ggplot(data = az.countries, aes(x = year, y = lifeExp, color=continent)) +
-geom_line() + facet_wrap( ~ country) +
-xlab("Year") + ylab("Life Expectancy")
+  geom_line() + facet_wrap( ~ country) +
+  xlab("Year") + ylab("Life Expectancy")
 ~~~
 {: .r}
 
 <img src="../fig/rmd-08-theme-1a.png" title="plot of chunk theme" alt="plot of chunk theme" style="display: block; margin: auto;" />
-
+ 
 give our figure a title with the `ggtitle()` function. And capitalize the label of our
 legend. This can be done using the **scales** layer.
 
 ~~~
 ggplot(data = az.countries, aes(x = year, y = lifeExp, color=continent)) +
-geom_line() + facet_wrap( ~ country) +
-xlab("Year") + ylab("Life Expectancy") + 
-ggtitle("Figure 1") + scale_colour_discrete(name="Continent")
+  geom_line() + facet_wrap( ~ country) +
+  xlab("Year") + ylab("Life Expectancy") + 
+  ggtitle("Figure 1") + scale_colour_discrete(name="Continent")
 ~~~
 {: .r}
 
 <img src="../fig/rmd-08-theme-1b.png" title="plot of chunk theme" alt="plot of chunk theme" style="display: block; margin: auto;" />
 
-
+ 
 let's remove the x-axis labels so the plot is less cluttered. 
 To do this, we use the **theme** layer which controls
 the axis text and overall text size.
 
 ~~~
 ggplot(data = az.countries, aes(x = year, y = lifeExp, color=continent)) +
-geom_line() + facet_wrap( ~ country) +
-xlab("Year") + ylab("Life Expectancy") + 
-ggtitle("Figure 1") + scale_colour_discrete(name="Continent") +
-theme(axis.text.x=element_blank(), axis.ticks.x=element_blank())
+  geom_line() + facet_wrap( ~ country) +
+  xlab("Year") + ylab("Life Expectancy") + 
+  ggtitle("Figure 1") + scale_colour_discrete(name="Continent") +
+  theme(axis.text.x=element_blank(), axis.ticks.x=element_blank())
 ~~~
 {: .r}
 
@@ -2031,11 +2032,11 @@ theme(axis.text.x=element_blank(), axis.ticks.x=element_blank())
 
 mention that line breaks can be anywhere, but you need to have the + at the end of the line.
 
-*** CHALLENGES *** - allot 5 min
+***CHALLENGES*** - allot 5 min
 
-# Writing Data - complete by 4:20 pm
+## Writing Data - complete by 4:20 pm
 
-## Saving plots
+#### Saving plots
 
 So making publication quality plots is great but does us little good if we cannot get them out of
 R and into our documents.
@@ -2081,7 +2082,7 @@ using the arguments to this function.
 ~~~
 pdf("Life_Exp_vs_time.pdf", width=12, height=4)
 ggplot(data=gapminder, aes(x=year, y=lifeExp, color=continent)) +
-geom_point()
+  geom_point()
 
 dev.off()
 ~~~
@@ -2094,12 +2095,12 @@ dont forget the `dev.off` command
 
 Open up this document and have a look.
 
-*** CHALLENGES *** - 5 min
+***CHALLENGES*** - 5 min
 
 The commands `jpeg`, `png` etc. are used similarly to produce
 documents in different formats.
 
-## Writing data
+#### Writing data
 
 At some point, you'll also want to write out data from R.
 
@@ -2114,20 +2115,20 @@ only want to focus on the gapminder data for Australia:
 aust_subset <- gapminder[gapminder$country == "Australia",]
 
 write.table(aust_subset,
-file="gapminder-aus.csv",
-sep=","
+  file="gapminder-aus.csv",
+  sep=","
 )
 ~~~
 {: .r}
 
-**in line comments** and linebreaks within function calls
+ **in line comments** and linebreaks within function calls
 
 ~~~
 aust_subset <- gapminder[gapminder$country == "Australia",]
 
-write.table(aust_subset,		# Gapminder data for countries located in Australia
-file="gapminder-aus.csv", 	# Name of the output file
-sep=","						# Comma separated
+write.table(aust_subset,		## Gapminder data for countries located in Australia
+  file="gapminder-aus.csv", 	## Name of the output file
+  sep=","						## Comma separated
 )
 ~~~
 {: .r}
@@ -2159,11 +2160,11 @@ when writing out to file. It will also write out the row and
 column names.
 
 ~~~
-write.table(aust_subset,		# Gapminder data for countries located in Australia
-file="gapminder-aus.csv",		# Name of the output file
-sep=",",						# Comma separated
-quote=FALSE,					# Turn off quotation marks
-row.names=FALSE				# No row names
+write.table(aust_subset,		## Gapminder data for countries located in Australia
+  file="gapminder-aus.csv",		## Name of the output file
+  sep=",",						## Comma separated
+  quote=FALSE,					## Turn off quotation marks
+  row.names=FALSE				## No row names
 )
 ~~~
 {: .r}
@@ -2180,43 +2181,41 @@ head gapminder-aus.csv
 
 That looks better!
 
-*** CHALLENGES *** - 5 min
+***CHALLENGES*** - 5 min
 
-# Wrap Up - 5 min
+## Wrap Up - 5 min
 
-### Wrap Up
-
-# Help Files in R
+#### Help Files in R
 Don't forget your R helpfiles and package vignettes which can be accessed
 by using the `?` and `vignette` commands.
 
-# [Supplemental Lessons](https://carriebrown.github.io/r-novice-gapminder-2/)
+#### [Supplemental Lessons](https://carriebrown.github.io/r-novice-gapminder-2/)
 Additional R topics that we could not cover today.
 
-# R Club at UNL
+### R Club at UNL
 The R Club meets on East Campus twice a month. It is headed by Leonardo Bastos, a PhD student in Agronomy
 and Horticulture. You can [email](mailto: lmbastos@unl.edu) Leonardo for more information, or check out
 the club's [GitHub page](https://github.com/ahgsa-unl) which contains previous meeting topics.
 
-# [RStudio cheat sheets](https://www.rstudio.com/resources/cheatsheets/)
+## [RStudio cheat sheets](https://www.rstudio.com/resources/cheatsheets/)
 R quick reference guides including today's handouts and more!
 
-# [R for Data Science](http://r4ds.had.co.nz/)
+### [R for Data Science](http://r4ds.had.co.nz/)
 Hadley Wickham is RStudio's Chief Data Scientist and developer of the `dplyr` and `ggplot2` packages.
 R for Data Science is his newest book, and is available here for free.
 
-# [One R Tip a Day on Twitter](https://twitter.com/RLangTip)
+### [One R Tip a Day on Twitter](https://twitter.com/RLangTip)
 Following One R Tip a Day is a great way to learn new tips and tricks in R.
 
-# [Twotorials](http://www.twotorials.com/)
+### [Twotorials](http://www.twotorials.com/)
 Twotorials is a compilation of 2 minute youtube videos which highlight a specific topic in R.
 
-# [Quick R Website](http://www.statmethods.net/)
+### [Quick R Website](http://www.statmethods.net/)
 
-# [Cookbook for R](http://www.cookbook-r.com/)
+### [Cookbook for R](http://www.cookbook-r.com/)
 
-# [Advanced R](http://adv-r.had.co.nz/)
+### [Advanced R](http://adv-r.had.co.nz/)
 For more advanced topics, check out Hadley Wickham's website based on his book "Advanced R".
 
 
-Remind them to fill out postit survey
+Remind them to fill out post-it survey
