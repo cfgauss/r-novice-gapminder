@@ -2179,39 +2179,39 @@ That looks better!
 
 ## Wrap Up - 5 min
 
-###### Wrap Up
+#### Wrap Up
 
-## Help Files in R
+#### Help Files in R
 Don't forget your R helpfiles and package vignettes which can be accessed
 by using the `?` and `vignette` commands.
 
-## [Supplemental Lessons](https://carriebrown.github.io/r-novice-gapminder-2/)
+#### [Supplemental Lessons](https://carriebrown.github.io/r-novice-gapminder-2/)
 Additional R topics that we could not cover today.
 
-## R Club at UNL
+#### R Club at UNL
 The R Club meets on East Campus twice a month. It is headed by Leonardo Bastos, a PhD student in Agronomy
 and Horticulture. You can [email](mailto: lmbastos@unl.edu) Leonardo for more information, or check out
 the club's [GitHub page](https://github.com/ahgsa-unl) which contains previous meeting topics.
 
-## [RStudio cheat sheets](https://www.rstudio.com/resources/cheatsheets/)
+#### [RStudio cheat sheets](https://www.rstudio.com/resources/cheatsheets/)
 R quick reference guides including today's handouts and more!
 
-## [R for Data Science](http://r4ds.had.co.nz/)
+#### [R for Data Science](http://r4ds.had.co.nz/)
 Hadley Wickham is RStudio's Chief Data Scientist and developer of the `dplyr` and `ggplot2` packages.
 R for Data Science is his newest book, and is available here for free.
 
-## [One R Tip a Day on Twitter](https://twitter.com/RLangTip)
+#### [One R Tip a Day on Twitter](https://twitter.com/RLangTip)
 Following One R Tip a Day is a great way to learn new tips and tricks in R.
 
-## [Twotorials](http://www.twotorials.com/)
+#### [Twotorials](http://www.twotorials.com/)
 Twotorials is a compilation of 2 minute youtube videos which highlight a specific topic in R.
 
-## [Quick R Website](http://www.statmethods.net/)
+#### [Quick R Website](http://www.statmethods.net/)
 
-## [Cookbook for R](http://www.cookbook-r.com/)
+#### [Cookbook for R](http://www.cookbook-r.com/)
 
-## [Advanced R](http://adv-r.had.co.nz/)
+#### [Advanced R](http://adv-r.had.co.nz/)
 For more advanced topics, check out Hadley Wickham's website based on his book "Advanced R".
 
 
-Remind them to fill out postit survey
+Remind them to fill out post-it survey
