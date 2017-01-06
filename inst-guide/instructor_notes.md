@@ -1,10 +1,3 @@
----
-layout: page
-title: Guide
-permalink: /guide/
----
-
-
 ## "Introduction to R and RStudio" - 45 minutes
 
 #### Before Starting The Workshop
