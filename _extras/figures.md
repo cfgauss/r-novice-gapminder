@@ -5,7 +5,7 @@ permalink: /figures/
 ---
 
 
-## Introduction to RStudio
+## [Introduction to RStudio](https://carriebrown.github.io/r-novice-gapminder/01-rstudio-intro/)
 
 > ## Challenge 1
 >
@@ -163,7 +163,7 @@ permalink: /figures/
 > {: .solution}
 {: .challenge}
 
-## Seeking Help
+## [Seeking Help](https://carriebrown.github.io/r-novice-gapminder/02-seeking-help/)
 
 > ## Challenge 1
 >
@@ -287,7 +287,7 @@ permalink: /figures/
 > {: .solution}
 {: .challenge}
 
-## Data Structures
+## [Data Structures](https://carriebrown.github.io/r-novice-gapminder/03-data-structures/)
 
 > ## Challenge 1
 >
@@ -396,7 +396,7 @@ permalink: /figures/
 > {: .solution}
 {: .challenge}
 
-## Subsetting Data
+## [Subsetting Data](https://carriebrown.github.io/r-novice-gapminder/05-data-subsetting/)
 
 > ## Challenge 1
 >
@@ -725,7 +725,7 @@ permalink: /figures/
 > {: .solution}
 {: .challenge}
 
-## Exploring Data Frames
+## [Exploring Data Frames](https://carriebrown.github.io/r-novice-gapminder/06-data-frames/)
 
 > ## Challenge 1
 >
@@ -1044,7 +1044,7 @@ permalink: /figures/
 > {: .solution}
 {: .challenge}
 
-## Control Flow
+## [Control Flow](https://carriebrown.github.io/r-novice-gapminder/08-control-flow/)
 
 > ## Challenge 1
 >
@@ -1246,7 +1246,7 @@ permalink: /figures/
 > {: .solution}
 {: .challenge}
 
-## Dataframe Manipulation
+## [Dataframe Manipulation](https://carriebrown.github.io/r-novice-gapminder/09-dplyr/)
 
 ![](../fig/13-dplyr-fig1.png)
 
@@ -1313,7 +1313,7 @@ permalink: /figures/
 > {: .solution}
 {: .challenge}
 
-## Creating Publication Quality Graphics
+## [Creating Publication Quality Graphics](https://carriebrown.github.io/r-novice-gapminder/11-plot-ggplot2/)
 
 > ## Challenge 1
 >
@@ -1482,7 +1482,7 @@ permalink: /figures/
 > {: .solution}
 {: .challenge}
 
-## Writing Data
+## [Writing Data](https://carriebrown.github.io/r-novice-gapminder/12-writing-data/)
 
 <img src="../fig/12-data-fig1.png" title="export plots in rstudio" alt="export plots in rstudio" style="display: block; margin: auto;" />
 
@@ -1550,27 +1550,27 @@ by using the `?` and `vignette` commands.
 #### [Supplemental Lessons](https://carriebrown.github.io/r-novice-gapminder-2/)
 Additional R topics that we could not cover today.
 
-### R Club at UNL
+#### R Club at UNL
 The R Club meets on East Campus twice a month. It is headed by Leonardo Bastos, a PhD student in Agronomy
 and Horticulture. You can [email](mailto: lmbastos@unl.edu) Leonardo for more information, or check out
 the club's [GitHub page](https://github.com/ahgsa-unl) which contains previous meeting topics.
 
-### [RStudio cheat sheets](https://www.rstudio.com/resources/cheatsheets/)
+#### [RStudio cheat sheets](https://www.rstudio.com/resources/cheatsheets/)
 R quick reference guides including today's handouts and more!
 
-### [R for Data Science](http://r4ds.had.co.nz/)
+#### [R for Data Science](http://r4ds.had.co.nz/)
 Hadley Wickham is RStudio's Chief Data Scientist and developer of the `dplyr` and `ggplot2` packages.
 **R for Data Science** is his newest book, and is available here for free.
 
-### [One R Tip a Day on Twitter](http://twitter.com/RLangTip)
+#### [One R Tip a Day on Twitter](http://twitter.com/RLangTip)
 Following One R Tip a Day is a great way to learn new tips and tricks in R.
 
-### [Twotorials](http://www.twotorials.com/)
+#### [Twotorials](http://www.twotorials.com/)
 Twotorials is a compilation of 2 minute youtube videos which highlight a specific topic in R.
 
-### [Quick R Website](http://www.statmethods.net/)
+#### [Quick R Website](http://www.statmethods.net/)
 
-### [Cookbook for R](http://www.cookbook-r.com/)
+#### [Cookbook for R](http://www.cookbook-r.com/)
 
-### [Advanced R](http://adv-r.had.co.nz/)
+#### [Advanced R](http://adv-r.had.co.nz/)
 For more advanced topics, check out Hadley Wickham's website based on his book "Advanced R".
