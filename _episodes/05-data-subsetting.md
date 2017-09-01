@@ -292,7 +292,7 @@ x
 > ~~~
 > {: .output}
 >
-> Come up with at least 3 different commands that will produce the following output:
+> Come up with at least 2 different commands that will produce the following output:
 >
 > 
 > ~~~
@@ -301,43 +301,53 @@ x
 > ~~~
 > {: .output}
 >
-> After you find 3 different commands, compare notes with your neighbour. Did you have different strategies?
+> After you find 2 different commands, compare notes with your neighbour. Did you have different strategies?
 >
 > > ## Solution to challenge 1
 > >
+> > Use the `c` function:
+> > ~~~
+> > x[c(2,3,4)]
+> > ~~~
+> > {: .r}
+> > 
+> > ~~~
+> >   b   c   d 
+> > 6.2 7.1 4.8 
+> > ~~~
+> > 
+> > Use the colon operator:
 > > 
 > > ~~~
 > > x[2:4]
 > > ~~~
 > > {: .r}
 > > 
-> > 
-> > 
 > > ~~~
 > >   b   c   d 
 > > 6.2 7.1 4.8 
 > > ~~~
 > > {: .output}
 > > 
-> > ~~~
-> > x[-c(1,5)]
-> > ~~~
-> > {: .r}
-> > 
-> > 
-> > 
-> > ~~~
-> >   b   c   d 
-> > 6.2 7.1 4.8 
-> > ~~~
-> > {: .output}
+> > Select elements by name:
 > > 
 > > ~~~
 > > x[c("b", "c", "d")]
 > > ~~~
 > > {: .r}
 > > 
+> > ~~~
+> >   b   c   d 
+> > 6.2 7.1 4.8 
+> > ~~~
+> > {: .output}
 > > 
+> > Use the `-` (NOT) along with the `c` function to remove elements you don't want:
+> > 
+> > ~~~
+> > x[-c(1,5)]
+> > ~~~
+> > {: .r}
 > > 
 > > ~~~
 > >   b   c   d 
@@ -345,17 +355,6 @@ x
 > > ~~~
 > > {: .output}
 > > 
-> > ~~~
-> > x[c(2,3,4)]
-> > ~~~
-> > {: .r}
-> > 
-> > 
-> > 
-> > ~~~
-> >   b   c   d 
-> > 6.2 7.1 4.8 
-> > ~~~
 > > {: .output}
 > >
 > {: .solution}

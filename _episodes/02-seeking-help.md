@@ -188,7 +188,7 @@ Try these challenges to practice finding help in R.
 > ~~~
 > {: .r}
 >
-> Look at the help for the `read.table` function.
+> Look at the help for the `read.table` function. In particular, look at the `Arguments` section. These are additional options we can put in our command to customize its action.
 >
 > What argument would you use if you wanted to read in a file without a header?
 > What argument would allow you to switch between a comma separated file and a tab separated

@@ -509,8 +509,10 @@ y <- "green"
 
 You can see the new variable show up in the Environment tab of your RStudio window.
 
-Variable names can contain letters, numbers, underscores and periods. They
-cannot start with a number nor contain spaces at all. Different people use
+Variable names can contain letters, numbers, underscores and periods. **They
+cannot start with a number nor contain spaces at all.**
+
+Different people use
 different conventions for long variable names, these include
 
   * periods.between.words

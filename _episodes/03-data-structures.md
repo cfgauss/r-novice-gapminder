@@ -126,7 +126,7 @@ basic data types.
 ## Vectors
 
 Remember previously when R returned a value, it prepended the output with `[1]`? This is 
-because R never actually works with just one value, but always a string of values called 
+because R never actually works with just one value, but always a series of values called 
 a **vector**. All of our previous output were vectors with a length of 1.
 As we saw in our last challenge, we can create vectors of longer length by 
 using the `c` function.
@@ -220,48 +220,11 @@ y:  1  2  3  4  5  6  7  8
 
 
 
-> ## Challenge 1
->
-> Predict what will happen if we perform an operation between two vectors of different size?
-> 
-> Test your guess by creating two vectors of different lengths using the colon operator 
-> and adding or multiplying them together.
->
-> 
-> > ## Solution to Challenge 1
-> >
-> > 
-> > ~~~
-> > a <- 1:10
-> > b <- 1:5
-> > a * b
-> > ~~~
-> > {: .r}
-> > 
-> > ~~~
-> > [1]  1  4  9 16 25  6 14 24 36 50
-> > ~~~
-> > {: .output}
-> > 
-> > Notice how R repeated the shorter vector until it had finished operating on every 
-> > element of the larger vector. This is known as "vector recycling". 
-> >
-> > If your shorter vector is not a even multiple of the larger one, R will still perform 
-> > the operation but it will give you the following error message:
-> >
-> > ~~~
-> > Warning message:
-> > In a * b : longer object length is not a multiple of shorter object length
-> > ~~~
-> > {: .output}
-> {: .solution}
-{: .challenge}
-
 Vectors can be made up of any of the basic data types.
 
-Character Vectors:
+#### Character Vectors:
 
-~~
+~~~
 a <- c("one", "two", "three", "four")
 a
 ~~~
@@ -290,7 +253,7 @@ We can see from the first three letters *chr* that this is a *character* vector.
 in the brackets indicates the dimensions of our vector. And then it will list the first few 
 elements of the vector.
 
-Logical Vectors:
+#### Logical Vectors:
 
 ~~~
 b <- c(TRUE, TRUE, FALSE, TRUE)
@@ -302,6 +265,86 @@ b
 [1]  TRUE  TRUE FALSE  TRUE
 ~~~
 {: .output}
+
+In addition to using the `c` command to create vectors, we can use it to add elements to an 
+existing vector:
+
+~~~
+c(x, 20, 25)
+~~~
+{: .r}
+
+~~~
+ [1]  2  4  6  8 10 12 14 16 20 25
+~~~
+{: .output}
+
+These changes won't take place until we use the assignment arrow to store the new value. 
+Let's modify our vector `y` so that it contains all numbers up to 20. We can use the colon 
+operator that we talked about earlier:
+
+~~~
+y <- c(y, 9:20)
+y
+~~~
+{: .r}
+
+~~~
+ [1]  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20
+~~~
+
+This is an example of a **nested operation**. Remember from the order of operations previously, 
+R will do any operations inside the parenthesis first. In this example, R created the sequence 
+from 9 to 20, and then it combined it with what we already had stored in `y`.
+
+Another helpful function for vectors is `length`. We can use this command to quickly return the length of a vector.
+
+~~~
+length(y)
+~~~
+{: .r}
+
+~~~
+[1] 20
+~~~
+{: .r}
+
+> ## Challenge 1
+>
+> Predict what will happen if we perform an operation between two vectors of different size?
+> 
+> Test your guess by creating two vectors of different lengths using the colon operator 
+> and adding or multiplying them together.
+>
+> 
+> > ## Solution to Challenge 1
+> >
+> > 
+> > ~~~
+> > a <- 1:10
+> > b <- 1:5
+> > a * b
+> > ~~~
+> > {: .r}
+> > 
+> > ~~~
+> > [1]  1  4  9 16 25  6 14 24 36 50
+> > ~~~
+> > {: .output}
+> > 
+> > Notice how R repeated the shorter vector until it had finished operating on every 
+> > element of the larger vector. This is known as **vector recycling**. 
+> >
+> > If your shorter vector is not a even multiple of the larger one, R will still perform 
+> > the operation but it will give you the following error message:
+> >
+> > ~~~
+> > Warning message:
+> > In a * b : longer object length is not a multiple of shorter object length
+> > ~~~
+> > {: .output}
+> {: .solution}
+{: .challenge}
 
 
 > ## Challenge 2
@@ -357,7 +400,7 @@ b
 > "yellow" and "blue". Use the `paste` function to combine `"My ball is"` with each element 
 > of your vector.
 > 
-> > ## Solution to Challenge 2
+> > ## Solution to Challenge 3
 > >
 > > ~~~
 > > colors <- c("red", "yellow", "blue")
@@ -373,53 +416,10 @@ b
 > {: .solution}
 {: .challenge}
 
-In addition to using the `c` command to create vectors, we can use it to add elements to an 
-existing vector:
-
-~~~
-c(x, 20, 25)
-~~~
-{: .r}
-
-~~~
- [1]  2  4  6  8 10 12 14 16 20 25
-~~~
-{: .output}
-
-These changes won't take place until we use the assignment arrow to store the new value. 
-Let's modify our vector `y` so that it contains all numbers up to 20. We can use the colon 
-operator that we talked about earlier:
-
-~~~
-y <- c(y, 9:20)
-y
-~~~
-{: .r}
-
-~~~
- [1]  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20
-~~~
-
-This is an example of a **nested operation**. Remember from the order of operations previously, 
-R will do any operations inside the parenthesis first. In this example, R created the sequence 
-from 9 to 20, and then it combined it with what we already had stored in `y`.
-
-Another helpful function for vectors is `length`. We can use this command to quickly return the length of a vector.
-
-~~~
-length(y)
-~~~
-{: .r}
-
-~~~
-[1] 20
-~~~
-{: .r}
-
-
 There are other data structures in R called **lists** and **matrices**. You 
 can discover more about these by looking at the help files associated with their constructor 
 functions: `?list`, `?matrix` or by checking out the supplemental lesson [Lists and Matrices](https://carriebrown.github.io/r-novice-gapminder-2/02-additional-datatypes/)
 
 Today, we will be working primarily with the **data frame** data structures. We will explore these 
 more indepth after our break.
+v
