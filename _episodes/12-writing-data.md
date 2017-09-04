@@ -141,21 +141,7 @@ write.table(aust_subset,     # Gapminder data for countries located in Australia
 
 This approach becomes really beneficial when you start writing commands which use a lot of parameters.
 
-Now, we can use the shell commands we used yesterday to inspect our data. Go ahead and open a shell
-window and navigate to the location of the file using your `cd` command. If you don't know where R is saving
-your files, you can check the `file` pane or use the `getwd` command.
-
-Once you have navigated to the file
-location type this in to check out the output file:
-
-~~~
-head gapminder-aus.csv
-~~~
-{: .r}
-
-Note: If you did not attend yesterday's lesson, or have forgotten the shell commands, you can view
-the file in R by clicking on the filename in the `file` pane and selecting `View File`.
-
+We can examine our file right from within RStudio. In the lower-left pane under the `Files` tab, find the `gapminder-aus.csv` file. Click on it and select `View File`.
 
 ~~~
 "country","year","pop","continent","lifeExp","gdpPercap"
@@ -201,7 +187,7 @@ write.table(aust_subset,     # Gapminder data for countries located in Australia
 ~~~
 {: .r}
 
-Now lets look at the data again using our shell skills:
+Now lets look at the file again:
 
 
 ~~~

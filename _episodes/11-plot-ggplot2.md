@@ -1,7 +1,7 @@
 ---
 title: Creating Publication-Quality Graphics
-teaching: 50
-exercises: 25
+teaching: 45
+exercises: 20
 questions:
 - "How can I create publication-quality graphics in R?"
 objectives:
@@ -211,29 +211,17 @@ lines.
 > So far, we've seen how to use an aesthetic (such as **color**) as a *mapping* to a variable in the data. For example, when we use `geom_line(aes(color=continent))`, ggplot will give a different color to each continent. But what if we want to change the colour of all lines to blue? You may think that `geom_line(aes(color="blue"))` should work, but it doesn't. Since we don't want to create a mapping to a specific variable, we simply move the color specification outside of the `aes` function, like this: `geom_line(color="blue")`.
 {: .callout}
 
-> ## Challenge 3
->
-> Switch the order of the point and line layers from the previous example. What
-> happened?
->
-> > ## Solution to challenge 3
-> >
-> > Switch the order of the point and line layers from the previous example. What
-> > happened?
-> >
-> > 
-> > ~~~
-> > ggplot(data = gapminder, aes(x=year, y=lifeExp, by=country)) +
-> >  geom_point() + geom_line(aes(color=continent))
-> > ~~~
-> > {: .r}
-> > 
-> > <img src="../fig/rmd-08-ch3-sol-1.png" title="plot of chunk ch3-sol" alt="plot of chunk ch3-sol" style="display: block; margin: auto;" />
-> >
-> > The lines now get drawn over the points!
-> >
-> {: .solution}
-{: .challenge}
+We can further demonstrate this point by switching the order of the point and line layers from the previous example.
+
+~~~
+ggplot(data = gapminder, aes(x=year, y=lifeExp, by=country)) +
+   geom_point() + geom_line(aes(color=continent))
+~~~
+{: .r}
+
+<img src="../fig/rmd-08-ch3-sol-1.png" title="plot of chunk ch3-sol" alt="plot of chunk ch3-sol" style="display: block; margin: auto;" />
+
+The lines now get drawn over the points!
 
 ## Transformations and statistics
 
@@ -311,14 +299,11 @@ variables and their visual representation.
 > Modify the color and size of the points on the point layer in the previous
 > example.
 >
-> Hint: do not use the `aes` function.
+> Hint: do not use the `aes` function, change this by adding arguments to the correct function.
 >
 > > ## Solution to challenge 4a
 > >
-> > Modify the color and size of the points on the point layer in the previous
-> > example.
-> >
-> > Hint: Do not use the `aes` function.
+> > Since we want all the points to be the same and are not making this aesthetic specific to the data, we add this to `geom_point` to make the change effect all points.
 > >
 > > 
 > > ~~~
@@ -339,14 +324,13 @@ variables and their visual representation.
 > points are now a different shape and are colored by continent with new
 > trendlines.
 >
-> Hint: The color argument can be used inside the aesthetic.
+> Hint: The color argument can be used inside the aesthetic. To change the shape of a point, use the `pch` argument. Setting `pch` to different numeric values from `1:25` yields different shapes as indicated in the chart below.
+>
+> <img src="../fig/pch_symbols.png" alt="a list of symbols one can use in R to change the shape of the plot" style="display: block; margin: auto;">
 >
 > > ## Solution to challenge 4b
 > >
-> > Modify Challenge 4 so that the points are now a different shape and are
-> > colored by continent with new trendlines.
-> >
-> > Hint: The color argument can be used inside the aesthetic.
+> > Since we want the color to be dependent on the continent, we place that argument inside the `aes`. To change the shape of the point, we place the `pch` argument inside `geom_point`. 
 > >
 > >
 > >~~~

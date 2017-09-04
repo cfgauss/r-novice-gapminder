@@ -169,6 +169,17 @@ continent since we would have removed it in the previous step.
 > >                            select(year,country,lifeExp)
 > >~~~
 > >{: .r}
+> > 
+> > We can check the number of rows in our new dataframe `year_country_lifeExp_Africa` by using the `ncol` command:
+> >~~~
+> >nrow(year_country_lifeExp_Africa)
+> >~~~
+> >{: .r}
+> >
+> >~~~
+> > [1] 624
+> >~~~
+> >{: .output}
 > {: .solution}
 {: .challenge}
 
@@ -258,6 +269,7 @@ original dataframe into multiple pieces, then we can run functions
 gdp_bycontinents <- gapminder %>%
     group_by(continent) %>%
     summarize(mean_gdpPercap=mean(gdpPercap))
+gdp_bycontinents
 ~~~
 {: .r}
 
@@ -269,23 +281,44 @@ even better.
 > ## Challenge 2
 >
 >
-> Calculate the average life expectancy per country. Which had the longest life
-> expectancy and which had the shortest life expectancy?
+> Calculate the average life expectancy per country. What is the longest average life
+> expectancy and the shortest life expectancy?
 >
 > > ## Solution to Challenge 2
 > >
+> > First let's build a dataframe with a summary of the average life expectancy per country:
 > >~~~
 > >lifeExp_bycountry <- gapminder %>%
 > >    group_by(country) %>%
 > >    summarize(mean_lifeExp=mean(lifeExp))
 > >~~~
 > >{: .r}
+> >
+> > Now that we have the data we need, we can use the `min` and `max` commands to determine which country had the longest and shortest life expectancy:
+> >~~~
+> >min(lifeExp_bycountry$mean_lifeExp)
+> >~~~
+> >{: .r}
+> >
+> >~~~
+> >[1] 36.76917
+> >~~~
+> >{: .output}
+> >
+> >~~~
+> >max(lifeExp_bycountry$mean_lifeExp)
+> >~~~
+> >{: .r}
+> >
+> >~~~
+> >[1] 76.51142
+> >~~~
+> >{: .output}
+> >
 > {: .solution}
 {: .challenge}
 
 The function `group_by` allows us to group by multiple variables. Let's group by `year` and `continent`.
-
-
 
 ~~~
 gdp_bycontinents_byyear <- gapminder %>%
@@ -295,7 +328,6 @@ gdp_bycontinents_byyear <- gapminder %>%
 {: .r}
 
 That is already quite powerful, but it gets even better! You're not limited to defining 1 new variable in `summarize`.
-
 
 ~~~
 gdp_pop_bycontinents_byyear <- gapminder %>%
@@ -351,5 +383,5 @@ gdp_pop_bycontinents_byyear <- gapminder %>%
 ## Other great resources
 
 * [Data Wrangling Cheat sheet](https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf)
-* [Introduction to dplyr](https://cran.rstudio.com/web/packages/dplyr/vignettes/introduction.html)
+* [Introduction to dplyr](https://cran.rstudio.com/web/packages/dplyr/vignettes/dplyr.html)
 * [Data wrangling with R and RStudio](https://www.rstudio.com/resources/webinars/data-wrangling-with-r-and-rstudio/)

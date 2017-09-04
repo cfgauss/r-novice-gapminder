@@ -30,7 +30,7 @@ a data frame for with some information on cats.
 ~~~
 coat <- c("calico", "black", "tabby")
 weight <- c(2.1, 5.0, 3.2)
-likes_string <- c(1,0,1)
+likes_string <- c(TRUE, FALSE, TRUE)
 
 cats <- data.frame(coat, weight, likes_string)
 cats
@@ -39,9 +39,9 @@ cats
 
 ~~~
     coat weight likes_string
-1 calico    2.1            1
-2  black    5.0            0
-3  tabby    3.2            1
+1 calico    2.1         TRUE
+2  black    5.0        FALSE
+3  tabby    3.2         TRUE
 ~~~
 {: .output}
 
@@ -122,8 +122,6 @@ Try this challenge to see different ways of interacting with data frames:
 > - `cats[1, ]`
 >
 > Try out these examples and explain what is returned by each one.
->
-> *Hint:* Use the function `typeof` to examine what is returned in each case.
 >
 > > ## Solution to Challenge 1
 > > 
@@ -244,9 +242,9 @@ cats
 
 ~~~
     coat weight likes_string
-1 calico    2.1            1
-2  black    5.0            0
-3  tabby    3.2            1
+1 calico    2.1         TRUE
+2  black    5.0        FALSE
+3  tabby    3.2         TRUE
 ~~~
 {: .output}
 
@@ -271,7 +269,7 @@ with 3 elements. Let's try that again:
 
 
 ~~~
-age <- c(4,5,8)
+age <- c(2,3,5)
 cats <- cbind(cats, age)
 cats
 ~~~
@@ -281,9 +279,9 @@ cats
 
 ~~~
     coat weight likes_string age
-1 calico    2.1            1   4
-2  black    5.0            0   5
-3  tabby    3.2            1   8
+1 calico    2.1         TRUE   2
+2  black    5.0        FALSE   3
+3  tabby    3.2         TRUE   5
 ~~~
 {: .output}
 
@@ -346,7 +344,7 @@ levels(cats$coat)
 
 ~~~
 levels(cats$coat) <- c(levels(cats$coat), 'tortoiseshell')
-cats <- rbind(cats, list("tortoiseshell", 3.3, TRUE, 9))
+cats <- rbind(cats, newRow)
 ~~~
 {: .r}
 
@@ -366,7 +364,7 @@ str(cats)
 'data.frame':	5 obs. of  4 variables:
  $ coat        : Factor w/ 4 levels "black","calico",..: 2 1 3 NA 4
  $ weight      : num  2.1 5 3.2 3.3 3.3
- $ likes_string: int  1 0 1 1 1
+ $ likes_string: logi  TRUE FALSE TRUE TRUE TRUE
  $ age         : num  4 5 8 9 9
 ~~~
 {: .output}
@@ -385,7 +383,7 @@ str(cats)
 'data.frame':	5 obs. of  4 variables:
  $ coat        : chr  "calico" "black" "tabby" NA ...
  $ weight      : num  2.1 5 3.2 3.3 3.3
- $ likes_string: int  1 0 1 1 1
+ $ likes_string: logi  TRUE FALSE TRUE TRUE TRUE
  $ age         : num  4 5 8 9 9
 ~~~
 {: .output}
@@ -403,11 +401,11 @@ cats
 
 ~~~
            coat weight likes_string age
-1        calico    2.1            1   4
-2         black    5.0            0   5
-3         tabby    3.2            1   8
-4          <NA>    3.3            1   9
-5 tortoiseshell    3.3            1   9
+1        calico    2.1         TRUE   4
+2         black    5.0        FALSE   5
+3         tabby    3.2         TRUE   8
+4          <NA>    3.3         TRUE   9
+5 tortoiseshell    3.3         TRUE   9
 ~~~
 {: .output}
 
@@ -423,10 +421,10 @@ cats[-4,]
 
 ~~~
            coat weight likes_string age
-1        calico    2.1            1   4
-2         black    5.0            0   5
-3         tabby    3.2            1   8
-5 tortoiseshell    3.3            1   9
+1        calico    2.1         TRUE   4
+2         black    5.0        FALSE   5
+3         tabby    3.2         TRUE   8
+5 tortoiseshell    3.3         TRUE   9
 ~~~
 {: .output}
 
@@ -444,10 +442,10 @@ na.omit(cats)
 
 ~~~
            coat weight likes_string age
-1        calico    2.1            1   4
-2         black    5.0            0   5
-3         tabby    3.2            1   8
-5 tortoiseshell    3.3            1   9
+1        calico    2.1         TRUE   4
+2         black    5.0        FALSE   5
+3         tabby    3.2         TRUE   8
+5 tortoiseshell    3.3         TRUE   9
 ~~~
 {: .output}
 
@@ -474,14 +472,14 @@ cats
 
 ~~~
             coat weight likes_string age
-1         calico    2.1            1   4
-2          black    5.0            0   5
-3          tabby    3.2            1   8
-5  tortoiseshell    3.3            1   9
-11        calico    2.1            1   4
-21         black    5.0            0   5
-31         tabby    3.2            1   8
-51 tortoiseshell    3.3            1   9
+1         calico    2.1         TRUE   4
+2          black    5.0        FALSE   5
+3          tabby    3.2         TRUE   8
+5  tortoiseshell    3.3         TRUE   9
+11        calico    2.1         TRUE   4
+21         black    5.0        FALSE   5
+31         tabby    3.2         TRUE   8
+51 tortoiseshell    3.3         TRUE   9
 ~~~
 {: .output}
 But now the row names are unnecessarily complicated. We can remove the rownames,
@@ -498,14 +496,14 @@ cats
 
 ~~~
            coat weight likes_string age
-1        calico    2.1            1   4
-2         black    5.0            0   5
-3         tabby    3.2            1   8
-4 tortoiseshell    3.3            1   9
-5        calico    2.1            1   4
-6         black    5.0            0   5
-7         tabby    3.2            1   8
-8 tortoiseshell    3.3            1   9
+1        calico    2.1         TRUE   4
+2         black    5.0        FALSE   5
+3         tabby    3.2         TRUE   8
+4 tortoiseshell    3.3         TRUE   9
+5        calico    2.1         TRUE   4
+6         black    5.0        FALSE   5
+7         tabby    3.2         TRUE   8
+8 tortoiseshell    3.3         TRUE   9
 ~~~
 {: .output}
 
@@ -514,9 +512,12 @@ cats
 > Remember that you can create a new data.frame right from within R with the following syntax:
 > 
 > ~~~
-> df <- data.frame(id = c('a', 'b', 'c'),
->                  x = 1:3,
->                  y = c(TRUE, TRUE, FALSE),
+> variable1 <- c('a', 'b', 'c')
+> variable2 <- c(1, 2, 3)
+> variable3 <- c(TRUE, TRUE, FALSE)
+> df <- data.frame(variable1,
+>                  variable2,
+>                  variable3,
 >                  stringsAsFactors = FALSE)
 > ~~~
 > {: .r}
@@ -524,7 +525,7 @@ cats
 > Note that the `stringsAsFactors` setting allows us to tell R that we want to preserve our 
 > character fields and not have R convert them to factors.
 >
-> Make a data.frame that holds the following information for yourself:
+> Modifying the syntax above, make a data.frame that holds the following information for yourself:
 >
 > - first name
 > - last name
@@ -795,8 +796,8 @@ head(gapminder)
 > >
 > > The object `gapminder` is a data frame with 1704 entries and 6 columns:
 > > - `country` and `continent` are factors. The `country` factor has 142 levels and the `continent` factor has 5 levels
-> > - `year` is an integer vector.
-> > - `pop`, `lifeExp`, and `gdpPercap` are numeric vectors.
+> > - `year` and `pop` are integer vectors.
+> > - `lifeExp` and `gdpPercap` are numeric vectors.
 > >
 > {: .solution}
 {: .challenge}
