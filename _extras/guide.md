@@ -524,14 +524,11 @@ y:  1  2  3  4  5  6  7  8
 ~~~
 {: .r}
 
-
-**CHALLENGES** - allot 10 minutes
-
 Vectors can be made up of any of the basic data types.
 
 Character Vectors:
 
-~~
+~~~
 a <- c("one", "two", "three", "four")
 a
 ~~~
@@ -559,8 +556,6 @@ b <- c(TRUE, TRUE, FALSE, TRUE)
 b
 ~~~
 {: .r}
-
-***CHALLENGES***
 
 we can use `c` to add elements to an existing vector
 
@@ -593,6 +588,8 @@ Other data structures, **lists** and **matrices**
 use `?list()`, `?matrix()` or supplemental lesson to learn about them.
 
 primarily **data frames** today, continued after break:
+
+**CHALLENGES** - allot 10 minutes
 
 ## COFFEE BREAK - 15 min
 
