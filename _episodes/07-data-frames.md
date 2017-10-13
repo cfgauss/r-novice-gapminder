@@ -457,9 +457,7 @@ cats <- na.omit(cats)
 ~~~
 {: .r}
 
-The key to remember when adding data to a data.frame is that *columns are
-vectors or factors, and rows are lists.* We can also glue two dataframes
-together with `rbind`:
+We can also glue two dataframes together with `rbind`:
 
 
 ~~~
@@ -547,6 +545,9 @@ cats
 > > {: .r}
 > {: .solution}
 {: .challenge}
+
+
+#### Data Frames with Gapminder
 
 So far, you've seen the basics of manipulating data.frames with our cat data;
 now, let's use those skills to digest a more realistic dataset. For the remainder of our 
@@ -677,8 +678,7 @@ length(gapminder)
 {: .output}
 
 A fair guess would have been to say that the length of a data.frame would be the
-number of rows it has (1704), but this is not the case; remember, a data.frame
-is a *list of vectors and factors*:
+number of rows it has (1704), but this is not the case. Let's find out why:
 
 
 ~~~
@@ -692,6 +692,13 @@ typeof(gapminder)
 [1] "list"
 ~~~
 {: .output}
+
+> ## Tip: Data Frames
+>
+> Data Frames are actually **lists** of **vectors**. So, while they behave similarly to vectors, there are some differences in some commands.
+>
+> For more information about lists, or other R data types such as matrices and arrays, check out the Supplemental Lesson [Lists and Matrices](https://carriebrown.github.io/r-novice-gapminder-2/02-additional-datatypes/)
+{: .callout}
 
 When `length` gave us 6, it's because gapminder is built out of a list of 6
 columns. To get the number of rows and columns in our dataset, try:
@@ -787,18 +794,27 @@ head(gapminder)
 > ## Challenge 3
 >
 > Read the output of `str(gapminder)` again;
-> this time, use what you've learned about factors, lists and vectors,
+> this time, use what you've learned about R's basic data types, factors, and vectors,
 > as well as the output of functions like `colnames` and `dim`
 > to explain what everything that `str` prints out for gapminder means.
+>
+> Can you determine what data each column holds? Do the data types make sense for these types of data? If not, what data type would you recommend?
+>
 > If there are any parts you can't interpret, discuss with your neighbors!
 >
 > > ## Solution to Challenge 3
 > >
-> > The object `gapminder` is a data frame with 1704 entries and 6 columns:
-> > - `country` and `continent` are factors. The `country` factor has 142 levels and the `continent` factor has 5 levels
-> > - `year` and `pop` are integer vectors.
-> > - `lifeExp` and `gdpPercap` are numeric vectors.
+> > The object `gapminder` is a data frame with 1704 entries and 6 columns.
 > >
+> > The 6 columns contain the following data and types:
+> > - `country`: a factor with 142 levels - The country of which the rest of the data in the row is for.
+> > - `continent`: a factor with 5 levels - The continent in which the target country is located.
+> > - `year`: integer vector - The year for which the data was obtained
+> > - `pop`: integer vector - The total population in the target country for the target year.
+> > - `lifeExp`: numeric vector - The average life expectancy for the target country during the target year.
+> > - `gdpPercap`: numeric vector - The average GDP per capita for the target country during the target year.
+> >
+> > 
 > {: .solution}
 {: .challenge}
 

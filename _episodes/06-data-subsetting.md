@@ -765,7 +765,7 @@ x[x > 7]
 >
 > Write a subsetting command to return the values in x that are greater than 4 and less than 7.
 >
-> > ## Solution to challenge 3
+> > ## Solution to challenge 4
 > >
 > > 
 > > ~~~

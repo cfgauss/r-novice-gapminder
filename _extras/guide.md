@@ -1167,7 +1167,8 @@ length(gapminder)
 
 
 
-try it, point out that data frames are **lists** of vectors
+try it, point out that data frames are **lists** of vectors - each column is a vector/factor and each row is a list
+(hence the different data types)
 
 ~~~
 typeof(gapminder)
@@ -1275,7 +1276,7 @@ gapminder[3,]
 But for a single column the result will be a vector.
 
 
-***CHALLENGES*** - 10 min
+***CHALLENGES*** - 15 min
 
 ## "Lunch" - 1 hour
 
