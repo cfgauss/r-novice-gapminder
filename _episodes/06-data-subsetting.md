@@ -462,117 +462,6 @@ x[-which(names(x) %in% c("a", "c"))]
 The `%in%` goes through each element of its left argument, in this case the
 names of `x`, and asks, "Does this element occur in the second argument?".
 
-> ## Challenge 2
->
-> Run the following code to define vector `x` as above:
->
-> 
-> ~~~
-> x <- c(5.4, 6.2, 7.1, 4.8, 7.5)
-> names(x) <- c('a', 'b', 'c', 'd', 'e')
-> print(x)
-> ~~~
-> {: .r}
-> 
-> 
-> 
-> ~~~
->   a   b   c   d   e 
-> 5.4 6.2 7.1 4.8 7.5 
-> ~~~
-> {: .output}
->
-> Given this vector `x`, what would you expect the following to do?
->
->~~~
-> x[-which(names(x) == "g")]
->~~~
->{: .r}
->
-> Try out this command and see what you get. Did this match your expectation?
-> Why did we get this result? (Tip: test out each part of the command on it's own - this is a useful debugging strategy)
->
-> > ## Solution to challenge 2
-> >
-> > The `which` command returns the index of every `TRUE` value in its
-> > input. The `names(x) == "g"` command didn't return any `TRUE` values. Because
-> > there were no `TRUE` values passed to the `which` command, it returned an
-> > empty vector. Negating this vector with the minus sign didn't change its
-> > meaning. Because we used this empty vector to retrieve values from `x`, it
-> > produced an empty numeric vector. It was a `named numeric` empty vector
-> > because the vector type of x is "named numeric" since we assigned names to the
-> > values (try `str(x)` ).
-> {: .solution}
-{: .challenge}
-
-> ## Tip: Non-unique names
->
-> You should be aware that it is possible for multiple elements in a
-> vector to have the same name. (For a data frame, columns can have
-> the same name --- although R tries to avoid this --- but row names
-> must be unique.) Consider these examples:
->
->
->~~~
-> y <- 1:3
-> y
->~~~
->{: .r}
->
->
->
->~~~
->[1] 1 2 3
->~~~
->{: .output}
->
->
->
->~~~
-> names(y) <- c('a', 'a', 'a')
-> y
->~~~
->{: .r}
->
->
->
->~~~
->a a a 
->1 2 3 
->~~~
->{: .output}
->
->
->
->~~~
-> y['a']  # only returns first value
->~~~
->{: .r}
->
->
->
->~~~
->a 
->1 
->~~~
->{: .output}
->
->
->
->~~~
-> y[which(names(y) == 'a')]  # returns all three values
->~~~
->{: .r}
->
->
->
->~~~
->a a a 
->1 2 3 
->~~~
->{: .output}
-{: .callout}
-
 
 > ## Tip: Getting help for operators
 >
@@ -637,6 +526,120 @@ R will also print out a warning message.
 
 This difference between `==` and `%in%` is important to remember,
 because it can introduce hard to find and subtle bugs!
+
+> ## Challenge 2
+>
+> Run the following code to define vector `x` as above:
+>
+> 
+> ~~~
+> x <- c(5.4, 6.2, 7.1, 4.8, 7.5)
+> names(x) <- c('a', 'b', 'c', 'd', 'e')
+> print(x)
+> ~~~
+> {: .r}
+> 
+> 
+> 
+> ~~~
+>   a   b   c   d   e 
+> 5.4 6.2 7.1 4.8 7.5 
+> ~~~
+> {: .output}
+>
+> Given this vector `x`, what would you expect the following to do?
+>
+>~~~
+> x[-which(names(x) == "g")]
+>~~~
+>{: .r}
+>
+> Test out your guess by trying out this command. Did this match your expectation?
+> Why did we get this result? (Tip: test out each part of the command on it's own - this is a useful debugging strategy)
+>
+> > ## Solution to challenge 2
+> >
+> > The `which` command returns the index of every `TRUE` value in its
+> > input. The `names(x) == "g"` command didn't return any `TRUE` values. Because
+> > there were no `TRUE` values passed to the `which` command, it returned an
+> > empty vector. Negating this vector with the minus sign didn't change its
+> > meaning. Because we used this empty vector to retrieve values from `x`, it
+> > produced an empty numeric vector. It was a `named numeric` empty vector
+> > because the vector type of x is "named numeric" since we assigned names to the
+> > values (try `str(x)` ).
+> {: .solution}
+{: .challenge}
+
+> ## Challenge 3
+>
+> While it is not recommended, it is possible for multiple elements in a
+> vector to have the same name. Consider this examples:
+>
+>
+>~~~
+> y <- 1:3
+> y
+>~~~
+>{: .r}
+>
+>
+>
+>~~~
+>[1] 1 2 3
+>~~~
+>{: .output}
+>
+>
+>
+>~~~
+> names(y) <- c('a', 'a', 'a')
+> y
+>~~~
+>{: .r}
+>
+>
+>
+>~~~
+>a a a 
+>1 2 3 
+>~~~
+>{: .output}
+>
+>
+> Can you come up with a command that will only return of the 'a' values and a different command
+> that will return all of the 'a' values? Does your answer differ from your neighbors?
+>
+> > ## Solution to Challenge 3
+> >~~~
+> > y['a']  # only returns first value
+> >~~~
+> >{: .r}
+> >
+> >
+> >
+> >~~~
+> >a 
+> >1 
+> >~~~
+> >{: .output}
+> >
+> >
+> >
+> >~~~
+> > y[which(names(y) == 'a')]  # returns all three values
+> >~~~
+> >{: .r}
+> >
+> >
+> >
+> >~~~
+> >a a a 
+> >1 2 3 
+> >~~~
+> >{: .output}
+>{: solution}
+{: .challenge}
+
 
 
 ## Using Logical Operations to Subset Data
@@ -740,7 +743,7 @@ x[x > 7]
 > vector are `TRUE`).
 {: .callout}
 
-> ## Challenge 3
+> ## Challenge 4
 >
 > Given the following code:
 >
