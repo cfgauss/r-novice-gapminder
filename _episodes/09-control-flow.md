@@ -13,13 +13,14 @@ keypoints:
 - "Use `for` to repeat operations."
 ---
 
-
-
 Often when we're coding we want to control the flow of our actions. This can be done
 by setting actions to occur only if a condition or a set of conditions are met.
 Alternatively, we can also set an action to occur a particular number of times.
 
 There are several ways you can control flow in R.
+
+## Conditional Statements
+
 For conditional statements, the most commonly used approaches are the constructs:
 
 
@@ -211,6 +212,35 @@ element. Here you need to make sure your condition is of length 1.
 > the vector are `TRUE`.
 {: .callout}
 
+## While loops
+
+
+Sometimes you will find yourself needing to repeat an operation until a certain condition is met. You can do this with a `while` loop.
+
+~~~
+while(this condition is true){
+  do a thing
+}
+~~~
+{: .r}
+
+As an example, here's a while loop
+that generates random numbers from a uniform distribution (the `runif` function)
+between 0 and 1 until it gets one that's less than 0.1.
+
+~~~
+z <- 1
+while(z > 0.1){
+  z <- runif(1)
+  print(z)
+}
+~~~
+{: .r}
+
+`while` loops will not always be appropriate. You have to be particularly careful
+that you don't end up in an infinite loop because your condition is never met.
+
+
 ## Repeating operations
 
 If you want to iterate over
@@ -374,35 +404,6 @@ output_vector2
 ~~~
 {: .output}
 
-## While loops
-
-
-Sometimes you will find yourself needing to repeat an operation until a certain condition is met. You can do this with a `while` loop.
-
-~~~
-while(this condition is true){
-  do a thing
-}
-~~~
-{: .r}
-
-As an example, here's a while loop
-that generates random numbers from a uniform distribution (the `runif` function)
-between 0 and 1 until it gets one that's less than 0.1.
-
-~~~
-z <- 1
-while(z > 0.1){
-  z <- runif(1)
-  print(z)
-}
-~~~
-{: .r}
-
-`while` loops will not always be appropriate. You have to be particularly careful
-that you don't end up in an infinite loop because your condition is never met.
-
-
 > ## Challenge 2
 >
 > Compare the objects output_vector and
@@ -488,4 +489,3 @@ that you don't end up in an infinite loop because your condition is never met.
 > >
 > {: .solution}
 {: .challenge}
-
