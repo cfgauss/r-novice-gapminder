@@ -726,7 +726,7 @@ x
 
 
 
-***CHALLENGES*** - allot 5 minutes
+***CHALLENGE*** - allot 5 minutes
 
 #### Subsetting by name
 
@@ -786,9 +786,6 @@ x[-which(names(x) %in% c("a", "c"))]
 `%in%` goes through each element of its left argument, in this case the
 names of `x`, and asks, "Does this element occur in the second argument?".
 
-***CHALLENGES*** - allot 5 min
-
-
 
 why can't we use `==` like before? Good question.
 
@@ -829,6 +826,7 @@ R will also print out a warning message.
 This difference between `==` and `%in%` is important to remember,
 because it can introduce hard to find and subtle bugs!
 
+***CHALLENGES*** - allot 10 min
 
 #### Using Logical Operations to Subset Data
 
@@ -888,7 +886,7 @@ The recycling rule applies with both of these
 the `all` function returns `TRUE` if every element of the vector is `TRUE`
 the `any` function returns `TRUE` if one or more elements of the vector are `TRUE`.
 
-***CHALLENGES*** allot 10 min
+***CHALLENGES*** allot 5 min
 
 ## "Exploring Data Frames" - done at noon
 

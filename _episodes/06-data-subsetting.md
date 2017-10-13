@@ -609,7 +609,7 @@ because it can introduce hard to find and subtle bugs!
 > Can you come up with a command that will only return of the 'a' values and a different command
 > that will return all of the 'a' values? Does your answer differ from your neighbors?
 >
-> > ## Solution to Challenge 3
+> > ## Solution to challenge 3
 > >~~~
 > > y['a']  # only returns first value
 > >~~~
@@ -637,7 +637,7 @@ because it can introduce hard to find and subtle bugs!
 > >1 2 3 
 > >~~~
 > >{: .output}
->{: solution}
+>{: .solution}
 {: .challenge}
 
 
