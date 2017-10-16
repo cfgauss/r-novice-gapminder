@@ -67,6 +67,7 @@ yourself will cost you time, both now and later, and make your code bulky and ha
 But worse yet, it can potentially introduce some
 nasty bugs.
 
+
 ## The `dplyr` package
 
 Luckily, the [`dplyr`](https://cran.r-project.org/web/packages/dplyr/dplyr.pdf)
@@ -75,7 +76,7 @@ in a way that will reduce the above repetition, reduce the probability of making
 errors, and probably even save you some typing. As an added bonus, you might
 even find the `dplyr` grammar easier to read.
 
-Here we're going to cover 6 of the most commonly used functions as well as using
+Here we're going to cover 5 of the most commonly used functions as well as using
 pipes (`%>%`) to combine them.
 
 1. `select`
@@ -84,7 +85,7 @@ pipes (`%>%`) to combine them.
 4. `summarize`
 5. `mutate`
 
-If you have have not installed this package earlier, please do so:
+If you have have not installed this package earlier, please do so now:
 
 
 ~~~
@@ -146,7 +147,6 @@ year_country_gdp_euro <- gapminder %>%
     select(year,country,gdpPercap)
 ~~~
 {: .r}
-
 
 As with last time, first we pass the gapminder dataframe to the `filter`
 function, then we pass the filtered version of the gapminder dataframe to the
@@ -273,6 +273,20 @@ gdp_bycontinents
 ~~~
 {: .r}
 
+~~~
+# A tibble: 5 x 2
+  continent mean_gdpPercap
+     <fctr>          <dbl>
+1    Africa       2193.755
+2  Americas       7136.110
+3      Asia       7902.150
+4    Europe      14469.476
+5   Oceania      18621.609
+~~~
+{: .output}
+
+
+
 ![](../fig/13-dplyr-fig3.png)
 
 That allowed us to calculate the mean gdpPercap for each continent, but it gets
@@ -359,14 +373,32 @@ gdp_pop_bycontinents_byyear <- gapminder %>%
 
 
 
-> ## Advanced Challenge
+> ## Challenge 3
 >
-> Calculate the average life expectancy in 2002 of 2 randomly selected countries
-> for each continent. Then arrange the continent names in reverse order.
+> Calculate the average life expectancy in 2002
+> for each continent. 
+>
+>
+> > ## Solution to Challenge 3
+> >
+> >~~~
+> >lifeExp_bycontinents <- gapminder %>%
+> >    filter(year==2002) %>%
+> >    group_by(continent) %>%
+> >    summarize(mean_lifeExp=mean(lifeExp))
+> >~~~
+> >{: .r}
+> {: .solution}
+{: .challenge}
+
+> ## Challenge 4 - Advanced
+>
+> Modify your code from Challenge 3 to randomly select 2 countries from each continent before calculating the average life expectancy and then arrange the continent names in reverse order.
+>
 > **Hint:** Use the `dplyr` functions `arrange` and `sample_n`, they have
-> similar syntax to other dplyr functions.
+> similar syntax to other dplyr functions. Be sure to check out the help documentation for the new functions by typing `?arrange` or `?sample_n` if you run into difficulties.
 >
-> > ## Solution to Advanced Challenge
+> > ## Solution to Challenge 4
 > >
 > >~~~
 > >lifeExp_2countries_bycontinents <- gapminder %>%
@@ -379,7 +411,6 @@ gdp_pop_bycontinents_byyear <- gapminder %>%
 > >{: .r}
 > {: .solution}
 {: .challenge}
-
 ## Other great resources
 
 * [Data Wrangling Cheat sheet](https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf)

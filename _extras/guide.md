@@ -1395,6 +1395,36 @@ element. Here you need to make sure your condition is of length 1.
  The function `all()`, as the name suggests, will only return `TRUE` if all values in
  the vector are `TRUE`.
 
+
+
+#### While loops
+
+to repeat an operation until a certain condition is met use a `while()` loop
+
+
+~~~
+while(this condition is true){
+  do a thing
+}
+~~~
+{: .r}
+
+here's a while loop
+that generates random numbers from a uniform distribution (the `runif` function)
+between 0 and 1 until it gets one that's less than 0.1.
+
+~~~
+z <- 1
+while(z > 0.1){
+  z <- runif(1)
+  print(z)
+}
+~~~
+{: .r}
+
+You have to be careful
+that you don't end up in an infinite loop because your condition is never met.
+
 #### Repeating operations
 
 If you want to iterate over
@@ -1487,36 +1517,6 @@ output_vector2
 {: .r}
 
 
-
-#### While loops
-
-to repeat an operation until a certain condition is met use a `while()` loop
-
-
-~~~
-while(this condition is true){
-  do a thing
-}
-~~~
-{: .r}
-
-here's a while loop
-that generates random numbers from a uniform distribution (the `runif` function)
-between 0 and 1 until it gets one that's less than 0.1.
-
-~~~
-z <- 1
-while(z > 0.1){
-  z <- runif(1)
-  print(z)
-}
-~~~
-{: .r}
-
-You have to be careful
-that you don't end up in an infinite loop because your condition is never met.
-
-
 ***CHALLENGES*** - 15 min
 
 
@@ -1557,7 +1557,7 @@ the `dplyr` package provides a number of useful functions for manipulating dataf
 in a way that will reduce the above repetition, reduce the probability of making
 errors, and probably even save you some typing. the `dplyr` grammar can also make your code easier to read.
 
-we're going to cover 6 of the most commonly used functions as well as using
+we're going to cover 5 of the most commonly used functions as well as using
 pipes (`%>%`) to combine them
 
 1. `select()`
@@ -1598,7 +1598,7 @@ year_country_gdp <- select(gapminder,year,country,gdpPercap)
 look at `year_country_gdp` 
 see that it only contains the year, country and gdpPercap. 
 we used 'normal' grammar
-but the strengths of `dplyr` lie in combining several functions using pipes. Since the pipes grammar
+but the strengths of `dplyr` lie in combining several functions using pipes. 	Since the pipes grammar
 is unlike anything we've seen in R before, let's repeat what we've done above
 using pipes.
 
@@ -1733,7 +1733,7 @@ gdp_pop_bycontinents_byyear <- gapminder %>%
 
 
 
-*** ADVANCED CHALLENGE *** - can skip if running out of time.
+*** CHALLENGES *** - allot 10 min
 
 ## "Coffee Break" - 15 min
 

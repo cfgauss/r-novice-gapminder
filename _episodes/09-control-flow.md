@@ -148,7 +148,7 @@ x
 > the `gapminder` dataset.
 > Now do the same for 2012.
 >
-> > ## Solution to Challenge 1
+> > ## Solution to challenge 1
 > > We will first see a solution to Challenge 1 which does not use the `any` function.
 > > We first obtain a logical vector describing which element of `gapminder$year` is equal to `2002`:
 > > 
