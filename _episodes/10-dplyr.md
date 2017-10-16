@@ -148,6 +148,14 @@ year_country_gdp_euro <- gapminder %>%
 ~~~
 {: .r}
 
+> ## Tip:
+>
+> The line breaks in our commands do not need to be in specific locations. They can be made wherever
+> necessary to keep your code neat and make it easier to read. Some people place them to keep the lines roughly
+> and equal length, while others put a single option on each line. The benefit of this approach is that you can
+> use in line comments to remind you what each option does. Whichever approach you use, remember to keep the
+> `+` at the end of the line so R knows that your command continues on the next line.
+
 As with last time, first we pass the gapminder dataframe to the `filter`
 function, then we pass the filtered version of the gapminder dataframe to the
 `select` function. **Note:** The order of operations is very important in this

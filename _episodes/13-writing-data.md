@@ -79,7 +79,7 @@ Open up this document and have a look.
 >
 > Hint: Remember that we used the `facet_wrap` command previously to create a facet plot.
 >
-> > ## Solution to challenge 1
+> > ## Solution to Challenge 1
 > > 
 > > You can output a second plot, by adding a second `ggplot` command with the `facet_wrap` command before
 > > `dev.off` command.
@@ -223,7 +223,7 @@ That looks better!
 >
 > Remember to use a different file name so that the new output doesn't overwrite your old output
 >
-> > ## Solution to challenge 2
+> > ## Solution to Challenge 2
 > > 
 > > ~~~
 > > new_data <- gapminder[gapminder$year >= 1990,]

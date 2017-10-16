@@ -112,7 +112,7 @@ ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp)) +
 > Hint: the gapminder dataset has a column called "year", which should appear
 > on the x-axis.
 >
-> > ## Solution to challenge 1
+> > ## Solution to Challenge 1
 > >
 > > Modify the example so that the figure visualise how life expectancy has
 > > changed over time:
@@ -137,7 +137,7 @@ ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp)) +
 > code from the previous challenge to **color** the points by the "continent"
 > column. What trends do you see in the data? Are they what you expected?
 >
-> > ## Solution to challenge 2
+> > ## Solution to Challenge 2
 > >
 > > In the previous examples and challenge we've used the `aes` function to tell
 > > the scatterplot **geom** about the **x** and **y** locations of each point.
@@ -294,16 +294,16 @@ aesthetic by passing it as an argument to `geom_smooth`. Previously in the
 lesson we've used the `aes` function to define a *mapping* between data
 variables and their visual representation.
 
-> ## Challenge 4a
+> ## Challenge 3
 >
 > Modify the color and size of the points on the point layer in the previous
 > example.
 >
 > Hint: do not use the `aes` function, change this by adding arguments to the correct function.
 >
-> > ## Solution to challenge 4a
+> > ## Solution to Challenge 3
 > >
-> > Since we want all the points to be the same and are not making this aesthetic specific to the data, we add this to `geom_point` to make the change effect all points.
+> > Since we want all the points to be the same and are not making this aesthetic specific to the data, we add this to `geom_point` to make the change effect all points but not the line.
 > >
 > > 
 > > ~~~
@@ -318,9 +318,9 @@ variables and their visual representation.
 {: .challenge}
 
 
-> ## Challenge 4b
+> ## Challenge 4
 >
-> Modify your solution to Challenge 4a so that the
+> Modify your solution to Challenge 3 so that the
 > points are now a different shape and are colored by continent with new
 > trendlines.
 >
@@ -328,7 +328,7 @@ variables and their visual representation.
 >
 > <img src="../fig/pch_symbols.png" alt="a list of symbols one can use in R to change the shape of the plot" style="display: block; margin: auto;width: 200px">
 >
-> > ## Solution to challenge 4b
+> > ## Solution to Challenge 4
 > >
 > > Since we want the color to be dependent on the continent, we place that argument inside the `aes`. To change the shape of the point, we place the `pch` argument inside `geom_point`. 
 > >
@@ -423,14 +423,6 @@ ggplot(data = az.countries, aes(x = year, y = lifeExp, color=continent)) +
 
 <img src="../fig/rmd-08-theme-1.png" title="plot of chunk theme" alt="plot of chunk theme" style="display: block; margin: auto;" />
 
-> ## Tip:
->
-> The line breaks in our commands do not need to be in specific locations. They can be made wherever
-> necessary to keep your code neat and make it easier to read. Some people place them to keep the lines roughly
-> and equal length, while others put a single option on each line. The benefit of this approach is that you can
-> use in line comments to remind you what each option does. Whichever approach you use, remember to keep the
-> `+` at the end of the line so R knows that your command continues on the next line.
-
 This is a taste of what you can do with `ggplot2`. RStudio provides a
 really useful [cheat sheet][cheat] of the different layers available, and more
 extensive documentation is available on the [ggplot2 website][ggplot-doc].
@@ -446,13 +438,21 @@ code to modify!
 >
 > Create a density plot of GDP per capita, filled by continent.
 >
-> Advanced:
+> Advanced Challenge:
 >  - Transform the x axis to better visualise the data spread.
 >  - Add a facet layer to panel the density plots by year.
 >
-> > ## Solution to challenge 5
+> > ## Solution to Challenge 5
 > >
 > > Create a density plot of GDP per capita, filled by continent.
+> >
+> > ~~~
+> > ggplot(data = gapminder, aes(x = gdpPercap, fill=continent)) +
+> >  geom_density(alpha=0.6)
+> > ~~~
+> > {: .r}
+> >
+> > <img src="../fig/rmd-08-ch5-sol-2.png" title="plot of chunk ch5-sol" alt="plot of chunk ch5-sol" style="display: block; margin: auto;" />
 > >
 > > Advanced:
 > >  - Transform the x axis to better visualise the data spread.

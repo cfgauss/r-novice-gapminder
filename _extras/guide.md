@@ -1629,6 +1629,8 @@ year_country_gdp_euro <- gapminder %>%
 ~~~
 {: .r}
 
+line breaks between specific portions of our command make the code easier to read
+
 first we pass the data frame to `filter` then pass the filtered dataframe to `select`.
 
 If we reversed this, it would not work since we removed the continent data with `select`
@@ -1764,6 +1766,8 @@ library("ggplot2")
 ~~~
 {: .r}
 
+If you haven't previously installed the package, install it now using the command `install.packages("ggplot2")`. Then load it using the command above.
+
 to begin graphing, we use the `ggplot` function
 this lets R
 know that we're creating a new plot, and any of the arguments we give the
@@ -1776,6 +1780,8 @@ ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp)) +
   geom_point()
 ~~~
 {: .r}
+
+mention that line breaks can be anywhere, but you need to have the + at the end of the line.
 
 <img src="../fig/rmd-08-lifeExp-vs-gdpPercap-scatter-1.png" title="plot of chunk lifeExp-vs-gdpPercap-scatter" alt="plot of chunk lifeExp-vs-gdpPercap-scatter" style="display: block; margin: auto;" />
 
@@ -1870,12 +1876,14 @@ to the points.
 Now we can clearly see that the points are drawn on top of the
 lines.
 
-> #### Tip: Setting an aesthetic to a value instead of a mapping
->
-> So far, we've seen how to use an aesthetic (such as **color**) as a *mapping* to a variable in the data. For example, when we use `geom_line(aes(color=continent))`, ggplot will give a different color to each continent. But what if we want to change the colour of all lines to blue? You may think that `geom_line(aes(color="blue"))` should work, but it doesn't. Since we don't want to create a mapping to a specific variable, we simply move the color specification outside of the `aes()` function, like this: `geom_line(color="blue")`.
-{: .callout}
+Demonstrate changing an aesthetic to a solid color:
 
-***CHALLENGES*** - 5 min
+~~~
+ggplot(data = gapminder, aes(x=year, y=lifeExp, by=country)) +
+  geom_line(aes(color="red")) + geom_point()
+~~~
+{: .r}
+
 
 #### Transformations and statistics
 
@@ -1891,12 +1899,14 @@ ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp)) +
 
 <img src="../fig/rmd-08-lifeExp-vs-gdpPercap-scatter3-1.png" title="plot of chunk lifeExp-vs-gdpPercap-scatter3" alt="plot of chunk lifeExp-vs-gdpPercap-scatter3" style="display: block; margin: auto;" />
 
-Currently it's hard to see the relationship between the points due to some strong
-outliers in GDP per capita. We can change the scale of units on the x axis using
-the *scale* functions. These control the mapping between the data values and
-visual values of an aesthetic. We can also modify the transparency of the
-points, using the *alpha* function, which is especially helpful when you have
-a large amount of data which is very clustered.
+it's hard to see the relationship between the points due outliers
+
+change the scale of units on the x axis using
+the *scale* functions.
+
+
+can also modify the transparency of the
+points, using the *alpha* function - helpful when large amount of data which is very clustered.
 
 
 ~~~
@@ -1914,10 +1924,13 @@ of 1,000 is now 3 on the y axis, a value of 10,000 corresponds to 4 on the y
 axis and so on. This makes it easier to visualize the spread of data on the
 x-axis.
 
-> #### Tip Reminder: Setting an aesthetic to a value instead of a mapping
->
-> Notice that we used `geom_point(alpha = 0.5)`. As the previous tip mentioned, using a setting outside of the `aes()` function will cause this value to be used for all points, which is what we want in this case. But just like any other aesthetic setting, *alpha* can also be mapped to a variable in the data. For example, we can give a different transparency to each continent with `geom_point(aes(alpha = continent))`.
-{: .callout}
+point out that the `alpha` aesthetic is applied only to the point geom. Can also make transparency based on variables such as:
+
+~~~
+ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp)) +
+  geom_point(aes(alpha = continent)) + scale_x_log10()
+~~~
+{: .r}
 
 We can fit a simple relationship to the data by adding another layer,
 `geom_smooth`:
@@ -2026,8 +2039,6 @@ ggplot(data = az.countries, aes(x = year, y = lifeExp, color=continent)) +
 
 <img src="../fig/rmd-08-theme-1.png" title="plot of chunk theme" alt="plot of chunk theme" style="display: block; margin: auto;" />
 
-mention that line breaks can be anywhere, but you need to have the + at the end of the line.
-
 ***CHALLENGES*** - allot 5 min
 
 ## Writing Data - complete by 4:20 pm
@@ -2106,6 +2117,7 @@ very similar to the `read.table` function that we mentioned previously in Lesson
 Let's create a data-cleaning script, for this analysis, we
 only want to focus on the gapminder data for Australia:
 
+**make a script file**
 
 ~~~
 aust_subset <- gapminder[gapminder$country == "Australia",]
