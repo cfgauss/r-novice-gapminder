@@ -604,7 +604,7 @@ Other useful commands for working with packages:
 > {: .r}
 >
 >
-> > ## Solution to challenge 1
+> > ## Solution to Challenge 1
 > >
 > > The following can be used as R variables:
 > > 
@@ -648,7 +648,7 @@ Other useful commands for working with packages:
 > ~~~
 > {: .r}
 >
-> > ## Solution to challenge 2
+> > ## Solution to Challenge 2
 > >
 > > 
 > > ~~~
@@ -688,7 +688,7 @@ Other useful commands for working with packages:
 > Run the code from the previous challenge, and write a command to
 > compare mass to age. Is mass larger than age?
 >
-> > ## Solution to challenge 3
+> > ## Solution to Challenge 3
 > >
 > > One way of answering this question in R is to use the `>` to set up the following:
 > > 
@@ -717,7 +717,7 @@ Other useful commands for working with packages:
 > (Note: We will be using these packages in future lessons, so ask a helper for
 > assistance if you have difficulties)
 >
-> > ## Solution to challenge 5
+> > ## Solution to Challenge 4
 > >
 > > We can use the `install.packages` command to install the required packages.
 > > 

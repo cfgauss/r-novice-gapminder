@@ -303,7 +303,7 @@ x
 >
 > After you find 2 different commands, compare notes with your neighbour. Did you have different strategies?
 >
-> > ## Solution to challenge 1
+> > ## Solution to Challenge 1
 > >
 > > Use the `c` function:
 > > ~~~
@@ -557,7 +557,7 @@ because it can introduce hard to find and subtle bugs!
 > Test out your guess by trying out this command. Did this match your expectation?
 > Why did we get this result? (Tip: test out each part of the command on it's own - this is a useful debugging strategy)
 >
-> > ## Solution to challenge 2
+> > ## Solution to Challenge 2
 > >
 > > The `which` command returns the index of every `TRUE` value in its
 > > input. The `names(x) == "g"` command didn't return any `TRUE` values. Because
@@ -765,7 +765,7 @@ x[x > 7]
 >
 > Write a subsetting command to return the values in x that are greater than 4 and less than 7.
 >
-> > ## Solution to challenge 4
+> > ## Solution to Challenge 4
 > >
 > > 
 > > ~~~

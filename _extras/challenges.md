@@ -1,7 +1,7 @@
 ---
 layout: page
-title: Figures
-permalink: /figures/
+title: Challenges
+permalink: /challenges/
 ---
 
 
@@ -429,7 +429,7 @@ permalink: /figures/
 >
 > After you find 3 different commands, compare notes with your neighbour. Did you have different strategies?
 >
-> > ## Solution to challenge 1
+> > ## Solution to Challenge 1
 > >
 > > 
 > > ~~~
@@ -517,17 +517,7 @@ permalink: /figures/
 > Try out this command and see what you get. Did this match your expectation?
 > Why did we get this result? (Tip: test out each part of the command on it's own - this is a useful debugging strategy)
 >
-> Which of the following are true:
->
-> * A) if there are no `TRUE` values passed to `which`, an empty vector is returned
-> * B) if there are no `TRUE` values passed to `which`, an error message is shown
-> * C) `integer()` is an empty vector
-> * D) making an empty vector negative produces an "everything" vector
-> * E) `x[]` gives the same result as `x[integer()]`
->
-> > ## Solution to challenge 2
-> >
-> > A and C are correct.
+> > ## Solution to Challenge 2
 > >
 > > The `which` command returns the index of every `TRUE` value in its
 > > input. The `names(x) == "g"` command didn't return any `TRUE` values. Because
@@ -542,6 +532,78 @@ permalink: /figures/
 
 
 > ## Challenge 3
+>
+> While it is not recommended, it is possible for multiple elements in a
+> vector to have the same name. Consider this examples:
+>
+>
+>~~~
+> y <- 1:3
+> y
+>~~~
+>{: .r}
+>
+>
+>
+>~~~
+>[1] 1 2 3
+>~~~
+>{: .output}
+>
+>
+>
+>~~~
+> names(y) <- c('a', 'a', 'a')
+> y
+>~~~
+>{: .r}
+>
+>
+>
+>~~~
+>a a a 
+>1 2 3 
+>~~~
+>{: .output}
+>
+>
+> Can you come up with a command that will only return of the 'a' values and a different command
+> that will return all of the 'a' values? Does your answer differ from your neighbors?
+>
+> > ## Solution to challenge 3
+> >~~~
+> > y['a']  # only returns first value
+> >~~~
+> >{: .r}
+> >
+> >
+> >
+> >~~~
+> >a 
+> >1 
+> >~~~
+> >{: .output}
+> >
+> >
+> >
+> >~~~
+> > y[which(names(y) == 'a')]  # returns all three values
+> >~~~
+> >{: .r}
+> >
+> >
+> >
+> >~~~
+> >a a a 
+> >1 2 3 
+> >~~~
+> >{: .output}
+>{: .solution}
+{: .challenge}
+
+
+> ## Challenge 4
+> ## Challenge 4
 >
 > Given the following code:
 >
@@ -563,7 +625,7 @@ permalink: /figures/
 >
 > Write a subsetting command to return the values in x that are greater than 4 and less than 7.
 >
-> > ## Solution to challenge 3
+> > ## Solution to Challenge 4
 > >
 > > 
 > > ~~~
@@ -582,148 +644,6 @@ permalink: /figures/
 > {: .solution}
 {: .challenge}
 
-
-> ## Challenge 4
->
-> Using the gapminder data we loaded previously, fix each of the following common data frame subsetting errors:
->
-> 1. Extract observations collected for the year 1957
->
->    
->    ~~~
->    gapminder[gapminder$year = 1957,]
->    ~~~
->    {: .r}
->
-> 2. Extract all columns except 1 through to 4
->
->    
->    ~~~
->    gapminder[,-1:4]
->    ~~~
->    {: .r}
->
-> 3. Extract the rows where the life expectancy is longer the 80 years
->
->    
->    ~~~
->    gapminder[gapminder$lifeExp > 80]
->    ~~~
->    {: .r}
->
-> 4. Extract the first row, and the fourth and fifth columns
->   (`lifeExp` and `gdpPercap`).
->
->    
->    ~~~
->    gapminder[1, 4, 5]
->    ~~~
->    {: .r}
->
-> 5. Advanced: extract rows that contain information for the years 2002
->    and 2007
->
->    
->    ~~~
->    gapminder[gapminder$year == 2002 | 2007,]
->    ~~~
->    {: .r}
->
-> > ## Solution to challenge 4
-> >
-> > Fix each of the following common data frame subsetting errors:
-> >
-> > 1. Extract observations collected for the year 1957
-> >
-> >    
-> >    ~~~
-> >    # gapminder[gapminder$year = 1957,]
-> >    gapminder[gapminder$year == 1957,]
-> >    ~~~
-> >    {: .r}
-> >
-> > 2. Extract all columns except 1 through to 4
-> >
-> >    
-> >    ~~~
-> >    # gapminder[,-1:4]
-> >    gapminder[,-c(1:4)]
-> >    ~~~
-> >    {: .r}
-> >
-> > 3. Extract the rows where the life expectancy is longer the 80 years
-> >
-> >    
-> >    ~~~
-> >    # gapminder[gapminder$lifeExp > 80]
-> >    gapminder[gapminder$lifeExp > 80,]
-> >    ~~~
-> >    {: .r}
-> >
-> > 4. Extract the first row, and the fourth and fifth columns
-> >   (`lifeExp` and `gdpPercap`).
-> >
-> >    
-> >    ~~~
-> >    # gapminder[1, 4, 5]
-> >    gapminder[1, c(4, 5)]
-> >    ~~~
-> >    {: .r}
-> >
-> > 5. Advanced: extract rows that contain information for the years 2002
-> >    and 2007
-> >
-> >     
-> >     ~~~
-> >     # gapminder[gapminder$year == 2002 | 2007,]
-> >     gapminder[gapminder$year == 2002 | gapminder$year == 2007,]
-> >     gapminder[gapminder$year %in% c(2002, 2007),]
-> >     ~~~
-> >     {: .r}
-> {: .solution}
-{: .challenge}
-
-> ## Challenge 5
->
-> 1. Why does `gapminder[1:20]` return an error? How does it differ from `gapminder[1:20, ]`?
->
->
-> 2. Create a new `data.frame` called `gapminder_small` that only contains rows 1 through 9
-> and 19 through 23. There are many ways to accomplish this. Compare with your neighbor and see if they did it a different way than you.
->
-> > ## Solution to challenge 5
-> >
-> > 1.  `gapminder` is a data.frame so needs to be subsetted on two dimensions. `gapminder[1:20, ]` subsets the data to give the first 20 rows and all columns.
-> >
-> > 2. There are several different ways to accomplish this task:
-> > 
-> > First, you can do it in two steps by subsetting all the rows 1 through 23, then removing rows 10 through 18:
-> > 
-> > ~~~
-> > gapminder_small <- gapminder[1:23, ]
-> > gapminder_small <- gapminder_small[-18:-10, ]
-> > ~~~
-> > {: .r}
-> > 
-> > Or, you can first subset rows 1 through 9, then use `rbind` to concatenate the next subset of rows 10 through 18:
-> > 
-> > ~~~
-> > gapminder_small <- gapminder[1:9, ]
-> > gapminder_small <- rbind(gapminder_small, gapminder[19:23, ]
-> > ~~~
-> > {: .r}
-> >
-> > Or you can do this in a single step by combining your ranges:
-> >
-> > ~~~
-> > gapminder_small <- gapminder[c(1:9, 19:23), ]
-> > ~~~
-> >
-> > There are probably other ways to accomplish this task. Did you come up with any that we didn't show here?
-> >
-> > {: .r}
-> {: .solution}
-{: .challenge}
 
 ## [Exploring Data Frames](https://carriebrown.github.io/r-novice-gapminder/06-data-frames/)
 
@@ -889,18 +809,27 @@ permalink: /figures/
 > ## Challenge 3
 >
 > Read the output of `str(gapminder)` again;
-> this time, use what you've learned about factors, lists and vectors,
+> this time, use what you've learned about R's basic data types, factors, and vectors,
 > as well as the output of functions like `colnames` and `dim`
 > to explain what everything that `str` prints out for gapminder means.
+>
+> Can you determine what data each column holds? Do the data types make sense for these types of data? If not, what data type would you recommend?
+>
 > If there are any parts you can't interpret, discuss with your neighbors!
 >
 > > ## Solution to Challenge 3
 > >
-> > The object `gapminder` is a data frame with 1704 entries and 6 columns:
-> > - `country` and `continent` are factors. The `country` factor has 142 levels and the `continent` factor has 5 levels
-> > - `year` is an integer vector.
-> > - `pop`, `lifeExp`, and `gdpPercap` are numeric vectors.
+> > The object `gapminder` is a data frame with 1704 entries and 6 columns.
 > >
+> > The 6 columns contain the following data and types:
+> > - `country`: a factor with 142 levels - The country of which the rest of the data in the row is for.
+> > - `continent`: a factor with 5 levels - The continent in which the target country is located.
+> > - `year`: integer vector - The year for which the data was obtained
+> > - `pop`: integer vector - The total population in the target country for the target year.
+> > - `lifeExp`: numeric vector - The average life expectancy for the target country during the target year.
+> > - `gdpPercap`: numeric vector - The average GDP per capita for the target country during the target year.
+> >
+> > 
 > {: .solution}
 {: .challenge}
 
@@ -950,7 +879,7 @@ permalink: /figures/
 >    ~~~
 >    {: .r}
 >
-> > ## Solution to challenge 4
+> > ## Solution to Challenge 4
 > >
 > > Fix each of the following common data frame subsetting errors:
 > >
@@ -1012,7 +941,7 @@ permalink: /figures/
 > 2. Create a new `data.frame` called `gapminder_small` that only contains rows 1 through 9
 > and 19 through 23. You can do this in one or two steps.
 >
-> > ## Solution to challenge 5
+> > ## Solution to Challenge 5
 > >
 > > 1.  `gapminder` is a data.frame so needs to be subsetted on two dimensions. `gapminder[1:20, ]` subsets the data to give the first 20 rows and all columns.
 > >
@@ -1155,11 +1084,39 @@ permalink: /figures/
 
 > ## Challenge 3
 >
+> Use the following commands to create two vectors each containing 5 random values:
+>
+>~~~
+>rows <- rpois(5, lambda=5)
+>cols <- rpois(5, lambda=5)
+>~~~
+>{: .r}
+>
+> Modify our previous for loops to now fill our 5 x 5 matrix with the product of the respective values in `rows` and `cols`. (ie position [2, 4] in the matrix would have the product of `rows[2] * cols[4]`) 
+>
+> > ## Solution to Challenge 3
+> >
+> > ~~~
+> >output_matrix <- matrix(nrow=5, ncol=5)
+> >for(i in 1:5){
+> >  for(j in 1:5){
+> >    matrix_value <- rows[i] * cols[j]
+> >    output_matrix[i, j] <- matrix_value
+> >  }
+> >}
+> > ~~~
+> > {: .r}
+> >
+> {: .solution}
+{: .challenge}
+
+> ## Challenge 4 - Advanced
+>
 > Write a script that loops through the `gapminder` data by continent and prints out
 > whether the mean life expectancy is smaller or larger than 50
 > years.
 >
-> > ## Solution to Challenge 3
+> > ## Solution to Challenge 4
 > >
 > > **Step 1**:  We want to make sure we can extract all the unique values of the continent vector
 > > 
@@ -1213,14 +1170,14 @@ permalink: /figures/
 > {: .solution}
 {: .challenge}
 
-> ## Challenge 4
+> ## Challenge 5 - Advanced
 >
 > Modify the script from Challenge 4 to loop over each
 > country. This time print out whether the life expectancy is
 > smaller than 50, between 50 and 70, or greater than 70.
 >
-> > ## Solution to Challenge 4
-> >  We modify our solution to Challenge 3 by now adding two thresholds, `lowerThreshold` and `upperThreshold` and extending our if-else statements:
+> > ## Solution to Challenge 5
+> >  We modify our solution to Challenge 4 by now adding two thresholds, `lowerThreshold` and `upperThreshold` and extending our if-else statements:
 > >
 > > 
 > > ~~~
@@ -1265,8 +1222,20 @@ permalink: /figures/
 > >                            select(year,country,lifeExp)
 > >~~~
 > >{: .r}
+> > 
+> > We can check the number of rows in our new dataframe `year_country_lifeExp_Africa` by using the `ncol` command:
+> >~~~
+> >nrow(year_country_lifeExp_Africa)
+> >~~~
+> >{: .r}
+> >
+> >~~~
+> > [1] 624
+> >~~~
+> >{: .output}
 > {: .solution}
 {: .challenge}
+
 
 
 ![](../fig/13-dplyr-fig2.png)
@@ -1277,29 +1246,70 @@ permalink: /figures/
 > ## Challenge 2
 >
 >
-> Calculate the average life expectancy per country. Which had the longest life
-> expectancy and which had the shortest life expectancy?
+> Calculate the average life expectancy per country. What is the longest average life
+> expectancy and the shortest life expectancy?
 >
 > > ## Solution to Challenge 2
 > >
+> > First let's build a dataframe with a summary of the average life expectancy per country:
 > >~~~
 > >lifeExp_bycountry <- gapminder %>%
 > >    group_by(country) %>%
 > >    summarize(mean_lifeExp=mean(lifeExp))
 > >~~~
 > >{: .r}
+> >
+> > Now that we have the data we need, we can use the `min` and `max` commands to determine which country had the longest and shortest life expectancy:
+> >~~~
+> >min(lifeExp_bycountry$mean_lifeExp)
+> >~~~
+> >{: .r}
+> >
+> >~~~
+> >[1] 36.76917
+> >~~~
+> >{: .output}
+> >
+> >~~~
+> >max(lifeExp_bycountry$mean_lifeExp)
+> >~~~
+> >{: .r}
+> >
+> >~~~
+> >[1] 76.51142
+> >~~~
+> >{: .output}
+> >
 > {: .solution}
 {: .challenge}
 
 
-> ## Advanced Challenge
+> ## Challenge 3
 >
-> Calculate the average life expectancy in 2002 of 2 randomly selected countries
-> for each continent. Then arrange the continent names in reverse order.
+> Calculate the average life expectancy in 2002
+> for each continent. 
+>
+>
+> > ## Solution to Challenge 3
+> >
+> >~~~
+> >lifeExp_bycontinents <- gapminder %>%
+> >    filter(year==2002) %>%
+> >    group_by(continent) %>%
+> >    summarize(mean_lifeExp=mean(lifeExp))
+> >~~~
+> >{: .r}
+> {: .solution}
+{: .challenge}
+
+> ## Challenge 4 - Advanced
+>
+> Modify your code from Challenge 3 to randomly select 2 countries from each continent before calculating the average life expectancy and then arrange the continent names in reverse order.
+>
 > **Hint:** Use the `dplyr` functions `arrange` and `sample_n`, they have
-> similar syntax to other dplyr functions.
+> similar syntax to other dplyr functions. Be sure to check out the help documentation for the new functions by typing `?arrange` or `?sample_n` if you run into difficulties.
 >
-> > ## Solution to Advanced Challenge
+> > ## Solution to Challenge 4
 > >
 > >~~~
 > >lifeExp_2countries_bycontinents <- gapminder %>%
@@ -1378,42 +1388,14 @@ permalink: /figures/
 
 > ## Challenge 3
 >
-> Switch the order of the point and line layers from the previous example. What
-> happened?
->
-> > ## Solution to challenge 3
-> >
-> > Switch the order of the point and line layers from the previous example. What
-> > happened?
-> >
-> > 
-> > ~~~
-> > ggplot(data = gapminder, aes(x=year, y=lifeExp, by=country)) +
-> >  geom_point() + geom_line(aes(color=continent))
-> > ~~~
-> > {: .r}
-> > 
-> > <img src="../fig/rmd-08-ch3-sol-1.png" title="plot of chunk ch3-sol" alt="plot of chunk ch3-sol" style="display: block; margin: auto;" />
-> >
-> > The lines now get drawn over the points!
-> >
-> {: .solution}
-{: .challenge}
-
-
-> ## Challenge 4a
->
 > Modify the color and size of the points on the point layer in the previous
 > example.
 >
-> Hint: do not use the `aes` function.
+> Hint: do not use the `aes` function, change this by adding arguments to the correct function.
 >
-> > ## Solution to challenge 4a
+> > ## Solution to Challenge 3
 > >
-> > Modify the color and size of the points on the point layer in the previous
-> > example.
-> >
-> > Hint: Do not use the `aes` function.
+> > Since we want all the points to be the same and are not making this aesthetic specific to the data, we add this to `geom_point` to make the change effect all points but not the line.
 > >
 > > 
 > > ~~~
@@ -1428,20 +1410,19 @@ permalink: /figures/
 {: .challenge}
 
 
-> ## Challenge 4b
+> ## Challenge 4
 >
-> Modify your solution to Challenge 4a so that the
+> Modify your solution to Challenge 3 so that the
 > points are now a different shape and are colored by continent with new
 > trendlines.
 >
-> Hint: The color argument can be used inside the aesthetic.
+> Hint: The color argument can be used inside the aesthetic. To change the shape of a point, use the `pch` argument. Setting `pch` to different numeric values from `1:25` yields different shapes as indicated in the chart below.
 >
-> > ## Solution to challenge 4b
+> <img src="../fig/pch_symbols.png" alt="a list of symbols one can use in R to change the shape of the plot" style="display: block; margin: auto;width: 200px">
+>
+> > ## Solution to Challenge 4
 > >
-> > Modify Challenge 4 so that the points are now a different shape and are
-> > colored by continent with new trendlines.
-> >
-> > Hint: The color argument can be used inside the aesthetic.
+> > Since we want the color to be dependent on the continent, we place that argument inside the `aes`. To change the shape of the point, we place the `pch` argument inside `geom_point`. 
 > >
 > >
 > >~~~
@@ -1459,13 +1440,21 @@ permalink: /figures/
 >
 > Create a density plot of GDP per capita, filled by continent.
 >
-> Advanced:
+> Advanced Challenge:
 >  - Transform the x axis to better visualise the data spread.
 >  - Add a facet layer to panel the density plots by year.
 >
-> > ## Solution to challenge 5
+> > ## Solution to Challenge 5
 > >
 > > Create a density plot of GDP per capita, filled by continent.
+> >
+> > ~~~
+> > ggplot(data = gapminder, aes(x = gdpPercap, fill=continent)) +
+> >  geom_density(alpha=0.6)
+> > ~~~
+> > {: .r}
+> >
+> > <img src="../fig/rmd-08-ch5-sol-2.png" title="plot of chunk ch5-sol" alt="plot of chunk ch5-sol" style="display: block; margin: auto;" />
 > >
 > > Advanced:
 > >  - Transform the x axis to better visualise the data spread.

@@ -419,6 +419,7 @@ gdp_pop_bycontinents_byyear <- gapminder %>%
 > >{: .r}
 > {: .solution}
 {: .challenge}
+
 ## Other great resources
 
 * [Data Wrangling Cheat sheet](https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf)
