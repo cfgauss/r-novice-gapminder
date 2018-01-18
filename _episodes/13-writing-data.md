@@ -41,7 +41,7 @@ ggsave("My_most_recent_plot.jpg")
 ~~~
 {: .r}
 
-`ggsave` also allows you to specify size and quality of the image. You can check out all of the 
+`ggsave` also allows you to specify size and quality of the image. You can check out all of the
 options using the `?ggsave` command to view the help file.
 
 Sometimes you will want to save plots without creating them in the
@@ -65,7 +65,7 @@ dev.off()
 ~~~
 {: .r}
 
-The `pdf` command opens the pdf file, and any output between this command and the `dev.off` command 
+The `pdf` command opens the pdf file, and any output between this command and the `dev.off` command
 will be added to that file. Forgetting to "close" your pdf device by using the `dev.off` command can
 lead to an incorrect file, so be sure to include it immediately after your output.
 
@@ -78,24 +78,6 @@ Open up this document and have a look.
 > of the same data with one panel per continent.
 >
 > Hint: Remember that we used the `facet_wrap` command previously to create a facet plot.
->
-> > ## Solution to Challenge 1
-> > 
-> > You can output a second plot, by adding a second `ggplot` command with the `facet_wrap` command before
-> > `dev.off` command.
-> >
-> > ~~~
-> > pdf("Life_Exp_vs_time2.pdf", width=12, height=4)
-> > ggplot(data=gapminder, aes(x=year, y=lifeExp)) +
-> >   geom_point()
-> > ggplot(data=gapminder, aes(x=year, y=lifeExp)) +
-> >   geom_point() + facet_wrap(~ continent)
-> > 
-> > # don't forget to close your pdf device!
-> > dev.off()
-> > ~~~
-> > {: .r}
-> {: .solution}
 {: .challenge}
 
 The commands `jpeg`, `png` etc. are used similarly to produce
@@ -106,7 +88,7 @@ documents in different formats.
 At some point, you'll also want to write out data from R.
 
 We can use the `write.table` function for this, which is
-very similar to the `read.table` function that we mentioned previously in Lesson 2. 
+very similar to the `read.table` function that we mentioned previously in Lesson 2.
 For more information on reading in your own data in R and the `read.table` function, check out the
 supplemental lesson [Reading and Writing CSV Files](https://carriebrown.github.io/r-novice-gapminder-2/11-supp-read-write-csv/).
 
@@ -222,18 +204,4 @@ That looks better!
 > your working directory.
 >
 > Remember to use a different file name so that the new output doesn't overwrite your old output
->
-> > ## Solution to Challenge 2
-> > 
-> > ~~~
-> > new_data <- gapminder[gapminder$year >= 1990,]
-> > write.table(new_data,
-> >   file="gapminder-1990.csv",
-> >   sep=",",
-> >   quote=FALSE,
-> >   row.names=FALSE
-> > )
-> > ~~~
-> > {: .r}
->{: .solution}
 {: .challenge}

@@ -19,12 +19,12 @@ keypoints:
 
 ## Data Frames
 
-So far we have covered data structures which contain all the same basic data type. But 
+So far we have covered data structures which contain all the same basic data type. But
 one of R's most powerful features is its ability to deal with tabular data -
-like what you might already have in a spreadsheet or a CSV. **Data Frames** are built from 
+like what you might already have in a spreadsheet or a CSV. **Data Frames** are built from
 vectors but they can contain vectors of different data types.
 
-To build a data frame from existing vectors we use the `data.frame` command. Let's build 
+To build a data frame from existing vectors we use the `data.frame` command. Let's build
 a data frame for with some information on cats.
 
 ~~~
@@ -71,7 +71,7 @@ cats$coat
 
 
 ~~~
-[1] calico black  tabby 
+[1] calico black  tabby
 Levels: black calico tabby
 ~~~
 {: .output}
@@ -102,7 +102,7 @@ paste("My cat is", cats$coat)
 
 
 ~~~
-[1] "My cat is calico" "My cat is black"  "My cat is tabby" 
+[1] "My cat is calico" "My cat is black"  "My cat is tabby"
 ~~~
 {: .output}
 
@@ -122,114 +122,10 @@ Try this challenge to see different ways of interacting with data frames:
 > - `cats[1, ]`
 >
 > Try out these examples and explain what is returned by each one.
->
-> > ## Solution to Challenge 1
-> > 
-> > ~~~
-> > cats[1]
-> > ~~~
-> > {: .r}
-> > 
-> > 
-> > 
-> > ~~~
-> >     coat
-> > 1 calico
-> > 2  black
-> > 3  tabby
-> > ~~~
-> > {: .output}
-> > We can think of a data frame as a list of vectors. The single brace `[1]`
-> returns the first slice of the list, as another list. In this case it is the
-> first column of the data frame.
-> > 
-> > ~~~
-> > cats$coat
-> > ~~~
-> > {: .r}
-> > 
-> > 
-> > 
-> > ~~~
-> > [1] calico black  tabby 
-> > Levels: black calico tabby
-> > ~~~
-> > {: .output}
-> > This example uses the `$` character to address items by name. _coat_ is the
-> first column of the data frame, again a _vector_ of type _factor_.
-> > 
-> > ~~~
-> > cats["coat"]
-> > ~~~
-> > {: .r}
-> > 
-> > 
-> > 
-> > ~~~
-> >     coat
-> > 1 calico
-> > 2  black
-> > 3  tabby
-> > ~~~
-> > {: .output}
-> > Here we are using a single brace `["coat"]` replacing the index number with
-> the column name. Like example 1, the returned object is a _list_.
-> > 
-> > ~~~
-> > cats[1, 1]
-> > ~~~
-> > {: .r}
-> > 
-> > 
-> > 
-> > ~~~
-> > [1] calico
-> > Levels: black calico tabby
-> > ~~~
-> > {: .output}
-> > This example uses a single brace, but this time we provide row and column
-> coordinates. The returned object is the value in row 1, column 1. The object
-> is an _integer_ but because it is part of a _vector_ of type _factor_, R
-> displays the label "calico" associated with the integer value.
-> > 
-> > ~~~
-> > cats[, 1]
-> > ~~~
-> > {: .r}
-> > 
-> > 
-> > 
-> > ~~~
-> > [1] calico black  tabby 
-> > Levels: black calico tabby
-> > ~~~
-> > {: .output}
-> > Like the previous example we use single braces and provide row and column
-> coordinates. The row coordinate is not specified, R interprets this missing
-> value as all the elements in this _column_ _vector_.
-> > 
-> > ~~~
-> > cats[1, ]
-> > ~~~
-> > {: .r}
-> > 
-> > 
-> > 
-> > ~~~
-> >     coat weight likes_string
-> > 1 calico    2.1         TRUE
-> > ~~~
-> > {: .output}
-> > Again we use the single brace with row and column coordinates. The column
-> coordinate is not specified. The return value is a _list_ containing all the
-> values in the first row.
-> {: .solution}
 {: .challenge}
 
-
-
-Let's modify our data frame by adding an additional column which will hold the age of each 
-of the cats. As we saw in the previous challenge, columns in a data frame are vectors which 
+Let's modify our data frame by adding an additional column which will hold the age of each
+of the cats. As we saw in the previous challenge, columns in a data frame are vectors which
 we construct using the `c` function as before:
 
 ~~~
@@ -264,7 +160,7 @@ Error in data.frame(..., check.names = FALSE): arguments imply differing number 
 {: .error}
 
 Why didn't this work? Of course, R wants to see one element in our new column
-for every row in the table. Since our data frame only has 3 rows, we can only add a column 
+for every row in the table. Since our data frame only has 3 rows, we can only add a column
 with 3 elements. Let's try that again:
 
 
@@ -303,7 +199,7 @@ factor level, NA generated
 ~~~
 {: .error}
 
-Our list had the correct number of elements, so why did R give us a warning? It looks like 
+Our list had the correct number of elements, so why did R give us a warning? It looks like
 the error occurred in the `coat` column. Let's take a closer look.
 
 ~~~
@@ -317,10 +213,10 @@ class(cats$coat)
 {: .output}
 
 
-So in our `cats` data frame, the `coat` column is a data class named a **factor**. Factors 
+So in our `cats` data frame, the `coat` column is a data class named a **factor**. Factors
 are data classes that R uses to handle categorical data. Each category in a factor is called a **level**
-When we tried adding a new row to the `cats` data frame, the new data contained a level of 
-`coat` that we had not previously used.  This is something we need to look out for - when 
+When we tried adding a new row to the `cats` data frame, the new data contained a level of
+`coat` that we had not previously used.  This is something we need to look out for - when
 R creates a factor, it only
 allows whatever is originally there when our data was first loaded, which was
 'black', 'calico' and 'tabby' in our case. Anything new that doesn't fit into
@@ -336,7 +232,7 @@ levels(cats$coat)
 
 
 ~~~
-[1] "black"  "calico" "tabby" 
+[1] "black"  "calico" "tabby"
 ~~~
 {: .output}
 
@@ -508,7 +404,7 @@ cats
 > ## Challenge 2
 >
 > Remember that you can create a new data.frame right from within R with the following syntax:
-> 
+>
 > ~~~
 > variable1 <- c('a', 'b', 'c')
 > variable2 <- c(1, 2, 3)
@@ -520,7 +416,7 @@ cats
 > ~~~
 > {: .r}
 >
-> Note that the `stringsAsFactors` setting allows us to tell R that we want to preserve our 
+> Note that the `stringsAsFactors` setting allows us to tell R that we want to preserve our
 > character fields and not have R convert them to factors.
 >
 > Modifying the syntax above, make a data.frame that holds the following information for yourself:
@@ -531,29 +427,16 @@ cats
 >
 > Then use `rbind` to add an entry for the people sitting beside you.
 > Finally, use `cbind` to add a column with each person's answer to the question, "Is it time for coffee break?"
->
-> > ## Solution to Challenge 2
-> > 
-> > ~~~
-> > df <- data.frame(first = c('Grace'),
-> >                  last = c('Hopper'),
-> >                  lucky_number = c(0),
-> >                  stringsAsFactors = FALSE)
-> > df <- rbind(df, list('Marie', 'Curie', 238) )
-> > df <- cbind(df, coffeetime = c(TRUE,TRUE))
-> > ~~~
-> > {: .r}
-> {: .solution}
 {: .challenge}
 
 
 #### Data Frames with Gapminder
 
 So far, you've seen the basics of manipulating data.frames with our cat data;
-now, let's use those skills to digest a more realistic dataset. For the remainder of our 
+now, let's use those skills to digest a more realistic dataset. For the remainder of our
 lesson, we are going to use the `gapminder` data set built into the `gapminder` package.
 
-If you did not install the `gapminder` package with our previous challenge, you can do so 
+If you did not install the `gapminder` package with our previous challenge, you can do so
 now with the `install.packages` command:
 
 ~~~
@@ -561,8 +444,8 @@ install.packages("gapminder")
 ~~~
 {: .r}
 
-If you have already installed the `gapminder` package, go ahead and load it now. You can tell 
-R to load the package by clicking the checkbox next to its listing in the package tab of the 
+If you have already installed the `gapminder` package, go ahead and load it now. You can tell
+R to load the package by clicking the checkbox next to its listing in the package tab of the
 lower left pane in R studio. Or you can load it by using the `library` command:
 
 ~~~
@@ -574,10 +457,10 @@ To make sure our analysis is reproducible, we should put the code
 into a script file so we can come back to it later.
 
 > ## Note:
-> 
-> The `library` command can be used within your scripts to load any packages that your 
-> scripts need. To make your scripts easy to read by others, you will want to put these commands 
-> at the top of your script file. You can learn more about writing easy to read code in the 
+>
+> The `library` command can be used within your scripts to load any packages that your
+> scripts need. To make your scripts easy to read by others, you will want to put these commands
+> at the top of your script file. You can learn more about writing easy to read code in the
 > supplemental lesson [Writing Good Software](https://carriebrown.github.io/r-novice-gapminder-2/07-wrap-up/).
 {: .callout}
 
@@ -801,21 +684,6 @@ head(gapminder)
 > Can you determine what data each column holds? Do the data types make sense for these types of data? If not, what data type would you recommend?
 >
 > If there are any parts you can't interpret, discuss with your neighbors!
->
-> > ## Solution to Challenge 3
-> >
-> > The object `gapminder` is a data frame with 1704 entries and 6 columns.
-> >
-> > The 6 columns contain the following data and types:
-> > - `country`: a factor with 142 levels - The country of which the rest of the data in the row is for.
-> > - `continent`: a factor with 5 levels - The continent in which the target country is located.
-> > - `year`: integer vector - The year for which the data was obtained
-> > - `pop`: integer vector - The total population in the target country for the target year.
-> > - `lifeExp`: numeric vector - The average life expectancy for the target country during the target year.
-> > - `gdpPercap`: numeric vector - The average GDP per capita for the target country during the target year.
-> >
-> > 
-> {: .solution}
 {: .challenge}
 
 ### Subsetting Data Frames
@@ -873,8 +741,8 @@ head(gapminder$year)
 ~~~
 {: .output}
 
-With two arguments, `[` subsets on typical matrix format, where the first argument indicates 
-rows and the second argument indicates columns. Note that if one of the arguments is blank, R will 
+With two arguments, `[` subsets on typical matrix format, where the first argument indicates
+rows and the second argument indicates columns. Note that if one of the arguments is blank, R will
 default to include all of the rows or columns:
 
 
@@ -920,7 +788,7 @@ be changed with the third argument, `drop = FALSE`).
 >
 > 1. Extract observations collected for the year 1957
 >
->    
+>
 >    ~~~
 >    gapminder[gapminder$year = 1957,]
 >    ~~~
@@ -928,7 +796,7 @@ be changed with the third argument, `drop = FALSE`).
 >
 > 2. Extract all columns except 1 through to 4
 >
->    
+>
 >    ~~~
 >    gapminder[,-1:4]
 >    ~~~
@@ -936,7 +804,7 @@ be changed with the third argument, `drop = FALSE`).
 >
 > 3. Extract the rows where the life expectancy is longer the 80 years
 >
->    
+>
 >    ~~~
 >    gapminder[gapminder$lifeExp > 80]
 >    ~~~
@@ -945,7 +813,7 @@ be changed with the third argument, `drop = FALSE`).
 > 4. Extract the first row, and the fourth and fifth columns
 >   (`lifeExp` and `gdpPercap`).
 >
->    
+>
 >    ~~~
 >    gapminder[1, 4, 5]
 >    ~~~
@@ -954,64 +822,11 @@ be changed with the third argument, `drop = FALSE`).
 > 5. Advanced: extract rows that contain information for the years 2002
 >    and 2007
 >
->    
+>
 >    ~~~
 >    gapminder[gapminder$year == 2002 | 2007,]
 >    ~~~
 >    {: .r}
->
-> > ## Solution to challenge 4
-> >
-> > Fix each of the following common data frame subsetting errors:
-> >
-> > 1. Extract observations collected for the year 1957
-> >
-> >    
-> >    ~~~
-> >    # gapminder[gapminder$year = 1957,]
-> >    gapminder[gapminder$year == 1957,]
-> >    ~~~
-> >    {: .r}
-> >
-> > 2. Extract all columns except 1 through to 4
-> >
-> >    
-> >    ~~~
-> >    # gapminder[,-1:4]
-> >    gapminder[,-c(1:4)]
-> >    ~~~
-> >    {: .r}
-> >
-> > 3. Extract the rows where the life expectancy is longer the 80 years
-> >
-> >    
-> >    ~~~
-> >    # gapminder[gapminder$lifeExp > 80]
-> >    gapminder[gapminder$lifeExp > 80,]
-> >    ~~~
-> >    {: .r}
-> >
-> > 4. Extract the first row, and the fourth and fifth columns
-> >   (`lifeExp` and `gdpPercap`).
-> >
-> >    
-> >    ~~~
-> >    # gapminder[1, 4, 5]
-> >    gapminder[1, c(4, 5)]
-> >    ~~~
-> >    {: .r}
-> >
-> > 5. Advanced: extract rows that contain information for the years 2002
-> >    and 2007
-> >
-> >     
-> >     ~~~
-> >     # gapminder[gapminder$year == 2002 | 2007,]
-> >     gapminder[gapminder$year == 2002 | gapminder$year == 2007,]
-> >     gapminder[gapminder$year %in% c(2002, 2007),]
-> >     ~~~
-> >     {: .r}
-> {: .solution}
 {: .challenge}
 
 > ## Challenge 5
@@ -1021,36 +836,4 @@ be changed with the third argument, `drop = FALSE`).
 >
 > 2. Create a new `data.frame` called `gapminder_small` that only contains rows 1 through 9
 > and 19 through 23. You can do this in one or two steps.
->
-> > ## Solution to challenge 5
-> >
-> > 1.  `gapminder` is a data.frame so needs to be subsetted on two dimensions. `gapminder[1:20, ]` subsets the data to give the first 20 rows and all columns.
-> >
-> > 2. There are several different ways to accomplish this task:
-> > 
-> > First, you can do it in two steps by subsetting all the rows 1 through 23, then removing rows 10 through 18:
-> > 
-> > ~~~
-> > gapminder_small <- gapminder[1:23, ]
-> > gapminder_small <- gapminder_small[-18:-10, ]
-> > ~~~
-> > {: .r}
-> > 
-> > Or, you can first subset rows 1 through 9, then use `rbind` to concatenate the next subset of rows 10 through 18:
-> > 
-> > ~~~
-> > gapminder_small <- gapminder[1:9, ]
-> > gapminder_small <- rbind(gapminder_small, gapminder[19:23, ]
-> > ~~~
-> > {: .r}
-> >
-> > Or you can do this in a single step by combining your ranges:
-> >
-> > ~~~
-> > gapminder_small <- gapminder[c(1:9, 19:23), ]
-> > ~~~
-> >
-> > There are probably other ways to accomplish this task. Did you come up with any that we didn't show here?
-> {: .solution}
 {: .challenge}
-

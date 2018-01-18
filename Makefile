@@ -16,11 +16,11 @@ commands :
 	@grep -h -E '^##' ${MAKEFILES} | sed -e 's/## //g'
 
 ## serve            : run a local server.
-serve : lesson-rmd
+serve :
 	${JEKYLL} serve
 
 ## site             : build files but do not run a server.
-site : lesson-rmd
+site :
 	${JEKYLL} build
 
 # repo-check        : check repository settings.

@@ -147,46 +147,6 @@ x
 > reporting whether there are any records from 2002 in
 > the `gapminder` dataset.
 > Now do the same for 2012.
->
-> > ## Solution to challenge 1
-> > We will first see a solution to Challenge 1 which does not use the `any` function.
-> > We first obtain a logical vector describing which element of `gapminder$year` is equal to `2002`:
-> > 
-> > ~~~
-> > gapminder[(gapminder$year == 2002),]
-> > ~~~
-> > {: .r}
-> > Then, we count the number of rows of the data.frame `gapminder` that correspond to the 2002:
-> > 
-> > ~~~
-> > rows2002_number <- nrow(gapminder[(gapminder$year == 2002),])
-> > ~~~
-> > {: .r}
-> > The presence of any record for the year 2002 is equivalent to the request that `rows2002_number` is one or more:
-> > 
-> > ~~~
-> > rows2002_number >= 1
-> > ~~~
-> > {: .r}
-> > Putting all together, we obtain:
-> > 
-> > ~~~
-> > if(nrow(gapminder[(gapminder$year == 2002),]) >= 1){
-> >    print("Record(s) for the year 2002 found.")
-> > }
-> > ~~~
-> > {: .r}
-> >
-> > All this can be done more quickly with `any`. The logical condition can be expressed as:
-> > 
-> > ~~~
-> > if(any(gapminder$year == 2002)){
-> >    print("Record(s) for the year 2002 found.")
-> > }
-> > ~~~
-> > {: .r}
-> >
-> {: .solution}
 {: .challenge}
 
 
@@ -337,7 +297,7 @@ for(i in 1:5){
 Rather than printing the results, we could write the loop output to a new object.
 
 
-~~~	
+~~~
 output_matrix <- matrix(nrow=5, ncol=5)
 for(i in 1:5){
   for(j in c('a', 'b', 'c', 'd', 'e')){
@@ -410,56 +370,6 @@ output_vector2
 > output_vector2. Are they the same? If not, why not?
 > How would you change the last block of code to make output_vector2
 > the same as output_vector?
->
-> > ## Solution to Challenge 2
-> > We can check whether the two vectors are identical using the `all` function:
-> > 
-> > ~~~
-> > all(output_vector == output_vector2)
-> > ~~~
-> > {: .r}
-> > However, all the elements of `output_vector` can be found in `output_vector2`:
-> > 
-> > ~~~
-> > all(output_vector %in% output_vector2)
-> > ~~~
-> > {: .r}
-> > and vice versa:
-> > 
-> > ~~~
-> > all(output_vector2 %in% output_vector)
-> > ~~~
-> > {: .r}
-> > therefore, the element in `output_vector` and `output_vector2` are just sorted in a different order.
-> > This is because `as.vector` outputs the elements of an input matrix going over its column.
-> > Taking a look at `output_matrix`, we can notice that we want its elements by rows.
-> > The solution is to transpose the `output_matrix`. We can do it either by calling the transpose function
-> > `t` or by inputing the elements in the right order.
-> > The first solution requires to change the original
-> > 
-> > ~~~
-> > output_vector2 <- as.vector(output_matrix)
-> > ~~~
-> > {: .r}
-> > into
-> > 
-> > ~~~
-> > output_vector2 <- as.vector(t(output_matrix))
-> > ~~~
-> > {: .r}
-> > The second solution requires to change
-> > 
-> > ~~~
-> > output_matrix[i, j] <- temp_output
-> > ~~~
-> > {: .r}
-> > into
-> > 
-> > ~~~
-> > output_matrix[j, i] <- temp_output
-> > ~~~
-> > {: .r}
-> {: .solution}
 {: .challenge}
 
 > ## Challenge 3
@@ -472,22 +382,7 @@ output_vector2
 >~~~
 >{: .r}
 >
-> Modify our previous for loops to now fill our 5 x 5 matrix with the product of the respective values in `rows` and `cols`. (ie position [2, 4] in the matrix would have the product of `rows[2] * cols[4]`) 
->
-> > ## Solution to Challenge 3
-> >
-> > ~~~
-> >output_matrix <- matrix(nrow=5, ncol=5)
-> >for(i in 1:5){
-> >  for(j in 1:5){
-> >    matrix_value <- rows[i] * cols[j]
-> >    output_matrix[i, j] <- matrix_value
-> >  }
-> >}
-> > ~~~
-> > {: .r}
-> >
-> {: .solution}
+> Modify our previous for loops to now fill our 5 x 5 matrix with the product of the respective values in `rows` and `cols`. (ie position [2, 4] in the matrix would have the product of `rows[2] * cols[4]`)
 {: .challenge}
 
 > ## Challenge 4 - Advanced
@@ -495,59 +390,6 @@ output_vector2
 > Write a script that loops through the `gapminder` data by continent and prints out
 > whether the mean life expectancy is smaller or larger than 50
 > years.
->
-> > ## Solution to Challenge 4
-> >
-> > **Step 1**:  We want to make sure we can extract all the unique values of the continent vector
-> > 
-> > ~~~
-> > gapminder <- read.csv("data/gapminder-FiveYearData.csv")
-> > unique(gapminder$continent)
-> > ~~~
-> > {: .r}
-> >
-> > **Step 2**: We also need to loop over each of these continents and calculate the average life expectancy for each `subset` of data.
-> > We can do that as follows:
-> >
-> > 1. Loop over each of the unique values of 'continent'
-> > 2. For each value of continent, create a temporary variable storing the life exepectancy for that subset,
-> > 3. Return the calculated life expectancy to the user by printing the output:
-> >
-> > 
-> > ~~~
-> > for( iContinent in unique(gapminder$continent) ){
-> >    tmp <- mean(subset(gapminder, continent==iContinent)$lifeExp)
-> >    cat("Average Life Expectancy in", iContinent, "is", tmp, "\n")
-> >    rm(tmp)
-> > }
-> > ~~~
-> > {: .r}
-> >
-> > **Step 3**: The exercise only wants the output printed if the average life expectancy is less than 50 or greater than 50. So we need to add an `if` condition before printing.
-> > So we need to add an `if` condition before printing, which evaluates whether the calculated average life expectancy is above or below a threshold, and print an output conditional on the result.
-> > We need to amend (3) from above:
-> >
-> > 3a. If the calculated life expectancy is less than some threshold (50 years), return the continent and a statement that life expectancy is less than threshold, otherwise return the continent and   a statement that life expectancy is greater than threshold,:
-> >
-> > 
-> > ~~~
-> > thresholdValue <- 50
-> > > >
-> > for( iContinent in unique(gapminder$continent) ){
-> >    tmp <- mean(subset(gapminder, continent==iContinent)$lifeExp)
-> >    
-> >    if(tmp < thresholdValue){
-> >        cat("Average Life Expectancy in", iContinent, "is less than", thresholdValue, "\n")
-> >    }
-> >    else{
-> >        cat("Average Life Expectancy in", iContinent, "is greater than", thresholdValue, "\n")
-> >         } # end if else condition
-> >    rm(tmp)
-> >    } # end for loop
-> > > >
-> > ~~~
-> > {: .r}
-> {: .solution}
 {: .challenge}
 
 > ## Challenge 5 - Advanced
@@ -555,31 +397,4 @@ output_vector2
 > Modify the script from Challenge 4 to loop over each
 > country. This time print out whether the life expectancy is
 > smaller than 50, between 50 and 70, or greater than 70.
->
-> > ## Solution to Challenge 5
-> >  We modify our solution to Challenge 4 by now adding two thresholds, `lowerThreshold` and `upperThreshold` and extending our if-else statements:
-> >
-> > 
-> > ~~~
-> >  lowerThreshold <- 50
-> >  upperThreshold <- 70
-> >  
-> > for( iCountry in unique(gapminder$country) ){
-> >     tmp <- mean(subset(gapminder, country==iCountry)$lifeExp)
-> >     
-> >     if(tmp < lowerThreshold){
-> >         cat("Average Life Expectancy in", iCountry, "is less than", lowerThreshold, "\n")
-> >     }
-> >     else if(tmp > lowerThreshold && tmp < upperThreshold){
-> >         cat("Average Life Expectancy in", iCountry, "is between", lowerThreshold, "and", upperThreshold, "\n")
-> >     }
-> >     else{
-> >         cat("Average Life Expectancy in", iCountry, "is greater than", upperThreshold, "\n")
-> >     }
-> >     rm(tmp)
-> > }
-> > ~~~
-> > {: .r}
-> {: .solution}
 {: .challenge}
-

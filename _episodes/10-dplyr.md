@@ -168,29 +168,7 @@ continent since we would have removed it in the previous step.
 > will produce a dataframe that has the African values for `lifeExp`, `country`
 > and `year`, but not for other Continents.  How many rows does your dataframe
 > have and why?
->
-> > ## Solution to Challenge 1
-> >
-> >~~~
-> >year_country_lifeExp_Africa <- gapminder %>%
-> >                            filter(continent=="Africa") %>%
-> >                            select(year,country,lifeExp)
-> >~~~
-> >{: .r}
-> > 
-> > We can check the number of rows in our new dataframe `year_country_lifeExp_Africa` by using the `ncol` command:
-> >~~~
-> >nrow(year_country_lifeExp_Africa)
-> >~~~
-> >{: .r}
-> >
-> >~~~
-> > [1] 624
-> >~~~
-> >{: .output}
-> {: .solution}
 {: .challenge}
-
 
 ## Using group_by and summarize
 
@@ -305,39 +283,6 @@ even better.
 >
 > Calculate the average life expectancy per country. What is the longest average life
 > expectancy and the shortest life expectancy?
->
-> > ## Solution to Challenge 2
-> >
-> > First let's build a dataframe with a summary of the average life expectancy per country:
-> >~~~
-> >lifeExp_bycountry <- gapminder %>%
-> >    group_by(country) %>%
-> >    summarize(mean_lifeExp=mean(lifeExp))
-> >~~~
-> >{: .r}
-> >
-> > Now that we have the data we need, we can use the `min` and `max` commands to determine which country had the longest and shortest life expectancy:
-> >~~~
-> >min(lifeExp_bycountry$mean_lifeExp)
-> >~~~
-> >{: .r}
-> >
-> >~~~
-> >[1] 36.76917
-> >~~~
-> >{: .output}
-> >
-> >~~~
-> >max(lifeExp_bycountry$mean_lifeExp)
-> >~~~
-> >{: .r}
-> >
-> >~~~
-> >[1] 76.51142
-> >~~~
-> >{: .output}
-> >
-> {: .solution}
 {: .challenge}
 
 The function `group_by` allows us to group by multiple variables. Let's group by `year` and `continent`.
@@ -384,19 +329,7 @@ gdp_pop_bycontinents_byyear <- gapminder %>%
 > ## Challenge 3
 >
 > Calculate the average life expectancy in 2002
-> for each continent. 
->
->
-> > ## Solution to Challenge 3
-> >
-> >~~~
-> >lifeExp_bycontinents <- gapminder %>%
-> >    filter(year==2002) %>%
-> >    group_by(continent) %>%
-> >    summarize(mean_lifeExp=mean(lifeExp))
-> >~~~
-> >{: .r}
-> {: .solution}
+> for each continent.
 {: .challenge}
 
 > ## Challenge 4 - Advanced
@@ -405,19 +338,6 @@ gdp_pop_bycontinents_byyear <- gapminder %>%
 >
 > **Hint:** Use the `dplyr` functions `arrange` and `sample_n`, they have
 > similar syntax to other dplyr functions. Be sure to check out the help documentation for the new functions by typing `?arrange` or `?sample_n` if you run into difficulties.
->
-> > ## Solution to Challenge 4
-> >
-> >~~~
-> >lifeExp_2countries_bycontinents <- gapminder %>%
-> >    filter(year==2002) %>%
-> >    group_by(continent) %>%
-> >    sample_n(2) %>%
-> >    summarize(mean_lifeExp=mean(lifeExp)) %>%
-> >    arrange(desc(mean_lifeExp))
-> >~~~
-> >{: .r}
-> {: .solution}
 {: .challenge}
 
 ## Other great resources

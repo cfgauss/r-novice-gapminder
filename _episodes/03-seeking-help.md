@@ -9,7 +9,7 @@ objectives:
 - "To be able to use CRAN task views to identify packages to solve a problem."
 - "To be able to seek help from your peers."
 keypoints:
-- "Use `help` to get online help in R."
+- "Use `help()` to get online help in R."
 ---
 
 
@@ -22,8 +22,8 @@ namespace (your interactive R session):
 
 
 ~~~
-help(function_name)
 ?function_name
+help(function_name)
 ~~~
 {: .r}
 
@@ -62,7 +62,7 @@ To seek help on special operators, use quotes:
 ## Getting help on packages
 
 Many packages come with "vignettes": tutorials and extended example documentation.
-Without any arguments, `vignette` will list all vignettes for all installed packages;
+Without any arguments, `vignette()` will list all vignettes for all installed packages;
 `vignette(package="package-name")` will list all available vignettes for
 `package-name`, and `vignette("vignette-name")` will open the specified vignette.
 
@@ -93,131 +93,87 @@ the answers you are seeking have already been answered on
 [Stack Overflow](http://stackoverflow.com/). You can search using
 the `[r]` tag.
 
+If you can't find the answer, there are a few useful functions to
+help you ask a question from your peers:
 
-Try these challenges to practice finding help in R.
+
+~~~
+?dput
+~~~
+{: .r}
+
+Will dump the data you're working with into a format so that it can
+be copy and pasted by anyone else into their R session.
+
+
+~~~
+sessionInfo()
+~~~
+{: .r}
+
+
+
+~~~
+R version 3.4.1 (2017-06-30)
+Platform: x86_64-pc-linux-gnu (64-bit)
+Running under: Gentoo/Linux
+
+Matrix products: default
+BLAS: /usr/lib64/blas/reference/libblas.so.3.7.0
+LAPACK: /usr/lib64/R/lib/libRlapack.so
+
+locale:
+ [1] LC_CTYPE=en_US.UTF-8       LC_NUMERIC=C
+ [3] LC_TIME=en_US.UTF-8        LC_COLLATE=C
+ [5] LC_MONETARY=en_US.UTF-8    LC_MESSAGES=en_US.UTF-8
+ [7] LC_PAPER=en_US.UTF-8       LC_NAME=C
+ [9] LC_ADDRESS=C               LC_TELEPHONE=C
+[11] LC_MEASUREMENT=en_US.UTF-8 LC_IDENTIFICATION=C
+
+attached base packages:
+[1] stats     graphics  grDevices utils     datasets  base
+
+other attached packages:
+[1] checkpoint_0.4.3 stringr_1.2.0    knitr_1.17
+
+loaded via a namespace (and not attached):
+[1] compiler_3.4.1  magrittr_1.5    tools_3.4.1     stringi_1.1.6
+[5] methods_3.4.1   evaluate_0.10.1
+~~~
+{: .output}
+
+Will print out your current version of R, as well as any packages you
+have loaded. This can be useful for others to help reproduce and debug
+your issue.
 
 > ## Challenge 1
 >
-> Look at the help for the `c` function. Try the following commands and see if you can use 
-> the help file to explain the output you see:
-> 
+> Look at the help for the `c` function. What kind of vector do you
+> expect you will create if you evaluate the following:
+>
 > ~~~
 > c(1, 2, 3)
 > c('d', 'e', 'f')
-> c(1, 5, 'g')
+> c(1, 2, 'f')`
 > ~~~
 > {: .r}
-> > ## Solution to Challenge 1
-> >
-> > ~~~
-> > c(1,2,3)
-> > [1] 1 2 3
-> > c('d','e','f')
-> > [1] "d" "e" "f"
-> > c(1,5,'g')
-> > [1] "1" "5" "g"
-> > ~~~
-> > {: .output}
-> > 
-> > The `c` function creates a vector, which is a sequence of individual elements in R. In a vector, all elements must be the
-> > same data type. In the first case, we created a numeric vector. For the 
-> > second, our vector is a character vector which you can see by the quotes that R put around 
-> > each element. In the third example, since we gave R both numeric and character elements, R 
-> > converted all the elements to characters so that our vector contained all the same type of elements.
-> > 
-> > Don't worry if this is confusing right now. We will clarify more in our next lesson about 
-> > data structures in R.
-> {: .solution}
 {: .challenge}
 
 > ## Challenge 2
-> 
-> Look at the help for the `typeof` function. What does this function do?
-> Try creating the following objects and using this function on them. 
 >
-> 1. m <- 15
-> 2. n <- "Lincoln"
->
-> Explain to your neighbor what this function is telling us about these objects:
->
-> > ## Solution to Challenge 2
-> > 
-> > ~~~
-> > help("typeof")
-> > ?typeof
-> > ~~~
-> > {: .r}
-> > 
-> > We can see from the help file that `typeof` tells us the type of an object in R. We will 
-> > discuss R data types further in the next lecture.
-> >
-> > ~~~
-> > m <- 15
-> > typeof(m)
-> > ~~~
-> > 
-> > ~~~
-> > [1] "double"
-> > ~~~
-> > {: .output}
-> > 
-> > This is telling us that `m` is the data type `double` which is a numeric data type in R.
-> >
-> > ~~~
-> > n <- "Lincoln"
-> > typeof(n)
-> > ~~~
-> > {: .r}
-> > 
-> > ~~~
-> > [1] "character"
-> > ~~~
-> > {: .output}
-> > 
-> > Here, `n` is the data type `character` which is the data type R uses for strings.
-> {: .solution}
+> Look at the help for the `paste` function. You'll need to use this later.
+> What is the difference between the `sep` and `collapse` arguments?
 {: .challenge}
 
-> ## Challenge 3 - Advanced
->
-> The `read.table` function is used to read data from external files into the R environment.
-> For example: to read in a file called "data.csv" you would use the following command:
-> 
-> ~~~
-> read.table(file = "data.csv")
-> ~~~
-> {: .r}
->
-> Look at the help for the `read.table` function. In particular, look at the `Arguments` section. These are additional options we can put in our command to customize its action.
->
-> What argument would you use if you wanted to read in a file without a header?
-> What argument would allow you to switch between a comma separated file and a tab separated
-> file?
->
-> > ## Solution to Challenge 3
-> >
-> > To view the help for the `read.table` function, you can type one of the following commands into 
-> > your console:
-> >
-> > 
-> > ~~~
-> > help("read.table")
-> > ?read.table
-> > ~~~
-> > {: .r}
-> >
-> > By looking at the arguments section of the help file, we can see that to prevent R from automatically assuming the first row of your file is a header row, you would specify `header = FALSE`. 
-> > 
-> > ~~~
-> > read.table(file = "data.csv", header = FALSE)
-> > ~~~
-> > {: .r}
-> > 
-> > To switch between comma separated files (csv) and tab separated files (tsv), you would use the `sep` argument.
-> > 
-> {: .solution}
+> ## Challenge 3
+> Use help to find a function (and its associated parameters) that you could
+> use to load data from a csv file in which columns are delimited with "\t"
+> (tab) and the decimal point is a "." (period). This check for decimal
+> separator is important, especially if you are working with international
+> colleagues, because different countries have different conventions for the
+> decimal point (i.e. comma vs period).
+> hint: use `??csv` to lookup csv related functions.
 {: .challenge}
-
 
 ## Other ports of call
 

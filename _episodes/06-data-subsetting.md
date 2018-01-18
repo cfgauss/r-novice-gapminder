@@ -17,7 +17,7 @@ keypoints:
 ---
 
 
-Much of R's power comes from it's vectorization. R has many powerful subset operators and mastering them will allow you to
+Much of R's power comes from its vectorization. R has many powerful subset operators and mastering them will allow you to
 easily perform complex operations on any kind of dataset without the resource depletion of loops.
 
 There are a few different ways we can subset any kind of object, and
@@ -31,7 +31,7 @@ x <- c(5.4, 6.2, 7.1, 4.8, 7.5)
 ~~~
 {: .r}
 
-We can name elements within our vectors using the `names` function. Here, we have named each element 
+We can name elements within our vectors using the `names` function. Here, we have named each element
 with a different letter of the alphabet.
 
 ~~~
@@ -41,8 +41,8 @@ x
 {: .r}
 
 ~~~
-  a   b   c   d   e 
-5.4 6.2 7.1 4.8 7.5 
+  a   b   c   d   e
+5.4 6.2 7.1 4.8 7.5
 ~~~
 {: .output}
 
@@ -63,8 +63,8 @@ x[1]
 
 
 ~~~
-  a 
-5.4 
+  a
+5.4
 ~~~
 {: .output}
 
@@ -77,8 +77,8 @@ x[4]
 
 
 ~~~
-  d 
-4.8 
+  d
+4.8
 ~~~
 {: .output}
 
@@ -96,8 +96,8 @@ x[c(1, 3)]
 
 
 ~~~
-  a   c 
-5.4 7.1 
+  a   c
+5.4 7.1
 ~~~
 {: .output}
 
@@ -112,12 +112,12 @@ x[1:4]
 
 
 ~~~
-  a   b   c   d 
-5.4 6.2 7.1 4.8 
+  a   b   c   d
+5.4 6.2 7.1 4.8
 ~~~
 {: .output}
 
-Remember that the `:` operator creates a sequence of numbers from the left element to the right. Using it inside the square 
+Remember that the `:` operator creates a sequence of numbers from the left element to the right. Using it inside the square
 brackets lets us select a range of elements.
 
 We can ask for the same element multiple times:
@@ -131,8 +131,8 @@ x[c(1,1,3)]
 
 
 ~~~
-  a   a   c 
-5.4 5.4 7.1 
+  a   a   c
+5.4 5.4 7.1
 ~~~
 {: .output}
 
@@ -147,8 +147,8 @@ x[6]
 
 
 ~~~
-<NA> 
-  NA 
+<NA>
+  NA
 ~~~
 {: .output}
 
@@ -189,8 +189,8 @@ x[-2]
 
 
 ~~~
-  a   c   d   e 
-5.4 7.1 4.8 7.5 
+  a   c   d   e
+5.4 7.1 4.8 7.5
 ~~~
 {: .output}
 
@@ -206,8 +206,8 @@ x[c(-1, -5)]  # or x[-c(1,5)]
 
 
 ~~~
-  b   c   d 
-6.2 7.1 4.8 
+  b   c   d
+6.2 7.1 4.8
 ~~~
 {: .output}
 
@@ -217,7 +217,7 @@ x[c(-1, -5)]  # or x[-c(1,5)]
 > slices of a vector. Most people first try to negate a
 > sequence like so:
 >
-> 
+>
 > ~~~
 > x[-1:3]
 > ~~~
@@ -225,7 +225,7 @@ x[c(-1, -5)]  # or x[-c(1,5)]
 >
 > This gives a somewhat cryptic error:
 >
-> 
+>
 > ~~~
 > Error in x[-1:3]: only 0's may be mixed with negative subscripts
 > ~~~
@@ -238,17 +238,17 @@ x[c(-1, -5)]  # or x[-c(1,5)]
 > The correct solution is to wrap that function call in brackets, so
 > that the `-` operator applies to the results:
 >
-> 
+>
 > ~~~
 > x[-(1:3)]
 > ~~~
 > {: .r}
-> 
-> 
-> 
+>
+>
+>
 > ~~~
->   d   e 
-> 4.8 7.5 
+>   d   e
+> 4.8 7.5
 > ~~~
 > {: .output}
 {: .callout}
@@ -267,8 +267,8 @@ x
 
 
 ~~~
-  a   b   c   e 
-5.4 6.2 7.1 7.5 
+  a   b   c   e
+5.4 6.2 7.1 7.5
 ~~~
 {: .output}
 
@@ -276,88 +276,32 @@ x
 >
 > Given the following code:
 >
-> 
+>
 > ~~~
 > x <- c(5.4, 6.2, 7.1, 4.8, 7.5)
 > names(x) <- c('a', 'b', 'c', 'd', 'e')
 > print(x)
 > ~~~
 > {: .r}
-> 
-> 
-> 
+>
+>
+>
 > ~~~
->   a   b   c   d   e 
-> 5.4 6.2 7.1 4.8 7.5 
+>   a   b   c   d   e
+> 5.4 6.2 7.1 4.8 7.5
 > ~~~
 > {: .output}
 >
 > Come up with at least 2 different commands that will produce the following output:
 >
-> 
+>
 > ~~~
->   b   c   d 
-> 6.2 7.1 4.8 
+>   b   c   d
+> 6.2 7.1 4.8
 > ~~~
 > {: .output}
 >
 > After you find 2 different commands, compare notes with your neighbour. Did you have different strategies?
->
-> > ## Solution to Challenge 1
-> >
-> > Use the `c` function:
-> > ~~~
-> > x[c(2,3,4)]
-> > ~~~
-> > {: .r}
-> > 
-> > ~~~
-> >   b   c   d 
-> > 6.2 7.1 4.8 
-> > ~~~
-> > 
-> > Use the colon operator:
-> > 
-> > ~~~
-> > x[2:4]
-> > ~~~
-> > {: .r}
-> > 
-> > ~~~
-> >   b   c   d 
-> > 6.2 7.1 4.8 
-> > ~~~
-> > {: .output}
-> > 
-> > Select elements by name:
-> > 
-> > ~~~
-> > x[c("b", "c", "d")]
-> > ~~~
-> > {: .r}
-> > 
-> > ~~~
-> >   b   c   d 
-> > 6.2 7.1 4.8 
-> > ~~~
-> > {: .output}
-> > 
-> > Use the `-` (NOT) along with the `c` function to remove elements you don't want:
-> > 
-> > ~~~
-> > x[-c(1,5)]
-> > ~~~
-> > {: .r}
-> > 
-> > ~~~
-> >   b   c   d 
-> > 6.2 7.1 4.8 
-> > ~~~
-> > {: .output}
-> > 
-> > {: .output}
-> >
-> {: .solution}
 {: .challenge}
 
 ## Subsetting by name
@@ -373,8 +317,8 @@ x[c("a", "c")]
 
 
 ~~~
-  a   c 
-5.4 7.1 
+  a   c
+5.4 7.1
 ~~~
 {: .output}
 
@@ -395,8 +339,8 @@ x[-which(names(x) == "a")]
 
 
 ~~~
-  b   c   d   e 
-6.2 7.1 4.8 7.5 
+  b   c   d   e
+6.2 7.1 4.8 7.5
 ~~~
 {: .output}
 
@@ -454,8 +398,8 @@ x[-which(names(x) %in% c("a", "c"))]
 
 
 ~~~
-  b   d   e 
-6.2 4.8 7.5 
+  b   d   e
+6.2 4.8 7.5
 ~~~
 {: .output}
 
@@ -531,19 +475,19 @@ because it can introduce hard to find and subtle bugs!
 >
 > Run the following code to define vector `x` as above:
 >
-> 
+>
 > ~~~
 > x <- c(5.4, 6.2, 7.1, 4.8, 7.5)
 > names(x) <- c('a', 'b', 'c', 'd', 'e')
 > print(x)
 > ~~~
 > {: .r}
-> 
-> 
-> 
+>
+>
+>
 > ~~~
->   a   b   c   d   e 
-> 5.4 6.2 7.1 4.8 7.5 
+>   a   b   c   d   e
+> 5.4 6.2 7.1 4.8 7.5
 > ~~~
 > {: .output}
 >
@@ -555,19 +499,7 @@ because it can introduce hard to find and subtle bugs!
 >{: .r}
 >
 > Test out your guess by trying out this command. Did this match your expectation?
-> Why did we get this result? (Tip: test out each part of the command on it's own - this is a useful debugging strategy)
->
-> > ## Solution to Challenge 2
-> >
-> > The `which` command returns the index of every `TRUE` value in its
-> > input. The `names(x) == "g"` command didn't return any `TRUE` values. Because
-> > there were no `TRUE` values passed to the `which` command, it returned an
-> > empty vector. Negating this vector with the minus sign didn't change its
-> > meaning. Because we used this empty vector to retrieve values from `x`, it
-> > produced an empty numeric vector. It was a `named numeric` empty vector
-> > because the vector type of x is "named numeric" since we assigned names to the
-> > values (try `str(x)` ).
-> {: .solution}
+> Why did we get this result? (Tip: test out each part of the command on its own - this is a useful debugging strategy)
 {: .challenge}
 
 > ## Challenge 3
@@ -600,44 +532,14 @@ because it can introduce hard to find and subtle bugs!
 >
 >
 >~~~
->a a a 
->1 2 3 
+>a a a
+>1 2 3
 >~~~
 >{: .output}
 >
 >
 > Can you come up with a command that will only return of the 'a' values and a different command
 > that will return all of the 'a' values? Does your answer differ from your neighbors?
->
-> > ## Solution to challenge 3
-> >~~~
-> > y['a']  # only returns first value
-> >~~~
-> >{: .r}
-> >
-> >
-> >
-> >~~~
-> >a 
-> >1 
-> >~~~
-> >{: .output}
-> >
-> >
-> >
-> >~~~
-> > y[which(names(y) == 'a')]  # returns all three values
-> >~~~
-> >{: .r}
-> >
-> >
-> >
-> >~~~
-> >a a a 
-> >1 2 3 
-> >~~~
-> >{: .output}
->{: .solution}
 {: .challenge}
 
 
@@ -654,13 +556,13 @@ x[c(TRUE, TRUE, FALSE, FALSE, FALSE)]
 
 
 ~~~
-a a 
-1 2 
+a a
+1 2
 ~~~
 {: .output}
 
 
-R will return any values that are indicated by `TRUE` in your vector, and filter out any that 
+R will return any values that are indicated by `TRUE` in your vector, and filter out any that
 are `FALSE`.
 
 
@@ -672,8 +574,8 @@ x[c(TRUE, FALSE)]
 
 
 ~~~
-a a 
-1 3 
+a a
+1 3
 ~~~
 {: .output}
 
@@ -681,7 +583,7 @@ Notice how R also recycled our logical vector to the correct length?
 
 
 Since comparison operators evaluate to logical vectors, we can also
-use them to succinctly subset vectors. When we do a logical comparison on a vector, R returns a 
+use them to succinctly subset vectors. When we do a logical comparison on a vector, R returns a
 logical vector as the result:
 
 ~~~
@@ -690,12 +592,12 @@ x > 7
 {: .r}
 
 ~~~
-    a     b     c     d     e 
-FALSE FALSE  TRUE FALSE  TRUE 
+    a     b     c     d     e
+FALSE FALSE  TRUE FALSE  TRUE
 ~~~
 {: .output}
 
-We can nest our comparison inside of our subsetting operators to tell R to return a subset of 
+We can nest our comparison inside of our subsetting operators to tell R to return a subset of
 our data which matches whatever criteria we specify.
 
 ~~~
@@ -704,8 +606,8 @@ x[x > 7]
 {: .r}
 
 ~~~
-  c   e 
-7.1 7.5 
+  c   e
+7.1 7.5
 ~~~
 {: .output}
 
@@ -747,41 +649,21 @@ x[x > 7]
 >
 > Given the following code:
 >
-> 
+>
 > ~~~
 > x <- c(5.4, 6.2, 7.1, 4.8, 7.5)
 > names(x) <- c('a', 'b', 'c', 'd', 'e')
 > print(x)
 > ~~~
 > {: .r}
-> 
-> 
-> 
+>
+>
+>
 > ~~~
->   a   b   c   d   e 
-> 5.4 6.2 7.1 4.8 7.5 
+>   a   b   c   d   e
+> 5.4 6.2 7.1 4.8 7.5
 > ~~~
 > {: .output}
 >
 > Write a subsetting command to return the values in x that are greater than 4 and less than 7.
->
-> > ## Solution to Challenge 4
-> >
-> > 
-> > ~~~
-> > x_subset <- x[x<7 & x>4]
-> > print(x_subset)
-> > ~~~
-> > {: .r}
-> > 
-> > 
-> > 
-> > ~~~
-> >   a   b   d 
-> > 5.4 6.2 4.8 
-> > ~~~
-> > {: .output}
-> {: .solution}
 {: .challenge}
-
-

@@ -100,7 +100,7 @@ ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp)) +
 > ## Challenge 1
 >
 > Our example visualizes how the GDP per capita changes in relationship to life expectancy:
-> 
+>
 > ~~~
 > ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp)) + geom_point()
 > ~~~
@@ -111,21 +111,6 @@ ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp)) +
 >
 > Hint: the gapminder dataset has a column called "year", which should appear
 > on the x-axis.
->
-> > ## Solution to Challenge 1
-> >
-> > Modify the example so that the figure visualise how life expectancy has
-> > changed over time:
-> >
-> > 
-> > ~~~
-> > ggplot(data = gapminder, aes(x = year, y = lifeExp)) + geom_point()
-> > ~~~
-> > {: .r}
-> > 
-> > <img src="../fig/rmd-08-ch1-sol-1.png" title="plot of chunk ch1-sol" alt="plot of chunk ch1-sol" style="display: block; margin: auto;" />
-> >
-> {: .solution}
 {: .challenge}
 
 >
@@ -136,25 +121,6 @@ ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp)) +
 > Another *aesthetic* property we can modify is the point *color*. Modify the
 > code from the previous challenge to **color** the points by the "continent"
 > column. What trends do you see in the data? Are they what you expected?
->
-> > ## Solution to Challenge 2
-> >
-> > In the previous examples and challenge we've used the `aes` function to tell
-> > the scatterplot **geom** about the **x** and **y** locations of each point.
-> > Another *aesthetic* property we can modify is the point *color*. Modify the
-> > code from the previous challenge to **color** the points by the "continent"
-> > column. What trends do you see in the data? Are they what you expected?
-> >
-> > 
-> > ~~~
-> > ggplot(data = gapminder, aes(x = year, y = lifeExp, color=continent)) +
-> >   geom_point()
-> > ~~~
-> > {: .r}
-> > 
-> > <img src="../fig/rmd-08-ch2-sol-1.png" title="plot of chunk ch2-sol" alt="plot of chunk ch2-sol" style="display: block; margin: auto;" />
-> >
-> {: .solution}
 {: .challenge}
 
 
@@ -300,23 +266,7 @@ variables and their visual representation.
 > example.
 >
 > Hint: do not use the `aes` function, change this by adding arguments to the correct function.
->
-> > ## Solution to Challenge 3
-> >
-> > Since we want all the points to be the same and are not making this aesthetic specific to the data, we add this to `geom_point` to make the change effect all points but not the line.
-> >
-> > 
-> > ~~~
-> > ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp)) +
-> >  geom_point(size=3, color="orange") + scale_x_log10() +
-> >  geom_smooth(method="lm", size=1.5)
-> > ~~~
-> > {: .r}
-> > 
-> > <img src="../fig/rmd-08-ch4a-sol-1.png" title="plot of chunk ch4a-sol" alt="plot of chunk ch4a-sol" style="display: block; margin: auto;" />
-> {: .solution}
 {: .challenge}
-
 
 > ## Challenge 4
 >
@@ -327,23 +277,7 @@ variables and their visual representation.
 > Hint: The color argument can be used inside the aesthetic. To change the shape of a point, use the `pch` argument. Setting `pch` to different numeric values from `1:25` yields different shapes as indicated in the chart below.
 >
 > <img src="../fig/pch_symbols.png" alt="a list of symbols one can use in R to change the shape of the plot" style="display: block; margin: auto;width: 200px">
->
-> > ## Solution to Challenge 4
-> >
-> > Since we want the color to be dependent on the continent, we place that argument inside the `aes`. To change the shape of the point, we place the `pch` argument inside `geom_point`. 
-> >
-> >
-> >~~~
-> > ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp, color = continent)) +
-> > geom_point(size=3, pch=17) + scale_x_log10() +
-> > geom_smooth(method="lm", size=1.5)
-> >~~~
-> >{: .r}
-> >
-> ><img src="../fig/rmd-08-ch4b-sol-1.png" title="plot of chunk ch4b-sol" alt="plot of chunk ch4b-sol" style="display: block; margin: auto;" />
-> {: .solution}
 {: .challenge}
-
 
 ## Multi-panel figures
 
@@ -382,7 +316,7 @@ of the gapminder dataset.
 ## Modifying text
 
 To clean this figure up for a publication we need to change some of the text
-elements. 
+elements.
 
 First, let's rename our `x` and `y` axes to neater and more informative labels. We can do that using the `xlab` and `ylab` functions:
 
@@ -394,28 +328,28 @@ ggplot(data = az.countries, aes(x = year, y = lifeExp, color=continent)) +
 {: .r}
 
 <img src="../fig/rmd-08-theme-1a.png" title="plot of chunk theme" alt="plot of chunk theme" style="display: block; margin: auto;" />
- 
+
 Let's give our figure a title with the `ggtitle` function. And while we're at it, let's capitalize the label of our
 legend. This can be done using the **scales** layer.
 
 ~~~
 ggplot(data = az.countries, aes(x = year, y = lifeExp, color=continent)) +
   geom_line() + facet_wrap( ~ country) +
-  xlab("Year") + ylab("Life Expectancy") + 
+  xlab("Year") + ylab("Life Expectancy") +
   ggtitle("Figure 1") + scale_colour_discrete(name="Continent")
 ~~~
 {: .r}
 
 <img src="../fig/rmd-08-theme-1b.png" title="plot of chunk theme" alt="plot of chunk theme" style="display: block; margin: auto;" />
 
- 
+
 Lastly, let's remove the x-axis labels so the plot is less cluttered. To do this, we use the **theme** layer which controls
 the axis text and overall text size.
 
 ~~~
 ggplot(data = az.countries, aes(x = year, y = lifeExp, color=continent)) +
   geom_line() + facet_wrap( ~ country) +
-  xlab("Year") + ylab("Life Expectancy") + 
+  xlab("Year") + ylab("Life Expectancy") +
   ggtitle("Figure 1") + scale_colour_discrete(name="Continent") +
   theme(axis.text.x=element_blank(), axis.ticks.x=element_blank())
 ~~~
@@ -441,30 +375,4 @@ code to modify!
 > Advanced Challenge:
 >  - Transform the x axis to better visualise the data spread.
 >  - Add a facet layer to panel the density plots by year.
->
-> > ## Solution to Challenge 5
-> >
-> > Create a density plot of GDP per capita, filled by continent.
-> >
-> > ~~~
-> > ggplot(data = gapminder, aes(x = gdpPercap, fill=continent)) +
-> >  geom_density(alpha=0.6)
-> > ~~~
-> > {: .r}
-> >
-> > <img src="../fig/rmd-08-ch5-sol-2.png" title="plot of chunk ch5-sol" alt="plot of chunk ch5-sol" style="display: block; margin: auto;" />
-> >
-> > Advanced:
-> >  - Transform the x axis to better visualise the data spread.
-> >  - Add a facet layer to panel the density plots by year.
-> >
-> > 
-> > ~~~
-> > ggplot(data = gapminder, aes(x = gdpPercap, fill=continent)) +
-> >  geom_density(alpha=0.6) + facet_wrap( ~ year) + scale_x_log10()
-> > ~~~
-> > {: .r}
-> > 
-> > <img src="../fig/rmd-08-ch5-sol-1.png" title="plot of chunk ch5-sol" alt="plot of chunk ch5-sol" style="display: block; margin: auto;" />
-> {: .solution}
 {: .challenge}

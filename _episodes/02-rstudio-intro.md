@@ -40,7 +40,7 @@ for all of these countries in under a minute!
 ## Before Starting The Workshop
 
 Please ensure you have the latest version of R and RStudio installed on your machine.
-This is important, as some packages used in the workshop may not install correctly 
+This is important, as some packages used in the workshop may not install correctly
 (or at all) if R is not up to date.
 
 [Download and install the latest version of R here](https://www.r-project.org/)
@@ -556,7 +556,7 @@ network). R and RStudio have functionality for managing packages:
   where `packagename` is the package name, in quotes.
 * You can make a package available for use with `library(packagename)`
 
-For example, to install the `gapminder` package which contains the dataset we are going to 
+For example, to install the `gapminder` package which contains the dataset we are going to
 use for today's lessons:
 
 ~~~
@@ -564,7 +564,7 @@ install.packages("gapminder")
 ~~~
 {: .r}
 
-If you have not previously installed this package, you will see a lot of text scrolling 
+If you have not previously installed this package, you will see a lot of text scrolling
 by as R installs the components of this package and any dependancies.
 
 Once the package is installed, you can make it available for use by using the `library` command:
@@ -574,8 +574,8 @@ library(gapminder)
 ~~~
 {: .r}
 
-The `Packages` tab in RStudio can also be used to manage packages. Simply click the `Install` 
-button to install packages. To load packages, just click the checkbox in front of the package 
+The `Packages` tab in RStudio can also be used to manage packages. Simply click the `Install`
+button to install packages. To load packages, just click the checkbox in front of the package
 you wish to load. You should see the same messaging in your `console` for both approaches.
 
 
@@ -590,7 +590,7 @@ Other useful commands for working with packages:
 > ## Challenge 1
 >
 > Which of the following are valid R variable names?
-> 
+>
 > ~~~
 > min_height
 > max.height
@@ -602,36 +602,6 @@ Other useful commands for working with packages:
 > celsius2kelvin
 > ~~~
 > {: .r}
->
->
-> > ## Solution to Challenge 1
-> >
-> > The following can be used as R variables:
-> > 
-> > ~~~
-> > min_height
-> > max.height
-> > MaxLength
-> > celsius2kelvin
-> > ~~~
-> > {: .r}
-> >
-> > The following creates a hidden variable:
-> > 
-> > ~~~
-> > .mass
-> > ~~~
-> > {: .r}
-> >
-> > The following will not be able to be used to create a variable
-> > 
-> > ~~~
-> > _age
-> > min-length
-> > 2widths
-> > ~~~
-> > {: .r}
-> {: .solution}
 {: .challenge}
 
 > ## Challenge 2
@@ -639,7 +609,7 @@ Other useful commands for working with packages:
 > What will be the value of each  variable  after each
 > statement in the following program?
 >
-> 
+>
 > ~~~
 > mass <- 47.5
 > age <- 122
@@ -647,39 +617,6 @@ Other useful commands for working with packages:
 > age <- age - 20
 > ~~~
 > {: .r}
->
-> > ## Solution to Challenge 2
-> >
-> > 
-> > ~~~
-> > mass <- 47.5
-> > ~~~
-> > {: .r}
-> > This will give a value of 47.5 for the variable mass.
-> >
-> > 
-> > ~~~
-> > age <- 122
-> > ~~~
-> > {: .r}
-> > This will give a value of 122 for the variable age.
-> >
-> > 
-> > ~~~
-> > mass <- mass * 2.3
-> > ~~~
-> > {: .r}
-> > This will multiply the existing value of 47.5 by 2.3 to give a new value of
-> > 109.25 to the variable mass.
-> >
-> > 
-> > ~~~
-> > age <- age - 20
-> > ~~~
-> > {: .r}
-> > This will subtract 20 from the existing value of 122 to give a new value
-> > of 102 to the variable age.
-> {: .solution}
 {: .challenge}
 
 
@@ -687,24 +624,6 @@ Other useful commands for working with packages:
 >
 > Run the code from the previous challenge, and write a command to
 > compare mass to age. Is mass larger than age?
->
-> > ## Solution to Challenge 3
-> >
-> > One way of answering this question in R is to use the `>` to set up the following:
-> > 
-> > ~~~
-> > mass > age
-> > ~~~
-> > {: .r}
-> > 
-> > 
-> > 
-> > ~~~
-> > [1] TRUE
-> > ~~~
-> > {: .output}
-> > This should yield a boolean value of TRUE since 109.25 is greater than 102.
-> {: .solution}
 {: .challenge}
 
 
@@ -716,29 +635,4 @@ Other useful commands for working with packages:
 >
 > (Note: We will be using these packages in future lessons, so ask a helper for
 > assistance if you have difficulties)
->
-> > ## Solution to Challenge 4
-> >
-> > We can use the `install.packages` command to install the required packages.
-> > 
-> > ~~~
-> > install.packages("ggplot2")
-> > install.packages("dplyr")
-> > ~~~
-> > {: .r}
-> > 
-> > You can also install packages through the `Packages` tab in the lower right pane of RStudio 
-> > by clicking `Install` and then typing in the names of the packages we want to install.
-> >
-> > To load the packages use the following commands:
-> > 
-> > ~~~
-> > library(ggplot2)
-> > library(dplyr)
-> > ~~~
-> > {: .r}
-> > 
-> > Or you can click the corresponding checkbox next to the name of the package from the list 
-> > in the `Packages` tab.
-> {: .solution}
 {: .challenge}
