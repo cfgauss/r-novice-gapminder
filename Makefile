@@ -11,6 +11,10 @@ DST=_site
 .PHONY : commands clean files
 all : commands
 
+## From http://bit.ly/2rhsLiz
+## Use make print-VARIABLE
+print-% : ; @echo $* = $($*)
+
 ## commands         : show all commands.
 commands :
 	@grep -h -E '^##' ${MAKEFILES} | sed -e 's/## //g'
@@ -20,7 +24,7 @@ serve : lesson-rmd
 	${JEKYLL} serve
 
 ## site             : build files but do not run a server.
-site : lesson-rmd
+site :
 	${JEKYLL} build
 
 # repo-check        : check repository settings.
