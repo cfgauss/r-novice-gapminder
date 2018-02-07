@@ -4,13 +4,12 @@ title: Challenges
 permalink: /challenges/
 ---
 
-
-## [Introduction to RStudio](https://carriebrown.github.io/r-novice-gapminder/01-rstudio-intro/)
+## [Introduction to RStudio](https://cfgauss.github.io/r-novice-gapminder/02-rstudio-intro/)
 
 > ## Challenge 1
 >
 > Which of the following are valid R variable names?
-> 
+>
 > ~~~
 > min_height
 > max.height
@@ -22,36 +21,6 @@ permalink: /challenges/
 > celsius2kelvin
 > ~~~
 > {: .r}
->
->
-> > ## Solution to challenge 1
-> >
-> > The following can be used as R variables:
-> > 
-> > ~~~
-> > min_height
-> > max.height
-> > MaxLength
-> > celsius2kelvin
-> > ~~~
-> > {: .r}
-> >
-> > The following creates a hidden variable:
-> > 
-> > ~~~
-> > .mass
-> > ~~~
-> > {: .r}
-> >
-> > The following will not be able to be used to create a variable
-> > 
-> > ~~~
-> > _age
-> > min-length
-> > 2widths
-> > ~~~
-> > {: .r}
-> {: .solution}
 {: .challenge}
 
 > ## Challenge 2
@@ -59,7 +28,7 @@ permalink: /challenges/
 > What will be the value of each  variable  after each
 > statement in the following program?
 >
-> 
+>
 > ~~~
 > mass <- 47.5
 > age <- 122
@@ -67,66 +36,13 @@ permalink: /challenges/
 > age <- age - 20
 > ~~~
 > {: .r}
->
-> > ## Solution to challenge 2
-> >
-> > 
-> > ~~~
-> > mass <- 47.5
-> > ~~~
-> > {: .r}
-> > This will give a value of 47.5 for the variable mass.
-> >
-> > 
-> > ~~~
-> > age <- 122
-> > ~~~
-> > {: .r}
-> > This will give a value of 122 for the variable age.
-> >
-> > 
-> > ~~~
-> > mass <- mass * 2.3
-> > ~~~
-> > {: .r}
-> > This will multiply the existing value of 47.5 by 2.3 to give a new value of
-> > 109.25 to the variable mass.
-> >
-> > 
-> > ~~~
-> > age <- age - 20
-> > ~~~
-> > {: .r}
-> > This will subtract 20 from the existing value of 122 to give a new value
-> > of 102 to the variable age.
-> {: .solution}
 {: .challenge}
-
 
 > ## Challenge 3
 >
 > Run the code from the previous challenge, and write a command to
 > compare mass to age. Is mass larger than age?
->
-> > ## Solution to challenge 3
-> >
-> > One way of answering this question in R is to use the `>` to set up the following:
-> > 
-> > ~~~
-> > mass > age
-> > ~~~
-> > {: .r}
-> > 
-> > 
-> > 
-> > ~~~
-> > [1] TRUE
-> > ~~~
-> > {: .output}
-> > This should yield a boolean value of TRUE since 109.25 is greater than 102.
-> {: .solution}
 {: .challenge}
-
 
 > ## Challenge 4
 >
@@ -136,155 +52,37 @@ permalink: /challenges/
 >
 > (Note: We will be using these packages in future lessons, so ask a helper for
 > assistance if you have difficulties)
->
-> > ## Solution to challenge 5
-> >
-> > We can use the `install.packages` command to install the required packages.
-> > 
-> > ~~~
-> > install.packages("ggplot2")
-> > install.packages("dplyr")
-> > ~~~
-> > {: .r}
-> > 
-> > You can also install packages through the `Packages` tab in the lower right pane of RStudio 
-> > by clicking `Install` and then typing in the names of the packages we want to install.
-> >
-> > To load the packages use the following commands:
-> > 
-> > ~~~
-> > library(ggplot2)
-> > library(dplyr)
-> > ~~~
-> > {: .r}
-> > 
-> > Or you can click the corresponding checkbox next to the name of the package from the list 
-> > in the `Packages` tab.
-> {: .solution}
 {: .challenge}
 
-## [Seeking Help](https://carriebrown.github.io/r-novice-gapminder/02-seeking-help/)
+## [Seeking Help](https://cfgauss.github.io/r-novice-gapminder/03-seeking-help/)
 
 > ## Challenge 1
 >
-> Look at the help for the `c` function. Try the following commands and see if you can use 
-> the help file to explain the output you see:
-> 
+> Look at the help for the `c` function. What kind of vector do you
+> expect you will create if you evaluate the following:
+>
 > ~~~
 > c(1, 2, 3)
 > c('d', 'e', 'f')
-> c(1, 5, 'g')
+> c(1, 2, 'f')`
 > ~~~
 > {: .r}
-> > ## Solution to Challenge 1
-> >
-> > ~~~
-> > c(1,2,3)
-> > [1] 1 2 3
-> > c('d','e','f')
-> > [1] "d" "e" "f"
-> > c(1,5,'g')
-> > [1] "1" "5" "g"
-> > ~~~
-> > {: .output}
-> > 
-> > The `c` function creates a vector, which is a sequence of individual elements in R. In a vector, all elements must be the
-> > same data type. In the first case, we created a numeric vector. For the 
-> > second, our vector is a character vector which you can see by the quotes that R put around 
-> > each element. In the third example, since we gave R both numeric and character elements, R 
-> > converted all the elements to characters so that our vector contained all the same type of elements.
-> > 
-> > Don't worry if this is confusing right now. We will clarify more in our next lesson about 
-> > data structures in R.
-> {: .solution}
 {: .challenge}
 
 > ## Challenge 2
-> 
-> Look at the help for the `typeof` function. What does this function do?
-> Try creating the following objects and using this function on them. 
 >
-> 1. m <- 15
-> 2. n <- "Lincoln"
->
-> Explain to your neighbor what this function is telling us about these objects:
->
-> > ## Solution to Challenge 2
-> > 
-> > ~~~
-> > help("typeof")
-> > ?typeof
-> > ~~~
-> > {: .r}
-> > 
-> > We can see from the help file that `typeof` tells us the type of an object in R. We will 
-> > discuss R data types further in the next lecture.
-> >
-> > ~~~
-> > m <- 15
-> > typeof(m)
-> > ~~~
-> > 
-> > ~~~
-> > [1] "double"
-> > ~~~
-> > {: .output}
-> > 
-> > This is telling us that `m` is the data type `double` which is a numeric data type in R.
-> >
-> > ~~~
-> > n <- "Lincoln"
-> > typeof(n)
-> > ~~~
-> > {: .r}
-> > 
-> > ~~~
-> > [1] "character"
-> > ~~~
-> > {: .output}
-> > 
-> > Here, `n` is the data type `character` which is the data type R uses for strings.
-> {: .solution}
+> Look at the help for the `paste` function. You'll need to use this later.
+> What is the difference between the `sep` and `collapse` arguments?
 {: .challenge}
 
-> ## Challenge 3 - Advanced
->
-> The `read.table` function is used to read data from external files into the R environment.
-> For example: to read in a file called "data.csv" you would use the following command:
-> 
-> ~~~
-> read.table(file = "data.csv")
-> ~~~
-> {: .r}
->
-> Look at the help for the `read.table` function.
->
-> What argument would you use if you wanted to read in a file without a header?
-> What argument would allow you to switch between a comma separated file and a tab separated
-> file?
->
-> > ## Solution to Challenge 3
-> >
-> > To view the help for the `read.table` function, you can type one of the following commands into 
-> > your console:
-> >
-> > 
-> > ~~~
-> > help("read.table")
-> > ?read.table
-> > ~~~
-> > {: .r}
-> >
-> > By looking at the arguments section of the help file, we can see that to prevent R from automatically assuming the first row of your file is a header row, you would specify `header = FALSE`. 
-> > 
-> > ~~~
-> > read.table(file = "data.csv", header = FALSE)
-> > ~~~
-> > {: .r}
-> > 
-> > To switch between comma separated files (csv) and tab separated files (tsv), you would use the `sep` argument.
-> > 
-> {: .solution}
+> ## Challenge 3
+> Use help to find a function (and its associated parameters) that you could
+> use to load data from a csv file in which columns are delimited with "\t"
+> (tab) and the decimal point is a "." (period). This check for decimal
+> separator is important, especially if you are working with international
+> colleagues, because different countries have different conventions for the
+> decimal point (i.e. comma vs period).
+> hint: use `??csv` to lookup csv related functions.
 {: .challenge}
 
 ## [Data Structures](https://carriebrown.github.io/r-novice-gapminder/03-data-structures/)
@@ -292,218 +90,80 @@ permalink: /challenges/
 > ## Challenge 1
 >
 > Predict what will happen if we perform an operation between two vectors of different size?
-> 
-> Test your guess by creating two vectors of different lengths using the colon operator 
-> and adding or multiplying them together.
 >
-> 
-> > ## Solution to Challenge 1
-> >
-> > 
-> > ~~~
-> > a <- 1:10
-> > b <- 1:5
-> > a * b
-> > ~~~
-> > {: .r}
-> > 
-> > ~~~
-> > [1]  1  4  9 16 25  6 14 24 36 50
-> > ~~~
-> > {: .output}
-> > 
-> > Notice how R repeated the shorter vector until it had finished operating on every 
-> > element of the larger vector. This is known as "vector recycling". 
-> >
-> > If your shorter vector is not a even multiple of the larger one, R will still perform 
-> > the operation but it will give you the following error message:
-> >
-> > ~~~
-> > Warning message:
-> > In a * b : longer object length is not a multiple of shorter object length
-> > ~~~
-> > {: .output}
-> {: .solution}
+> Test your guess by creating two vectors of different lengths using the colon operator
+> and adding or multiplying them together.
 {: .challenge}
-
 
 > ## Challenge 2
 >
 > What happens when we create a vector that combines data types?
 >
-> Try creating a vector named `my_vector` containing the elements 1, "four", and TRUE. What does the vector 
-> look like? 
-> 
-> Use the `str` command to determine what data type is in your vector?
+> Try creating a vector named `my_vector` containing the elements 1, "four", and TRUE. What does the vector
+> look like?
 >
-> > ## Solution to Challenge 2
-> >
-> > ~~~
-> > my_vector <- c(1, "four", TRUE)
-> > my_vector
-> > ~~~
-> > {: .r}
-> > 
-> > ~~~
-> > [1] "1"    "four" "TRUE"
-> > ~~~
-> > {: .output}
-> > 
-> > ~~~
-> > str(my_vector)
-> > ~~~
-> > {: .r}
-> > 
-> > ~~~
-> >  chr [1:3] "1" "four" "TRUE"
-> > ~~~
-> > {: .output}
-> > 
-> > See the quotes around each element of `my_vector`? R turned every element of the vector into 
-> > a character. Since all elements of the vector must be of the same data type, R picked the 
-> > best one based on the data we gave it. This is called **type coercion**. Type coercion can 
-> > cause problems if your data is not consistant or if it is assigned to an unexpected data type, so we need to watch for it as we work 
-> > with data in R.
-> >
-> > We can manually coerce the data by using commands such as `as.numeric` or `as.character`. 
-> > For more information on how these commands work, you can read their help documentation by 
-> > typing `?as.numeric` or `?as.character`.
-> {: .solution}
+> Use the `str` command to determine what data type is in your vector?
 {: .challenge}
-
 
 > ## Challenge 3
 >
 > R also vectorizes functions on character vectors as well.
 >
-> Use the `c` function to create a character vector named `colors` with the values: "red", 
-> "yellow" and "blue". Use the `paste` function to combine `"My ball is"` with each element 
+> Use the `c` function to create a character vector named `colors` with the values: "red",
+> "yellow" and "blue". Use the `paste` function to combine `"My ball is"` with each element
 > of your vector.
-> 
-> > ## Solution to Challenge 2
-> >
-> > ~~~
-> > colors <- c("red", "yellow", "blue")
-> > paste("My ball is", colors)
-> > ~~~
-> > {: .r}
-> > 
-> > ~~~
-> > [1] "My ball is red"    "My ball is yellow"
-> > [3] "My ball is blue"  
-> > ~~~
-> > {: .output}
-> {: .solution}
 {: .challenge}
 
-## [Subsetting Data](https://carriebrown.github.io/r-novice-gapminder/05-data-subsetting/)
+## [Subsetting Data](https://cfgauss.github.io/r-novice-gapminder/03-data-subsetting/)
 
 > ## Challenge 1
 >
 > Given the following code:
 >
-> 
+>
 > ~~~
 > x <- c(5.4, 6.2, 7.1, 4.8, 7.5)
 > names(x) <- c('a', 'b', 'c', 'd', 'e')
 > print(x)
 > ~~~
 > {: .r}
-> 
-> 
-> 
-> ~~~
->   a   b   c   d   e 
-> 5.4 6.2 7.1 4.8 7.5 
-> ~~~
-> {: .output}
 >
-> Come up with at least 3 different commands that will produce the following output:
 >
-> 
+>
 > ~~~
->   b   c   d 
-> 6.2 7.1 4.8 
+>   a   b   c   d   e
+> 5.4 6.2 7.1 4.8 7.5
 > ~~~
 > {: .output}
 >
-> After you find 3 different commands, compare notes with your neighbour. Did you have different strategies?
+> Come up with at least 2 different commands that will produce the following output:
 >
-> > ## Solution to Challenge 1
-> >
-> > 
-> > ~~~
-> > x[2:4]
-> > ~~~
-> > {: .r}
-> > 
-> > 
-> > 
-> > ~~~
-> >   b   c   d 
-> > 6.2 7.1 4.8 
-> > ~~~
-> > {: .output}
-> > 
-> > ~~~
-> > x[-c(1,5)]
-> > ~~~
-> > {: .r}
-> > 
-> > 
-> > 
-> > ~~~
-> >   b   c   d 
-> > 6.2 7.1 4.8 
-> > ~~~
-> > {: .output}
-> > 
-> > ~~~
-> > x[c("b", "c", "d")]
-> > ~~~
-> > {: .r}
-> > 
-> > 
-> > 
-> > ~~~
-> >   b   c   d 
-> > 6.2 7.1 4.8 
-> > ~~~
-> > {: .output}
-> > 
-> > ~~~
-> > x[c(2,3,4)]
-> > ~~~
-> > {: .r}
-> > 
-> > 
-> > 
-> > ~~~
-> >   b   c   d 
-> > 6.2 7.1 4.8 
-> > ~~~
-> > {: .output}
-> >
-> {: .solution}
+>
+> ~~~
+>   b   c   d
+> 6.2 7.1 4.8
+> ~~~
+> {: .output}
+>
+> After you find 2 different commands, compare notes with your neighbour. Did you have different strategies?
 {: .challenge}
-
 > ## Challenge 2
 >
 > Run the following code to define vector `x` as above:
 >
-> 
+>
 > ~~~
 > x <- c(5.4, 6.2, 7.1, 4.8, 7.5)
 > names(x) <- c('a', 'b', 'c', 'd', 'e')
 > print(x)
 > ~~~
 > {: .r}
-> 
-> 
-> 
+>
+>
+>
 > ~~~
->   a   b   c   d   e 
-> 5.4 6.2 7.1 4.8 7.5 
+>   a   b   c   d   e
+> 5.4 6.2 7.1 4.8 7.5
 > ~~~
 > {: .output}
 >
@@ -514,22 +174,9 @@ permalink: /challenges/
 >~~~
 >{: .r}
 >
-> Try out this command and see what you get. Did this match your expectation?
-> Why did we get this result? (Tip: test out each part of the command on it's own - this is a useful debugging strategy)
->
-> > ## Solution to Challenge 2
-> >
-> > The `which` command returns the index of every `TRUE` value in its
-> > input. The `names(x) == "g"` command didn't return any `TRUE` values. Because
-> > there were no `TRUE` values passed to the `which` command, it returned an
-> > empty vector. Negating this vector with the minus sign didn't change its
-> > meaning. Because we used this empty vector to retrieve values from `x`, it
-> > produced an empty numeric vector. It was a `named numeric` empty vector
-> > because the vector type of x is "named numeric" since we assigned names to the
-> > values (try `str(x)` ).
-> {: .solution}
+> Test out your guess by trying out this command. Did this match your expectation?
+> Why did we get this result? (Tip: test out each part of the command on its own - this is a useful debugging strategy)
 {: .challenge}
-
 
 > ## Challenge 3
 >
@@ -561,90 +208,40 @@ permalink: /challenges/
 >
 >
 >~~~
->a a a 
->1 2 3 
+>a a a
+>1 2 3
 >~~~
 >{: .output}
 >
 >
 > Can you come up with a command that will only return of the 'a' values and a different command
 > that will return all of the 'a' values? Does your answer differ from your neighbors?
->
-> > ## Solution to challenge 3
-> >~~~
-> > y['a']  # only returns first value
-> >~~~
-> >{: .r}
-> >
-> >
-> >
-> >~~~
-> >a 
-> >1 
-> >~~~
-> >{: .output}
-> >
-> >
-> >
-> >~~~
-> > y[which(names(y) == 'a')]  # returns all three values
-> >~~~
-> >{: .r}
-> >
-> >
-> >
-> >~~~
-> >a a a 
-> >1 2 3 
-> >~~~
-> >{: .output}
->{: .solution}
 {: .challenge}
-
 
 > ## Challenge 4
 >
 > Given the following code:
 >
-> 
+>
 > ~~~
 > x <- c(5.4, 6.2, 7.1, 4.8, 7.5)
 > names(x) <- c('a', 'b', 'c', 'd', 'e')
 > print(x)
 > ~~~
 > {: .r}
-> 
-> 
-> 
+>
+>
+>
 > ~~~
->   a   b   c   d   e 
-> 5.4 6.2 7.1 4.8 7.5 
+>   a   b   c   d   e
+> 5.4 6.2 7.1 4.8 7.5
 > ~~~
 > {: .output}
 >
 > Write a subsetting command to return the values in x that are greater than 4 and less than 7.
->
-> > ## Solution to Challenge 4
-> >
-> > 
-> > ~~~
-> > x_subset <- x[x<7 & x>4]
-> > print(x_subset)
-> > ~~~
-> > {: .r}
-> > 
-> > 
-> > 
-> > ~~~
-> >   a   b   d 
-> > 5.4 6.2 4.8 
-> > ~~~
-> > {: .output}
-> {: .solution}
 {: .challenge}
 
-
-## [Exploring Data Frames](https://carriebrown.github.io/r-novice-gapminder/06-data-frames/)
+## [Exploring Data Frames](https://cfgauss.github.io/r-novice-gapminder/07-data-frames/)
 
 > ## Challenge 1
 >
@@ -659,130 +256,27 @@ permalink: /challenges/
 > - `cats[1, ]`
 >
 > Try out these examples and explain what is returned by each one.
->
-> *Hint:* Use the function `typeof` to examine what is returned in each case.
->
-> > ## Solution to Challenge 1
-> > 
-> > ~~~
-> > cats[1]
-> > ~~~
-> > {: .r}
-> > 
-> > 
-> > 
-> > ~~~
-> >     coat
-> > 1 calico
-> > 2  black
-> > 3  tabby
-> > ~~~
-> > {: .output}
-> > We can think of a data frame as a list of vectors. The single brace `[1]`
-> returns the first slice of the list, as another list. In this case it is the
-> first column of the data frame.
-> > 
-> > ~~~
-> > cats$coat
-> > ~~~
-> > {: .r}
-> > 
-> > 
-> > 
-> > ~~~
-> > [1] calico black  tabby 
-> > Levels: black calico tabby
-> > ~~~
-> > {: .output}
-> > This example uses the `$` character to address items by name. _coat_ is the
-> first column of the data frame, again a _vector_ of type _factor_.
-> > 
-> > ~~~
-> > cats["coat"]
-> > ~~~
-> > {: .r}
-> > 
-> > 
-> > 
-> > ~~~
-> >     coat
-> > 1 calico
-> > 2  black
-> > 3  tabby
-> > ~~~
-> > {: .output}
-> > Here we are using a single brace `["coat"]` replacing the index number with
-> the column name. Like example 1, the returned object is a _list_.
-> > 
-> > ~~~
-> > cats[1, 1]
-> > ~~~
-> > {: .r}
-> > 
-> > 
-> > 
-> > ~~~
-> > [1] calico
-> > Levels: black calico tabby
-> > ~~~
-> > {: .output}
-> > This example uses a single brace, but this time we provide row and column
-> coordinates. The returned object is the value in row 1, column 1. The object
-> is an _integer_ but because it is part of a _vector_ of type _factor_, R
-> displays the label "calico" associated with the integer value.
-> > 
-> > ~~~
-> > cats[, 1]
-> > ~~~
-> > {: .r}
-> > 
-> > 
-> > 
-> > ~~~
-> > [1] calico black  tabby 
-> > Levels: black calico tabby
-> > ~~~
-> > {: .output}
-> > Like the previous example we use single braces and provide row and column
-> coordinates. The row coordinate is not specified, R interprets this missing
-> value as all the elements in this _column_ _vector_.
-> > 
-> > ~~~
-> > cats[1, ]
-> > ~~~
-> > {: .r}
-> > 
-> > 
-> > 
-> > ~~~
-> >     coat weight likes_string
-> > 1 calico    2.1         TRUE
-> > ~~~
-> > {: .output}
-> > Again we use the single brace with row and column coordinates. The column
-> coordinate is not specified. The return value is a _list_ containing all the
-> values in the first row.
-> {: .solution}
 {: .challenge}
-
-
 
 > ## Challenge 2
 >
 > Remember that you can create a new data.frame right from within R with the following syntax:
-> 
+>
 > ~~~
-> df <- data.frame(id = c('a', 'b', 'c'),
->                  x = 1:3,
->                  y = c(TRUE, TRUE, FALSE),
+> variable1 <- c('a', 'b', 'c')
+> variable2 <- c(1, 2, 3)
+> variable3 <- c(TRUE, TRUE, FALSE)
+> df <- data.frame(variable1,
+>                  variable2,
+>                  variable3,
 >                  stringsAsFactors = FALSE)
 > ~~~
 > {: .r}
 >
-> Note that the `stringsAsFactors` setting allows us to tell R that we want to preserve our 
+> Note that the `stringsAsFactors` setting allows us to tell R that we want to preserve our
 > character fields and not have R convert them to factors.
 >
-> Make a data.frame that holds the following information for yourself:
+> Modifying the syntax above, make a data.frame that holds the following information for yourself:
 >
 > - first name
 > - last name
@@ -790,19 +284,6 @@ permalink: /challenges/
 >
 > Then use `rbind` to add an entry for the people sitting beside you.
 > Finally, use `cbind` to add a column with each person's answer to the question, "Is it time for coffee break?"
->
-> > ## Solution to Challenge 2
-> > 
-> > ~~~
-> > df <- data.frame(first = c('Grace'),
-> >                  last = c('Hopper'),
-> >                  lucky_number = c(0),
-> >                  stringsAsFactors = FALSE)
-> > df <- rbind(df, list('Marie', 'Curie', 238) )
-> > df <- cbind(df, coffeetime = c(TRUE,TRUE))
-> > ~~~
-> > {: .r}
-> {: .solution}
 {: .challenge}
 
 > ## Challenge 3
@@ -815,21 +296,6 @@ permalink: /challenges/
 > Can you determine what data each column holds? Do the data types make sense for these types of data? If not, what data type would you recommend?
 >
 > If there are any parts you can't interpret, discuss with your neighbors!
->
-> > ## Solution to Challenge 3
-> >
-> > The object `gapminder` is a data frame with 1704 entries and 6 columns.
-> >
-> > The 6 columns contain the following data and types:
-> > - `country`: a factor with 142 levels - The country of which the rest of the data in the row is for.
-> > - `continent`: a factor with 5 levels - The continent in which the target country is located.
-> > - `year`: integer vector - The year for which the data was obtained
-> > - `pop`: integer vector - The total population in the target country for the target year.
-> > - `lifeExp`: numeric vector - The average life expectancy for the target country during the target year.
-> > - `gdpPercap`: numeric vector - The average GDP per capita for the target country during the target year.
-> >
-> > 
-> {: .solution}
 {: .challenge}
 
 > ## Challenge 4
@@ -838,7 +304,7 @@ permalink: /challenges/
 >
 > 1. Extract observations collected for the year 1957
 >
->    
+>
 >    ~~~
 >    gapminder[gapminder$year = 1957,]
 >    ~~~
@@ -846,7 +312,7 @@ permalink: /challenges/
 >
 > 2. Extract all columns except 1 through to 4
 >
->    
+>
 >    ~~~
 >    gapminder[,-1:4]
 >    ~~~
@@ -854,7 +320,7 @@ permalink: /challenges/
 >
 > 3. Extract the rows where the life expectancy is longer the 80 years
 >
->    
+>
 >    ~~~
 >    gapminder[gapminder$lifeExp > 80]
 >    ~~~
@@ -863,7 +329,7 @@ permalink: /challenges/
 > 4. Extract the first row, and the fourth and fifth columns
 >   (`lifeExp` and `gdpPercap`).
 >
->    
+>
 >    ~~~
 >    gapminder[1, 4, 5]
 >    ~~~
@@ -872,64 +338,11 @@ permalink: /challenges/
 > 5. Advanced: extract rows that contain information for the years 2002
 >    and 2007
 >
->    
+>
 >    ~~~
 >    gapminder[gapminder$year == 2002 | 2007,]
 >    ~~~
 >    {: .r}
->
-> > ## Solution to Challenge 4
-> >
-> > Fix each of the following common data frame subsetting errors:
-> >
-> > 1. Extract observations collected for the year 1957
-> >
-> >    
-> >    ~~~
-> >    # gapminder[gapminder$year = 1957,]
-> >    gapminder[gapminder$year == 1957,]
-> >    ~~~
-> >    {: .r}
-> >
-> > 2. Extract all columns except 1 through to 4
-> >
-> >    
-> >    ~~~
-> >    # gapminder[,-1:4]
-> >    gapminder[,-c(1:4)]
-> >    ~~~
-> >    {: .r}
-> >
-> > 3. Extract the rows where the life expectancy is longer the 80 years
-> >
-> >    
-> >    ~~~
-> >    # gapminder[gapminder$lifeExp > 80]
-> >    gapminder[gapminder$lifeExp > 80,]
-> >    ~~~
-> >    {: .r}
-> >
-> > 4. Extract the first row, and the fourth and fifth columns
-> >   (`lifeExp` and `gdpPercap`).
-> >
-> >    
-> >    ~~~
-> >    # gapminder[1, 4, 5]
-> >    gapminder[1, c(4, 5)]
-> >    ~~~
-> >    {: .r}
-> >
-> > 5. Advanced: extract rows that contain information for the years 2002
-> >    and 2007
-> >
-> >     
-> >     ~~~
-> >     # gapminder[gapminder$year == 2002 | 2007,]
-> >     gapminder[gapminder$year == 2002 | gapminder$year == 2007,]
-> >     gapminder[gapminder$year %in% c(2002, 2007),]
-> >     ~~~
-> >     {: .r}
-> {: .solution}
 {: .challenge}
 
 > ## Challenge 5
@@ -939,40 +352,9 @@ permalink: /challenges/
 >
 > 2. Create a new `data.frame` called `gapminder_small` that only contains rows 1 through 9
 > and 19 through 23. You can do this in one or two steps.
->
-> > ## Solution to Challenge 5
-> >
-> > 1.  `gapminder` is a data.frame so needs to be subsetted on two dimensions. `gapminder[1:20, ]` subsets the data to give the first 20 rows and all columns.
-> >
-> > 2. There are several different ways to accomplish this task:
-> > 
-> > First, you can do it in two steps by subsetting all the rows 1 through 23, then removing rows 10 through 18:
-> > 
-> > ~~~
-> > gapminder_small <- gapminder[1:23, ]
-> > gapminder_small <- gapminder_small[-18:-10, ]
-> > ~~~
-> > {: .r}
-> > 
-> > Or, you can first subset rows 1 through 9, then use `rbind` to concatenate the next subset of rows 10 through 18:
-> > 
-> > ~~~
-> > gapminder_small <- gapminder[1:9, ]
-> > gapminder_small <- rbind(gapminder_small, gapminder[19:23, ]
-> > ~~~
-> > {: .r}
-> >
-> > Or you can do this in a single step by combining your ranges:
-> >
-> > ~~~
-> > gapminder_small <- gapminder[c(1:9, 19:23), ]
-> > ~~~
-> >
-> > There are probably other ways to accomplish this task. Did you come up with any that we didn't show here?
-> {: .solution}
 {: .challenge}
 
-## [Control Flow](https://carriebrown.github.io/r-novice-gapminder/08-control-flow/)
+## [Control Flow](https://cfgauss.github.io/r-novice-gapminder/09-control-flow/)
 
 > ## Challenge 1
 >
@@ -980,48 +362,7 @@ permalink: /challenges/
 > reporting whether there are any records from 2002 in
 > the `gapminder` dataset.
 > Now do the same for 2012.
->
-> > ## Solution to Challenge 1
-> > We will first see a solution to Challenge 1 which does not use the `any` function.
-> > We first obtain a logical vector describing which element of `gapminder$year` is equal to `2002`:
-> > 
-> > ~~~
-> > gapminder[(gapminder$year == 2002),]
-> > ~~~
-> > {: .r}
-> > Then, we count the number of rows of the data.frame `gapminder` that correspond to the 2002:
-> > 
-> > ~~~
-> > rows2002_number <- nrow(gapminder[(gapminder$year == 2002),])
-> > ~~~
-> > {: .r}
-> > The presence of any record for the year 2002 is equivalent to the request that `rows2002_number` is one or more:
-> > 
-> > ~~~
-> > rows2002_number >= 1
-> > ~~~
-> > {: .r}
-> > Putting all together, we obtain:
-> > 
-> > ~~~
-> > if(nrow(gapminder[(gapminder$year == 2002),]) >= 1){
-> >    print("Record(s) for the year 2002 found.")
-> > }
-> > ~~~
-> > {: .r}
-> >
-> > All this can be done more quickly with `any`. The logical condition can be expressed as:
-> > 
-> > ~~~
-> > if(any(gapminder$year == 2002)){
-> >    print("Record(s) for the year 2002 found.")
-> > }
-> > ~~~
-> > {: .r}
-> >
-> {: .solution}
 {: .challenge}
-
 
 > ## Challenge 2
 >
@@ -1029,56 +370,6 @@ permalink: /challenges/
 > output_vector2. Are they the same? If not, why not?
 > How would you change the last block of code to make output_vector2
 > the same as output_vector?
->
-> > ## Solution to Challenge 2
-> > We can check whether the two vectors are identical using the `all` function:
-> > 
-> > ~~~
-> > all(output_vector == output_vector2)
-> > ~~~
-> > {: .r}
-> > However, all the elements of `output_vector` can be found in `output_vector2`:
-> > 
-> > ~~~
-> > all(output_vector %in% output_vector2)
-> > ~~~
-> > {: .r}
-> > and vice versa:
-> > 
-> > ~~~
-> > all(output_vector2 %in% output_vector)
-> > ~~~
-> > {: .r}
-> > therefore, the element in `output_vector` and `output_vector2` are just sorted in a different order.
-> > This is because `as.vector` outputs the elements of an input matrix going over its column.
-> > Taking a look at `output_matrix`, we can notice that we want its elements by rows.
-> > The solution is to transpose the `output_matrix`. We can do it either by calling the transpose function
-> > `t` or by inputing the elements in the right order.
-> > The first solution requires to change the original
-> > 
-> > ~~~
-> > output_vector2 <- as.vector(output_matrix)
-> > ~~~
-> > {: .r}
-> > into
-> > 
-> > ~~~
-> > output_vector2 <- as.vector(t(output_matrix))
-> > ~~~
-> > {: .r}
-> > The second solution requires to change
-> > 
-> > ~~~
-> > output_matrix[i, j] <- temp_output
-> > ~~~
-> > {: .r}
-> > into
-> > 
-> > ~~~
-> > output_matrix[j, i] <- temp_output
-> > ~~~
-> > {: .r}
-> {: .solution}
 {: .challenge}
 
 > ## Challenge 3
@@ -1091,22 +382,7 @@ permalink: /challenges/
 >~~~
 >{: .r}
 >
-> Modify our previous for loops to now fill our 5 x 5 matrix with the product of the respective values in `rows` and `cols`. (ie position [2, 4] in the matrix would have the product of `rows[2] * cols[4]`) 
->
-> > ## Solution to Challenge 3
-> >
-> > ~~~
-> >output_matrix <- matrix(nrow=5, ncol=5)
-> >for(i in 1:5){
-> >  for(j in 1:5){
-> >    matrix_value <- rows[i] * cols[j]
-> >    output_matrix[i, j] <- matrix_value
-> >  }
-> >}
-> > ~~~
-> > {: .r}
-> >
-> {: .solution}
+> Modify our previous for loops to now fill our 5 x 5 matrix with the product of the respective values in `rows` and `cols`. (ie position [2, 4] in the matrix would have the product of `rows[2] * cols[4]`)
 {: .challenge}
 
 > ## Challenge 4 - Advanced
@@ -1114,59 +390,6 @@ permalink: /challenges/
 > Write a script that loops through the `gapminder` data by continent and prints out
 > whether the mean life expectancy is smaller or larger than 50
 > years.
->
-> > ## Solution to Challenge 4
-> >
-> > **Step 1**:  We want to make sure we can extract all the unique values of the continent vector
-> > 
-> > ~~~
-> > gapminder <- read.csv("data/gapminder-FiveYearData.csv")
-> > unique(gapminder$continent)
-> > ~~~
-> > {: .r}
-> >
-> > **Step 2**: We also need to loop over each of these continents and calculate the average life expectancy for each `subset` of data.
-> > We can do that as follows:
-> >
-> > 1. Loop over each of the unique values of 'continent'
-> > 2. For each value of continent, create a temporary variable storing the life exepectancy for that subset,
-> > 3. Return the calculated life expectancy to the user by printing the output:
-> >
-> > 
-> > ~~~
-> > for( iContinent in unique(gapminder$continent) ){
-> >    tmp <- mean(subset(gapminder, continent==iContinent)$lifeExp)
-> >    cat("Average Life Expectancy in", iContinent, "is", tmp, "\n")
-> >    rm(tmp)
-> > }
-> > ~~~
-> > {: .r}
-> >
-> > **Step 3**: The exercise only wants the output printed if the average life expectancy is less than 50 or greater than 50. So we need to add an `if` condition before printing.
-> > So we need to add an `if` condition before printing, which evaluates whether the calculated average life expectancy is above or below a threshold, and print an output conditional on the result.
-> > We need to amend (3) from above:
-> >
-> > 3a. If the calculated life expectancy is less than some threshold (50 years), return the continent and a statement that life expectancy is less than threshold, otherwise return the continent and   a statement that life expectancy is greater than threshold,:
-> >
-> > 
-> > ~~~
-> > thresholdValue <- 50
-> > > >
-> > for( iContinent in unique(gapminder$continent) ){
-> >    tmp <- mean(subset(gapminder, continent==iContinent)$lifeExp)
-> >    
-> >    if(tmp < thresholdValue){
-> >        cat("Average Life Expectancy in", iContinent, "is less than", thresholdValue, "\n")
-> >    }
-> >    else{
-> >        cat("Average Life Expectancy in", iContinent, "is greater than", thresholdValue, "\n")
-> >         } # end if else condition
-> >    rm(tmp)
-> >    } # end for loop
-> > > >
-> > ~~~
-> > {: .r}
-> {: .solution}
 {: .challenge}
 
 > ## Challenge 5 - Advanced
@@ -1174,35 +397,9 @@ permalink: /challenges/
 > Modify the script from Challenge 4 to loop over each
 > country. This time print out whether the life expectancy is
 > smaller than 50, between 50 and 70, or greater than 70.
->
-> > ## Solution to Challenge 5
-> >  We modify our solution to Challenge 4 by now adding two thresholds, `lowerThreshold` and `upperThreshold` and extending our if-else statements:
-> >
-> > 
-> > ~~~
-> >  lowerThreshold <- 50
-> >  upperThreshold <- 70
-> >  
-> > for( iCountry in unique(gapminder$country) ){
-> >     tmp <- mean(subset(gapminder, country==iCountry)$lifeExp)
-> >     
-> >     if(tmp < lowerThreshold){
-> >         cat("Average Life Expectancy in", iCountry, "is less than", lowerThreshold, "\n")
-> >     }
-> >     else if(tmp > lowerThreshold && tmp < upperThreshold){
-> >         cat("Average Life Expectancy in", iCountry, "is between", lowerThreshold, "and", upperThreshold, "\n")
-> >     }
-> >     else{
-> >         cat("Average Life Expectancy in", iCountry, "is greater than", upperThreshold, "\n")
-> >     }
-> >     rm(tmp)
-> > }
-> > ~~~
-> > {: .r}
-> {: .solution}
 {: .challenge}
 
-## [Dataframe Manipulation](https://carriebrown.github.io/r-novice-gapminder/09-dplyr/)
+## [Dataframe Manipulation](https://cfgauss.github.io/r-novice-gapminder/10-dplyr/)
 
 ![](../fig/13-dplyr-fig1.png)
 
@@ -1212,93 +409,22 @@ permalink: /challenges/
 > will produce a dataframe that has the African values for `lifeExp`, `country`
 > and `year`, but not for other Continents.  How many rows does your dataframe
 > have and why?
->
-> > ## Solution to Challenge 1
-> >
-> >~~~
-> >year_country_lifeExp_Africa <- gapminder %>%
-> >                            filter(continent=="Africa") %>%
-> >                            select(year,country,lifeExp)
-> >~~~
-> >{: .r}
-> > 
-> > We can check the number of rows in our new dataframe `year_country_lifeExp_Africa` by using the `ncol` command:
-> >~~~
-> >nrow(year_country_lifeExp_Africa)
-> >~~~
-> >{: .r}
-> >
-> >~~~
-> > [1] 624
-> >~~~
-> >{: .output}
-> {: .solution}
 {: .challenge}
-
-
 
 ![](../fig/13-dplyr-fig2.png)
 
 ![](../fig/13-dplyr-fig3.png)
 
-
 > ## Challenge 2
->
 >
 > Calculate the average life expectancy per country. What is the longest average life
 > expectancy and the shortest life expectancy?
->
-> > ## Solution to Challenge 2
-> >
-> > First let's build a dataframe with a summary of the average life expectancy per country:
-> >~~~
-> >lifeExp_bycountry <- gapminder %>%
-> >    group_by(country) %>%
-> >    summarize(mean_lifeExp=mean(lifeExp))
-> >~~~
-> >{: .r}
-> >
-> > Now that we have the data we need, we can use the `min` and `max` commands to determine which country had the longest and shortest life expectancy:
-> >~~~
-> >min(lifeExp_bycountry$mean_lifeExp)
-> >~~~
-> >{: .r}
-> >
-> >~~~
-> >[1] 36.76917
-> >~~~
-> >{: .output}
-> >
-> >~~~
-> >max(lifeExp_bycountry$mean_lifeExp)
-> >~~~
-> >{: .r}
-> >
-> >~~~
-> >[1] 76.51142
-> >~~~
-> >{: .output}
-> >
-> {: .solution}
 {: .challenge}
-
 
 > ## Challenge 3
 >
 > Calculate the average life expectancy in 2002
-> for each continent. 
->
->
-> > ## Solution to Challenge 3
-> >
-> >~~~
-> >lifeExp_bycontinents <- gapminder %>%
-> >    filter(year==2002) %>%
-> >    group_by(continent) %>%
-> >    summarize(mean_lifeExp=mean(lifeExp))
-> >~~~
-> >{: .r}
-> {: .solution}
+> for each continent.
 {: .challenge}
 
 > ## Challenge 4 - Advanced
@@ -1307,27 +433,14 @@ permalink: /challenges/
 >
 > **Hint:** Use the `dplyr` functions `arrange` and `sample_n`, they have
 > similar syntax to other dplyr functions. Be sure to check out the help documentation for the new functions by typing `?arrange` or `?sample_n` if you run into difficulties.
->
-> > ## Solution to Challenge 4
-> >
-> >~~~
-> >lifeExp_2countries_bycontinents <- gapminder %>%
-> >    filter(year==2002) %>%
-> >    group_by(continent) %>%
-> >    sample_n(2) %>%
-> >    summarize(mean_lifeExp=mean(lifeExp)) %>%
-> >    arrange(desc(mean_lifeExp))
-> >~~~
-> >{: .r}
-> {: .solution}
 {: .challenge}
 
-## [Creating Publication Quality Graphics](https://carriebrown.github.io/r-novice-gapminder/11-plot-ggplot2/)
+## [Creating Publication Quality Graphics](https://cfgauss.github.io/r-novice-gapminder/12-plot-ggplot2/)
 
 > ## Challenge 1
 >
 > Our example visualizes how the GDP per capita changes in relationship to life expectancy:
-> 
+>
 > ~~~
 > ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp)) + geom_point()
 > ~~~
@@ -1338,21 +451,6 @@ permalink: /challenges/
 >
 > Hint: the gapminder dataset has a column called "year", which should appear
 > on the x-axis.
->
-> > ## Solution to challenge 1
-> >
-> > Modify the example so that the figure visualise how life expectancy has
-> > changed over time:
-> >
-> > 
-> > ~~~
-> > ggplot(data = gapminder, aes(x = year, y = lifeExp)) + geom_point()
-> > ~~~
-> > {: .r}
-> > 
-> > <img src="../fig/rmd-08-ch1-sol-1.png" title="plot of chunk ch1-sol" alt="plot of chunk ch1-sol" style="display: block; margin: auto;" />
-> >
-> {: .solution}
 {: .challenge}
 
 >
@@ -1363,27 +461,7 @@ permalink: /challenges/
 > Another *aesthetic* property we can modify is the point *color*. Modify the
 > code from the previous challenge to **color** the points by the "continent"
 > column. What trends do you see in the data? Are they what you expected?
->
-> > ## Solution to challenge 2
-> >
-> > In the previous examples and challenge we've used the `aes` function to tell
-> > the scatterplot **geom** about the **x** and **y** locations of each point.
-> > Another *aesthetic* property we can modify is the point *color*. Modify the
-> > code from the previous challenge to **color** the points by the "continent"
-> > column. What trends do you see in the data? Are they what you expected?
-> >
-> > 
-> > ~~~
-> > ggplot(data = gapminder, aes(x = year, y = lifeExp, color=continent)) +
-> >   geom_point()
-> > ~~~
-> > {: .r}
-> > 
-> > <img src="../fig/rmd-08-ch2-sol-1.png" title="plot of chunk ch2-sol" alt="plot of chunk ch2-sol" style="display: block; margin: auto;" />
-> >
-> {: .solution}
 {: .challenge}
-
 
 > ## Challenge 3
 >
@@ -1391,23 +469,7 @@ permalink: /challenges/
 > example.
 >
 > Hint: do not use the `aes` function, change this by adding arguments to the correct function.
->
-> > ## Solution to Challenge 3
-> >
-> > Since we want all the points to be the same and are not making this aesthetic specific to the data, we add this to `geom_point` to make the change effect all points but not the line.
-> >
-> > 
-> > ~~~
-> > ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp)) +
-> >  geom_point(size=3, color="orange") + scale_x_log10() +
-> >  geom_smooth(method="lm", size=1.5)
-> > ~~~
-> > {: .r}
-> > 
-> > <img src="../fig/rmd-08-ch4a-sol-1.png" title="plot of chunk ch4a-sol" alt="plot of chunk ch4a-sol" style="display: block; margin: auto;" />
-> {: .solution}
 {: .challenge}
-
 
 > ## Challenge 4
 >
@@ -1418,21 +480,6 @@ permalink: /challenges/
 > Hint: The color argument can be used inside the aesthetic. To change the shape of a point, use the `pch` argument. Setting `pch` to different numeric values from `1:25` yields different shapes as indicated in the chart below.
 >
 > <img src="../fig/pch_symbols.png" alt="a list of symbols one can use in R to change the shape of the plot" style="display: block; margin: auto;width: 200px">
->
-> > ## Solution to Challenge 4
-> >
-> > Since we want the color to be dependent on the continent, we place that argument inside the `aes`. To change the shape of the point, we place the `pch` argument inside `geom_point`. 
-> >
-> >
-> >~~~
-> > ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp, color = continent)) +
-> > geom_point(size=3, pch=17) + scale_x_log10() +
-> > geom_smooth(method="lm", size=1.5)
-> >~~~
-> >{: .r}
-> >
-> ><img src="../fig/rmd-08-ch4b-sol-1.png" title="plot of chunk ch4b-sol" alt="plot of chunk ch4b-sol" style="display: block; margin: auto;" />
-> {: .solution}
 {: .challenge}
 
 > ## Challenge 5
@@ -1442,35 +489,9 @@ permalink: /challenges/
 > Advanced Challenge:
 >  - Transform the x axis to better visualise the data spread.
 >  - Add a facet layer to panel the density plots by year.
->
-> > ## Solution to Challenge 5
-> >
-> > Create a density plot of GDP per capita, filled by continent.
-> >
-> > ~~~
-> > ggplot(data = gapminder, aes(x = gdpPercap, fill=continent)) +
-> >  geom_density(alpha=0.6)
-> > ~~~
-> > {: .r}
-> >
-> > <img src="../fig/rmd-08-ch5-sol-2.png" title="plot of chunk ch5-sol" alt="plot of chunk ch5-sol" style="display: block; margin: auto;" />
-> >
-> > Advanced:
-> >  - Transform the x axis to better visualise the data spread.
-> >  - Add a facet layer to panel the density plots by year.
-> >
-> > 
-> > ~~~
-> > ggplot(data = gapminder, aes(x = gdpPercap, fill=continent)) +
-> >  geom_density(alpha=0.6) + facet_wrap( ~ year) + scale_x_log10()
-> > ~~~
-> > {: .r}
-> > 
-> > <img src="../fig/rmd-08-ch5-sol-1.png" title="plot of chunk ch5-sol" alt="plot of chunk ch5-sol" style="display: block; margin: auto;" />
-> {: .solution}
 {: .challenge}
 
-## [Writing Data](https://carriebrown.github.io/r-novice-gapminder/12-writing-data/)
+## [Writing Data](https://cfgauss.github.io/r-novice-gapminder/13-writing-data/)
 
 <img src="../fig/12-data-fig1.png" title="export plots in rstudio" alt="export plots in rstudio" style="display: block; margin: auto;" />
 
@@ -1481,26 +502,7 @@ permalink: /challenges/
 > of the same data with one panel per continent.
 >
 > Hint: Remember that we used the `facet_wrap` command previously to create a facet plot.
->
-> > ## Solution to challenge 1
-> > 
-> > You can output a second plot, by adding a second `ggplot` command with the `facet_wrap` command before
-> > `dev.off` command.
-> >
-> > ~~~
-> > pdf("Life_Exp_vs_time2.pdf", width=12, height=4)
-> > ggplot(data=gapminder, aes(x=year, y=lifeExp)) +
-> >   geom_point()
-> > ggplot(data=gapminder, aes(x=year, y=lifeExp)) +
-> >   geom_point() + facet_wrap(~ continent)
-> > 
-> > # don't forget to close your pdf device!
-> > dev.off()
-> > ~~~
-> > {: .r}
-> {: .solution}
 {: .challenge}
-
 
 > ## Challenge 2
 >
@@ -1511,20 +513,6 @@ permalink: /challenges/
 > your working directory.
 >
 > Remember to use a different file name so that the new output doesn't overwrite your old output
->
-> > ## Solution to challenge 2
-> > 
-> > ~~~
-> > new_data <- gapminder[gapminder$year >= 1990,]
-> > write.table(new_data,
-> >   file="gapminder-1990.csv",
-> >   sep=",",
-> >   quote=FALSE,
-> >   row.names=FALSE
-> > )
-> > ~~~
-> > {: .r}
->{: .solution}
 {: .challenge}
 
 ## Wrapup
@@ -1537,11 +525,6 @@ by using the `?` and `vignette` commands.
 
 #### [Supplemental Lessons](https://carriebrown.github.io/r-novice-gapminder-2/)
 Additional R topics that we could not cover today.
-
-#### R Club at UNL
-The R Club meets on East Campus twice a month. It is headed by Leonardo Bastos, a PhD student in Agronomy
-and Horticulture. You can [email](mailto: lmbastos@unl.edu) Leonardo for more information, or check out
-the club's [GitHub page](https://github.com/ahgsa-unl) which contains previous meeting topics.
 
 #### [RStudio cheat sheets](https://www.rstudio.com/resources/cheatsheets/)
 R quick reference guides including today's handouts and more!

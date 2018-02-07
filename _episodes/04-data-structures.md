@@ -344,4 +344,3 @@ functions: `?list`, `?matrix` or by checking out the supplemental lesson [Lists 
 
 Today, we will be working primarily with the **data frame** data structures. We will explore these
 more indepth after our break.
-v

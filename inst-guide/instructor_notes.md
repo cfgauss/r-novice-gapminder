@@ -1,4 +1,4 @@
-## "Introduction to R and RStudio" - 45 minutes
+## Introduction to R and RStudio: 1:00–1:45
 
 #### Before Starting The Workshop
 
@@ -9,7 +9,7 @@ Please ensure you have the latest version of R and RStudio installed on your mac
 Why R?
  - free
  - open source
- 
+
 Why RStudio?
  - provides a fully integrated environment
  - built in version control and project management
@@ -40,8 +40,8 @@ Run button and key shortcuts
 
   * ctrl-enter windows/linux
   * command-enter mac
- 
-Project managment 
+
+Project managment
 
 Mostly use the console
 
@@ -52,7 +52,7 @@ Mostly use the console
  - type commands
  - R executes
  - returns result
- 
+
 The simplest thing you could do with R is do arithmetic:
 
 
@@ -288,7 +288,7 @@ Other useful commands:
 
 **CHALLENGES** (allot 15 min)
 
-## "Seeking Help" - 20 minutes
+## Seeking Help: 9:45–10:05
 
 #### Reading Help files
 
@@ -383,7 +383,7 @@ typeof(3.14)
 ~~~
 {: .r}
 
-A `double`, also referred to as a *floating point number*, is how R stores numeric values 
+A `double`, also referred to as a *floating point number*, is how R stores numeric values
 by default.
 
 
@@ -392,7 +392,7 @@ typeof(1L)
 ~~~
 {: .r}
 
-To use an `integer` value in R, we use the L to tell R that this value is an integer value. 
+To use an `integer` value in R, we use the L to tell R that this value is an integer value.
 Without the L, R would store this value as a `double`.
 
 
@@ -402,7 +402,7 @@ typeof(1+1i)
 {: .r}
 
 
-R can also support `complex` values as well. Unless you are doing mathematical analyses or 
+R can also support `complex` values as well. Unless you are doing mathematical analyses or
 complicated transformations, chances are you will not encounter this data type very often.
 
 ~~~
@@ -438,7 +438,7 @@ basic data types.
 #### Vectors
 
 Remember the [1]?
-R never uses just a single value, but instead uses vectors. Output before was a vector of 
+R never uses just a single value, but instead uses vectors. Output before was a vector of
 length 1.
 
 As seen in the challenges, we can build vectors using the `c` function.
@@ -543,8 +543,8 @@ str(a)
 
 
 *chr* that this is a *character* vector
-numbers in the brackets indicates the dimensions of our vector. 
-then a list the first few elements 
+numbers in the brackets indicates the dimensions of our vector.
+then a list the first few elements
 
 Logical Vectors:
 
@@ -594,7 +594,7 @@ primarily **data frames** today, continued after break:
 
 *** HERE ***
 
-R's power comes from it's vectorization. 
+R's power comes from it's vectorization.
 many powerful subset operators that will allow you to
 easily perform complex operations on any kind of dataset without the resource depletion of loops.
 
@@ -766,7 +766,7 @@ which(names(x) == "a")
 {: .r}
 
 
-Only the first element is `TRUE`, so `which` returns 1. 
+Only the first element is `TRUE`, so `which` returns 1.
 
 the '-' makes this index negative and removes the element
 
@@ -837,7 +837,7 @@ x[c(TRUE, TRUE, FALSE, FALSE, FALSE)]
 {: .r}
 
 
-R will return any values that are indicated by `TRUE` in your vector, and filter out any that 
+R will return any values that are indicated by `TRUE` in your vector, and filter out any that
 are `FALSE`.
 
 
@@ -986,7 +986,7 @@ class(cats$coat)
 
 
 Factors are data classes that R uses to handle categorical data. categories are called **levels**
-Anything new that doesn't fit into one of its categories is rejected as nonsense and 
+Anything new that doesn't fit into one of its categories is rejected as nonsense and
 is replaced by an `NA` until we explicitly add that as a *level* in the factor:
 
 
@@ -1066,7 +1066,7 @@ cats <- na.omit(cats)
 ~~~
 {: .r}
 
-remember that *columns are vectors or factors, and rows are lists.* 
+remember that *columns are vectors or factors, and rows are lists.*
 
 We can also glue two dataframes together with `rbind`:
 
@@ -1251,7 +1251,7 @@ head(gapminder$year)
 
 
 With two arguments, `[` subsets on typical matrix format
-if one of the arguments is blank, R will 
+if one of the arguments is blank, R will
 default to include all of the rows or columns:
 
 
@@ -1346,13 +1346,13 @@ if (x >= 10) {
  In the above case, the function `rpois()` generates a random number following a
  Poisson distribution with a mean (i.e. lambda) of 8. The function `set.seed()`
  guarantees that all machines will generate the exact same 'pseudo-random'
- number 
- 
+ number
+
 when R evaluates the condition inside `if()` statements, it is
 looking for a logical element
 
 This can cause some
-headaches for beginners. 
+headaches for beginners.
 ~~~
 x  <-  4 == 3
 if (x) {
@@ -1400,7 +1400,7 @@ a set of values a `for()` loop will do the job.
 
 This is the most
 flexible of looping operations, but therefore also the hardest to use
-correctly. 
+correctly.
 Avoid using `for()` loops unless the the calculation at each iteration depends on the results of previous iterations.
 
 The basic structure of a `for()` loop is:
@@ -1546,7 +1546,7 @@ mean(gapminder[gapminder$continent == "Asia", "gdpPercap"])
 
 
 
-This can be repetitive, and repetition will cost you time, make your code bulky 
+This can be repetitive, and repetition will cost you time, make your code bulky
 and hard to read and potentially introduce some nasty bugs
 
 #### The `dplyr` package
@@ -1593,8 +1593,8 @@ year_country_gdp <- select(gapminder,year,country,gdpPercap)
 
 ![](../fig/13-dplyr-fig1.png)
 
-look at `year_country_gdp` 
-see that it only contains the year, country and gdpPercap. 
+look at `year_country_gdp`
+see that it only contains the year, country and gdpPercap.
 we used 'normal' grammar
 but the strengths of `dplyr` lie in combining several functions using pipes. Since the pipes grammar
 is unlike anything we've seen in R before, let's repeat what we've done above
@@ -1609,7 +1609,7 @@ year_country_gdp <- gapminder %>% select(year,country,gdpPercap)
 To help you understand why we wrote that in that way, let's walk through it step
 by step
 First we summon the gapminder dataframe and pass it on, using the pipe
-symbol `%>%`, to the next step, which is the `select()` function. 
+symbol `%>%`, to the next step, which is the `select()` function.
 
 In R, a pipe symbol is `%>%` while in the
 shell it is `|`
@@ -1777,18 +1777,18 @@ ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp)) +
 
 <img src="../fig/rmd-08-lifeExp-vs-gdpPercap-scatter-1.png" title="plot of chunk lifeExp-vs-gdpPercap-scatter" alt="plot of chunk lifeExp-vs-gdpPercap-scatter" style="display: block; margin: auto;" />
 
-We've passed in two arguments to `ggplot`. 
+We've passed in two arguments to `ggplot`.
 
 First, we tell `ggplot` what data we
 want to show on our figure
 
 For the second argument we passed in the `aes` function, which
 tells `ggplot` how variables in the **data** map to *aesthetic* properties of
-the figure, in this case the **x** and **y** locations. 
+the figure, in this case the **x** and **y** locations.
 
 Here we told `ggplot` we
 want to plot the "gdpPercap" column of the gapminder data frame on the x-axis, and
-the "lifeExp" column on the y-axis. 
+the "lifeExp" column on the y-axis.
 
 we didn't need to explicitly
 pass `aes` these columns (e.g. `x = gapminder[, "gdpPercap"]`)
@@ -1850,7 +1850,7 @@ ggplot(data = gapminder, aes(x=year, y=lifeExp, by=country, color=continent)) +
 
 <img src="../fig/rmd-08-lifeExp-line-point-1.png" title="plot of chunk lifeExp-line-point" alt="plot of chunk lifeExp-line-point" style="display: block; margin: auto;" />
 
-note that each layer is drawn on top of the previous layer. 
+note that each layer is drawn on top of the previous layer.
 
 
 ~~~
@@ -1961,7 +1961,7 @@ use the `substr` function to
 pull out a part of a character string
 
 the `%in%` operator allows us to make multiple comparisons rather
-than write out long subsetting conditions 
+than write out long subsetting conditions
 
 ~~~
 starts.with <- substr(gapminder$country, start = 1, stop = 1)
@@ -1982,7 +1982,7 @@ of the gapminder dataset.
 #### Modifying text
 
 change some of the text
-elements. 
+elements.
 
 rename our `x` and `y` axes using the `xlab()` and `ylab()` functions:
 
@@ -1994,29 +1994,29 @@ ggplot(data = az.countries, aes(x = year, y = lifeExp, color=continent)) +
 {: .r}
 
 <img src="../fig/rmd-08-theme-1a.png" title="plot of chunk theme" alt="plot of chunk theme" style="display: block; margin: auto;" />
- 
+
 give our figure a title with the `ggtitle()` function. And capitalize the label of our
 legend. This can be done using the **scales** layer.
 
 ~~~
 ggplot(data = az.countries, aes(x = year, y = lifeExp, color=continent)) +
   geom_line() + facet_wrap( ~ country) +
-  xlab("Year") + ylab("Life Expectancy") + 
+  xlab("Year") + ylab("Life Expectancy") +
   ggtitle("Figure 1") + scale_colour_discrete(name="Continent")
 ~~~
 {: .r}
 
 <img src="../fig/rmd-08-theme-1b.png" title="plot of chunk theme" alt="plot of chunk theme" style="display: block; margin: auto;" />
 
- 
-let's remove the x-axis labels so the plot is less cluttered. 
+
+let's remove the x-axis labels so the plot is less cluttered.
 To do this, we use the **theme** layer which controls
 the axis text and overall text size.
 
 ~~~
 ggplot(data = az.countries, aes(x = year, y = lifeExp, color=continent)) +
   geom_line() + facet_wrap( ~ country) +
-  xlab("Year") + ylab("Life Expectancy") + 
+  xlab("Year") + ylab("Life Expectancy") +
   ggtitle("Figure 1") + scale_colour_discrete(name="Continent") +
   theme(axis.text.x=element_blank(), axis.ticks.x=element_blank())
 ~~~
@@ -2058,7 +2058,7 @@ ggsave("My_most_recent_plot.jpg")
 ~~~
 {: .r}
 
-`ggsave` also allows you to specify size and quality of the image. You can check out all of the 
+`ggsave` also allows you to specify size and quality of the image. You can check out all of the
 options using the `?ggsave` command to view the help file.
 
 if you will want to save plots without creating them in the
@@ -2082,8 +2082,8 @@ dev.off()
 ~~~
 {: .r}
 
-The `pdf` command opens the pdf file, and any output between this command and the `dev.off()` command 
-will be added to that file. 
+The `pdf` command opens the pdf file, and any output between this command and the `dev.off()` command
+will be added to that file.
 
 dont forget the `dev.off` command
 
@@ -2099,7 +2099,7 @@ documents in different formats.
 At some point, you'll also want to write out data from R.
 
 We can use the `write.table` function for this, which is
-very similar to the `read.table` function that we mentioned previously in Lesson 2. 
+very similar to the `read.table` function that we mentioned previously in Lesson 2.
 
 Let's create a data-cleaning script, for this analysis, we
 only want to focus on the gapminder data for Australia:
@@ -2127,7 +2127,7 @@ write.table(aust_subset,		## Gapminder data for countries located in Australia
 ~~~
 {: .r}
 
-open a shell window and navigate to the location of the file using your `cd` command. 
+open a shell window and navigate to the location of the file using your `cd` command.
 to find out where R is saving
 your files, you can check the `file` pane or use the `getwd()` command.
 

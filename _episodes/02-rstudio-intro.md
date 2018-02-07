@@ -586,7 +586,6 @@ Other useful commands for working with packages:
 * You can update installed packages by typing `update.packages`
 * You can remove a package with `remove.packages("packagename")`
 
-
 > ## Challenge 1
 >
 > Which of the following are valid R variable names?
