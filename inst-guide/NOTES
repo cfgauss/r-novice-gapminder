@@ -1,0 +1,6 @@
+Note that the Makefile doesn't use _episodes_rmd at all. Jekyll builds the
+HTML from _episodes and _extras, which contain only .md files. Which .md files
+are transformed into HTML is controlled by _config.yml. (To understand this
+process better, I'd have to read the Jekyll/Github Pages documentation.) But
+it appears that I could add more .md files (e.g. in _extras) or even add a new
+directory of .md files.

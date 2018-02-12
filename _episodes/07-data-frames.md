@@ -673,19 +673,6 @@ head(gapminder)
 ~~~
 {: .output}
 
-
-> ## Challenge 3
->
-> Read the output of `str(gapminder)` again;
-> this time, use what you've learned about R's basic data types, factors, and vectors,
-> as well as the output of functions like `colnames` and `dim`
-> to explain what everything that `str` prints out for gapminder means.
->
-> Can you determine what data each column holds? Do the data types make sense for these types of data? If not, what data type would you recommend?
->
-> If there are any parts you can't interpret, discuss with your neighbors!
-{: .challenge}
-
 ### Subsetting Data Frames
 
 Remember that data frames are lists of vectors. Similarly to how we subsetted vectors, using the `[` operator with one argument will extract one element from our list.
@@ -782,11 +769,11 @@ But for a single column the result will be a vector (this can
 be changed with the third argument, `drop = FALSE`).
 
 
-> ## Challenge 4
+> ## Challenge 3
 >
 > Fix each of the following common data frame subsetting errors:
 >
-> 1. Extract observations collected for the year 1957
+> 1. Extract observations collected for the year 1957.
 >
 >
 >    ~~~
@@ -794,7 +781,7 @@ be changed with the third argument, `drop = FALSE`).
 >    ~~~
 >    {: .r}
 >
-> 2. Extract all columns except 1 through to 4
+> 2. Extract all columns except 1 through 4.
 >
 >
 >    ~~~
@@ -802,7 +789,7 @@ be changed with the third argument, `drop = FALSE`).
 >    ~~~
 >    {: .r}
 >
-> 3. Extract the rows where the life expectancy is longer the 80 years
+> 3. Extract the rows where the life expectancy is longer than 80 years.
 >
 >
 >    ~~~
@@ -820,7 +807,7 @@ be changed with the third argument, `drop = FALSE`).
 >    {: .r}
 >
 > 5. Advanced: extract rows that contain information for the years 2002
->    and 2007
+>    and 2007.
 >
 >
 >    ~~~
@@ -829,7 +816,7 @@ be changed with the third argument, `drop = FALSE`).
 >    {: .r}
 {: .challenge}
 
-> ## Challenge 5
+> ## Challenge 4
 >
 > 1. Why does `gapminder[1:20]` return an error? How does it differ from `gapminder[1:20, ]`?
 >

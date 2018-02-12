@@ -145,8 +145,8 @@ x
 >
 > Use an `if` statement to print a suitable message
 > reporting whether there are any records from 2002 in
-> the `gapminder` dataset.
-> Now do the same for 2012.
+> the `gapminder` dataset. Then write a similar statement that
+> reports if there are both 2002 *and* 2012 records.
 {: .challenge}
 
 
@@ -355,8 +355,6 @@ output_vector2
 ~~~
 {: .r}
 
-
-
 ~~~
  [1] "1 a" "2 a" "3 a" "4 a" "5 a" "1 b" "2 b" "3 b" "4 b" "5 b" "1 c"
 [12] "2 c" "3 c" "4 c" "5 c" "1 d" "2 d" "3 d" "4 d" "5 d" "1 e" "2 e"
@@ -366,35 +364,17 @@ output_vector2
 
 > ## Challenge 2
 >
-> Compare the objects output_vector and
-> output_vector2. Are they the same? If not, why not?
-> How would you change the last block of code to make output_vector2
-> the same as output_vector?
+> Write a script that loops through the `gapminder` data by continent and
+> prints out the continent, the mean life expectancy on that continent, and
+> whether or not that life expectancy is larger than 65 years. *Hints:* If `x`
+> is a numeric vector, `mean(x)` returns the mean of `x`. For any vector `x`,
+> `unique(x)` returns a vector with the unique values of `x`. Finally `cat("x
+> is",6)` prints `x is 6`.
 {: .challenge}
 
 > ## Challenge 3
 >
-> Use the following commands to create two vectors each containing 5 random values:
->
->~~~
->rows <- rpois(5, lambda=5)
->cols <- rpois(5, lambda=5)
->~~~
->{: .r}
->
-> Modify our previous for loops to now fill our 5 x 5 matrix with the product of the respective values in `rows` and `cols`. (ie position [2, 4] in the matrix would have the product of `rows[2] * cols[4]`)
-{: .challenge}
-
-> ## Challenge 4 - Advanced
->
-> Write a script that loops through the `gapminder` data by continent and prints out
-> whether the mean life expectancy is smaller or larger than 50
-> years.
-{: .challenge}
-
-> ## Challenge 5 - Advanced
->
-> Modify the script from Challenge 4 to loop over each
-> country. This time print out whether the life expectancy is
-> smaller than 50, between 50 and 70, or greater than 70.
+> Modify the script from Challenge 4 to loop over each country. This time
+> print out whether the life expectancy is smaller than 50, between 50 and 70,
+> or greater than 70.
 {: .challenge}

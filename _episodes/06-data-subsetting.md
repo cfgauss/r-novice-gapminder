@@ -494,18 +494,18 @@ because it can introduce hard to find and subtle bugs!
 > Given this vector `x`, what would you expect the following to do?
 >
 >~~~
-> x[-which(names(x) == "g")]
+> x[-which(names(x) == "c")]
 >~~~
 >{: .r}
 >
 > Test out your guess by trying out this command. Did this match your expectation?
-> Why did we get this result? (Tip: test out each part of the command on its own - this is a useful debugging strategy)
+> Why did we get this result? (Tip: test out each part of the command on its own—this is a useful debugging strategy)
 {: .challenge}
 
 > ## Challenge 3
 >
 > While it is not recommended, it is possible for multiple elements in a
-> vector to have the same name. Consider this examples:
+> vector to have the same name. Consider this example:
 >
 >
 >~~~
@@ -538,8 +538,9 @@ because it can introduce hard to find and subtle bugs!
 >{: .output}
 >
 >
-> Can you come up with a command that will only return of the 'a' values and a different command
-> that will return all of the 'a' values? Does your answer differ from your neighbors?
+> Using named subsetting can you come up with a command that will return only
+> one of the `'a'` values and a different command
+> that will return all of the `'a'` values? Does your answer differ from your neighbors?
 {: .challenge}
 
 

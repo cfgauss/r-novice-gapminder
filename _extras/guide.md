@@ -10,29 +10,40 @@ permalink: /guide/
 
 #### Before Starting The Workshop
 
-Please ensure you have the latest version of R and RStudio installed on your machine.
+Please ensure you have the latest version of R and RStudio installed on your
+machine. Browser tabs: workshop, etherpad, and `bit.ly/earlham-R`.
+
+Note to self: don't create new values for variables as it will affect future
+evaluations in your script. You can, of course, backtrack but that's
+irritating for the student.
 
 #### Introduction to RStudio
 
 Why R?
  - free
  - open source
+ - statistics, rather than general-purpose
+ - statistical pkgs created by statisticians.
 
 Why RStudio?
  - provides a fully integrated environment
  - built in version control and project management
  - works on all platforms
 
+Goal: learn enough R to understand Stack Overflow for basic R programming.
 
 **Basic layout**
 
-three panels:
+Type along with me. If you fall behind, check the etherpad when we stop for
+***CHALLENGES***.
+
+Three panels:
 
   * The interactive R console (entire left)
   * Environment/History (tabbed in upper right)
   * Files/Plots/Packages/Help/Viewer (tabbed in lower right)
 
-Editor panel when you open scripts
+Editor panel appears when you open scripts.
 
 #### Work flow within RStudio
 
@@ -44,16 +55,15 @@ a .R file to run later.
 to push current line, selected lines or modified lines to the
 interactive R console.
 
+We'll `File->New File->R Script`. Use `getwd()` to find out where you are and save
+this somewhere. Use `Save As` to name your file, e.g. `swc.R`.
+
 Run button and key shortcuts
 
   * ctrl-enter windows/linux
   * command-enter mac
 
-Project managment
-
-Mostly use the console
-
- - run code and test commands
+Mostly use the console to  run code and test commands.
 
 ">" cursor - similar to the shell
 
@@ -62,7 +72,6 @@ Mostly use the console
  - returns result
 
 The simplest thing you could do with R is do arithmetic:
-
 
 ~~~
 1 + 100
@@ -78,9 +87,9 @@ Incomplete commands:
 ~~~
 {: .r}
 
-Can cancel with the "Esc" key, or "Ctrl+C" in command line - can use for running code too
+Can cancel with the "Esc" key.
 
-order of operations
+Order of operations:
 
 ~~~
 3 + 5 * 2
@@ -187,18 +196,18 @@ Can look up functions in google or use Autocomplete (tab)
 {: .r}
 
 
-float point error, use all.equal instead of '==' for non-integers
+Don't use '==' for non-integer numbers.
 
 #### Variables and assignment
 
-use assignment arrow to save values to variables
+Use assignment arrow to save values to variables.
 
 ~~~
 x <- 1/40
 ~~~
 {: .r}
 
-No output
+No output.
 
 ~~~
 x
@@ -206,23 +215,23 @@ x
 {: .r}
 
 
-stored as a decimal approximation called floating point number.
-
-point out x in environment variables
+Stored as a decimal approximation called floating point number.
+Point out x in environment variables.
+Shortcut: Alt + - (hyphen) for <-
 
 ~~~
 log(x)
 ~~~
 {: .r}
 
-Can reassign values
+Can reassign values.
 
 ~~~
 x <- 100
 ~~~
 {: .r}
 
-Can reference the variable in the assignment
+Can reference the variable in the assignment.
 
 ~~~
 x <- x + 1 ##notice how RStudio updates its description of x on the top right tab
@@ -230,10 +239,9 @@ x <- x + 1 ##notice how RStudio updates its description of x on the top right ta
 {: .r}
 
 The right hand side of the assignment can be any valid R expression.
-The right hand side is *fully evaluated* before the assignment occurs.
+The right hand side is *fully evaluated* before the assignment occurs..
 
-
-character values:
+Character values:
 
 ~~~
 y <- "green"
@@ -241,26 +249,16 @@ y <- "green"
 {: .r}
 
 Variable names rules:
-can contain letters, numbers, underscores and periods
-cannot start with a number nor contain spaces at all.
+* Can contain letters, numbers, underscores and periods
+* No spaces.
+* Must start with letter or dot not followed by a number.
 
 Naming conventions:
   * periods.between.words
   * underscores\_between_words
   * camelCaseToSeparateWords
 
-consistency is important
-
-
-can use `=` operator for assignment:
-
-~~~
-z = 1/40
-~~~
-{: .r}
-
-Less common, and sometimes it is confusing to use '=' instead of '<-'
-remember consistency!
+Consistency is important
 
 #### Functions
 
@@ -270,6 +268,7 @@ supplemental lesson
 
 #### R Packages
 
+* 10,000 packages on CRAN (1/27/17)
 * install packages: `install.packages("packagename")`
 * make a package available for use: `library(packagename)`
 
@@ -278,14 +277,14 @@ install.packages("gapminder")
 ~~~
 {: .r}
 
-text scrolling for install
+Note console installing.
 
 ~~~
 library(gapminder)
 ~~~
 {: .r}
 
-Point out how to install via the Packages tab.
+Point out how to install via the Packages tab but don't Update!
 
 Other useful commands:
 
@@ -294,15 +293,19 @@ Other useful commands:
 * You can update installed packages by typing `update.packages()`
 * You can remove a package with `remove.packages("packagename")`
 
-**CHALLENGES** (allot 15 min)
+Install `dplyr` from command line and `ggplot2` using Install tab. Put up
+stickies.
+
+***CHALLENGES***: (allot 8 min)
+Use the Base R Cheat Sheet.
 
 ## Seeking Help: 1:30–1:50
 
 #### Reading Help files
 
 ~~~
-help(function_name)
-?function_name
+help(install.packages)
+?install.packages
 ~~~
 {: .r}
 
@@ -318,7 +321,8 @@ Each help page is broken down into sections:
 
 Some may have different sections, but these are the main ones.
 
-Help files make it easier to use R because you don;'t have to remember the usage of every function.
+Help files make it easier to use R because you don't have to remember the
+usage of every function.
 
 #### Special Operators
 
@@ -335,37 +339,43 @@ Many packages come with "vignettes": tutorials and extended example documentatio
 Without any arguments
 
 `vignette()` will list all vignettes for all installed packages;
-
-`vignette(package="package-name")` will list all available vignettes for `package-name`
-
- and `vignette("vignette-name")` will open the specified vignette.
+`vignette(package="dplyr")` will list all available vignettes for `dplyr`.
+`vignette("programming")` will open the `dplyr programming` vignette.
 
 If a package doesn't have any vignettes, you can usually find help by typing
 `help("package-name")`.
 
 #### When you kind of remember the function
 
-fuzzy search:
+Fuzzy search:
 
 ~~~
-??function_name
+??install
 ~~~
 {: .r}
 
 #### When you have no idea where to begin
 
-CRAN Task View - show website: http://cran.at.r-project.org/web/views
+Show `CRAN Task View` link in Safari.
 
 #### When your code doesn't work: seeking help from your peers
 
-Stack Overflow -  search using the `[r]` tag.
+Google Search: include "R".
+Stack Overflow: use the `[r]` tag. I trust SO.
 
-
-**CHALLENGES** - allot 10 min
+***CHALLENGES***: Do 1,3,2. Allot 10 min. Show your solns.
 
 ## Data Structures: 1:50–2:15
 
 #### Data Types in R
+
+Let's reinstate some values:
+~~~
+x <- 101
+y <- "green"
+z <- 1/40
+~~~
+{: .r}
 
 Review operators:
 
@@ -385,46 +395,39 @@ Gives error because 101 + "green" is nonsense.
 
 5 main data types: `double`, `integer`, `complex`, `logical`, and `character`.
 
-
 ~~~
 typeof(3.14)
 ~~~
 {: .r}
 
-A `double`, also referred to as a *floating point number*, is how R stores numeric values
-by default.
-
+A `double`, also referred to as a *floating point number*, is how R stores
+numeric values by default.
 
 ~~~
 typeof(1L)
 ~~~
 {: .r}
 
-To use an `integer` value in R, we use the L to tell R that this value is an integer value.
-Without the L, R would store this value as a `double`.
-
+To use an `integer` value in R, we use the L to tell R that this value is an
+integer value.  Without the L, R would store this value as a `double`.
 
 ~~~
 typeof(1+1i)
 ~~~
 {: .r}
 
-
-R can also support `complex` values as well. Unless you are doing mathematical analyses or
-complicated transformations, chances are you will not encounter this data type very often.
+R can also support `complex` values as well. Unless you are doing mathematical
+analyses, chances are you will not encounter this data type very often.
 
 ~~~
 typeof(TRUE)
 ~~~
 {: .r}
 
-
-
 ~~~
 [1] "logical"
 ~~~
 {: .output}
-
 
 `Logical` data types are particularly helpful in subsetting data frames and other types of data manipulation. We will explore this concept more later.
 
@@ -440,14 +443,15 @@ typeof('banana')
 
 Lastly, R stores strings as the `character` type.
 
-No matter how complicated our analyses become, all data in R is interpreted as one of these
-basic data types.
+No matter how complicated our analyses become, all data in R is interpreted as
+one of these basic data types.
 
 #### Vectors
 
 Remember the [1]?
-R never uses just a single value, but instead uses vectors. Output before was a vector of
-length 1.
+
+R never uses just a single value, but instead uses vectors. Output before was
+a vector of length 1.
 
 As seen in the challenges, we can build vectors using the `c` function.
 
@@ -457,7 +461,7 @@ x
 ~~~
 {: .r}
 
-**colon operator** quickly creates sequential vectors:
+The **colon operator** quickly creates sequential vectors:
 
 ~~~
 y <- 1:8
@@ -465,20 +469,20 @@ y
 ~~~
 {: .r}
 
-can specify whatever start and stop point we want
+~~~
+y <- 1:100
+y
+~~~
+{: .r}
+
+We can specify whatever start and stop point we want.
 
 ~~~
 -4:7
 ~~~
 {: .r}
 
-~~~
-[1] -4 -3 -2 -1  0  1  2  3  4  5  6  7
-~~~
-{: .output}
-
-R is **vectorized**
-operations on the entire vector - returns a vector
+R is **vectorized**: it operates on an entire vector and returns a vector.
 
 ~~~
 y + 10
@@ -486,36 +490,22 @@ y + 10
 {: .r}
 
 ~~~
-[1] 11 12 13 14 15 16 17 18
-~~~
-{: .output}
-
-
-
-~~~
 x * 2
 ~~~
 {: .r}
 
 ~~~
-[1]  4  8 12 16 20 24 28 32
+y <- 1:8
 ~~~
-{: .output}
-
-
+{: .r}
 
 ~~~
 x + y
 ~~~
 {: .r}
 
-~~~
-[1]  3  6  9 12 15 18 21 24
-~~~
-{: .output}
-
-when operating on two or more vectors, R performs the operation element by element:
-
+When operating on two or more vectors, R performs the operation element by
+element:
 
 ~~~
 x:  2  4  6  8 10 12 14 16
@@ -528,7 +518,7 @@ y:  1  2  3  4  5  6  7  8
 
 Vectors can be made up of any of the basic data types.
 
-Character Vectors:
+Character vectors:
 
 ~~~
 a <- c("one", "two", "three", "four")
@@ -537,21 +527,18 @@ a
 {: .r}
 
 
-similar to `typeof`, `str` will tell us the data type.
-
-also will give us a compact view of some basic information about our object.
+Similar to `typeof`, `str` will tell us the data type and also will give us a
+compact view of some basic information about our object.
 
 ~~~
 str(a)
 ~~~
 {: .r}
 
+*chr* tells us this is a *character* vector. The numbers in the brackets
+is a vector of the indices of our vector. Then it lists the first few elements
 
-*chr* that this is a *character* vector
-numbers in the brackets indicates the dimensions of our vector.
-then a list the first few elements
-
-Logical Vectors:
+Logical vectors:
 
 ~~~
 b <- c(TRUE, TRUE, FALSE, TRUE)
@@ -559,39 +546,42 @@ b
 ~~~
 {: .r}
 
-we can use `c` to add elements to an existing vector
+We can use `c` to add elements to an existing vector.
 
 ~~~
+x
 c(x, 20, 25)
 ~~~
 {: .r}
 
-Changes won't be saved until we use the assignment arrow
+`x` isn't changed until we use `<-`, however.
 
-modify `y` to contain all numbers to 20 by adding on to the existing vector
+Here we modify `y` to contain all numbers to 20 by adding on to the existing
+vector.
 
 ~~~
+y
 y <- c(y, 9:20)
 y
 ~~~
 {: .r}
 
-This is a nested operation, from Order of Opers. earlier the sequence inside the parenthesis is created first, then added to `y`
+This is a nested operation. From the order of operations the sequence inside
+the parenthesis is created first, then added to `y`
 
-`length` can quickly return the length of a vector.
+`length` returns the length of a vector.
 
 ~~~
 length(y)
 ~~~
 {: .r}
 
-
-Other data structures, **lists** and **matrices**
+For other data structures,  e.g. **lists** and **matrices**,
 use `?list()`, `?matrix()` or supplemental lesson to learn about them.
 
-primarily **data frames** today, continued after break:
+Primarily R uses **data frames**, introduced after ***CHALLENGES***.
 
-**CHALLENGES** - allot 10 minutes
+***CHALLENGES***: allot 8 minutes
 
 ## Coffee Break: 2:15–2:30
 
@@ -602,14 +592,14 @@ will allow you to easily perform complex operations on any kind of dataset
 without the resource depletion of loops.
 
 Let's start with a data structure we've seen before, the workhorse of R:
-atomic vectors.
+vectors.
 
 ~~~
 x <- c(5.4, 6.2, 7.1, 4.8, 7.5)
 ~~~
 {: .r}
 
-can name elements within our vectors using the `names` function.
+We can name elements within our vectors using the `names` function.
 
 ~~~
 names(x) <- c('a', 'b', 'c', 'd', 'e')
@@ -617,18 +607,16 @@ x
 ~~~
 {: .r}
 
-how do we get to individual contents?
+How do we individual elements of a vector?
 
 #### Accessing elements using their indices
 
-we can give their corresponding index, starting from one:
+We simply use their corresponding index, starting from one:
 
 ~~~
 x[1]
 ~~~
 {: .r}
-
-
 
 ~~~
 x[4]
@@ -636,7 +624,7 @@ x[4]
 {: .r}
 
 
-the square brackets operator is a function
+The square brackets operator is a function.
 For atomic vectors (and matrices), it means "get me the nth element".
 
 We can ask for multiple elements at once:
@@ -649,16 +637,13 @@ x[c(1, 3)]
 
 Or slices of the vector:
 
-
 ~~~
 x[1:4]
 ~~~
 {: .r}
 
 
-the `:` operator lets us select a range of elements
-
-
+The `:` operator lets us select a range of elements
 We can ask for the same element multiple times:
 
 ~~~
@@ -666,9 +651,7 @@ x[c(1,1,3)]
 ~~~
 {: .r}
 
-
-a number outside of the vector, R will return missing values
-
+For an index outside of the vector, R will return missing values.
 
 ~~~
 x[6]
@@ -676,29 +659,26 @@ x[6]
 {: .r}
 
 
-This is a vector of length one containing an `NA`, whose name is also `NA`.
+`NA` means "not available" and is used for mising data.
 
 If we ask for the 0th element, we get an empty vector:
-
 
 ~~~
 x[0]
 ~~~
 {: .r}
 
-
-
 ~~~
 named numeric(0)
 ~~~
 {: .output}
 
-R starts indices with 1 instead of 0 like other programming languages such as C and python
+R starts indices with 1 instead of 0 like other programming languages such as
+C and Python.
 
 #### Skipping and removing elements
 
-use a negative number to return every element *except* for the one specified:
-
+Use a negative number to return every element *except* for the one specified:
 
 ~~~
 x[-2]
@@ -708,9 +688,9 @@ x[-2]
 
 We can skip multiple elements:
 
-
 ~~~
-x[c(-1, -5)]  ## or x[-c(1,5)]
+x[c(-1, -5)]
+x[-c(1,5)]
 ~~~
 {: .r}
 
@@ -726,18 +706,19 @@ x
 
 
 
-***CHALLENGE*** - allot 5 minutes
+***CHALLENGE 1***:- allot 5 minutes
 
 #### Subsetting by name
 
-can extract elements by using their name
+We can extract elements by using their name.
 
 ~~~
 x[c("a", "c")]
 ~~~
 {: .r}
 
-more reliable since positions can change. But we cannot as easily skip or remove by name.
+This is more reliable since positions can change. But we cannot as easily skip
+or remove by name.
 
 To skip (or remove) a single named element:
 
@@ -752,16 +733,14 @@ The `which` function returns the indices of all `TRUE` elements of its argument.
 Step by step analysis of command:
 
 ~~~
-names(x) == "a"
+names(x) == 'a'
 ~~~
 {: .r}
 
+'a' is replicated to create a vector of length 5. Then the == happens
+component-wise.
 
-The condition operator is applied to every name of the vector `x`. Only the
-first name is "a" so that element is TRUE.
-
-`which` then converts this to an index:
-
+`which` returns the indices which are `TRUE`.
 
 ~~~
 which(names(x) == "a")
@@ -771,11 +750,10 @@ which(names(x) == "a")
 
 Only the first element is `TRUE`, so `which` returns 1.
 
-the '-' makes this index negative and removes the element
+The '-' makes this index negative and removes the element.
 
 Skipping multiple named indices is similar, but uses a different comparison
 operator:
-
 
 ~~~
 x[-which(names(x) %in% c("a", "c"))]
@@ -786,21 +764,17 @@ x[-which(names(x) %in% c("a", "c"))]
 `%in%` goes through each element of its left argument, in this case the
 names of `x`, and asks, "Does this element occur in the second argument?".
 
-
-why can't we use `==` like before? Good question.
+Why can't we use `==` like before? Good question.
 
 ~~~
 names(x) == c('a', 'c')
 ~~~
 {: .r}
 
-**gives a warning**
+**Gives a warning**
 
-`==` works by comparing each element of its left argument
-to the corresponding element of its right argument.
-
-Here's a mock illustration:
-
+Since the rightmost vector is of length 2 and the leftmost is of length 5, it
+"recycles."
 
 ~~~
 c("a", "b", "c", "d", "e")  ## names of x
@@ -808,9 +782,6 @@ c("a", "b", "c", "d", "e")  ## names of x
 c("a", "c")
 ~~~
 {: .r}
-
-when one vector is shorter than the other, it gets *recycled*:
-
 
 ~~~
 c("a", "b", "c", "d", "e")  ## names of x
@@ -826,32 +797,29 @@ R will also print out a warning message.
 This difference between `==` and `%in%` is important to remember,
 because it can introduce hard to find and subtle bugs!
 
-***CHALLENGES*** - allot 10 min
+***CHALLENGES 2 & 3***: allot 8 min
 
 #### Using Logical Operations to Subset Data
 
-We can subset data by using boolean vectors:
+We can subset data by using logical vectors:
 
 ~~~
 x[c(TRUE, TRUE, FALSE, FALSE, FALSE)]
 ~~~
 {: .r}
 
-
-R will return any values that are indicated by `TRUE` in your vector, and filter out any that
-are `FALSE`.
-
+R will return any values that are indicated by `TRUE` in your vector, and
+filter out any that are `FALSE`.
 
 ~~~
 x[c(TRUE, FALSE)]
 ~~~
 {: .r}
 
+Here R recycled our logical vector.
 
-R also recycled our logical vector
-
-comparison operators evaluate to logical vectors
-we can use them to succinctly subset vectors
+Comparison operators evaluate to logical vectors so we can use them to subset
+vectors.
 
 ~~~
 x > 7
@@ -859,14 +827,12 @@ x > 7
 {: .r}
 
 
-nest our comparison inside of our subsetting operators to tell R to return a subset
+Nest our comparison inside of our subsetting operators to tell R to return a subset.
 
 ~~~
 x[x > 7]
 ~~~
 {: .r}
-
-
 
 #### Combining logical conditions
 
@@ -875,28 +841,40 @@ x[x > 7]
   * `|`, the "logical OR" operator: returns `TRUE`, if either the left or right
     (or both) are `TRUE`.
 
-The recycling rule applies with both of these
+~~~
+x[x > 7 | x < 5]
+~~~
+{: .r}
 
-`&&` and `||` do not use the recycling rule: they only look at the first element of each
- vector and ignore the remaining elements. Usually used in programming not data analysis
+The recycling rule applies with both of these.
 
-  * `!`, the "logical NOT" operator: converts `TRUE` to `FALSE` and `FALSE` to
-`TRUE`. can negate a single logical condition, or a whole vector of conditions
+`&&` and `||` have a different meaning.
 
-the `all` function returns `TRUE` if every element of the vector is `TRUE`
-the `any` function returns `TRUE` if one or more elements of the vector are `TRUE`.
+`!`, the "logical NOT" operator: converts `TRUE` to `FALSE` and `FALSE` to
+`TRUE`. It can negate a single logical value, or a whole vector of
+values.
 
-***CHALLENGES*** allot 5 min
+The `all` function returns `TRUE` if every element of the vector is `TRUE`.
+The `any` function returns `TRUE` if one or more elements of the vector are `TRUE`.
+
+~~~
+# &, |, !, &&, ||, any, all
+~~~
+{: .r}
+
+***CHALLENGE 4***: allot 5 min
 
 ## Exploring Data Frames: 3:15–4:15
 
 #### Data Frames
 
-so far data structures contained all of the same data type
-one of R's most powerful features is its ability to deal with tabular data (like spreadsheet or CSV)
-**Data Frames** are built from vectors but can contain vectors of different data types.
+So far data structures contained all of the same data type.  One of R's most
+powerful features is its ability to deal with tabular data (like spreadsheet
+or CSVs). **Data Frames** are built from vectors of the same length but can
+contain vectors of different data types.
 
-build a data frame from existing vectors - `data.frame()` command
+You can build a data frame from existing vectors using the `data.frame()`
+function.
 
 ~~~
 coat <- c("calico", "black", "tabby")
@@ -908,24 +886,20 @@ cats
 ~~~
 {: .r}
 
-can pull out columns by specifying them using the `$` operator
-
+We can pull out columns using the `$` operator.
 
 ~~~
 cats$weight
 ~~~
 {: .r}
 
-
-
 ~~~
 cats$coat
 ~~~
 {: .r}
 
-
-can perform operations on columns within our data frame, just like with vectors
-
+We can perform operations on columns within our data frame, just like with
+vectors.
 
 ~~~
 #### Say we discovered that the scale weighs two Kg light:
@@ -933,19 +907,18 @@ cats$weight + 2
 ~~~
 {: .r}
 
-
-
 ~~~
 paste("My cat is", cats$coat)
 ~~~
 {: .r}
 
-***CHALLENGES*** allot 5 min
+***CHALLENGE 1***: allot 5 min
 
-add an additional column for age using `c`
+We can add an additional column for age using `c`.
 
 ~~~
 age <- c(2,3,5,12)
+age
 cats
 ~~~
 {: .r}
@@ -953,13 +926,12 @@ cats
 
 We can then add this as a column in our data frame by using the `cbind()` function:
 
-
 ~~~
 cats <- cbind(cats, age)
 ~~~
 {: .r}
 
-Error - there are more elements in age but only 3 rows in cats.
+Error: there are four elements in `age` but only 3 rows in `cats`.
 
 ~~~
 age <- c(4,5,8)
@@ -968,7 +940,7 @@ cats
 ~~~
 {: .r}
 
-add a row, rows are lists since they contain different types of elements:
+Rows are lists since they contain different types of elements.
 
 ~~~
 newRow <- list("tortoiseshell", 3.3, TRUE, 9)
@@ -976,27 +948,24 @@ cats <- rbind(cats, newRow)
 ~~~
 {: .r}
 
-
 Our list had the correct number of elements, so why did R give us a warning?
 
 ~~~
+cats
 class(cats$coat)
 ~~~
 {: .r}
 
-
-
-Factors are data classes that R uses to handle categorical data. categories are called **levels**
-Anything new that doesn't fit into one of its categories is rejected as nonsense and
-is replaced by an `NA` until we explicitly add that as a *level* in the factor:
-
+Factors are data classes that R uses to handle categorical data. Categories
+are called *levels*. The ancient canonical example: M and F in the Gender
+column. Anything new that doesn't fit into one of its categories is rejected
+as nonsense and is replaced by an `NA` until we explicitly add that as a
+*level* in the factor:
 
 ~~~
 levels(cats$coat)
 ~~~
 {: .r}
-
-
 
 ~~~
 levels(cats$coat) <- c(levels(cats$coat), 'tortoiseshell')
@@ -1004,7 +973,7 @@ cats <- rbind(cats, list("tortoiseshell", 3.3, TRUE, 9))
 ~~~
 {: .r}
 
-can also change the column to character to prevent this
+One can also change the column to character to prevent this.
 
 ~~~
 str(cats)
@@ -1018,29 +987,14 @@ str(cats)
 ~~~
 {: .r}
 
-
 We can now add rows and columns, but we've accidentally added a garbage row:
-
 
 ~~~
 cats
 ~~~
 {: .r}
 
-
-
-~~~
-           coat weight likes_string age
-1        calico    2.1            1   4
-2         black    5.0            0   5
-3         tabby    3.2            1   8
-4          <NA>    3.3            1   9
-5 tortoiseshell    3.3            1   9
-~~~
-{: .output}
-
 We can ask for a data.frame minus this offending row:
-
 
 ~~~
 cats[-4,]
@@ -1048,29 +1002,26 @@ cats[-4,]
 {: .r}
 
 
-Notice the comma with nothing after it to indicate we want to drop the entire fourth row.
+Notice the comma with nothing after it to indicate we want to drop the entire
+fourth row.
 
-using `na.omit` allows us to drop all rows with `NA` values:
-
+Using `na.omit` allows us to drop all rows with `NA` values:
 
 ~~~
 na.omit(cats)
 ~~~
 {: .r}
 
-
 Let's reassign the output to `cats`, so that our changes will be permanent:
-
 
 ~~~
 cats <- na.omit(cats)
 ~~~
 {: .r}
 
-remember that *columns are vectors or factors, and rows are lists.*
+Remember that *columns are vectors or factors, and rows are lists.*
 
 We can also glue two dataframes together with `rbind`:
-
 
 ~~~
 cats <- rbind(cats, cats)
@@ -1081,105 +1032,61 @@ cats
 But now the row names are unnecessarily complicated. We can remove the rownames,
 and R will automatically re-name them sequentially:
 
-
 ~~~
 rownames(cats) <- NULL
 cats
 ~~~
 {: .r}
 
-***CHALLENGES*** - allot 5 min
+***CHALLENGE 2***: allot 12 min
 
-let's use a more realistic dataset
-the `gapminder` data set built into the `gapminder` package.
+Let's use a more realistic dataset, the `gapminder` data set built into the
+`gapminder` package.
 
-install the `gapminder` package if you havent already
+Install the `gapminder` package if you havent already
 
 ~~~
 install.packages("gapminder")
 ~~~
 {: .r}
 
-load it now using the `library` command (explain how to use the `packages` tab
+Load it now using the `library` command. Illustrate the Packages tab also.
 
 ~~~
 library('gapminder')
 ~~~
 {: .r}
+Note check mark in Packages tab.
 
-to make our analysis reproducible, we should put the code into a script file
-
-mention loading libraries in script files
-
-investigate the data - check
-out what the data looks like with `str`:
-
+To make our analysis reproducible, we should put the code into a script file
+and then check out what the data looks like with `str`:
 
 ~~~
 str(gapminder)
 ~~~
 {: .r}
 
-
-
-
-We can also examine individual columns of the data.frame with our `typeof` function:
-
-
-~~~
-typeof(gapminder$year)
-~~~
-{: .r}
-
-
-
-~~~
-typeof(gapminder$lifeExp)
-~~~
-{: .r}
-
-
-
-~~~
-typeof(gapminder$country)
-~~~
-{: .r}
-
-
-
-~~~
-str(gapminder$country)
-~~~
-{: .r}
-
-
-
-information about its dimensions;
+Information about its dimensions;
 remembering that `str(gapminder)` said there were 1704 observations of 6
-variables in gapminder
-what do you think the following will produce, and why?
-
+variables in gapminder what do you think the following will produce, and why?
 
 ~~~
 length(gapminder)
 ~~~
 {: .r}
 
-
-
-try it, point out that data frames are **lists** of vectors - each column is a vector/factor and each row is a list
-(hence the different data types)
+Recall a data frame is a *list* of vectors: each column is a vector/factor
+(homogeneous) and each row is a list (heterogeneous).
 
 ~~~
 typeof(gapminder)
 ~~~
 {: .r}
 
-
 `length` gave us 6 because gapminder is built out of a list of 6
-columns
-To get the number of rows and columns in our dataset, try:
+columns.
 
+To get the number of rows and columns in our dataset, try:
 
 ~~~
 nrow(gapminder)
@@ -1201,9 +1108,7 @@ dim(gapminder)
 ~~~
 {: .r}
 
-
-titles of all the columns:
-
+Here are titles of all the columns:
 
 ~~~
 colnames(gapminder)
@@ -1211,31 +1116,29 @@ colnames(gapminder)
 {: .r}
 
 
+If this examination doesn't meet your expectations, you need to fix it before
+further analysis.
 
-ask ourselves if the structure R is reporting matches our intuition or expectations
-do the basic data types reported for each column make sense? No? We need to fix it now
-
-Once we're happy that the data types and structures seem reasonable start digging into our data proper
-
+Once you're happy that the data types and structure seem reasonable, you can
+begin analysis. Look at the first 6 rows.
 
 ~~~
 head(gapminder)
 ~~~
 {: .r}
 
+#### Subsetting Data Frames
 
-***CHALLENGES*** - 5 min
-
-###### Subsetting Data Frames
-
-data frames are lists of vectors, so selecting a single element returns a single vector, or column of the data frame.
+Data frames are lists of vectors, so selecting a single element returns a
+single vector, or column of the data frame.
 
 ~~~
+str(gapminder[5])
 head(gapminder[5])
 ~~~
 {: .r}
 
-the `c` command to returns multiple columns:
+The `c` function returns multiple columns:
 
 ~~~
 head(gapminder[c(1,5)])
@@ -1244,53 +1147,50 @@ head(gapminder[c(1,5)])
 
 `$` provides a convenient shorthand to extract columns by name:
 
-
 ~~~
 head(gapminder$year)
 ~~~
 {: .r}
 
-
-
-With two arguments, `[` subsets on typical matrix format
-if one of the arguments is blank, R will
+With two arguments, if one of the arguments is blank, R will
 default to include all of the rows or columns:
-
 
 ~~~
 gapminder[1:3,]
 ~~~
 {: .r}
 
-
-If we subset a single row, the result will be a data frame
-
+If we subset a single row, the result will be a data frame.
 
 ~~~
+cats[3,]
 gapminder[3,]
 ~~~
 {: .r}
 
+But a single column is a vector or a factor (for a data frame) and another
+tibble (for a tibble).
 
+~~~
+cats[,3]
+gapminder[,3]
+~~~
+{: .r}
 
-But for a single column the result will be a vector.
-
-
-***CHALLENGES*** - 15 min
+***CHALLENGES 3 & 4***: 12 min (nice)
 
 ## Wrap-Up: 4:15–4:30
-
 
 # Day 2: Friday, Feb. 16, 2018
 ## Control Flow: 1:00–1:30
 
-Often when we're coding we want to control the flow of our actions. This can be done
-by setting actions to occur only if a condition or a set of conditions are met.
-Alternatively, we can also set an action to occur a particular number of times.
+Often when you're writing a program you want to control the flow of our
+actions. This can be done by setting actions to occur only if a condition or a
+set of conditions is met.  Alternatively, we can also set an action to occur
+a particular number of times. These are `if` statements and loops.
 
-There are several ways you can control flow in R.
-For conditional statements, the most commonly used approaches:
-
+There are several ways you can control flow in R. For conditional statements,
+the most commonly used approaches:
 
 ~~~
 ## if
@@ -1307,8 +1207,7 @@ if (condition is true) {
 ~~~
 {: .r}
 
-if we want R to print a message if a variable `x` has a particular value:
-
+If we want R to print a message if a variable `x` has a particular value:
 
 ~~~
 ## sample a random number from a Poisson distribution
@@ -1316,20 +1215,17 @@ if we want R to print a message if a variable `x` has a particular value:
 
 x <- rpois(1, lambda=8)
 
-if (x >= 10) {
-  print("x is greater than or equal to 10")
+if (x > 8) {
+  print("x is greater than 8")
 }
 
 x
 ~~~
 {: .r}
 
+You may not get the same output as your neighbour.
 
-
-you may not get the same output as your neighbour
-
-Let's set a seed so that we all generate the same 'pseudo-random' number
-
+Let's set a seed so that we all generate the same 'pseudo-random' number.
 
 ~~~
 set.seed(10)
@@ -1345,18 +1241,16 @@ if (x >= 10) {
 ~~~
 {: .r}
 
+In the above case, the function `rpois()` generates a random number following a
+Poisson distribution with a mean (i.e. lambda) of 8. The function `set.seed()`
+guarantees that all machines will generate the exact same 'pseudo-random'
+number
 
+When R evaluates the condition inside `if()` statements, it is looking for a
+logical element.
 
- In the above case, the function `rpois()` generates a random number following a
- Poisson distribution with a mean (i.e. lambda) of 8. The function `set.seed()`
- guarantees that all machines will generate the exact same 'pseudo-random'
- number
+This can lead to confusion.
 
-when R evaluates the condition inside `if()` statements, it is
-looking for a logical element
-
-This can cause some
-headaches for beginners.
 ~~~
 x  <-  4 == 3
 if (x) {
@@ -1371,15 +1265,14 @@ As we can see, the message was not printed because the vector x is `FALSE`
 ~~~
 x <- 4 == 3
 x
+str(x)
 ~~~
 {: .r}
 
 
-***CHALLENGES*** - 5 min
-
+***CHALLENGE 1***: 5 min
 
 Did anyone get a warning message like this?
-
 
 ~~~
 Warning in if (gapminder$year == 2012) {: the condition has length > 1 and
@@ -1391,29 +1284,24 @@ If your condition evaluates to a vector with more than one logical element,
 the function `if()` will still run, but will only evaluate the condition in the first
 element. Here you need to make sure your condition is of length 1.
 
- The `any()` function will return TRUE if at least one
- TRUE value is found within a vector, otherwise it will return `FALSE`.
- This can be used in a similar way to the `%in%` operator.
- The function `all()`, as the name suggests, will only return `TRUE` if all values in
- the vector are `TRUE`.
-
-
-
-#### While loops
-
-to repeat an operation until a certain condition is met use a `while()` loop
-
+The `any()` function will return TRUE if at least one
+TRUE value is found within a vector, otherwise it will return `FALSE`.
+This can be used in a similar way to the `%in%` operator.
+The function `all()`, as the name suggests, will only return `TRUE` if all values in
+the vector are `TRUE`.
 
 ~~~
-while(this condition is true){
-  do a thing
-}
+any(2002 %in% gapminder$year)
+any(2012 %in% gapminder$year)
 ~~~
 {: .r}
 
-here's a while loop
-that generates random numbers from a uniform distribution (the `runif` function)
-between 0 and 1 until it gets one that's less than 0.1.
+#### While loops
+
+To repeat an operation until a certain condition is met use a `while()` loop
+
+Here's a while loop that generates random numbers from a uniform distribution
+(the `runif` function) between 0 and 1 until it gets one that's less than 0.1.
 
 ~~~
 z <- 1
@@ -1424,31 +1312,18 @@ while(z > 0.1){
 ~~~
 {: .r}
 
-You have to be careful
-that you don't end up in an infinite loop because your condition is never met.
+You have to be careful that you don't end up in an infinite loop because your
+condition is never met.
 
 #### Repeating operations
 
-If you want to iterate over
-a set of values a `for()` loop will do the job.
+If you want to iterate over a set of values a `for()` loop will do the job.
 
-This is the most
-flexible of looping operations, but therefore also the hardest to use
-correctly.
-Avoid using `for()` loops unless the the calculation at each iteration depends on the results of previous iterations.
-
-The basic structure of a `for()` loop is:
-
-
-~~~
-for(iterator in set of values){
-  do a thing
-}
-~~~
-{: .r}
+This is the most flexible of looping operations, but therefore also the
+hardest to use correctly.  Avoid using `for()` loops unless the the
+calculation at each iteration depends on the results of previous iterations.
 
 For example:
-
 
 ~~~
 for(i in 1:10){
@@ -1458,108 +1333,42 @@ for(i in 1:10){
 {: .r}
 
 
+The `1:10` bit creates a vector on the fly; you can iterate over any other
+vector as well.
 
-The `1:10` bit creates a vector on the fly; you can iterate
-over any other vector as well.
+You can also create nested `for` loops.
 
-We can use a `for()` loop nested within another `for()` loop to iterate over two things at
-once.
-
-
-~~~
-for(i in 1:5){
-  for(j in c('a', 'b', 'c', 'd', 'e')){
-    print(paste(i,j))
-  }
-}
-~~~
-{: .r}
-
-
-
-
-Rather than printing the results, we could write the loop output to a new object.
-
-
-~~~
-output_vector <- c()
-for(i in 1:5){
-  for(j in c('a', 'b', 'c', 'd', 'e')){
-    temp_output <- paste(i, j)
-    output_vector <- c(output_vector, temp_output)
-  }
-}
-output_vector
-~~~
-{: .r}
-
-
-
-
-This approach can be useful, but 'growing your results' is computationally inefficient, so avoid
-it when you are iterating through a lot of values.
-
-
-A better way is to define your (empty) output object before filling in the values.
-
-
-~~~
-output_matrix <- matrix(nrow=5, ncol=5)
-j_vector <- c('a', 'b', 'c', 'd', 'e')
-for(i in 1:5){
-  for(j in 1:5){
-    temp_j_value <- j_vector[j]
-    temp_output <- paste(i, temp_j_value)
-    output_matrix[i, j] <- temp_output
-  }
-}
-output_vector2 <- as.vector(output_matrix)
-output_vector2
-~~~
-{: .r}
-
-
-***CHALLENGES*** - 15 min
-
+***CHALLENGES 2 & 3***: 15 min
 
 ## Dataframe Manipulation with dplyr: 1:30–2:25
 
-
-Manipulation of dataframes means many things to many researchers, we often
-select certain observations (rows) or variables (columns), we often group the
-data by a certain variable(s), or we even calculate summary statistics. We can
+Manipulation of dataframes means many things to many researchers. We often
+select certain observations (rows) or variables (columns). We often group the
+data by a certain variable(s), or we calculate summary statistics. We can
 do these operations using the normal base R operations:
-
 
 ~~~
 mean(gapminder[gapminder$continent == "Africa", "gdpPercap"])
+str(gapminder[gapminder$continent == "Africa", "gdpPercap"])
+str(gapminder[gapminder$continent == "Africa",]SgdpPercap)
+mean(gapminder[gapminder$continent == "Africa",]SgdpPercap)
 ~~~
 {: .r}
-
-
-~~~
-mean(gapminder[gapminder$continent == "Americas", "gdpPercap"])
-~~~
-{: .r}
-
-
-~~~
-mean(gapminder[gapminder$continent == "Asia", "gdpPercap"])
-~~~
-{: .r}
-
 
 
 This can be repetitive, and repetition will cost you time, make your code bulky
-and hard to read and potentially introduce some nasty bugs
+and hard to read and potentially introduce some nasty bugs.
 
 #### The `dplyr` package
 
-the `dplyr` package provides a number of useful functions for manipulating dataframes
-in a way that will reduce the above repetition, reduce the probability of making
-errors, and probably even save you some typing. the `dplyr` grammar can also make your code easier to read.
+The `dplyr` package provides a number of useful functions for manipulating
+dataframes in a way that will reduce the above repetition, reduce the
+probability of making errors, and probably even save you some typing. The
+`dplyr` grammar can also make your code easier to read. Hadley Wickham wrote
+this and *many* other very useful packages. He is a guru with followers (me,
+included).
 
-we're going to cover 5 of the most commonly used functions as well as using
+We're going to cover 5 of the most commonly used functions as well as using
 pipes (`%>%`) to combine them
 
 1. `select()`
@@ -1570,14 +1379,12 @@ pipes (`%>%`) to combine them
 
 If you have have not installed this package earlier, please do so:
 
-
 ~~~
 install.packages('dplyr')
 ~~~
 {: .r}
 
 Now let's load the package:
-
 
 ~~~
 library(dplyr)
@@ -1588,41 +1395,37 @@ library(dplyr)
 
 If we wanted to use only a few of the variables in
 our dataframe we could use the `select()` function.
-
+(Show diagram from "Challenges" page.)
 
 ~~~
 year_country_gdp <- select(gapminder,year,country,gdpPercap)
+year_country_gdp
 ~~~
 {: .r}
 
+Note that SQL has the same idea of `select`.
+
 ![](../fig/13-dplyr-fig1.png)
 
-look at `year_country_gdp`
-see that it only contains the year, country and gdpPercap.
-we used 'normal' grammar
-but the strengths of `dplyr` lie in combining several functions using pipes. 	Since the pipes grammar
+This is the normal R syntax, but the strength of `dplyr` lies in combining
+several functions using pipes (like the bash shell). Since the pipes syntax
 is unlike anything we've seen in R before, let's repeat what we've done above
 using pipes.
-
 
 ~~~
 year_country_gdp <- gapminder %>% select(year,country,gdpPercap)
 ~~~
 {: .r}
 
-To help you understand why we wrote that in that way, let's walk through it step
-by step
-First we summon the gapminder dataframe and pass it on, using the pipe
-symbol `%>%`, to the next step, which is the `select()` function.
+To help you understand why we wrote that in that way, let's walk through it
+step by step. First we summon the gapminder dataframe and pass it on, using
+the pipe symbol `%>%`, to the next step, which is the `select()` function.
 
-In R, a pipe symbol is `%>%` while in the
-shell it is `|`
+In R, a pipe symbol is `%>%` while in the shell it is `|`.
 
 #### Using filter()
 
-using the above but only with European
-countries, we can combine `select` and `filter`
-
+We limit to European countries using `select` and `filter`.
 
 ~~~
 year_country_gdp_euro <- gapminder %>%
@@ -1631,11 +1434,20 @@ year_country_gdp_euro <- gapminder %>%
 ~~~
 {: .r}
 
-line breaks between specific portions of our command make the code easier to read
+Line breaks between specific portions of our command make the code easier to
+read.
 
-first we pass the data frame to `filter` then pass the filtered dataframe to `select`.
+First we pass the data frame to `filter` then pass the filtered dataframe to
+`select`. Let's reverse `select` and `filter`.
 
-If we reversed this, it would not work since we removed the continent data with `select`
+~~~
+year_country_gdp_euro <- gapminder %>%
+    select(year,country,gdpPercap) %>%
+    filter(continent=="Europe")
+~~~
+{: .r}
+
+Doesn't work since we removed the continent data with `select`.
 
 ***CHALLENGES*** - 5 min
 

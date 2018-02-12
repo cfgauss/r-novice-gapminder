@@ -4,3 +4,7 @@ transformed into HTML is controlled by _config.yml. (To understand this
 process better, I'd have to read the Jekyll/Github Pages documentation.) But
 it appears that I could add more .md file (e.g. in _extras) or even add a new
 directory of .md files.
+
+Instead of 'make site' use 'jekyll build --watch --incremental'. That way each
+time you modify and save a file, the changed files are regenerated! (Of
+course, you need to refresh the browser).

@@ -44,16 +44,6 @@ permalink: /challenges/
 > compare mass to age. Is mass larger than age?
 {: .challenge}
 
-> ## Challenge 4
->
-> Install the packages `ggplot2` and `dplyr`
->
-> After installing, load both of these packages so they are active. Try using both ways that we discussed.
->
-> (Note: We will be using these packages in future lessons, so ask a helper for
-> assistance if you have difficulties)
-{: .challenge}
-
 ## [Seeking Help](https://cfgauss.github.io/r-novice-gapminder/03-seeking-help/)
 
 > ## Challenge 1
@@ -170,18 +160,18 @@ permalink: /challenges/
 > Given this vector `x`, what would you expect the following to do?
 >
 >~~~
-> x[-which(names(x) == "g")]
+> x[-which(names(x) == "c")]
 >~~~
 >{: .r}
 >
 > Test out your guess by trying out this command. Did this match your expectation?
-> Why did we get this result? (Tip: test out each part of the command on its own - this is a useful debugging strategy)
+> Why did we get this result? (Tip: test out each function in the order it's applied—this is a useful debugging strategy.)
 {: .challenge}
 
 > ## Challenge 3
 >
 > While it is not recommended, it is possible for multiple elements in a
-> vector to have the same name. Consider this examples:
+> vector to have the same name. Consider this example:
 >
 >
 >~~~
@@ -214,8 +204,9 @@ permalink: /challenges/
 >{: .output}
 >
 >
-> Can you come up with a command that will only return of the 'a' values and a different command
-> that will return all of the 'a' values? Does your answer differ from your neighbors?
+> Using named subsetting can you come up with a command that will return only
+> one of the `'a'` values and a different command
+> that will return all of the `'a'` values? Does your answer differ from your neighbors?
 {: .challenge}
 
 > ## Challenge 4
@@ -288,29 +279,15 @@ permalink: /challenges/
 
 > ## Challenge 3
 >
-> Read the output of `str(gapminder)` again;
-> this time, use what you've learned about R's basic data types, factors, and vectors,
-> as well as the output of functions like `colnames` and `dim`
-> to explain what everything that `str` prints out for gapminder means.
->
-> Can you determine what data each column holds? Do the data types make sense for these types of data? If not, what data type would you recommend?
->
-> If there are any parts you can't interpret, discuss with your neighbors!
-{: .challenge}
-
-> ## Challenge 4
->
 > Fix each of the following common data frame subsetting errors:
 >
-> 1. Extract observations collected for the year 1957
->
->
+> 1. Extract observations collected for the year 1957.
 >    ~~~
 >    gapminder[gapminder$year = 1957,]
 >    ~~~
 >    {: .r}
 >
-> 2. Extract all columns except 1 through to 4
+> 2. Extract all columns except 1 through 4.
 >
 >
 >    ~~~
@@ -318,7 +295,7 @@ permalink: /challenges/
 >    ~~~
 >    {: .r}
 >
-> 3. Extract the rows where the life expectancy is longer the 80 years
+> 3. Extract the rows where the life expectancy is longer than 80 years.
 >
 >
 >    ~~~
@@ -336,7 +313,7 @@ permalink: /challenges/
 >    {: .r}
 >
 > 5. Advanced: extract rows that contain information for the years 2002
->    and 2007
+>    and 2007.
 >
 >
 >    ~~~
@@ -345,12 +322,14 @@ permalink: /challenges/
 >    {: .r}
 {: .challenge}
 
-> ## Challenge 5
+> ## Challenge 4
 >
-> 1. Why does `gapminder[1:20]` return an error? How does it differ from `gapminder[1:20, ]`?
+> 1. Why does `gapminder[1:20]` return an error? How does it differ from
+>`gapminder[1:20, ]`?
 >
 >
-> 2. Create a new `data.frame` called `gapminder_small` that only contains rows 1 through 9
+> 2. Create a new `data.frame` called `gapminder_small` that only contains
+> rows 1 through 9
 > and 19 through 23. You can do this in one or two steps.
 {: .challenge}
 
@@ -360,43 +339,25 @@ permalink: /challenges/
 >
 > Use an `if` statement to print a suitable message
 > reporting whether there are any records from 2002 in
-> the `gapminder` dataset.
-> Now do the same for 2012.
+> the `gapminder` dataset. Then write a similar statement that
+> reports if there are both 2002 *and* 2012 records.
 {: .challenge}
 
 > ## Challenge 2
 >
-> Compare the objects output_vector and
-> output_vector2. Are they the same? If not, why not?
-> How would you change the last block of code to make output_vector2
-> the same as output_vector?
+> Write a script that loops through the `gapminder` data by continent and
+> prints out the continent, the mean life expectancy on that continent, and
+> whether or not that life expectancy is larger than 65 years. *Hints:* If `x`
+> is a numeric vector, `mean(x)` returns the mean of `x`. For any vector `x`,
+> `unique(x)` returns a vector with the unique values of `x`. Finally `cat("x
+> is",6)` prints `x is 6`.
 {: .challenge}
 
 > ## Challenge 3
 >
-> Use the following commands to create two vectors each containing 5 random values:
->
->~~~
->rows <- rpois(5, lambda=5)
->cols <- rpois(5, lambda=5)
->~~~
->{: .r}
->
-> Modify our previous for loops to now fill our 5 x 5 matrix with the product of the respective values in `rows` and `cols`. (ie position [2, 4] in the matrix would have the product of `rows[2] * cols[4]`)
-{: .challenge}
-
-> ## Challenge 4 - Advanced
->
-> Write a script that loops through the `gapminder` data by continent and prints out
-> whether the mean life expectancy is smaller or larger than 50
-> years.
-{: .challenge}
-
-> ## Challenge 5 - Advanced
->
-> Modify the script from Challenge 4 to loop over each
-> country. This time print out whether the life expectancy is
-> smaller than 50, between 50 and 70, or greater than 70.
+> Modify the script from Challenge 4 to loop over each country. This time
+> print out whether the life expectancy is smaller than 50, between 50 and 70,
+> or greater than 70.
 {: .challenge}
 
 ## [Dataframe Manipulation](https://cfgauss.github.io/r-novice-gapminder/10-dplyr/)

@@ -578,13 +578,15 @@ The `Packages` tab in RStudio can also be used to manage packages. Simply click 
 button to install packages. To load packages, just click the checkbox in front of the package
 you wish to load. You should see the same messaging in your `console` for both approaches.
 
-
 Other useful commands for working with packages:
 
 * You can see what packages are installed by typing
   `installed.packages`
 * You can update installed packages by typing `update.packages`
 * You can remove a package with `remove.packages("packagename")`
+
+You should install `ggplot2` using the `install.packages` function and install
+`dplyr` using the `Install` tab.
 
 > ## Challenge 1
 >
@@ -623,15 +625,4 @@ Other useful commands for working with packages:
 >
 > Run the code from the previous challenge, and write a command to
 > compare mass to age. Is mass larger than age?
-{: .challenge}
-
-
-> ## Challenge 4
->
-> Install the packages `ggplot2` and `dplyr`
->
-> After installing, load both of these packages so they are active. Try using both ways that we discussed.
->
-> (Note: We will be using these packages in future lessons, so ask a helper for
-> assistance if you have difficulties)
 {: .challenge}
