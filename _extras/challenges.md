@@ -466,7 +466,9 @@ permalink: /challenges/
 > Use this script to write out the new subset to a file
 > your working directory.
 >
-> Remember to use a different file name so that the new output doesn't overwrite your old output
+> Remember to use a different file name so that the new output doesn't
+> overwrite your old output.
+
 {: .challenge}
 
 ## Wrapup
@@ -478,7 +480,7 @@ Don't forget your R helpfiles and package vignettes which can be accessed
 by using the `?` and `vignette` commands.
 
 #### [Supplemental Lessons](https://carriebrown.github.io/r-novice-gapminder/)
-These lessons with solutions for challenges.
+These are lessons with solutions for challenges.
 
 #### [Supplemental Lessons](https://carriebrown.github.io/r-novice-gapminder-2/)
 Additional R topics that we could not cover today.

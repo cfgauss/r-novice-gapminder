@@ -11,9 +11,6 @@ keypoints:
 - "Use `write.table` to save tabular data."
 ---
 
-
-
-
 ## Saving plots
 
 So making publication quality plots is great but does us little good if we cannot get them out of
@@ -25,63 +22,6 @@ in the 'Plot' window. This will give you the option of saving as a
 
 <img src="../fig/12-data-fig1.png" title="export plots in rstudio" alt="export plots in rstudio" style="display: block; margin: auto;" />
 
-But what if you are working in a command line environment, or want to create multiple plots without user interaction?
-In `ggplot2` you can use the `ggsave` function to save your plots quickly. This function can be used to save the last displayed plot in a format specified by the file name.
-You can save as several different formats, such as a PDF:
-
-~~~
-ggsave("My_most_recent_plot.pdf")
-~~~
-{: .r}
-
-Or as a JPG:
-
-~~~
-ggsave("My_most_recent_plot.jpg")
-~~~
-{: .r}
-
-`ggsave` also allows you to specify size and quality of the image. You can check out all of the
-options using the `?ggsave` command to view the help file.
-
-Sometimes you will want to save plots without creating them in the
-'Plot' window first. Perhaps you want to make a pdf document with
-multiple pages: each one a different plot, for example. Or perhaps
-you're looping through multiple subsets of a file, plotting data from
-each subset, and you want to save each plot, but obviously can't stop
-the loop to click 'Export' for each one.
-
-In this case you can use a more flexible approach. The function
-`pdf` creates a new pdf device. You can control the size and resolution
-using the arguments to this function.
-
-
-~~~
-pdf("Life_Exp_vs_time.pdf", width=12, height=4)
-ggplot(data=gapminder, aes(x=year, y=lifeExp, color=continent)) +
-  geom_point()
-
-dev.off()
-~~~
-{: .r}
-
-The `pdf` command opens the pdf file, and any output between this command and the `dev.off` command
-will be added to that file. Forgetting to "close" your pdf device by using the `dev.off` command can
-lead to an incorrect file, so be sure to include it immediately after your output.
-
-Open up this document and have a look.
-
-> ## Challenge 1
->
-> Rewrite your 'pdf' command to print a second
-> page in the pdf, showing a facet plot
-> of the same data with one panel per continent.
->
-> Hint: Remember that we used the `facet_wrap` command previously to create a facet plot.
-{: .challenge}
-
-The commands `jpeg`, `png` etc. are used similarly to produce
-documents in different formats.
 
 ## Writing data
 
@@ -195,7 +135,7 @@ Australia,1992,17481977,Oceania,77.56,23424.76683
 
 That looks better!
 
-> ## Challenge 2
+> ## Challenge 1
 >
 > Write a data-cleaning script file that subsets the gapminder
 > data to include only data points collected since 1990.
@@ -203,5 +143,6 @@ That looks better!
 > Use this script to write out the new subset to a file
 > your working directory.
 >
-> Remember to use a different file name so that the new output doesn't overwrite your old output
+> Remember to use a different file name so that the new output doesn't
+> overwrite your old output.
 {: .challenge}

@@ -9,9 +9,16 @@ permalink: /guide/
 ## Introduction to R and RStudio: 1:00–1:30
 
 #### Before Starting The Workshop
+On artin, as nelle:
+
+$ rm ~/swc/2018-02-15-earlham-owm/earlham.R
+$ touch ~/swc/2018-02-15-earlham-owm/earlham.R
+$ cd ~/swc/earlham-notes
+$ gitautopush ../2018-02-15-earlham-owm/earlham.R
 
 Please ensure you have the latest version of R and RStudio installed on your
-machine. Browser tabs: workshop, etherpad, and `bit.ly/earlham-R`.
+machine. Browser tabs: workshop, etherpad, `bit.ly/earlham-R` and
+`bit.ly/earlham-notes`.
 
 Note to self: don't create new values for variables as it will affect future
 evaluations in your script. You can, of course, backtrack but that's
@@ -79,6 +86,7 @@ The simplest thing you could do with R is do arithmetic:
 {: .r}
 
 Ignore the [1] for now.
+Demo `bit.ly/earlham-notes`.
 
 Incomplete commands:
 
@@ -129,7 +137,7 @@ Scientific notation
 
 #### Mathematical functions
 
-functions use name then parenthesis
+Function notation same as math class.
 
 ~~~
 sin(1)  ## trigonometry functions
@@ -1054,7 +1062,7 @@ install.packages("gapminder")
 Load it now using the `library` command. Illustrate the Packages tab also.
 
 ~~~
-library('gapminder')
+library(gapminder)
 ~~~
 {: .r}
 Note check mark in Packages tab.
@@ -1292,8 +1300,8 @@ The function `all()`, as the name suggests, will only return `TRUE` if all value
 the vector are `TRUE`.
 
 ~~~
-any(2002 %in% gapminder$year)
-any(2012 %in% gapminder$year)
+any(2002 == gapminder$year)
+any(2012 == gapminder$year)
 ~~~
 {: .r}
 
@@ -1842,9 +1850,13 @@ Let's create a data-cleaning script, for this analysis, we only want to focus
 on the gapminder data for Australia:
 
 ~~~
-aust_subset <- gapminder[gapminder$country == "Australia",]
+aust <- gapminder %>% filter(country == "Australia")
+~~~
+{: .r}
 
-write.table(aust_subset,   ## Gapminder data for countries located in Australia
+Before you write, use `getwd()` and `setwd(...)`.
+
+write.table(aust,          ## Gapminder data for countries located in Australia
   file="gapminder-aus.csv",## Name of the output file
   sep=","                  ## Comma separated
 )
@@ -1874,11 +1886,11 @@ when writing out to file. It will also write out the row and
 column names.
 
 ~~~
-write.table(aust_subset,		## Gapminder data for countries located in Australia
-  file="gapminder-aus.csv",		## Name of the output file
-  sep=",",						## Comma separated
-  quote=FALSE,					## Turn off quotation marks
-  row.names=FALSE				## No row names
+write.table(aust,               ## Gapminder data for countries located in Australia
+  file="gapminder-aus.csv",     ## Name of the output file
+  sep=",",                      ## Comma separated
+  quote=FALSE,                  ## Turn off quotation marks
+  row.names=FALSE               ## No row names
 )
 ~~~
 {: .r}
