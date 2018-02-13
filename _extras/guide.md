@@ -429,7 +429,8 @@ typeof(TRUE)
 ~~~
 {: .output}
 
-`Logical` data types are particularly helpful in subsetting data frames and other types of data manipulation. We will explore this concept more later.
+`Logical` data types are particularly helpful in subsetting data frames and
+other types of data manipulation. We will explore this concept more later.
 
 ~~~
 typeof('banana')
@@ -1021,7 +1022,7 @@ cats <- na.omit(cats)
 
 Remember that *columns are vectors or factors, and rows are lists.*
 
-We can also glue two dataframes together with `rbind`:
+We can also glue two data frames together with `rbind`:
 
 ~~~
 cats <- rbind(cats, cats)
@@ -1340,9 +1341,11 @@ You can also create nested `for` loops.
 
 ***CHALLENGES 2 & 3***: 15 min
 
-## Dataframe Manipulation with dplyr: 1:30–2:25
+## Data Frame Manipulation with dplyr: 1:30–2:25
 
-Manipulation of dataframes means many things to many researchers. We often
+(Ask them to get their dplyr cheat sheet.)
+
+Manipulation of data frames means many things to many researchers. We often
 select certain observations (rows) or variables (columns). We often group the
 data by a certain variable(s), or we calculate summary statistics. We can
 do these operations using the normal base R operations:
@@ -1362,7 +1365,7 @@ and hard to read and potentially introduce some nasty bugs.
 #### The `dplyr` package
 
 The `dplyr` package provides a number of useful functions for manipulating
-dataframes in a way that will reduce the above repetition, reduce the
+data frames in a way that will reduce the above repetition, reduce the
 probability of making errors, and probably even save you some typing. The
 `dplyr` grammar can also make your code easier to read. Hadley Wickham wrote
 this and *many* other very useful packages. He is a guru with followers (me,
@@ -1394,7 +1397,7 @@ library(dplyr)
 #### Using select()
 
 If we wanted to use only a few of the variables in
-our dataframe we could use the `select()` function.
+our data frame we could use the `select()` function.
 (Show diagram from "Challenges" page.)
 
 ~~~
@@ -1418,7 +1421,7 @@ year_country_gdp <- gapminder %>% select(year,country,gdpPercap)
 {: .r}
 
 To help you understand why we wrote that in that way, let's walk through it
-step by step. First we summon the gapminder dataframe and pass it on, using
+step by step. First we summon the gapminder data frame and pass it on, using
 the pipe symbol `%>%`, to the next step, which is the `select()` function.
 
 In R, a pipe symbol is `%>%` while in the shell it is `|`.
@@ -1437,7 +1440,7 @@ year_country_gdp_euro <- gapminder %>%
 Line breaks between specific portions of our command make the code easier to
 read.
 
-First we pass the data frame to `filter` then pass the filtered dataframe to
+First we pass the data frame to `filter` then pass the filtered data frame to
 `select`. Let's reverse `select` and `filter`.
 
 ~~~
@@ -1447,24 +1450,19 @@ year_country_gdp_euro <- gapminder %>%
 ~~~
 {: .r}
 
-Doesn't work since we removed the continent data with `select`.
+Doesn't work since we removed the continent column with `select`.
 
-***CHALLENGES*** - 5 min
+***CHALLENGE 1***: 5 min
 
 #### Using group_by() and summarize()
 
-If we want to do the same above for each country, we can reduce repetitiveness with `group_by`
-`group_by` will essentially use every unique criteria that you
-could have used in `filter`.
-
+If you want to do this for each continent, you can reduce repetitiveness using
+`group_by`. The function `group_by` is similar to `filter`.
 
 ~~~
 str(gapminder)
 ~~~
 {: .r}
-
-
-
 
 ~~~
 str(gapminder %>% group_by(continent))
@@ -1472,25 +1470,23 @@ str(gapminder %>% group_by(continent))
 {: .r}
 
 
-
-notice that the structure of the dataframe where we used `group_by()`
+Notice that the structure of the data frame where we used `group_by()`
 (`grouped_df`) is not the same as the original `gapminder` (`data.frame`).
 
- A
-`grouped_df` can be thought of as a `list` where each item in the `list`is a
-`data.frame` which contains only the rows that correspond to the a particular
+A`grouped_df` can be thought of as a `list` where each item in the `list`is a
+`data.frame` which contains only the rows that correspond to a particular
 value.
+
+(Show diagram from "Challenges" page.)
 
 ![](../fig/13-dplyr-fig2.png)
 
 #### Using summarize()
 
-`group_by()` is much more
-exciting in conjunction with `summarize()`
+`group_by()` is much more exciting in conjunction with `summarize()`
 
-`summarize` allows us to create  new
-variable(s) by using functions that repeat for each of the continent-specific
-data frames
+`summarize` allows us to create new variable(s) by using functions that repeat
+for each of the continent-specific data frames.
 
 ~~~
 gdp_bycontinents <- gapminder %>%
@@ -1499,25 +1495,27 @@ gdp_bycontinents <- gapminder %>%
 ~~~
 {: .r}
 
+(Show diagram from "Challenges" page.)
+
 ![](../fig/13-dplyr-fig3.png)
 
-That allowed us to calculate the mean gdpPercap for each continent, but it gets
+That allowed us to calculate the mean `gdpPercap` for each continent, but it gets
 even better.
 
-***CHALLENGES*** - 5 min
+***CHALLENGE 2***: 5 min
 
-`group_by()` allows us to group by multiple variables. Let's group by `year` and `continent`.
-
-
+`group_by()` allows us to group by multiple variables. Let's group by `year`
+and `continent`.
 
 ~~~
 gdp_bycontinents_byyear <- gapminder %>%
     group_by(continent,year) %>%
     summarize(mean_gdpPercap=mean(gdpPercap))
+gdp_bycontinents_byyear
 ~~~
 {: .r}
 
-we can define more than 1 variable with `summarize`
+We can define more than 1 variable with `summarize`.
 
 ~~~
 gdp_pop_bycontinents_byyear <- gapminder %>%
@@ -1533,7 +1531,6 @@ gdp_pop_bycontinents_byyear <- gapminder %>%
 
 We can create new variables prior to (or even after) summarizing information using `mutate()`.
 
-
 ~~~
 gdp_pop_bycontinents_byyear <- gapminder %>%
     mutate(gdp_billion=gdpPercap*pop/10^9) %>%
@@ -1547,74 +1544,67 @@ gdp_pop_bycontinents_byyear <- gapminder %>%
 ~~~
 {: .r}
 
+***CHALLENGES 3 & 4***: allot 10 min
 
-
-*** CHALLENGES *** - allot 10 min
+Illustrate how to evaluate increasingly longer sections of a pipeline.
 
 ## Coffee Break: 2:25–2:40
 
 ## Creating Publication-Quality Graphics: 2:40–3:45
 
-Plotting our data is one of the best ways to
-quickly explore it and the various relationships
+Plotting is one of the best ways to explore a dataset and the relationships
 between variables.
 
-Today we'll be learning about the ggplot2 package, because
-it is a bit harder to learn but produces better looking plots than the base plotting ability.
+Today you'll be using the `ggplot2` package. It's a bit harder to learn than
+Base R plots but produces far higher quality.
+(Ask them to get their `ggplot2` cheat sheet.)
 
-ggplot2 is built on the grammar of graphics (where the gg comes from)
-the idea that any plot can be
-expressed from the same set of components:
+`ggplot2` is built on the grammar of graphics (where the gg comes from):
+the idea that any plot can be built from the same set of components:
  - a **data** set
  - a **coordinate system**
- -  a set of **geoms**--the visual representation of data points.
+ - a set of **geoms**—the visual representation of data points.
 
-The key to understanding ggplot2 is thinking about a figure in layers.
+The key to understanding the grammar of graphics is thinking about a figure in
+layers (like Photoshop or Gimp).
 
-Let's start off with an example. The first thing we need to do is load the `ggplot2` package
-
+Let's start off with an example. The first thing we need to do is load the `ggplot2` package.
 
 ~~~
 library("ggplot2")
 ~~~
 {: .r}
 
-If you haven't previously installed the package, install it now using the command `install.packages("ggplot2")`. Then load it using the command above.
+If you haven't previously installed the package, install it now using the
+command `install.packages("ggplot2")`. Then load it using the command above.
 
-to begin graphing, we use the `ggplot` function
-this lets R
-know that we're creating a new plot, and any of the arguments we give the
-`ggplot` function are the *global* options for the plot: they apply to all
-layers on the plot.
+To begin graphing, we use the `ggplot` function.  This lets R know that we're
+creating a new plot, and any of the arguments we give the `ggplot` function
+are the *global* options for the plot: they apply to all layers on the plot.
 
 ~~~
-library("ggplot2")
 ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp)) +
   geom_point()
 ~~~
 {: .r}
 
-mention that line breaks can be anywhere, but you need to have the + at the end of the line.
+Line breaks can be anywhere. The `+` is for another layer.
 
 <img src="../fig/rmd-08-lifeExp-vs-gdpPercap-scatter-1.png" title="plot of chunk lifeExp-vs-gdpPercap-scatter" alt="plot of chunk lifeExp-vs-gdpPercap-scatter" style="display: block; margin: auto;" />
 
 We've passed in two arguments to `ggplot`.
 
-First, we tell `ggplot` what data we
-want to show on our figure
+First, we tell `ggplot` what data we want to show on our figure (`gapminder`).
 
 For the second argument we passed in the `aes` function, which
 tells `ggplot` how variables in the **data** map to *aesthetic* properties of
 the figure, in this case the **x** and **y** locations.
 
-Here we told `ggplot` we
-want to plot the "gdpPercap" column of the gapminder data frame on the x-axis, and
-the "lifeExp" column on the y-axis.
+Here we told `ggplot` we want to plot the `gdpPercap` column of the `gapminder`
+data frame on the x-axis, and the `lifeExp` column on the y-axis.
 
-we didn't need to explicitly
-pass `aes` these columns (e.g. `x = gapminder[, "gdpPercap"]`)
-
-Other options that can be set with the `aes` function include color, size, transparency and shape. We will talk more about that later.
+Other options that can be set with the `aes` function include color, size,
+transparency and shape. We will talk more about that later.
 
 By itself, the call to `ggplot` isn't enough to draw a figure:
 
@@ -1630,22 +1620,14 @@ do by adding a new **geom** layer. In our example, we used `geom_point`, which
 tells `ggplot` we want to visually represent the relationship between **x** and
 **y** as a scatterplot of points:
 
-
-~~~
-ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp)) +
-  geom_point()
-~~~
-{: .r}
-
 <img src="../fig/rmd-08-lifeExp-vs-gdpPercap-scatter2-1.png" title="plot of chunk lifeExp-vs-gdpPercap-scatter2" alt="plot of chunk lifeExp-vs-gdpPercap-scatter2" style="display: block; margin: auto;" />
 
-***CHALLENGES*** - 10 min
+***CHALLENGES 1 & 2***: 10 min
 
 #### Layers
 
-Using a scatterplot probably isn't the best for visualizing change over time.
-Instead, let's tell `ggplot` to visualize the data as a line plot:
-
+Using a scatterplot probably isn't the best **geom** for visualizing change
+over time.  Instead, let's tell `ggplot` to visualize the data as a line plot:
 
 ~~~
 ggplot(data = gapminder, aes(x=year, y=lifeExp, by=country, color=continent)) +
@@ -1656,12 +1638,11 @@ ggplot(data = gapminder, aes(x=year, y=lifeExp, by=country, color=continent)) +
 <img src="../fig/rmd-08-lifeExp-line-1.png" title="plot of chunk lifeExp-line" alt="plot of chunk lifeExp-line" style="display: block; margin: auto;" />
 
 Instead of adding a `geom_point` layer, we've added a `geom_line` layer. We've
-added the **by** *aesthetic*, which tells `ggplot` to draw a line for each
-country.
+added the `by` aesthetic, which tells `ggplot` to draw a line for each
+country. (This is another solution to Challenge 2.)
 
-if we want to visualize both lines and points on the plot? We can
-simply add another layer to the plot:
-
+What if we want to visualize both lines and points on the plot? We can
+simply add another layer:
 
 ~~~
 ggplot(data = gapminder, aes(x=year, y=lifeExp, by=country, color=continent)) +
@@ -1671,8 +1652,8 @@ ggplot(data = gapminder, aes(x=year, y=lifeExp, by=country, color=continent)) +
 
 <img src="../fig/rmd-08-lifeExp-line-point-1.png" title="plot of chunk lifeExp-line-point" alt="plot of chunk lifeExp-line-point" style="display: block; margin: auto;" />
 
-note that each layer is drawn on top of the previous layer.
-
+Like Photoshop, each layer is drawn on top of the previous layer. Here's a
+slightly different version:
 
 ~~~
 ggplot(data = gapminder, aes(x=year, y=lifeExp, by=country)) +
@@ -1682,14 +1663,12 @@ ggplot(data = gapminder, aes(x=year, y=lifeExp, by=country)) +
 
 <img src="../fig/rmd-08-lifeExp-layer-example-1-1.png" title="plot of chunk lifeExp-layer-example-1" alt="plot of chunk lifeExp-layer-example-1" style="display: block; margin: auto;" />
 
-the *aesthetic* mapping of **color** has been moved from the
-global plot options in `ggplot` to the `geom_line` layer so it no longer applies
-to the points.
+The aesthetic mapping of color has been moved from the global plot options in
+`ggplot` to the `geom_line` layer so it no longer applies to the points.
 
-Now we can clearly see that the points are drawn on top of the
-lines.
+Now we can clearly see that the points are drawn on top of the lines.
 
-Demonstrate changing an aesthetic to a solid color:
+This changes the line color to red.
 
 ~~~
 ggplot(data = gapminder, aes(x=year, y=lifeExp, by=country)) +
@@ -1703,7 +1682,6 @@ ggplot(data = gapminder, aes(x=year, y=lifeExp, by=country)) +
 `ggplot` also makes it easy to overlay statistical models over the data. To
 demonstrate we'll go back to our first example:
 
-
 ~~~
 ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp)) +
   geom_point()
@@ -1712,15 +1690,13 @@ ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp)) +
 
 <img src="../fig/rmd-08-lifeExp-vs-gdpPercap-scatter3-1.png" title="plot of chunk lifeExp-vs-gdpPercap-scatter3" alt="plot of chunk lifeExp-vs-gdpPercap-scatter3" style="display: block; margin: auto;" />
 
-it's hard to see the relationship between the points due outliers
+It's hard to see the mass of points on the left due to outliers "stretching"
+the x-scale.
 
-change the scale of units on the x axis using
-the *scale* functions.
+You can change the scale of units on the x axis using the `scale` functions.
 
-
-can also modify the transparency of the
-points, using the *alpha* function - helpful when large amount of data which is very clustered.
-
+You can also modify the transparency of the points, using the `alpha`
+function—that's helpful when you have lots of data which is very clustered.
 
 ~~~
 ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp)) +
@@ -1730,14 +1706,11 @@ ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp)) +
 
 <img src="../fig/rmd-08-axis-scale-1.png" title="plot of chunk axis-scale" alt="plot of chunk axis-scale" style="display: block; margin: auto;" />
 
-The `log10` function applied a transformation to the values of the gdpPercap
-column before rendering them on the plot, so that each multiple of 10 now only
-corresponds to an increase in 1 on the transformed scale, e.g. a GDP per capita
-of 1,000 is now 3 on the y axis, a value of 10,000 corresponds to 4 on the y
-axis and so on. This makes it easier to visualize the spread of data on the
-x-axis.
+(Point out the logarithmic scale on the x-axis.) The `alpha` transparency allows
+"additivity" of shading which wasn't possible before.
 
-point out that the `alpha` aesthetic is applied only to the point geom. Can also make transparency based on variables such as:
+The `alpha` aesthetic is applied only to `geom_point`. You can also make
+transparency based on variables:
 
 ~~~
 ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp)) +
@@ -1745,9 +1718,8 @@ ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp)) +
 ~~~
 {: .r}
 
-We can fit a simple relationship to the data by adding another layer,
+We can fit a least-square line to the data by adding another layer,
 `geom_smooth`:
-
 
 ~~~
 ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp)) +
@@ -1757,9 +1729,8 @@ ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp)) +
 
 <img src="../fig/rmd-08-lm-fit-1.png" title="plot of chunk lm-fit" alt="plot of chunk lm-fit" style="display: block; margin: auto;" />
 
-We can make the line thicker by *setting* the **size** aesthetic in the
+We can make the line thicker by setting the `size` aesthetic in the
 `geom_smooth` layer:
-
 
 ~~~
 ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp)) +
@@ -1769,27 +1740,28 @@ ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp)) +
 
 <img src="../fig/rmd-08-lm-fit2-1.png" title="plot of chunk lm-fit2" alt="plot of chunk lm-fit2" style="display: block; margin: auto;" />
 
-There are two ways an *aesthetic* can be specified. Here we *set* the **size**
-aesthetic by passing it as an argument to `geom_smooth`. Previously in the
-lesson we've used the `aes` function to define a *mapping* between data
-variables and their visual representation.
+Distinguish between the aesthetic `alpha` applying to a `geom`,
 
-***CHALLENGES*** - 10 min
+~~~
+ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp)) +
+  geom_point(alpha = 0.5)
+~~~
+{: .r}
 
+i.e. `alpha` applies to all points, and `alpha` as a mapping between the data
+and the points:
+
+~~~
+ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp)) +
+  geom_point(aes(alpha = continent))
+~~~
+{: .r}
+
+***CHALLENGES 3 & 4***: 10 min
 
 #### Multi-panel figures
 
-we can split this out over multiple panels
-by adding a layer of **facet** panels. Focusing only on those countries with
-names that start with the letter "A" or "Z".
-
-start by subsetting the data
-
-use the `substr` function to
-pull out a part of a character string
-
-the `%in%` operator allows us to make multiple comparisons rather
-than write out long subsetting conditions
+We can create a multi-panel figure this way:
 
 ~~~
 starts.with <- substr(gapminder$country, start = 1, stop = 1)
@@ -1802,17 +1774,14 @@ ggplot(data = az.countries, aes(x = year, y = lifeExp, color=continent)) +
 <img src="../fig/rmd-08-facet-1.png" title="plot of chunk facet" alt="plot of chunk facet" style="display: block; margin: auto;" />
 
 
-The `facet_wrap` layer takes a **formula** as its argument, denoted by the tilde
+The `facet_wrap` layer takes a formula as its argument, denoted by the tilde
 (~). This tells R to draw a panel for each unique value in the country column
 of the gapminder dataset.
 
-
 #### Modifying text
 
-change some of the text
-elements.
 
-rename our `x` and `y` axes using the `xlab()` and `ylab()` functions:
+To clean up for publication, let's rename our `x` and `y` axes using the `xlab()` and `ylab()` functions:
 
 ~~~
 ggplot(data = az.countries, aes(x = year, y = lifeExp, color=continent)) +
@@ -1823,8 +1792,8 @@ ggplot(data = az.countries, aes(x = year, y = lifeExp, color=continent)) +
 
 <img src="../fig/rmd-08-theme-1a.png" title="plot of chunk theme" alt="plot of chunk theme" style="display: block; margin: auto;" />
 
-give our figure a title with the `ggtitle()` function. And capitalize the label of our
-legend. This can be done using the **scales** layer.
+Now we give our figure a title with the `ggtitle()` function. And capitalize
+the label of our legend. This can be done using the `scales` layer.
 
 ~~~
 ggplot(data = az.countries, aes(x = year, y = lifeExp, color=continent)) +
@@ -1837,9 +1806,8 @@ ggplot(data = az.countries, aes(x = year, y = lifeExp, color=continent)) +
 <img src="../fig/rmd-08-theme-1b.png" title="plot of chunk theme" alt="plot of chunk theme" style="display: block; margin: auto;" />
 
 
-let's remove the x-axis labels so the plot is less cluttered.
-To do this, we use the **theme** layer which controls
-the axis text and overall text size.
+Let's remove the x-axis labels so the plot is less cluttered.  To do this, we
+use the `theme` layer which controls the axis text and overall text size.
 
 ~~~
 ggplot(data = az.countries, aes(x = year, y = lifeExp, color=continent)) +
@@ -1852,124 +1820,49 @@ ggplot(data = az.countries, aes(x = year, y = lifeExp, color=continent)) +
 
 <img src="../fig/rmd-08-theme-1.png" title="plot of chunk theme" alt="plot of chunk theme" style="display: block; margin: auto;" />
 
-***CHALLENGES*** - allot 5 min
-
 ## Writing Data: 3:45–4:10
 
 #### Saving plots
 
-So making publication quality plots is great but does us little good if we cannot get them out of
-R and into our documents.
+Making publication quality plots is great but does us little good if we cannot
+get them out of R and into our documents.
 
-You can save a plot from within RStudio using the 'Export' button
-in the 'Plot' window
+You can save a plot from within RStudio using the 'Export' button in the
+'Plot' window
 
 <img src="../fig/12-data-fig1.png" title="export plots in rstudio" alt="export plots in rstudio" style="display: block; margin: auto;" />
-
-if you are working in a command line environment, or want to create multiple plots without user interaction?
-
-you can use the `ggsave` function to save your plots quickly. This function can be used to save the last displayed plot in a format specified by the file name.
-
-You can save as several different formats, such as a PDF:
-
-~~~
-ggsave("My_most_recent_plot.pdf")
-~~~
-{: .r}
-
-Or as a JPG:
-
-~~~
-ggsave("My_most_recent_plot.jpg")
-~~~
-{: .r}
-
-`ggsave` also allows you to specify size and quality of the image. You can check out all of the
-options using the `?ggsave` command to view the help file.
-
-if you will want to save plots without creating them in the
-'Plot' window first. Perhaps you want to make a pdf document with
-multiple pages: each one a different plot, for example. Or perhaps
-you're looping through multiple subsets of a file, plotting data from
-each subset, and you want to save each plot, but obviously can't stop
-the loop to click 'Export' for each one.
-
-The function
-`pdf` creates a new pdf device. You can control the size and resolution
-using the arguments to this function.
-
-
-~~~
-pdf("Life_Exp_vs_time.pdf", width=12, height=4)
-ggplot(data=gapminder, aes(x=year, y=lifeExp, color=continent)) +
-  geom_point()
-
-dev.off()
-~~~
-{: .r}
-
-The `pdf` command opens the pdf file, and any output between this command and the `dev.off()` command
-will be added to that file.
-
-dont forget the `dev.off` command
-
-Open up this document and have a look.
-
-***CHALLENGES*** - 5 min
-
-The commands `jpeg`, `png` etc. are used similarly to produce
-documents in different formats.
 
 #### Writing data
 
 At some point, you'll also want to write out data from R.
 
-We can use the `write.table` function for this, which is
-very similar to the `read.table` function that we mentioned previously in Lesson 2.
+We can use the `write.table` function for this.
 
-Let's create a data-cleaning script, for this analysis, we
-only want to focus on the gapminder data for Australia:
-
-**make a script file**
+Let's create a data-cleaning script, for this analysis, we only want to focus
+on the gapminder data for Australia:
 
 ~~~
 aust_subset <- gapminder[gapminder$country == "Australia",]
 
-write.table(aust_subset,
-  file="gapminder-aus.csv",
-  sep=","
+write.table(aust_subset,   ## Gapminder data for countries located in Australia
+  file="gapminder-aus.csv",## Name of the output file
+  sep=","                  ## Comma separated
 )
 ~~~
 {: .r}
 
- **in line comments** and linebreaks within function calls
+(Open terminal and cat this file.)
 
 ~~~
-aust_subset <- gapminder[gapminder$country == "Australia",]
-
-write.table(aust_subset,		## Gapminder data for countries located in Australia
-  file="gapminder-aus.csv", 	## Name of the output file
-  sep=","						## Comma separated
-)
-~~~
-{: .r}
-
-open a shell window and navigate to the location of the file using your `cd` command.
-to find out where R is saving
-your files, you can check the `file` pane or use the `getwd()` command.
-
-~~~
+cat gapminder-aus.csv
 head gapminder-aus.csv
 ~~~
 {: .r}
 
-you can view
-the file in R by clicking on the filename in the `file` pane and selecting `View File`.
+You can also view the file by clicking on it in the Files tab.
 
-
-Where did all these
-quotation marks come from? Also the row numbers are
-meaningless. let's look at the help file
+Where did all these quotation marks come from? Also the row numbers are
+meaningless. Let's look at the help file for `quote` and `row.names`:
 
 ~~~
 ?write.table
@@ -1990,8 +1883,7 @@ write.table(aust_subset,		## Gapminder data for countries located in Australia
 ~~~
 {: .r}
 
-look at the data again using our shell skills:
-
+Look at the data again in the Terminal tab.
 
 ~~~
 head gapminder-aus.csv
@@ -2000,7 +1892,7 @@ head gapminder-aus.csv
 
 That looks better!
 
-***CHALLENGES*** - 5 min
+***CHALLENGE 1***: 5 min
 
 ## Wrap Up: 4:10–4:15
 

@@ -347,7 +347,7 @@ permalink: /challenges/
 >
 > Write a script that loops through the `gapminder` data by continent and
 > prints out the continent, the mean life expectancy on that continent, and
-> whether or not that life expectancy is larger than 65 years. *Hints:* If `x`
+> whether or not that life expectancy is larger than 65 years. *Hint:* If `x`
 > is a numeric vector, `mean(x)` returns the mean of `x`. For any vector `x`,
 > `unique(x)` returns a vector with the unique values of `x`. Finally `cat("x
 > is",6)` prints `x is 6`.
@@ -367,9 +367,9 @@ permalink: /challenges/
 > ## Challenge 1
 >
 > Write a single command (which can span multiple lines and includes pipes) that
-> will produce a dataframe that has the African values for `lifeExp`, `country`
-> and `year`, but not for other Continents.  How many rows does your dataframe
-> have and why?
+> will produce a data frame that has the African values for `lifeExp`, `country`
+> and `year`, but not for other continents. How many rows does your dataframe
+> have?
 {: .challenge}
 
 ![](../fig/13-dplyr-fig2.png)
@@ -390,10 +390,14 @@ permalink: /challenges/
 
 > ## Challenge 4 - Advanced
 >
-> Modify your code from Challenge 3 to randomly select 2 countries from each continent before calculating the average life expectancy and then arrange the continent names in reverse order.
+> Modify your code from Challenge 3 to randomly select 2 countries from each
+> continent before calculating the average life expectancy and then arrange
+> the continent names in reverse order.
 >
-> **Hint:** Use the `dplyr` functions `arrange` and `sample_n`, they have
-> similar syntax to other dplyr functions. Be sure to check out the help documentation for the new functions by typing `?arrange` or `?sample_n` if you run into difficulties.
+> *Hint:* Use the `dplyr` functions `arrange` and `sample_n`. They have
+> similar syntax to other dplyr functions. Be sure to check out the help
+> documentation for the new functions by typing `?arrange` or `?sample_n` if
+> you run into difficulties.
 {: .challenge}
 
 ## [Creating Publication Quality Graphics](https://cfgauss.github.io/r-novice-gapminder/12-plot-ggplot2/)
@@ -410,7 +414,7 @@ permalink: /challenges/
 > Modify this example so that the plot visualizes how life expectancy has
 > changed over time:
 >
-> Hint: the gapminder dataset has a column called "year", which should appear
+> *Hint:* the `gapminder` dataset has a column called `year`, which should appear
 > on the x-axis.
 {: .challenge}
 
@@ -419,37 +423,35 @@ permalink: /challenges/
 >
 > In the previous examples and challenge we've used the `aes` function to tell
 > the scatterplot **geom** about the **x** and **y** locations of each point.
-> Another *aesthetic* property we can modify is the point *color*. Modify the
-> code from the previous challenge to **color** the points by the "continent"
+> Another aesthetic property we can modify is the point color. Modify the code
+> from the previous challenge to color the points by the `continent`
 > column. What trends do you see in the data? Are they what you expected?
+> *Hint:* There's more than one way to do this. One approach is to view
+> color as an aesthetic property of the point (`geom_point`). Try
+> executing `?geom_point` and looking under both **Aesthetics** and **Examples**.
 {: .challenge}
 
 > ## Challenge 3
 >
-> Modify the color and size of the points on the point layer in the previous
-> example.
+> Modify the color and size of the points on the point layer in the last
+> example (not the last challenge).
 >
-> Hint: do not use the `aes` function, change this by adding arguments to the correct function.
+> *Hint:* do not use the `aes` function. Rather add arguments to the correct
+> function.
 {: .challenge}
 
 > ## Challenge 4
 >
 > Modify your solution to Challenge 3 so that the
-> points are now a different shape and are colored by continent with new
-> trendlines.
+> points are now a different shape and are colored by continent with
+> one least-squares trendline per continent.
 >
-> Hint: The color argument can be used inside the aesthetic. To change the shape of a point, use the `pch` argument. Setting `pch` to different numeric values from `1:25` yields different shapes as indicated in the chart below.
+> *Hint:* The `color` argument should be used inside `aes` inside `ggplot`. To
+> change the shape of a point, use the `pch` argument within
+> `geom_point`. Setting `pch` to different numeric values from `1:25` yields
+> different shapes as indicated in the chart below:
 >
 > <img src="../fig/pch_symbols.png" alt="a list of symbols one can use in R to change the shape of the plot" style="display: block; margin: auto;width: 200px">
-{: .challenge}
-
-> ## Challenge 5
->
-> Create a density plot of GDP per capita, filled by continent.
->
-> Advanced Challenge:
->  - Transform the x axis to better visualise the data spread.
->  - Add a facet layer to panel the density plots by year.
 {: .challenge}
 
 ## [Writing Data](https://cfgauss.github.io/r-novice-gapminder/13-writing-data/)
@@ -457,15 +459,6 @@ permalink: /challenges/
 <img src="../fig/12-data-fig1.png" title="export plots in rstudio" alt="export plots in rstudio" style="display: block; margin: auto;" />
 
 > ## Challenge 1
->
-> Rewrite your 'pdf' command to print a second
-> page in the pdf, showing a facet plot
-> of the same data with one panel per continent.
->
-> Hint: Remember that we used the `facet_wrap` command previously to create a facet plot.
-{: .challenge}
-
-> ## Challenge 2
 >
 > Write a data-cleaning script file that subsets the gapminder
 > data to include only data points collected since 1990.
@@ -483,6 +476,9 @@ If you want to learn more, check out some of these great resources:
 #### Help Files in R
 Don't forget your R helpfiles and package vignettes which can be accessed
 by using the `?` and `vignette` commands.
+
+#### [Supplemental Lessons](https://carriebrown.github.io/r-novice-gapminder/)
+These lessons with solutions for challenges.
 
 #### [Supplemental Lessons](https://carriebrown.github.io/r-novice-gapminder-2/)
 Additional R topics that we could not cover today.

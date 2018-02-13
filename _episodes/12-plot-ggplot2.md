@@ -109,7 +109,7 @@ ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp)) +
 > Modify this example so that the plot visualizes how life expectancy has
 > changed over time:
 >
-> Hint: the gapminder dataset has a column called "year", which should appear
+> *Hint:* the `gapminder` dataset has a column called `year`, which should appear
 > on the x-axis.
 {: .challenge}
 
@@ -118,17 +118,19 @@ ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp)) +
 >
 > In the previous examples and challenge we've used the `aes` function to tell
 > the scatterplot **geom** about the **x** and **y** locations of each point.
-> Another *aesthetic* property we can modify is the point *color*. Modify the
-> code from the previous challenge to **color** the points by the "continent"
+> Another aesthetic property we can modify is the point color. Modify the code
+> from the previous challenge to color the points by the `continent`
 > column. What trends do you see in the data? Are they what you expected?
+> *Hint:* There's more than one way to do this. One approach is to view
+> color as an aesthetic property of the point (`geom_point`). Try
+> executing `?geom_point` and looking under both **Aesthetics** and **Examples**.
 {: .challenge}
-
 
 ## Layers
 
-Using a scatterplot probably isn't the best for visualizing change over time.
-Instead, let's tell `ggplot` to visualize the data as a line plot:
-
+Using a scatterplot (`geom_point`) probably isn't the best for visualizing
+change over time. Instead, let's tell `ggplot` to visualize the data as a
+line plot:
 
 ~~~
 ggplot(data = gapminder, aes(x=year, y=lifeExp, by=country, color=continent)) +
@@ -139,12 +141,11 @@ ggplot(data = gapminder, aes(x=year, y=lifeExp, by=country, color=continent)) +
 <img src="../fig/rmd-08-lifeExp-line-1.png" title="plot of chunk lifeExp-line" alt="plot of chunk lifeExp-line" style="display: block; margin: auto;" />
 
 Instead of adding a `geom_point` layer, we've added a `geom_line` layer. We've
-added the **by** *aesthetic*, which tells `ggplot` to draw a line for each
+added the `by` aesthetic, which tells `ggplot` to draw a line for each
 country.
 
 But what if we want to visualize both lines and points on the plot? We can
 simply add another layer to the plot:
-
 
 ~~~
 ggplot(data = gapminder, aes(x=year, y=lifeExp, by=country, color=continent)) +
@@ -262,19 +263,23 @@ variables and their visual representation.
 
 > ## Challenge 3
 >
-> Modify the color and size of the points on the point layer in the previous
-> example.
+> Modify the color and size of the points on the point layer in the last
+> example (not the last challenge).
 >
-> Hint: do not use the `aes` function, change this by adding arguments to the correct function.
+> *Hint:* do not use the `aes` function. Rather add arguments to the correct
+> function.
 {: .challenge}
 
 > ## Challenge 4
 >
-> Modify your solution to Challenge 3 so that the
-> points are now a different shape and are colored by continent with new
-> trendlines.
+> Modify your solution to Challenge 3 so that the points are now a different
+> shape and are colored by continent with one least-squares trendline per
+> continent.
 >
-> Hint: The color argument can be used inside the aesthetic. To change the shape of a point, use the `pch` argument. Setting `pch` to different numeric values from `1:25` yields different shapes as indicated in the chart below.
+> *Hint:* The `color` argument should be used inside `aes` inside `ggplot`. To
+> change the shape of a point, use the `pch` argument within
+> `geom_point`. Setting `pch` to different numeric values from `1:25` yields
+> different shapes as indicated in the chart below:
 >
 > <img src="../fig/pch_symbols.png" alt="a list of symbols one can use in R to change the shape of the plot" style="display: block; margin: auto;width: 200px">
 {: .challenge}
@@ -366,13 +371,3 @@ code to modify!
 
 [cheat]: http://www.rstudio.com/wp-content/uploads/2015/03/ggplot2-cheatsheet.pdf
 [ggplot-doc]: http://docs.ggplot2.org/current/
-
-
-> ## Challenge 5
->
-> Create a density plot of GDP per capita, filled by continent.
->
-> Advanced Challenge:
->  - Transform the x axis to better visualise the data spread.
->  - Add a facet layer to panel the density plots by year.
-{: .challenge}

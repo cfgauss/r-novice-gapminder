@@ -18,6 +18,9 @@ If you want to learn more, check out some of these great resources:
 Don't forget your R helpfiles and package vignettes which can be accessed
 by using the `?` and `vignette` commands.
 
+#### [Supplemental Lessons](https://carriebrown.github.io/r-novice-gapminder/)
+These lessons with solutions for challenges.
+
 ### [Supplemental Lessons](https://carriebrown.github.io/r-novice-gapminder-2/)
 Additional R topics that we could not cover today.
 

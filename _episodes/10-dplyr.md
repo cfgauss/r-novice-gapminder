@@ -165,9 +165,9 @@ continent since we would have removed it in the previous step.
 > ## Challenge 1
 >
 > Write a single command (which can span multiple lines and includes pipes) that
-> will produce a dataframe that has the African values for `lifeExp`, `country`
-> and `year`, but not for other Continents.  How many rows does your dataframe
-> have and why?
+> will produce a data frame that has the African values for `lifeExp`, `country`
+> and `year`, but not for other continents. How many rows does your dataframe
+> have?
 {: .challenge}
 
 ## Using group_by and summarize
@@ -334,10 +334,14 @@ gdp_pop_bycontinents_byyear <- gapminder %>%
 
 > ## Challenge 4 - Advanced
 >
-> Modify your code from Challenge 3 to randomly select 2 countries from each continent before calculating the average life expectancy and then arrange the continent names in reverse order.
+> Modify your code from Challenge 3 to randomly select 2 countries from each
+> continent before calculating the average life expectancy and then arrange
+> the continent names in reverse order.
 >
-> **Hint:** Use the `dplyr` functions `arrange` and `sample_n`, they have
-> similar syntax to other dplyr functions. Be sure to check out the help documentation for the new functions by typing `?arrange` or `?sample_n` if you run into difficulties.
+> *Hint:* Use the `dplyr` functions `arrange` and `sample_n`. They have
+> similar syntax to other dplyr functions. Be sure to check out the help
+> documentation for the new functions by typing `?arrange` or `?sample_n` if
+> you run into difficulties.
 {: .challenge}
 
 ## Other great resources
