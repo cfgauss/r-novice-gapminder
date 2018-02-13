@@ -468,7 +468,6 @@ permalink: /challenges/
 >
 > Remember to use a different file name so that the new output doesn't
 > overwrite your old output.
-
 {: .challenge}
 
 ## Wrapup
