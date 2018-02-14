@@ -11,18 +11,17 @@ permalink: /guide/
 #### Before Starting The Workshop
 On artin, as nelle:
 
-$ rm ~/swc/2018-02-15-earlham-owm/earlham.R
-$ touch ~/swc/2018-02-15-earlham-owm/earlham.R
-$ cd ~/swc/earlham-notes
-$ gitautopush ../2018-02-15-earlham-owm/earlham.R
+`$ rm ~/swc/2018-02-15-earlham-owm/earlham.R`<br/>
+`$ touch ~/swc/2018-02-15-earlham-owm/earlham.R`<br/>
+`$ cd ~/swc/earlham-notes`<br/>
+`$ gitautopush ../2018-02-15-earlham-owm/earlham.R`
 
 Please ensure you have the latest version of R and RStudio installed on your
 machine. Browser tabs: workshop, etherpad, `bit.ly/earlham-R` and
 `bit.ly/earlham-notes`.
 
 Note to self: don't create new values for variables as it will affect future
-evaluations in your script. You can, of course, backtrack but that's
-irritating for the student.
+evaluations in your script. You can make a copy of a variable, however.
 
 #### Introduction to RStudio
 
@@ -37,11 +36,14 @@ Why RStudio?
  - built in version control and project management
  - works on all platforms
 
-Goal: learn enough R to understand Stack Overflow for basic R programming.
+*Goal:* learn enough R to understand Stack Overflow answers for basic R
+programming questions.
 
 **Basic layout**
 
-Type along with me. If you fall behind, check the etherpad when we stop for
+Type along with me. If you fall behind, check `bit.ly/earlham-notes` or the
+etherpad.
+
 ***CHALLENGES***.
 
 Three panels:
@@ -57,28 +59,31 @@ Editor panel appears when you open scripts.
 There are two main ways one can work within RStudio.
 
 1. Test and play within the interactive R console then copy code into
-a .R file to run later.
-2. Start writing in an .R file and use RStudio's command / short cut
+a `.R` file to run later.
+2. Start writing in a `.R` file and use RStudio's command/shortcut
 to push current line, selected lines or modified lines to the
 interactive R console.
 
-We'll `File->New File->R Script`. Use `getwd()` to find out where you are and save
-this somewhere. Use `Save As` to name your file, e.g. `swc.R`.
+We'll do the latter (as do I when I write my R scripts).
+
+Start with `File->New File->R Script`. Use `getwd()` to find out where you are
+and save this somewhere. Use `Save As` to name your file, e.g. `swc.R`.
 
 Run button and key shortcuts
 
-  * ctrl-enter windows/linux
-  * command-enter mac
+  * Ctrl-enter windows/linux
+  * Command-enter mac
 
-Mostly use the console to  run code and test commands.
+Mostly use the console to run code and test commands.
 
-">" cursor - similar to the shell
+In the console, the `>` prompt is  similar to the shell's `$` prompt. There
+you can
 
- - type commands
- - R executes
- - returns result
+ - Type commands.
+ - R executes them &
+ - R returns result
 
-The simplest thing you could do with R is do arithmetic:
+##### 1:07 The simplest thing you can do with R is arithmetic:
 
 ~~~
 1 + 100
@@ -120,9 +125,9 @@ Use these to make code easier to read
 ~~~
 {: .r}
 
-"##" indicate comments
+`#` indicates a comment.
 
-Scientific notation
+Scientific notation:
 
 ~~~
 2/10000
@@ -134,36 +139,31 @@ Scientific notation
 ~~~
 {: .r}
 
-
 #### Mathematical functions
 
-Function notation same as math class.
+Function notation is the same as math class.
 
 ~~~
 sin(1)  ## trigonometry functions
 ~~~
 {: .r}
 
-
 ~~~
 log(1)  ## natural logarithm
 ~~~
 {: .r}
 
-
-
 ~~~
 log10(10) ## base-10 logarithm
 ~~~
 {: .r}
-
+##### 1:15
 ~~~
 exp(0.5) ## e^(1/2)
 ~~~
 {: .r}
 
-Can look up functions in google or use Autocomplete (tab)
-
+Can look up functions in Google or use autocomplete (tab) in RStudio.
 
 #### Comparing things
 
@@ -204,7 +204,7 @@ Can look up functions in google or use Autocomplete (tab)
 {: .r}
 
 
-Don't use '==' for non-integer numbers.
+Don't use `==` for non-integer numbers.
 
 #### Variables and assignment
 
@@ -222,16 +222,16 @@ x
 ~~~
 {: .r}
 
-
 Stored as a decimal approximation called floating point number.
-Point out x in environment variables.
-Shortcut: Alt + - (hyphen) for <-
+Point out `x` in environment variables.
+
+*Shortcut:* Alt + - (hyphen) for `<-`.
 
 ~~~
 log(x)
 ~~~
 {: .r}
-
+##### 1:22
 Can reassign values.
 
 ~~~
@@ -247,7 +247,7 @@ x <- x + 1 ##notice how RStudio updates its description of x on the top right ta
 {: .r}
 
 The right hand side of the assignment can be any valid R expression.
-The right hand side is *fully evaluated* before the assignment occurs..
+The right hand side is *fully evaluated* before the assignment occurs.
 
 Character values:
 
@@ -270,15 +270,14 @@ Consistency is important
 
 #### Functions
 
-built in functions
-coding your own
-supplemental lesson
+There are many built-in functions but you can create your own. This is in a
+supplemental lesson.
 
 #### R Packages
 
 * 10,000 packages on CRAN (1/27/17)
-* install packages: `install.packages("packagename")`
-* make a package available for use: `library(packagename)`
+* Install packages: `install.packages("packagename")`
+* Make a package available for use: `library(packagename)`
 
 ~~~
 install.packages("gapminder")
@@ -326,7 +325,7 @@ Each help page is broken down into sections:
  - Value: The data the function returns.
  - See Also: Any related functions you might find useful.
  - Examples: Some examples for how to use the function.
-
+##### 1:35
 Some may have different sections, but these are the main ones.
 
 Help files make it easier to use R because you don't have to remember the
@@ -340,7 +339,7 @@ To seek help on special operators, use quotes:
 ?"+"
 ~~~
 {: .r}
-
+##### 1:40
 #### Getting help on packages
 
 Many packages come with "vignettes": tutorials and extended example documentation.
@@ -356,7 +355,7 @@ If a package doesn't have any vignettes, you can usually find help by typing
 #### When you kind of remember the function
 
 Fuzzy search:
-
+##### 1:45
 ~~~
 ??install
 ~~~
@@ -399,7 +398,7 @@ x + y
 ~~~
 {: .r}
 
-Gives error because 101 + "green" is nonsense.
+Gives error because 101 + `green` is nonsense.
 
 5 main data types: `double`, `integer`, `complex`, `logical`, and `character`.
 
@@ -426,16 +425,12 @@ typeof(1+1i)
 
 R can also support `complex` values as well. Unless you are doing mathematical
 analyses, chances are you will not encounter this data type very often.
-
+##### 1:56
 ~~~
 typeof(TRUE)
 ~~~
 {: .r}
 
-~~~
-[1] "logical"
-~~~
-{: .output}
 
 `Logical` data types are particularly helpful in subsetting data frames and
 other types of data manipulation. We will explore this concept more later.
@@ -445,11 +440,6 @@ typeof('banana')
 ~~~
 {: .r}
 
-~~~
-[1] "character"
-~~~
-{: .output}
-
 Lastly, R stores strings as the `character` type.
 
 No matter how complicated our analyses become, all data in R is interpreted as
@@ -457,7 +447,7 @@ one of these basic data types.
 
 #### Vectors
 
-Remember the [1]?
+Remember the `[1]`?
 
 R never uses just a single value, but instead uses vectors. Output before was
 a vector of length 1.
@@ -485,7 +475,7 @@ y
 {: .r}
 
 We can specify whatever start and stop point we want.
-
+##### 2:02
 ~~~
 -4:7
 ~~~
@@ -538,7 +528,7 @@ a
 
 Similar to `typeof`, `str` will tell us the data type and also will give us a
 compact view of some basic information about our object.
-
+##### 2:08
 ~~~
 str(a)
 ~~~
@@ -666,7 +656,7 @@ For an index outside of the vector, R will return missing values.
 x[6]
 ~~~
 {: .r}
-
+##### 2:41
 
 `NA` means "not available" and is used for mising data.
 
@@ -736,7 +726,7 @@ To skip (or remove) a single named element:
 x[-which(names(x) == "a")]
 ~~~
 {: .r}
-
+##### 2:52
 
 The `which` function returns the indices of all `TRUE` elements of its argument.
 Step by step analysis of command:
@@ -802,7 +792,7 @@ c("a", "c", "a", "c", "a")
 R repeats `c("a", "c")` two and a half times. If the longer
 vector length isn't a multiple of the shorter vector length, then
 R will also print out a warning message.
-
+##### 3:03
 This difference between `==` and `%in%` is important to remember,
 because it can introduce hard to find and subtle bugs!
 
@@ -950,7 +940,7 @@ cats
 {: .r}
 
 Rows are lists since they contain different types of elements.
-
+##### 3:30
 ~~~
 newRow <- list("tortoiseshell", 3.3, TRUE, 9)
 cats <- rbind(cats, newRow)
@@ -1028,10 +1018,10 @@ cats <- na.omit(cats)
 ~~~
 {: .r}
 
-Remember that *columns are vectors or factors, and rows are lists.*
+Remember that columns are vectors or factors, and rows are lists.
 
 We can also glue two data frames together with `rbind`:
-
+##### 3:45
 ~~~
 cats <- rbind(cats, cats)
 cats
@@ -1110,7 +1100,7 @@ ncol(gapminder)
 {: .r}
 
 Or, both at once:
-
+##### 4:00
 
 ~~~
 dim(gapminder)
@@ -1231,7 +1221,7 @@ if (x > 8) {
 x
 ~~~
 {: .r}
-
+##### 1:07
 You may not get the same output as your neighbour.
 
 Let's set a seed so that we all generate the same 'pseudo-random' number.
@@ -1270,7 +1260,7 @@ if (x) {
 
 As we can see, the message was not printed because the vector x is `FALSE`
 
-
+##### 1:15
 ~~~
 x <- 4 == 3
 x
@@ -1311,7 +1301,7 @@ To repeat an operation until a certain condition is met use a `while()` loop
 
 Here's a while loop that generates random numbers from a uniform distribution
 (the `runif` function) between 0 and 1 until it gets one that's less than 0.1.
-
+##### 1:22
 ~~~
 z <- 1
 while(z > 0.1){
@@ -1401,7 +1391,7 @@ Now let's load the package:
 library(dplyr)
 ~~~
 {: .r}
-
+##### 1:43
 #### Using select()
 
 If we wanted to use only a few of the variables in
@@ -1457,7 +1447,7 @@ year_country_gdp_euro <- gapminder %>%
     filter(continent=="Europe")
 ~~~
 {: .r}
-
+##### 1:57
 Doesn't work since we removed the continent column with `select`.
 
 ***CHALLENGE 1***: 5 min
@@ -1504,7 +1494,7 @@ gdp_bycontinents <- gapminder %>%
 {: .r}
 
 (Show diagram from "Challenges" page.)
-
+##### 2:11
 ![](../fig/13-dplyr-fig3.png)
 
 That allowed us to calculate the mean `gdpPercap` for each continent, but it gets
@@ -1627,7 +1617,7 @@ We need to tell `ggplot` how we want to visually represent the data, which we
 do by adding a new **geom** layer. In our example, we used `geom_point`, which
 tells `ggplot` we want to visually represent the relationship between **x** and
 **y** as a scatterplot of points:
-
+##### 2:56
 <img src="../fig/rmd-08-lifeExp-vs-gdpPercap-scatter2-1.png" title="plot of chunk lifeExp-vs-gdpPercap-scatter2" alt="plot of chunk lifeExp-vs-gdpPercap-scatter2" style="display: block; margin: auto;" />
 
 ***CHALLENGES 1 & 2***: 10 min
@@ -1695,7 +1685,7 @@ ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp)) +
   geom_point()
 ~~~
 {: .r}
-
+##### 3:12
 <img src="../fig/rmd-08-lifeExp-vs-gdpPercap-scatter3-1.png" title="plot of chunk lifeExp-vs-gdpPercap-scatter3" alt="plot of chunk lifeExp-vs-gdpPercap-scatter3" style="display: block; margin: auto;" />
 
 It's hard to see the mass of points on the left due to outliers "stretching"
@@ -1764,7 +1754,7 @@ ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp)) +
   geom_point(aes(alpha = continent))
 ~~~
 {: .r}
-
+##### 3:28
 ***CHALLENGES 3 & 4***: 10 min
 
 #### Multi-panel figures
@@ -1848,7 +1838,7 @@ We can use the `write.table` function for this.
 
 Let's create a data-cleaning script, for this analysis, we only want to focus
 on the gapminder data for Australia:
-
+##### 3:51
 ~~~
 aust <- gapminder %>% filter(country == "Australia")
 ~~~
@@ -1856,6 +1846,7 @@ aust <- gapminder %>% filter(country == "Australia")
 
 Before you write, use `getwd()` and `setwd(...)`.
 
+~~~
 write.table(aust,          ## Gapminder data for countries located in Australia
   file="gapminder-aus.csv",## Name of the output file
   sep=","                  ## Comma separated
@@ -1864,7 +1855,7 @@ write.table(aust,          ## Gapminder data for countries located in Australia
 {: .r}
 
 (Open terminal and cat this file.)
-
+##### 3:57
 ~~~
 cat gapminder-aus.csv
 head gapminder-aus.csv
@@ -1884,7 +1875,7 @@ meaningless. Let's look at the help file for `quote` and `row.names`:
 By default R will wrap character vectors with quotation marks
 when writing out to file. It will also write out the row and
 column names.
-
+##### 4:03
 ~~~
 write.table(aust,               ## Gapminder data for countries located in Australia
   file="gapminder-aus.csv",     ## Name of the output file
