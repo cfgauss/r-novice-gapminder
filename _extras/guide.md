@@ -44,8 +44,6 @@ programming questions.
 Type along with me. If you fall behind, check `bit.ly/earlham-notes` or the
 etherpad.
 
-***CHALLENGES***.
-
 Three panels:
 
   * The interactive R console (entire left)
