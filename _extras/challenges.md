@@ -25,7 +25,7 @@ permalink: /challenges/
 
 > ## Challenge 2
 >
-> What will be the value of each  variable  after each
+> What will be the value of each variable after each
 > statement in the following program?
 >
 >
@@ -478,8 +478,8 @@ If you want to learn more, check out some of these great resources:
 Don't forget your R helpfiles and package vignettes which can be accessed
 by using the `?` and `vignette` commands.
 
-#### [Supplemental Lessons](https://carriebrown.github.io/r-novice-gapminder/)
-These are lessons with solutions for challenges.
+#### [Workshop Lessons](https://carriebrown.github.io/r-novice-gapminder/)
+These are the lessons used in the workshop with solutions for challenges.
 
 #### [Supplemental Lessons](https://carriebrown.github.io/r-novice-gapminder-2/)
 Additional R topics that we could not cover today.
